@@ -9,38 +9,88 @@ public class Example_gyro : MonoBehaviour
         Enum.GetValues(typeof(Joycon.Button)) as Joycon.Button[];
 
     private List<Joycon> m_joycons;
-    private Joycon m_joyconL;
-    private Joycon m_joyconR;
-    private Joycon.Button? m_pressedButtonL;
-    private Joycon.Button? m_pressedButtonR;
+    private Joycon m_joyconL1;
+    private Joycon m_joyconR1;
+    private Joycon m_joyconR2;
+    private Joycon.Button? m_pressedButtonL1;
+    private Joycon.Button? m_pressedButtonR1;
+    private Joycon.Button? m_pressedButtonR2;
 
 
     //以下が追記のコード
-    private GameObject rCube, lCube;
-    private Quaternion rciq, lciq, riq, liq;
+    private GameObject rCube1 , rCube2, lCube;
+    private Quaternion rciq1, rciq2, lciq, riq1, riq2, liq;
     //private Animator anim;
     //private Transform RS_bone, LS_bone;
 
     private void Start()
     {
-
+        // ジョイコン情報を取得
         m_joycons = JoyconManager.Instance.j;
 
+        // ジョイコンが存在しない。数が0以下の場合終了
         if (m_joycons == null || m_joycons.Count <= 0) return;
 
-        m_joyconL = m_joycons.Find(c => c.isLeft);
-        m_joyconR = m_joycons.Find(c => !c.isLeft);
+        // Left値を取得、値に応じて格納
+        //m_joyconL1 = m_joycons.Find(c => c.isLeft);
+        //m_joyconR1 = m_joycons.Find(c => !c.isLeft);
+
+        // 現在接続されているジョイコンの数を表示
+        Debug.Log("Connected JoyCon ->" + m_joycons.Count);
+
+        // ３本に満たない場合
+        if (m_joycons.Count < 3) Debug.Log("Warning : Not Enough JoyCon");
+
+        // ３本ある場合
+        if (m_joycons.Count >= 3)
+        {
+            int nCntRight = 0;
+
+            for ( int nCnt = 0 ; nCnt < m_joycons.Count; nCnt ++)
+            {
+                // 現在のジョイコンのインデックス番号
+                Debug.Log("---Now JoyCon No." + nCnt + "-------------------------------");
+
+                // 今見てるコントローラーが右なのか左なのか
+                if (m_joycons[nCnt].isLeft)
+                {
+                    Debug.Log("LeftController");
+
+                    // Leftコントローラーを格納
+                    m_joyconL1 = m_joycons[nCnt];
+                }
+                else
+                {
+                    Debug.Log("RightController");
+
+                    // 右1本目
+                    if (nCntRight == 0)
+                    {
+                        // Rightコントローラーを格納
+                        m_joyconR1 = m_joycons[nCnt];
+                        nCntRight++;
+                    }
+                    else
+                    {
+                        // Rightコントローラーを格納
+                        m_joyconR2 = m_joycons[nCnt];
+                    }
+                }
+            }
+        }
 
         // 以下が追記のコード
         //anim = (Animator)FindObjectOfType(typeof(Animator));
 
-        rCube = GameObject.Find("RightCube");
-        lCube = GameObject.Find("LeftCube");
+        rCube1 = GameObject.Find("RightCube1");
+        rCube2 = GameObject.Find("RightCube2");
+        lCube = GameObject.Find("LeftCube1");
 
         //RS_bone = anim.GetBoneTransform(HumanBodyBones.RightUpperArm);
         //LS_bone = anim.GetBoneTransform(HumanBodyBones.LeftUpperArm);
 
-        rciq = rCube.transform.rotation;
+        rciq1 = rCube1.transform.rotation;
+        rciq2 = rCube2.transform.rotation;
         lciq = lCube.transform.rotation;
         //riq = RS_bone.rotation;
         //liq = LS_bone.rotation;
@@ -48,42 +98,55 @@ public class Example_gyro : MonoBehaviour
 
     private void Update()
     {
-        m_pressedButtonL = null;
-        m_pressedButtonR = null;
+        m_pressedButtonL1 = null;
+        m_pressedButtonR1 = null;
+        m_pressedButtonR2 = null;
 
         foreach (var button in m_buttons)
         {
-            if (m_joyconL.GetButton(button))
+            // 各コントローラーのボタン情報を取得
+            if (m_joyconL1.GetButton(button))
             {
-                m_pressedButtonL = button;
+                m_pressedButtonL1 = button;
             }
-            if (m_joyconR.GetButton(button))
+            if (m_joyconR1.GetButton(button))
             {
-                m_pressedButtonR = button;
+                m_pressedButtonR1 = button;
+            }
+            if (m_joyconR2.GetButton(button))
+            {
+                m_pressedButtonR2 = button;
             }
         }
 
+        // ジョイコンが入っていない場合
         if (m_joycons == null || m_joycons.Count <= 0) return;
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            m_joyconL.SetRumble(160, 320, 0.6f, 200);
+            m_joyconL1.SetRumble(160, 320, 0.6f, 200);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            m_joyconR.SetRumble(160, 320, 0.6f, 200);
+            m_joyconR1.SetRumble(160, 320, 0.6f, 200);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            m_joyconR2.SetRumble(160, 320, 0.6f, 200);
         }
 
         // 以下が追記のコード
         const float MOVE_PER_CLOCK = 0.01f;
         Vector3 joyconGyro;
-        // 右の箱
-        joyconGyro = m_joycons[0].GetGyro();
-        Quaternion rcqt = rCube.transform.rotation;
+        //―――――――――――――――――――――――
+        // RightController1
+        //―――――――――――――――――――――――
+        joyconGyro = m_joyconR1.GetGyro();
+        Quaternion rcqt = rCube1.transform.rotation;
         rcqt.x += -joyconGyro[1] * MOVE_PER_CLOCK;
         rcqt.y += -joyconGyro[0] * MOVE_PER_CLOCK;
         rcqt.z += -joyconGyro[2] * MOVE_PER_CLOCK;
-        rCube.transform.rotation = rcqt;
+        rCube1.transform.rotation = rcqt;
 
         //// 右肩
         //Quaternion rb = RS_bone.transform.rotation * Quaternion.Inverse(riq);
@@ -93,14 +156,40 @@ public class Example_gyro : MonoBehaviour
         //RS_bone.rotation = rb * riq;
 
         // 右のジョイコンのAボタンが押されたら、右の箱と右肩は初期ポジションに戻る
-        if (m_joyconR.GetButtonDown(m_buttons[1]))
+        if (m_joyconR1.GetButtonDown(m_buttons[1]))
         {
-            rCube.transform.rotation = rciq;
+            rCube1.transform.rotation = rciq1;
+            //RS_bone.rotation = riq;
+        }
+        //―――――――――――――――――――――――
+        // RightController2
+        //―――――――――――――――――――――――
+        joyconGyro = m_joyconR2.GetGyro();
+        rcqt = rCube2.transform.rotation;
+        rcqt.x += -joyconGyro[1] * MOVE_PER_CLOCK;
+        rcqt.y += -joyconGyro[0] * MOVE_PER_CLOCK;
+        rcqt.z += -joyconGyro[2] * MOVE_PER_CLOCK;
+        rCube2.transform.rotation = rcqt;
+
+        //// 右肩
+        //Quaternion rb = RS_bone.transform.rotation * Quaternion.Inverse(riq);
+        //rb.x += -joyconGyro[1] * MOVE_PER_CLOCK;
+        //rb.y += -joyconGyro[0] * MOVE_PER_CLOCK;
+        //rb.z += -joyconGyro[2] * MOVE_PER_CLOCK;
+        //RS_bone.rotation = rb * riq;
+
+        // 右のジョイコンのAボタンが押されたら、右の箱と右肩は初期ポジションに戻る
+        if (m_joyconR2.GetButtonDown(m_buttons[1]))
+        {
+            rCube2.transform.rotation = rciq2;
             //RS_bone.rotation = riq;
         }
 
+        //―――――――――――――――――――――――
+        // LeftController
+        //―――――――――――――――――――――――
         // 左の箱
-        joyconGyro = m_joycons[1].GetGyro();
+        joyconGyro = m_joyconL1.GetGyro();
         Quaternion lcqt = lCube.transform.rotation;
         lcqt.x += -joyconGyro[1] * MOVE_PER_CLOCK;
         lcqt.y += -joyconGyro[0] * MOVE_PER_CLOCK;
@@ -115,7 +204,7 @@ public class Example_gyro : MonoBehaviour
         //LS_bone.rotation = lb * liq;
 
         // 左のジョイコンのAボタンが押されたら、左の箱と左肩は初期ポジションに戻る
-        if (m_joyconL.GetButtonDown(m_buttons[1]))
+        if (m_joyconL1.GetButtonDown(m_buttons[1]))
         {
             lCube.transform.rotation = lciq;
             //LS_bone.rotation = liq;
@@ -153,7 +242,7 @@ public class Example_gyro : MonoBehaviour
             var isLeft = joycon.isLeft;
             var name = isLeft ? "Joy-Con (L)" : "Joy-Con (R)";
             var key = isLeft ? "Z キー" : "X キー";
-            var button = isLeft ? m_pressedButtonL : m_pressedButtonR;
+            var button = isLeft ? m_pressedButtonL1 : m_pressedButtonR1;
             var stick = joycon.GetStick();
             var gyro = joycon.GetGyro();
             var accel = joycon.GetAccel();

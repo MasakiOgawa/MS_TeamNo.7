@@ -17,7 +17,7 @@ public class JoyconManager: MonoBehaviour
 	private const ushort product_l = 0x2006;
 	private const ushort product_r = 0x2007;
 
-    public List<Joycon> j; // Array of all connected Joy-Cons
+    public List<Joycon> j; // ジョイコンのリスト
     static JoyconManager instance;
 
     public static JoyconManager Instance
@@ -31,8 +31,10 @@ public class JoyconManager: MonoBehaviour
         instance = this;
 		int i = 0;
 
+        // ジョイコンのリストを生成
 		j = new List<Joycon>();
-		bool isLeft = false;
+        // 左フラグを初期化
+        bool isLeft = false;
 		HIDapi.hid_init();
 
 		IntPtr ptr = HIDapi.hid_enumerate(vendor_id, 0x0);
@@ -47,6 +49,7 @@ public class JoyconManager: MonoBehaviour
 				Debug.Log ("No Joy-Cons found!");
 			}
 		}
+        
 		hid_device_info enumerate;
 		while (ptr != IntPtr.Zero) {
 			enumerate = (hid_device_info)Marshal.PtrToStructure (ptr, typeof(hid_device_info));
