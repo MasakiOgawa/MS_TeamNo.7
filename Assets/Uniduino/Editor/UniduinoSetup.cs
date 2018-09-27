@@ -166,7 +166,7 @@ namespace Uniduino.Helpers
 					if (helper.installLibraryOSX(true))
 					{
 						setAPICompatibilityLevel(true);
-						EditorApplication.SaveAssets();
+						AssetDatabase.SaveAssets();
 						EditorApplication.SaveScene();
 						//EditorApplication.Exit(0);						
 					}
@@ -187,7 +187,7 @@ namespace Uniduino.Helpers
                 if (GUILayout.Button("Configure project for SerialPort support on Windows", button_style))
                 {
                     setAPICompatibilityLevel(true);
-                    EditorApplication.SaveAssets();
+                    AssetDatabase.SaveAssets();
                     EditorApplication.SaveScene();
                     //EditorApplication.Exit(0);	
 
