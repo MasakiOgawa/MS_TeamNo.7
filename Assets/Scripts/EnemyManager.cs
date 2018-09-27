@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static TextAsset     EnemyText;          //敵情報が格納されたファイルの情報
-    public  GameObject          EnemyUpPrefab;      //上方向の敵のプレハブ
-    public  GameObject          EnemyDownPrefab;    //下方向の敵のプレハブ
-    public  GameObject          EnemyRightPrefab;   //右方向の敵のプレハブ
-    public  GameObject          EnemyLeftPrefab;    //左方向の敵のプレハブ
-    public static GameObject[ ] EnemyPrefabTmp;     //生成した敵情報を保存
-    public Vector2              LeftEndPos;         //左端の敵の座標
-    public float                fDist;              //敵同士の距離
-    public static int           nCreateNo;          //ファイルの文字列の添え字
-
+    public GameObject    ManagerPrefab;     //マネージャのプレハブ
+    public GameObject    CountDownPrefab;   //カウントダウンのプレハブ
+           TextAsset     EnemyText;         //敵情報が格納されたファイルの情報
+    public GameObject    EnemyUp;           //上方向の敵のプレハブ
+    public GameObject    EnemyDown;         //下方向の敵のプレハブ
+    public GameObject    EnemyRight;        //右方向の敵のプレハブ
+    public GameObject    EnemyLeft;         //左方向の敵のプレハブ
+           GameObject[ ] EnemyPrefabTmp;    //生成した敵情報を保存
+           GameObject    TargetEnemy;       //現在ターゲットにされている敵情報
+    public Vector2       LeftEndPos;        //左端の敵の座標
+    public float         fDist;             //敵同士の距離
+           int           nCreateNo;         //ファイルの文字列の添え字
+   
 
 	void Start( )
     {
@@ -26,7 +29,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         //敵情報をファイルから読み込み
-        EnemyText = Resources.Load("enemy") as TextAsset;
+        EnemyText = Resources.Load( "enemy" ) as TextAsset;
 	}
 
 
@@ -38,19 +41,19 @@ public class EnemyManager : MonoBehaviour
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUpPrefab , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ), LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUp , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ), LeftEndPos.y , 0.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDownPrefab , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDown , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeftPrefab , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeft , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRightPrefab , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRight , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
             }
         }
 
@@ -58,12 +61,12 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
-        Manager.SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN );
+        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN );
     }
 
     
     //敵の破棄
-    public static void Kill( )
+    public void Kill( )
     {
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
@@ -75,7 +78,21 @@ public class EnemyManager : MonoBehaviour
         }
 
         //次の敵を生成
-        Manager.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-        CountDown.SetText( );
+        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+        CountDownPrefab.GetComponent< CountDown >( ).SetText( );
+    }
+
+
+    //ターゲットを設定
+    public void SetTarget( int nTarget )
+    {
+        TargetEnemy = EnemyPrefabTmp[ nTarget ];
+    }
+
+
+    //ターゲットを取得
+    public GameObject GetTarget( )
+    {
+        return TargetEnemy;
     }
 }
