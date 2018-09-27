@@ -593,14 +593,14 @@ public class Joycon
         {
             if (buf_[i] != 0xff)
             {
-                Debug.Log("Using user stick calibration data.");
+                //Debug.Log("Using user stick calibration data.");
                 found = true;
                 break;
             }
         }
         if (!found)
         {
-            Debug.Log("Using factory stick calibration data.");
+            //Debug.Log("Using factory stick calibration data.");
             buf_ = ReadSPI(0x60, (isLeft ? (byte)0x3d : (byte)0x46), 9); // get user calibration data if possible
         }
         stick_cal[isLeft ? 0 : 2] = (UInt16)((buf_[1] << 8) & 0xF00 | buf_[0]); // X Axis Max above center
