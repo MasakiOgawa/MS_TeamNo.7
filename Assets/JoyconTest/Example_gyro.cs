@@ -21,6 +21,21 @@ public class Example_gyro : MonoBehaviour
         SHAKE_RIGHT_TRIGGER,        // 右実行
     };
 
+    public enum JOYCON_TYPE
+    {
+        JOYCON_L1,
+        JOYCON_R1,
+        JOYCON_R2,
+    };
+
+    public enum JOYCON_STATE
+    {
+        STATE_NONE,
+        STATE_FRONT_TRIGGER,
+        STATE_LEFT_TRIGGER,
+        STATE_RIGHT_TRIGGER,
+    };
+
 
     private static readonly Joycon.Button[] m_buttons =
         Enum.GetValues(typeof(Joycon.Button)) as Joycon.Button[];
@@ -544,7 +559,55 @@ public class Example_gyro : MonoBehaviour
                 //LS_bone.rotation = liq;
             }
         }
+
+
+
+
+
     }
+
+    // 他スクリプトからの呼び出し
+    public JOYCON_STATE GetJoyconState ( JOYCON_TYPE joyconType)
+    {
+        if ( joyconType == JOYCON_TYPE.JOYCON_L1 )
+        {
+            if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
+                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            else if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                return JOYCON_STATE.STATE_RIGHT_TRIGGER;
+            else if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
+                return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else
+                return JOYCON_STATE.STATE_NONE;
+            
+        }
+        else if ( joyconType == JOYCON_TYPE.JOYCON_R1)
+        {
+            if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
+                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            else if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                return JOYCON_STATE.STATE_RIGHT_TRIGGER;
+            else if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
+                return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else
+                return JOYCON_STATE.STATE_NONE;
+        }
+        else if ( joyconType == JOYCON_TYPE.JOYCON_R2)
+        {
+            if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
+                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            else if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                return JOYCON_STATE.STATE_RIGHT_TRIGGER;
+            else if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
+                return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else
+                return JOYCON_STATE.STATE_NONE;
+        }
+
+        Debug.Log("Error : out of range");
+        return JOYCON_STATE.STATE_NONE;
+    }
+
 
     private void OnGUI()
     {
