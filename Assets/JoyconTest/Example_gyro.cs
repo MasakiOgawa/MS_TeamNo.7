@@ -9,16 +9,19 @@ public class Example_gyro : MonoBehaviour
     private float SHAKE_FRONT_START_VALUE_Y = -14.0f;
     private float SHAKE_LEFT_START_VALUE_Z = -13.0f;
     private float SHAKE_RIGHT_START_VALUE_Z = 13.0f;
+    private float SHAKE_UP_START_VALUE_Y = 14.0f;
 
     // 振り判定列挙
     public enum SHAKE_STATE{
         SHAKE_NONE,                 // なんでもない
-        SHAKE_FRONT_READY,          // 前振り予備
-        SHAKE_FRONT_TRIGGER,        // 前振り実行
+        SHAKE_DOWN_READY,          // 前振り予備
+        SHAKE_DOWN_TRIGGER,        // 前振り実行
         SHAKE_LEFT_READY,           // 左予備
         SHAKE_LEFT_TRIGGER,         // 左実行
         SHAKE_RIGHT_READY,          // 右予備
         SHAKE_RIGHT_TRIGGER,        // 右実行
+        SHAKE_UP_READY,             // 上予備
+        SHAKE_UP_TRIGGER,           // 上実行
     };
 
     public enum JOYCON_TYPE
@@ -31,9 +34,10 @@ public class Example_gyro : MonoBehaviour
     public enum JOYCON_STATE
     {
         STATE_NONE,
-        STATE_FRONT_TRIGGER,
+        STATE_DOWN_TRIGGER,
         STATE_LEFT_TRIGGER,
         STATE_RIGHT_TRIGGER,
+        STATE_UP_TRIGGER,
     };
 
 
@@ -221,7 +225,7 @@ public class Example_gyro : MonoBehaviour
                         if ( SHAKE_FRONT_START_VALUE_Y >= y )
                         {
                             // FRONT_READYに切り替え
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_READY;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_READY;
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconL1.GetGyro();
                         }
@@ -246,16 +250,26 @@ public class Example_gyro : MonoBehaviour
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconL1.GetGyro();
                         }
+
+                        // UP_STARTの条件を満たしている場合
+                        y = m_joyconL1.GetGyro().y;
+                        if (SHAKE_UP_START_VALUE_Y <= y)
+                        {
+                            // FRONT_READYに切り替え
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_READY;
+                            // 現フレームのジャイロを格納
+                            m_prevGyro[nCnt] = m_joyconL1.GetGyro();
+                        }
                     }
                     // FRONT_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
-                    else if ( m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_READY)
+                    else if ( m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_READY)
                     {
                         // 過去フレームのジャイロより現フレームのジャイロが大きい場合
                         if ( m_prevGyro[nCnt].y < m_joyconL1.GetGyro().y)
                         {
                             // トリガーに切り替え
                             Debug.Log("joyconL1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_TRIGGER;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconL1.SetRumble(160, 320, 0.6f, 1);
                         }
                     }
@@ -285,11 +299,25 @@ public class Example_gyro : MonoBehaviour
                             m_joyconL1.SetRumble(100, 9, 0.6f, 1);
                         }
                     }
+                    // UP_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_READY)
+                    {
+                        // 過去フレームのジャイロより現フレームのジャイロが大きい場合
+                        if (m_prevGyro[nCnt].y > m_joyconL1.GetGyro().y)
+                        {
+                            // トリガーに切り替え
+                            Debug.Log("joyconL1 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
+                            m_joyconL1.SetRumble(160, 320, 0.6f, 1);
+                        }
+                    }
+
 
                     // TRIGGERのときNONEに戻す
-                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_TRIGGER ||
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_TRIGGER ||
                         m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_LEFT_TRIGGER ||
-                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER ||
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_TRIGGER)
                     {
                         m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_NONE;
                     }
@@ -308,7 +336,7 @@ public class Example_gyro : MonoBehaviour
                         if (SHAKE_FRONT_START_VALUE_Y >= y)
                         {
                             // FRONT_READYに切り替え
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_READY;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_READY;
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconR1.GetGyro();
                         }
@@ -333,16 +361,26 @@ public class Example_gyro : MonoBehaviour
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconR1.GetGyro();
                         }
+
+                        // UP_STARTの条件を満たしている場合
+                        y = m_joyconR1.GetGyro().y;
+                        if (SHAKE_UP_START_VALUE_Y <= y)
+                        {
+                            // FRONT_READYに切り替え
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_READY;
+                            // 現フレームのジャイロを格納
+                            m_prevGyro[nCnt] = m_joyconR1.GetGyro();
+                        }
                     }
                     // FRONT_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
-                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_READY)
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_READY)
                     {
                         // 過去フレームのジャイロより現フレームのジャイロが大きい場合
                         if (m_prevGyro[nCnt].y < m_joyconR1.GetGyro().y)
                         {
                             // トリガーに切り替え
                             Debug.Log("joyconR1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_TRIGGER;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconR1.SetRumble(160, 320, 0.6f, 1);
                         }
                     }
@@ -372,11 +410,24 @@ public class Example_gyro : MonoBehaviour
                             m_joyconR1.SetRumble(100, 9, 0.6f, 1);
                         }
                     }
+                    // UP_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_READY)
+                    {
+                        // 過去フレームのジャイロより現フレームのジャイロが大きい場合
+                        if (m_prevGyro[nCnt].y > m_joyconR1.GetGyro().y)
+                        {
+                            // トリガーに切り替え
+                            Debug.Log("joyconR1 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
+                            m_joyconR1.SetRumble(160, 320, 0.6f, 1);
+                        }
+                    }
 
                     // TRIGGERのときNONEに戻す
-                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_TRIGGER ||
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_TRIGGER ||
                         m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_LEFT_TRIGGER ||
-                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER||
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_TRIGGER )
                     {
                         m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_NONE;
                     }
@@ -395,7 +446,7 @@ public class Example_gyro : MonoBehaviour
                         if (SHAKE_FRONT_START_VALUE_Y >= y)
                         {
                             // FRONT_READYに切り替え
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_READY;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_READY;
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconR2.GetGyro();
                         }
@@ -420,16 +471,26 @@ public class Example_gyro : MonoBehaviour
                             // 現フレームのジャイロを格納
                             m_prevGyro[nCnt] = m_joyconR2.GetGyro();
                         }
+
+                        // UP_STARTの条件を満たしている場合
+                        y = m_joyconR2.GetGyro().y;
+                        if (SHAKE_UP_START_VALUE_Y <= y)
+                        {
+                            // FRONT_READYに切り替え
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_READY;
+                            // 現フレームのジャイロを格納
+                            m_prevGyro[nCnt] = m_joyconR2.GetGyro();
+                        }
                     }
                     // FRONT_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
-                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_READY)
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_READY)
                     {
                         // 過去フレームのジャイロより現フレームのジャイロが大きい場合
                         if (m_prevGyro[nCnt].y < m_joyconR2.GetGyro().y)
                         {
                             // トリガーに切り替え
                             Debug.Log("joyconR2 : <color=red>SHAKE_FRONT_TRIGGER</color>");
-                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_FRONT_TRIGGER;
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconR2.SetRumble(160, 320, 0.6f, 1);
                         }
                     }
@@ -460,10 +521,24 @@ public class Example_gyro : MonoBehaviour
                         }
                     }
 
+                    // UP_READYのとき前フレームのジャイロ値と比較して前よりも大きくなったら(減速)トリガー
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_READY)
+                    {
+                        // 過去フレームのジャイロより現フレームのジャイロが大きい場合
+                        if (m_prevGyro[nCnt].y > m_joyconR2.GetGyro().y)
+                        {
+                            // トリガーに切り替え
+                            Debug.Log("joyconR2 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
+                            m_joyconR2.SetRumble(160, 320, 0.6f, 1);
+                        }
+                    }
+
                     // TRIGGERのときNONEに戻す
-                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_FRONT_TRIGGER ||
+                    else if (m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_DOWN_TRIGGER ||
                         m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_LEFT_TRIGGER ||
-                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER ||
+                        m_stateShakeJoycon[nCnt] == SHAKE_STATE.SHAKE_UP_TRIGGER)
                     {
                         m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_NONE;
                     }
@@ -571,35 +646,41 @@ public class Example_gyro : MonoBehaviour
     {
         if ( joyconType == JOYCON_TYPE.JOYCON_L1 )
         {
-            if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
-                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_DOWN_TRIGGER)
+                return JOYCON_STATE.STATE_DOWN_TRIGGER;
             else if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
                 return JOYCON_STATE.STATE_RIGHT_TRIGGER;
             else if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
                 return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else if (m_stateShakeJoycon[0] == SHAKE_STATE.SHAKE_UP_TRIGGER)
+                return JOYCON_STATE.STATE_UP_TRIGGER;
             else
                 return JOYCON_STATE.STATE_NONE;
             
         }
         else if ( joyconType == JOYCON_TYPE.JOYCON_R1)
         {
-            if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
-                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_DOWN_TRIGGER)
+                return JOYCON_STATE.STATE_DOWN_TRIGGER;
             else if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
                 return JOYCON_STATE.STATE_RIGHT_TRIGGER;
             else if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
                 return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else if (m_stateShakeJoycon[1] == SHAKE_STATE.SHAKE_UP_TRIGGER)
+                return JOYCON_STATE.STATE_UP_TRIGGER;
             else
                 return JOYCON_STATE.STATE_NONE;
         }
         else if ( joyconType == JOYCON_TYPE.JOYCON_R2)
         {
-            if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_FRONT_TRIGGER)
-                return JOYCON_STATE.STATE_FRONT_TRIGGER;
+            if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_DOWN_TRIGGER)
+                return JOYCON_STATE.STATE_DOWN_TRIGGER;
             else if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_RIGHT_TRIGGER)
                 return JOYCON_STATE.STATE_RIGHT_TRIGGER;
             else if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_LEFT_TRIGGER)
                 return JOYCON_STATE.STATE_LEFT_TRIGGER;
+            else if (m_stateShakeJoycon[2] == SHAKE_STATE.SHAKE_UP_TRIGGER)
+                return JOYCON_STATE.STATE_UP_TRIGGER;
             else
                 return JOYCON_STATE.STATE_NONE;
         }
