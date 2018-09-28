@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    public static float fCntFrame;       //経過フレーム
-    public static Text  CountDownText;   //カウントダウンのテキスト情報
+    public GameObject ManagerPrefab;   //マネージャのプレハブ
+    public GameObject BGMPrefab;       //BGMのプレハブ
+    public GameObject SamplePrefab;   
+           float      fCntFrame;       //経過フレーム
+           Text       CountDownText;   //カウントダウンのテキスト情報
 
 
 	void Start( )
@@ -14,37 +17,37 @@ public class CountDown : MonoBehaviour
 		fCntFrame = 0.0f;
 
         //テキスト情報を取得
-        CountDownText = GameObject.Find( "CountDown" ).GetComponent<Text>( );
+        CountDownText = GameObject.Find( "CountDown" ).GetComponent< Text >( );
 
         //テキストの設定
         SetText( );
 	}
 	
 
-    public static void CountFrame( )
+    public void CountFrame( )
     {
         //フレーム数を計測
 		fCntFrame += Time.deltaTime;
 
         //一定フレームが経過したらカウントダウン
-        if( fCntFrame >= 60.0f / ( float )BGM.GetBPM( ) )
+        if( fCntFrame >= 60.0f / ( float )BGMPrefab.GetComponent< BGM >( ).GetBPM( ) )
         {
             fCntFrame = 0.0f;
           
             if( CountDownText.text == "3" )
             {
                 CountDownText.text = "2";
-                Sample.Emit( );
+                SamplePrefab.GetComponent< Sample >( ).Emit( );
             }
             else if( CountDownText.text == "2" )
             {
                 CountDownText.text = "1";
-                Sample.Emit( );
+                SamplePrefab.GetComponent< Sample >( ).Emit( );
             }
             else if( CountDownText.text == "1" )
             {
                 CountDownText.text = "GO!!";
-                Sample.Emit( );
+                SamplePrefab.GetComponent< Sample >( ).Emit( );
             }
 
             //カウントダウンの終了
@@ -53,16 +56,16 @@ public class CountDown : MonoBehaviour
                 CountDownText.text = " ";
          
                 //プレイヤーのダンス
-                Manager.SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
+                ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
             }
         }
     }
 
 
-    public static void SetText( )
+    public void SetText( )
     {
         CountDownText.text = "3";
 
-        Sample.Emit( );
+        SamplePrefab.GetComponent< Sample >( ).Emit( );
     }
 }
