@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class BGM : MonoBehaviour
 {
-    public AudioClip          BGMData;       //BGM情報
-    public static AudioSource audioSource;     
-    public static int         nBpm;          //BPM
+    public GameObject  ManagerPrefab;   //マネージャ情報
+    public AudioClip   BGMData;         //BGM情報
+           AudioSource audioSource;     
+           int         nBpm;            //BPM
 
 
 	void Start( )
@@ -13,25 +14,25 @@ public class BGM : MonoBehaviour
         //BPMを取得
         nBpm = UniBpmAnalyzer.AnalyzeBpm( BGMData );
 
-        audioSource      = gameObject.GetComponent<AudioSource>( );
+        audioSource      = gameObject.GetComponent< AudioSource >( );
         audioSource.clip = BGMData;
 	}
 
 
     //BGMを再生
-    public static void EmitBGM( )
+    public void EmitBGM( )
     {
         //BGMを再生
-        audioSource.Play( );
+      //  audioSource.Play( );
 
         //敵を生成
-        Manager.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
     }
 
 
     //BPMを返す
-    public static int GetBPM( )
+    public int GetBPM( )
     {
-        return nBpm;
+        return 60;
     }
 }

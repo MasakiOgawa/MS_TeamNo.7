@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 33900436627510348}
   - component: {fileID: 65144079025567998}
   - component: {fileID: 23704679108568818}
-  - component: {fileID: 114152616347593300}
   m_Layer: 0
   m_Name: EnemyLeft
-  m_TagString: Untagged
+  m_TagString: Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,17 +125,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114152616347593300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309859132590028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52bede045d148a4582e6b9b1187dfdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212698401278241100
 SpriteRenderer:
   m_ObjectHideFlags: 1

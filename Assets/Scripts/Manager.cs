@@ -13,9 +13,12 @@ public class Manager : MonoBehaviour
     };
 
     //ゲームの初期状態の設定
-    public static GAME_PHASE GamePhase = GAME_PHASE.PHASE_BGM_START;
+    public GAME_PHASE GamePhase = GAME_PHASE.PHASE_BGM_START;
 
-    public GameObject EnemyManagerPrefab;   //エネミーマネージャ情報
+    public GameObject BGMPrefab;            //BGMのプレハブ
+    public GameObject EnemyManagerPrefab;   //エネミーマネージャのプレハブ
+    public GameObject CountDownPrefab;      //カウントダウンのプレハブ
+    public GameObject PlayerPrefab;         //プレイヤーのプレハブ
 
 
 	void Update( )
@@ -25,42 +28,42 @@ public class Manager : MonoBehaviour
         {
              //BGMの再生
             case GAME_PHASE.PHASE_BGM_START :
-                BGM.EmitBGM( );
+                BGMPrefab.GetComponent< BGM >( ).EmitBGM( );
             break;
 
             //敵の生成
             case GAME_PHASE.PHASE_ENEMY_APPEARANCE :
-                EnemyManagerPrefab.GetComponent<EnemyManager>( ).Create( );
+                EnemyManagerPrefab.GetComponent< EnemyManager >( ).Create( );
             break;
 
             //カウントダウン
             case GAME_PHASE.PHASE_COUNT_DOWN :
-                CountDown.CountFrame( );
+                CountDownPrefab.GetComponent< CountDown >( ).CountFrame( );
             break;
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
-                Player.Dance( );
+                PlayerPrefab.GetComponent< Player >( ).Dance( );
             break;
 
             //敵の取り込み
             case GAME_PHASE.PHASE_ENEMY_TAKE_IN :
-                EnemyManager.Kill( );
+                EnemyManagerPrefab.GetComponent< EnemyManager >( ).Kill( );
             break;
         }
 	}
 
 
     //ゲームの進行状態を設定
-    public static void SetPhase( GAME_PHASE Phase )
+    public void SetPhase( GAME_PHASE Phase )
     {
         GamePhase = Phase;
     }
 
 
     //ゲームの進行状態を取得
-    public static GAME_PHASE GetPhase( )
+    public GAME_PHASE GetPhase( )
     {
-       return  GamePhase;
+       return GamePhase;
     }
 }
