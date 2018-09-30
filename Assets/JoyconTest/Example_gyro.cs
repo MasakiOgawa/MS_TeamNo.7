@@ -62,7 +62,7 @@ public class Example_gyro : MonoBehaviour
     private Vector3[] m_prevGyro;
 
     //以下が追記のコード
-    private GameObject rCube1 , rCube2, lCube;
+    public GameObject rCube1 , rCube2, lCube;
     private Quaternion rciq1, rciq2, lciq, riq1, riq2, liq;
     //private Animator anim;
     //private Transform RS_bone, LS_bone;
@@ -135,9 +135,9 @@ public class Example_gyro : MonoBehaviour
         // 以下が追記のコード
         //anim = (Animator)FindObjectOfType(typeof(Animator));
 
-        rCube1 = GameObject.Find("RightCube1");
-        rCube2 = GameObject.Find("RightCube2");
-        lCube = GameObject.Find("LeftCube1");
+        //rCube1 = GameObject.Find("RightCube1");
+        //rCube2 = GameObject.Find("RightCube2");
+        //lCube = GameObject.Find("LeftCube1");
 
         //RS_bone = anim.GetBoneTransform(HumanBodyBones.RightUpperArm);
         //LS_bone = anim.GetBoneTransform(HumanBodyBones.LeftUpperArm);
@@ -690,7 +690,7 @@ public class Example_gyro : MonoBehaviour
     }
 
 
-    private void OnGUI()
+   /* private void OnGUI()
     {
         var style = GUI.skin.GetStyle("label");
         style.fontSize = 18;
@@ -772,5 +772,5 @@ public class Example_gyro : MonoBehaviour
         }
 
         GUILayout.EndHorizontal();
-    }
+    }*/
 }
