@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Evaluation : MonoBehaviour
 {
-    float fCntFrame;   //経過フレーム
+    public float fEvaluationEndFrame;   //判定描画終了のフレーム
+           float fCntFrame;             //経過フレーム
 
 
 	void Start( )
@@ -18,7 +19,7 @@ public class Evaluation : MonoBehaviour
 
 		this.transform.position += new Vector3 ( 0.0f , 0.05f , 0.0f );
 
-        if( fCntFrame >= 1.0f )
+        if( fCntFrame >= fEvaluationEndFrame )
         {
             Destroy( this.gameObject );
         }
