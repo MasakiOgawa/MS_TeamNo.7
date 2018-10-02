@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject    ManagerPrefab;     //マネージャのプレハブ
-    public GameObject    CountDownPrefab;   //カウントダウンのプレハブ
-           TextAsset     EnemyText;         //敵情報が格納されたファイルの情報
-    public GameObject    EnemyUp;           //上方向の敵のプレハブ
-    public GameObject    EnemyDown;         //下方向の敵のプレハブ
-    public GameObject    EnemyRight;        //右方向の敵のプレハブ
-    public GameObject    EnemyLeft;         //左方向の敵のプレハブ
-           GameObject[ ] EnemyPrefabTmp;    //生成した敵情報を保存
-           GameObject    TargetEnemy;       //現在ターゲットにされている敵情報
-    public Vector2       LeftEndPos;        //左端の敵の座標
-    public float         fDist;             //敵同士の距離
-           int           nCreateNo;         //ファイルの文字列の添え字
+    public GameObject    ManagerPrefab;       //マネージャのプレハブ
+    public GameObject    CountDownPrefab;     //カウントダウンのプレハブ
+           TextAsset     EnemyText;           //敵情報が格納されたファイルの情報
+    public GameObject    EnemyUp;             //上方向の敵のプレハブ
+    public GameObject    EnemyDown;           //下方向の敵のプレハブ
+    public GameObject    EnemyRight;          //右方向の敵のプレハブ
+    public GameObject    EnemyLeft;           //左方向の敵のプレハブ
+    public GameObject    TakeInEnemyPrefab;   //追従する敵のプレハブ
+           GameObject[ ] EnemyPrefabTmp;      //生成した敵情報を保存
+           GameObject    TargetEnemy;         //現在ターゲットにされている敵情報
+    public Vector2       LeftEndPos;          //左端の敵の座標
+    public float         fDist;               //敵同士の距離
+           int           nCreateNo;           //ファイルの文字列の添え字
+
+
+     int nCreateSide = 0;   //横の生成数
+        float fRoadSide   = 16.0f;  //道の幅
+        int nCntLength  = 0;   //生成した段の数
+        float fPosX = 0.0f;
+        float fhaba = 1.5f;
    
 
 	void Start( )
@@ -94,5 +102,38 @@ public class EnemyManager : MonoBehaviour
     public GameObject GetTarget( )
     {
         return TargetEnemy;
+    }
+
+
+    //敵をプレイヤーの後ろに生成
+    public void TakeIn( int nEvaluation )
+    {
+        //敵の数までループ
+        for( int nCnt = 0; nCnt < nEvaluation; )
+        {
+            //横に生成する数を決める(最大7体)
+            do
+            {
+                nCreateSide = ( int )Random.Range( 4, 8 ); 
+            }while( nCreateSide == 0 );
+
+            //左端のX座標を決める
+            fPosX = -( fRoadSide * 0.5f );
+
+            //敵を横に生成する
+            for( int nCnt2 = 0; nCnt2 < nCreateSide; nCnt2++ )
+            {
+                Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , -2.0f , 0.0f + fhaba * ( nCntLength + 1 ) ) , Quaternion.identity );
+
+                //X座標をずらす
+                fPosX += fRoadSide / ( nCreateSide - 1 );
+            }
+
+            //縦の段数をふやす
+            nCntLength++;
+
+            //生成数をカウンタ
+            nCnt += nCreateSide;
+        }
     }
 }

@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
         PHASE_ENEMY_APPEARANCE     ,   //敵の出現
         PHASE_COUNT_DOWN           ,   //カウントダウン
         PHASE_PLAYER_DANCE         ,   //プレイヤーのダンス
+        PHASE_ADD_SCORE            ,   //スコア
         PHASE_ENEMY_TAKE_IN        ,   //敵の取り込み(後ろに追従)
         PHASE_CAMERA_PERFORMANCE   ,   //カメラのパフォーマンス
     };
@@ -20,7 +21,8 @@ public class Manager : MonoBehaviour
     public GameObject EnemyManagerPrefab;    //エネミーマネージャのプレハブ
     public GameObject CountDownPrefab;       //カウントダウンのプレハブ
     public GameObject PlayerManagerPrefab;   //プレイヤーマネージャのプレハブ
-
+    public GameObject ScoreManagerPrefab;    //スコアマネージャのプレハブ
+     
 
 	void Update( )
     {
@@ -47,12 +49,17 @@ public class Manager : MonoBehaviour
                 PlayerManagerPrefab.GetComponent< PlayerManager >( ).Dance( );
             break;
 
-            //敵の取り込み
-            case GAME_PHASE.PHASE_ENEMY_TAKE_IN :
-                EnemyManagerPrefab.GetComponent< EnemyManager >( ).Kill( );
+             //スコアの加算
+            case GAME_PHASE.PHASE_ADD_SCORE :
+                 ScoreManagerPrefab.GetComponent< ScoreManager >( ).AddScore( );
             break;
 
-             //カメラのパフォーマンス
+            //敵の取り込み
+            /*case GAME_PHASE.PHASE_ENEMY_TAKE_IN :
+                EnemyManagerPrefab.GetComponent< EnemyManager >( ).Kill( );
+            break;*/
+
+            //カメラのパフォーマンス
             case GAME_PHASE.PHASE_CAMERA_PERFORMANCE :
             break;
         }
