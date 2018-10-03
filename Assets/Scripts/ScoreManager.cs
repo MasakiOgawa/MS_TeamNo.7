@@ -69,20 +69,17 @@ public class ScoreManager : MonoBehaviour
         Score.nScore += ( nCntExcellent * 3 ) + ( nCntFine * 2 ) + ( nCntBad * 0 );
 
         //敵を追従させる
-        EnemyManagerPrefab.GetComponent< EnemyManager >( ).TakeIn( ( nCntExcellent * 3 ) + ( nCntFine * 2 ) + ( nCntBad * 0 ) );
+        EnemyManagerPrefab.GetComponent< EnemyManager >( ).TakeIn( 30 );
+
+        //各評価のリセット
+        nCntBad       = 0;
+        nCntFine      = 0;
+        nCntExcellent = 0;
 
         //現在の敵を破棄
         EnemyManagerPrefab.GetComponent< EnemyManager >( ).Kill( );
 
         //BGMの状態をチェック
         GameManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BGM_END_CHECK );
-
-        //次の敵を生成
-       // CountDownPrefab.GetComponent< CountDown >( ).SetText( );
-
-        //各評価のリセット
-        nCntBad       = 0;
-        nCntFine      = 0;
-        nCntExcellent = 0;
     }
 }

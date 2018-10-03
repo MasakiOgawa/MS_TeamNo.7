@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour
     //ゲームの初期状態の設定
     public GAME_PHASE GamePhase = GAME_PHASE.PHASE_BGM_START;
 
+    public GameObject CameraObj;             //カメラオブジェクト
     public GameObject BGMPrefab;             //BGMのプレハブ
     public GameObject EnemyManagerPrefab;    //エネミーマネージャのプレハブ
     public GameObject CountDownPrefab;       //カウントダウンのプレハブ
@@ -63,6 +64,8 @@ public class Manager : MonoBehaviour
 
             //カメラのパフォーマンス
             case GAME_PHASE.PHASE_CAMERA_PERFORMANCE :
+                CameraObj.GetComponent< CameraPerformance >( ).PerformanceMove( );
+                PlayerManagerPrefab.GetComponent< PlayerManager >( ).PlayersMove( );
             break;
 
             //BGMの終了状態をチェック

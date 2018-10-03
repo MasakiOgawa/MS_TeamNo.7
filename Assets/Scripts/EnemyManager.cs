@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject    ManagerPrefab;       //マネージャのプレハブ
+    public GameObject    PlayerManagerObj;    //プレイヤーマネージャのオブジェクト
     public GameObject    CountDownPrefab;     //カウントダウンのプレハブ
            TextAsset     EnemyText;           //敵情報が格納されたファイルの情報
     public GameObject    EnemyUp;             //上方向の敵のプレハブ
@@ -13,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject    TakeInEnemyPrefab;   //追従する敵のプレハブ
            GameObject[ ] EnemyPrefabTmp;      //生成した敵情報を保存
            GameObject    TargetEnemy;         //現在ターゲットにされている敵情報
+    public GameObject    Players;             //プレイヤー達の情報
     public Vector2       LeftEndPos;          //左端の敵の座標
     public float         fDist;               //敵同士の距離
            int           nCreateNo;           //ファイルの文字列の添え字
@@ -44,24 +46,26 @@ public class EnemyManager : MonoBehaviour
     //敵の生成
     public void Create( )
     {  
+        float fPosZ = Players.GetComponent< Transform >( ).position.z;
+        
         //各方向の敵を生成
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUp , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ), LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUp , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ), LeftEndPos.y , fPosZ + 11.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDown , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDown , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , fPosZ + 11.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeft , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeft , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , fPosZ + 11.0f ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRight , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRight , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , fPosZ + 11.0f ) , Quaternion.identity );
             }
         }
 
@@ -104,6 +108,9 @@ public class EnemyManager : MonoBehaviour
     //敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
+        GameObject Tmp;
+        float      fPosZ = PlayerManagerObj.GetComponent< PlayerManager >( ).fPlayersMove;
+
         //敵の数までループ
         for( int nCnt = 0; nCnt < nEvaluation; )
         {
@@ -119,7 +126,10 @@ public class EnemyManager : MonoBehaviour
             //敵を横に生成する
             for( int nCnt2 = 0; nCnt2 < nCreateSide; nCnt2++ )
             {
-                Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , -2.0f , 0.0f + fhaba * ( nCntLength + 1 ) ) , Quaternion.identity );
+                Tmp = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , 4.0f , /*-( fhaba * ( nCntLength + 1 ) ) + 7.0f*/-fhaba * nCntLength + fPosZ + 13.0f ) , Quaternion.identity );
+
+                //プレイヤー達の子要素にする
+                Tmp.transform.parent = Players.transform;
 
                 //X座標をずらす
                 fPosX += fRoadSide / ( nCreateSide - 1 );
