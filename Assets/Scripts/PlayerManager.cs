@@ -8,9 +8,12 @@ public class PlayerManager : MonoBehaviour
     public GameObject EnemyManagerPrefab;    //エネミーマネージャのプレハブ
     public GameObject SamplePrefab;   
     public GameObject ScoreManagerPrefab;    //スコアマネージャのプレハブ
+    public GameObject Players;               //プレイヤー全体のオブジェクト情報
     public GameObject PlayerLeftPrefab;      //左プレイヤーのプレハブ
     public GameObject PlayerCenterPrefab;    //中央プレイヤーのプレハブ
     public GameObject PlayerRightPrefab;     //右プレイヤーのプレハブ
+    public GameObject CountDownPrefab;       //カウントダウンのプレハブ
+    public float      fPlayersMove;          //プレイヤーの移動量
            float      fCntFrame;             //経過フレーム
            float      fCntFrame2;            //経過フレーム
            float      fCntFrame3;            //経過フレーム
@@ -28,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         bEmitFlg   = false;
         bTargetFlg = false;
         nTargetNo  = 0;
+        fPlayersMove = 0.0f;
 	}
 	
 
@@ -77,6 +81,24 @@ public class PlayerManager : MonoBehaviour
 
             //スコアの加算
             ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ADD_SCORE );
+        }
+    }
+
+
+    //プレイヤー達の移動
+    public void PlayersMove( )
+    {
+		fCntFrame += Time.deltaTime;
+
+        Players.GetComponent< Transform >( ).position += new Vector3( 0.0f , 0.0f , 0.1f );
+        fPlayersMove += 0.1f;
+
+        if( fCntFrame >= ( 60.0f / ( float )BGMPrefab.GetComponent< BGM >( ).GetBPM( ) ) * 8.0f )
+        {
+            fCntFrame = 0.0f;
+
+            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+            CountDownPrefab.GetComponent< CountDown >( ).SetText( );
         }
     }
 }
