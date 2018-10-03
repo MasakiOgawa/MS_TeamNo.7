@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class BGM : MonoBehaviour
 {
-    public GameObject  ManagerPrefab;   //マネージャ情報
-    public AudioClip   BGMData;         //BGM情報
+    public GameObject  ManagerPrefab;     //マネージャ情報
+    public GameObject  CountDownPrefab;   //カウントダウンのプレハブ
+    public AudioClip   BGMData;           //BGM情報
            AudioSource audioSource;     
-           int         nBpm;            //BPM
+           int         nBpm;              //BPM
 
 
 	void Start( )
@@ -23,16 +24,32 @@ public class BGM : MonoBehaviour
     public void EmitBGM( )
     {
         //BGMを再生
-      //  audioSource.Play( );
+        audioSource.Play( );
 
         //敵を生成
         ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
     }
 
 
-    //BPMを返す
+    //BPMの取得
     public int GetBPM( )
     {
         return 60;
+    }
+
+
+    //曲が終了しているかをチェック
+    public void CheckEndBGM( )
+    {
+        if( audioSource.isPlaying == false )
+        {
+            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+        }
+        else if( audioSource.isPlaying == true &&
+                 ManagerPrefab.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
+        {
+            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+            CountDownPrefab.GetComponent< CountDown >( ).SetText( );
+        }
     }
 }

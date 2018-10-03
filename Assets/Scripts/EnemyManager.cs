@@ -84,10 +84,6 @@ public class EnemyManager : MonoBehaviour
                 EnemyPrefabTmp[ nCnt ] = null;
             }
         }
-
-        //次の敵を生成
-        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-        CountDownPrefab.GetComponent< CountDown >( ).SetText( );
     }
 
 

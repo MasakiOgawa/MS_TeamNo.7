@@ -13,6 +13,6 @@ public class Score : MonoBehaviour
 
 	void Update( )
     {
-        Debug.Log( nScore.ToString( ) );
+        //Debug.Log( nScore.ToString( ) );
 	}
 }

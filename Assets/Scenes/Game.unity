@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1040676
 MonoBehaviour:
@@ -189,7 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerPrefab: {fileID: 1040674}
-  BGMData: {fileID: 8300000, guid: 98a57f89d46676148aaff6c4ab76ecc5, type: 3}
+  CountDownPrefab: {fileID: 2094422707}
+  BGMData: {fileID: 8300000, guid: d33d6adab04c0d24bbb908b2b982d19b, type: 3}
 --- !u!4 &217715831
 Transform:
   m_ObjectHideFlags: 0
@@ -212,7 +213,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 98a57f89d46676148aaff6c4ab76ecc5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d33d6adab04c0d24bbb908b2b982d19b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1321,7 +1322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1858523157
 MonoBehaviour:
@@ -1425,7 +1426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 226, y: 35}
+  m_AnchoredPosition: {x: 65, y: 35}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094422709
