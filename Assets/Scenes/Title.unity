@@ -575,6 +575,7 @@ Prefab:
       propertyPath: DebugMode
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114166954353955098, guid: b3338c24343f4ae4ea704a472bf1645c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b3338c24343f4ae4ea704a472bf1645c, type: 2}
   m_IsPrefabParent: 0

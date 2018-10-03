@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1040676
 MonoBehaviour:
@@ -159,6 +159,7 @@ MonoBehaviour:
   EnemyManagerPrefab: {fileID: 1858523154}
   CountDownPrefab: {fileID: 2094422707}
   PlayerManagerPrefab: {fileID: 1232893689}
+  ScoreManagerPrefab: {fileID: 2000776136}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerPrefab: {fileID: 1040674}
-  BGMData: {fileID: 8300000, guid: 98a57f89d46676148aaff6c4ab76ecc5, type: 3}
+  CountDownPrefab: {fileID: 2094422707}
+  BGMData: {fileID: 8300000, guid: d33d6adab04c0d24bbb908b2b982d19b, type: 3}
 --- !u!4 &217715831
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 98a57f89d46676148aaff6c4ab76ecc5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d33d6adab04c0d24bbb908b2b982d19b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -691,6 +693,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1114209884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1114209885}
+  - component: {fileID: 1114209886}
+  m_Layer: 0
+  m_Name: Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114209885
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114209884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 278.5, y: 144.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114209886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114209884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f42e8c0f8ed7a429e29cf1734664c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1182413095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1050,8 @@ Prefab:
       propertyPath: DebugMode
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114166954353955098, guid: b3338c24343f4ae4ea704a472bf1645c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b3338c24343f4ae4ea704a472bf1645c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1598510800
@@ -1279,7 +1322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1858523157
 MonoBehaviour:
@@ -1298,6 +1341,8 @@ MonoBehaviour:
   EnemyDown: {fileID: 1392935948480490, guid: 198edfa5269cd8d438a55795b9075a55, type: 2}
   EnemyRight: {fileID: 1002495111539996, guid: e9a05033d7d895d4c868e7dd0289edca, type: 2}
   EnemyLeft: {fileID: 1309859132590028, guid: 93d96b4ea17717b45b522f95267d8815, type: 2}
+  TakeInEnemyPrefab: {fileID: 1510964080347018, guid: 16e0a5872b2a12c45bf6f06b3ccedb93,
+    type: 2}
   LeftEndPos: {x: -8, y: 2}
   fDist: -2.3
 --- !u!1 &2000776136
@@ -1346,6 +1391,8 @@ MonoBehaviour:
     type: 2}
   EvaluationExcellentPrefab: {fileID: 1459627691571838, guid: 00cc15b0bb711a54c9279411be45bb4a,
     type: 2}
+  GameManagerPrefab: {fileID: 1040674}
+  EnemyManagerPrefab: {fileID: 1858523154}
 --- !u!1 &2094422707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 97}
+  m_AnchoredPosition: {x: 65, y: 35}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094422709

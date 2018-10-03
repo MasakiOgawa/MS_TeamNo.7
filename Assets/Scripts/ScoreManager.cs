@@ -16,10 +16,21 @@ public class ScoreManager : MonoBehaviour
     public GameObject EvaluationFinePrefab;
     public GameObject EvaluationExcellentPrefab;
 
+    //各評価のカウンタ
+    int nCntBad;
+    int nCntFine;
+    int nCntExcellent;
+
+    public GameObject GameManagerPrefab;    //ゲームマネージャのプレハブ
+    public GameObject EnemyManagerPrefab;   //エネミーマネージャのプレハブ
+
 
 	void Start( )
     {
-		
+        //変数の初期化
+		nCntBad       = 0;
+        nCntFine      = 0;
+        nCntExcellent = 0;
 	}
 	
 	
@@ -36,15 +47,42 @@ public class ScoreManager : MonoBehaviour
         {
             case EVALUATION.EVALUATION_BAD :
                 Instantiate( EvaluationBadPrefab , Pos , Quaternion.identity );
+                nCntBad++;
             break;
 
             case EVALUATION.EVALUATION_FINE :
                 Instantiate( EvaluationFinePrefab , Pos , Quaternion.identity );
+                nCntFine++;
             break;
 
             case EVALUATION.EVALUATION_EXCELLENT :
                 Instantiate( EvaluationExcellentPrefab , Pos , Quaternion.identity );
+                nCntExcellent++;
             break;
         }
+    }
+
+
+    //スコアの加算
+    public void AddScore( )
+    {
+        Score.nScore += ( nCntExcellent * 3 ) + ( nCntFine * 2 ) + ( nCntBad * 0 );
+
+        //敵を追従させる
+        EnemyManagerPrefab.GetComponent< EnemyManager >( ).TakeIn( ( nCntExcellent * 3 ) + ( nCntFine * 2 ) + ( nCntBad * 0 ) );
+
+        //現在の敵を破棄
+        EnemyManagerPrefab.GetComponent< EnemyManager >( ).Kill( );
+
+        //BGMの状態をチェック
+        GameManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BGM_END_CHECK );
+
+        //次の敵を生成
+       // CountDownPrefab.GetComponent< CountDown >( ).SetText( );
+
+        //各評価のリセット
+        nCntBad       = 0;
+        nCntFine      = 0;
+        nCntExcellent = 0;
     }
 }

@@ -75,8 +75,8 @@ public class PlayerManager : MonoBehaviour
             bTargetFlg = false;
             nTargetNo  = 0;
 
-            //次の敵を生成
-            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_TAKE_IN );
+            //スコアの加算
+            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ADD_SCORE );
         }
     }
 }
