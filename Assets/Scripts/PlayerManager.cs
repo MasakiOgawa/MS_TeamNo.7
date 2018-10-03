@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public GameObject ManagerPrefab;         //マネージャのプレハブ
     public GameObject BGMPrefab;             //BGMのプレハブ
     public GameObject EnemyManagerPrefab;    //エネミーマネージャのプレハブ
     public GameObject SamplePrefab;   
     public GameObject ScoreManagerPrefab;    //スコアマネージャのプレハブ
+    public GameObject PlayerLeftPrefab;      //左プレイヤーのプレハブ
+    public GameObject PlayerCenterPrefab;    //中央プレイヤーのプレハブ
+    public GameObject PlayerRightPrefab;     //右プレイヤーのプレハブ
            float      fCntFrame;             //経過フレーム
            float      fCntFrame2;            //経過フレーム
            float      fCntFrame3;            //経過フレーム
@@ -43,41 +46,17 @@ public class Player : MonoBehaviour
             fCntFrame3 = 0.0f;
             EnemyManagerPrefab.GetComponent< EnemyManager >( ).SetTarget( nTargetNo );
             nTargetNo++;
+
+            //ジョイコンを振れる様にする
+            PlayerLeftPrefab.GetComponent< PlayerLeft >( ).ReleasePoseFlg( );
+            PlayerCenterPrefab.GetComponent< PlayerCenter >( ).ReleasePoseFlg( );
+            PlayerRightPrefab.GetComponent< PlayerRight >( ).ReleasePoseFlg( );
         }
 
-        //スイッチが振られたら(キーボード・3人分)
-        GameObject ObjectTmp = EnemyManagerPrefab.GetComponent< EnemyManager >( ).GetTarget( );
-     
-   　   if( Input.GetKeyDown( KeyCode.W ) )
-        { 
-            if( ObjectTmp.tag == "Up" )//現在エクセレント
-            {
-                //ScoreManagerPrefab.GetComponent< ScoreManager >( ).Create( new Vector3( 0.0f , 0.0f , 0.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT);
-                ScoreManagerPrefab.GetComponent< ScoreManager >( ).Create( new Vector3( 0.0f , 0.0f , 0.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-            }
-            else
-            {
-                ScoreManagerPrefab.GetComponent< ScoreManager >( ).Create( new Vector3( 0.0f , 0.0f , 0.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-            }
-        }
-      /*  else if( Input.GetKeyDown( KeyCode.S ) )
-        {
-            if( ObjectTmp.tag == "Down" )
-            {
-            }
-        }
-        else if( Input.GetKeyDown( KeyCode.A ) )
-        {
-            if( ObjectTmp.tag == "Left" )
-            {
-            }
-        }
-        else if( Input.GetKeyDown( KeyCode.D ) )
-        {
-            if( ObjectTmp.tag == "Right" )
-            {
-            }
-        }*/
+        //プレイヤーの振りを検出
+        PlayerLeftPrefab.GetComponent< PlayerLeft >( ).Pose( );
+        PlayerCenterPrefab.GetComponent< PlayerCenter >( ).Pose( );
+        PlayerRightPrefab.GetComponent< PlayerRight >( ).Pose( );
 
         //一拍毎にメトロノームを鳴らす
         if( fCntFrame2 >= 60.0f / ( float )BGMPrefab.GetComponent< BGM >( ).GetBPM( ) || bEmitFlg == false )
@@ -96,8 +75,8 @@ public class Player : MonoBehaviour
             bTargetFlg = false;
             nTargetNo  = 0;
 
-            //次の敵を生成
-            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_TAKE_IN );
+            //スコアの加算
+            ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ADD_SCORE );
         }
     }
 }

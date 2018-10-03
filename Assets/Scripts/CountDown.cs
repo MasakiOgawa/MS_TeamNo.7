@@ -64,8 +64,11 @@ public class CountDown : MonoBehaviour
 
     public void SetText( )
     {
-        CountDownText.text = "3";
+        if( ManagerPrefab.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
+        {
+            CountDownText.text = "3";
 
-        SamplePrefab.GetComponent< Sample >( ).Emit( );
+            SamplePrefab.GetComponent< Sample >( ).Emit( );
+        }
     }
 }
