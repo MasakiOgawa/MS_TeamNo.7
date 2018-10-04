@@ -3,33 +3,31 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject    ManagerPrefab;       //マネージャのプレハブ
-    public GameObject    CountDownPrefab;     //カウントダウンのプレハブ
-           TextAsset     EnemyText;           //敵情報が格納されたファイルの情報
-    public GameObject    EnemyUp;             //上方向の敵のプレハブ
-    public GameObject    EnemyDown;           //下方向の敵のプレハブ
-    public GameObject    EnemyRight;          //右方向の敵のプレハブ
-    public GameObject    EnemyLeft;           //左方向の敵のプレハブ
-    public GameObject    TakeInEnemyPrefab;   //追従する敵のプレハブ
-           GameObject[ ] EnemyPrefabTmp;      //生成した敵情報を保存
-           GameObject    TargetEnemy;         //現在ターゲットにされている敵情報
-    public Vector2       LeftEndPos;          //左端の敵の座標
-    public float         fDist;               //敵同士の距離
-           int           nCreateNo;           //ファイルの文字列の添え字
-
-
-     int nCreateSide = 0;   //横の生成数
-        float fRoadSide   = 16.0f;  //道の幅
-        int nCntLength  = 0;   //生成した段の数
-        float fPosX = 0.0f;
-        float fhaba = 1.5f;
-   
+    public GameObject    ManagerObj;            //マネージャのオブジェクト
+    public GameObject    EnemyUpPrefab;         //上方向の敵のプレハブ
+    public GameObject    EnemyDownPrefab;       //下方向の敵のプレハブ
+    public GameObject    EnemyRightPrefab;      //右方向の敵のプレハブ
+    public GameObject    EnemyLeftPrefab;       //左方向の敵のプレハブ
+    public GameObject    TakeInEnemyPrefab;     //追従する敵のプレハブ
+           TextAsset     EnemyText;             //敵情報が格納されたファイルの情報
+           GameObject[ ] EnemyPrefabTmp;        //生成した敵のオブジェクト保存用配列
+           GameObject    TargetEnemy;           //現在ターゲットにされている敵のオブジェクト
+    public float         fRoadSide;             //道の幅16
+    public float         fPlayerToEnemyDist;    //プレイヤーと敵の距離11
+    public Vector2       LeftEndPos;            //左端の敵の座標
+    public float         fWidth;                //敵同士の横幅2.2??
+    public float         fLength;               //敵同士の縦幅13
+    public float         fTakeInEnemyDist;      //追従する敵同士の距離1.5
+           int           nCreateNo;             //生成する敵の番号
+           int           nCntLength;            //生成した段の数
+  
 
 	void Start( )
     {
         //変数の初期化
         EnemyPrefabTmp = new GameObject[ 8 ];
-        nCreateNo = 0;
+        nCreateNo      = 0;
+        nCntLength     = 0;
 
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
@@ -44,24 +42,27 @@ public class EnemyManager : MonoBehaviour
     //敵の生成
     public void Create( )
     {  
-        //各方向の敵を生成
+        //プレイヤーのZ座標を取得
+        float fPosZ = ManagerObj.GetComponent< Manager >( ).GetPlayers( ).GetComponent< Transform >( ).position.z;
+        
+        //ファイルから方向を読み込み、プレハブを生成
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUp , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ), LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUpPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ), LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDown , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDownPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeft , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeftPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRight , new Vector3( LeftEndPos.x - ( fDist * nCnt2 ) , LeftEndPos.y , 0.0f ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRightPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
             }
         }
 
@@ -69,7 +70,7 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
-        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN );
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN );
     }
 
     
@@ -101,10 +102,17 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    //敵をプレイヤーの後ろに生成
+    //評価を基に敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
-        //敵の数までループ
+        GameObject TmpObj;        //オブジェクトの作業用変数
+        int        nCreateSide;   //横の生成数
+        float      fPosX;         //敵のX座標
+
+        //プレイヤーの移動距離を取得
+        float fMoveZ = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
+
+        //敵の生成数までループ
         for( int nCnt = 0; nCnt < nEvaluation; )
         {
             //横に生成する数を決める(最大7体)
@@ -119,13 +127,16 @@ public class EnemyManager : MonoBehaviour
             //敵を横に生成する
             for( int nCnt2 = 0; nCnt2 < nCreateSide; nCnt2++ )
             {
-                Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , -2.0f , 0.0f + fhaba * ( nCntLength + 1 ) ) , Quaternion.identity );
+                TmpObj = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , 4.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity );
+
+                //プレイヤー達の子要素にする
+                TmpObj.transform.parent = ManagerObj.GetComponent< Manager >( ).GetPlayers( ).GetComponent< Transform >( ).transform;
 
                 //X座標をずらす
                 fPosX += fRoadSide / ( nCreateSide - 1 );
             }
 
-            //縦の段数をふやす
+            //縦の段数を増やす
             nCntLength++;
 
             //生成数をカウンタ

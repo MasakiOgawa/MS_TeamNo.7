@@ -2,29 +2,35 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Manager : MonoBehaviour
 {
+    //列挙型定義
     public enum GAME_PHASE
     { 
-        PHASE_BGM_START            ,   //BGMを流す
-        PHASE_FIRST_PERFORMANCE    ,   //ゲーム開始時のパフォーマンス
+        PHASE_BGM_START            ,   //BGMの再生
+        PHASE_FIRST_PERFORMANCE    ,   //ゲーム開始時の演出
         PHASE_ENEMY_APPEARANCE     ,   //敵の出現
         PHASE_COUNT_DOWN           ,   //カウントダウン
         PHASE_PLAYER_DANCE         ,   //プレイヤーのダンス
-        PHASE_ADD_SCORE            ,   //スコア
+        PHASE_AGGREGATE_SCORE      ,   //スコアの集計
         PHASE_CAMERA_PERFORMANCE   ,   //カメラのパフォーマンス
-        PHASE_BGM_END_CHECK        ,   //BGMの終了状態をチェック
-        PHASE_END_PERFORMANCE          //ゲーム終了時のパフォーマンス
+        PHASE_BGM_END_CHECK        ,   //BGMの終了状態をチェック(ゲーム終了に繋げる)
+        PHASE_END_PERFORMANCE          //ゲーム終了時の演出
     };
 
     //ゲームの初期状態の設定
     public GAME_PHASE GamePhase = GAME_PHASE.PHASE_BGM_START;
 
-    public GameObject BGMPrefab;             //BGMのプレハブ
-    public GameObject EnemyManagerPrefab;    //エネミーマネージャのプレハブ
-    public GameObject CountDownPrefab;       //カウントダウンのプレハブ
-    public GameObject PlayerManagerPrefab;   //プレイヤーマネージャのプレハブ
-    public GameObject ScoreManagerPrefab;    //スコアマネージャのプレハブ
+    public GameObject CameraObj;          //カメラのオブジェクト
+    public GameObject BGMObj;             //BGMのオブジェクト
+    public GameObject RhythmObj;          //リズムのオブジェクト
+    public GameObject PlayerManagerObj;   //プレイヤーマネージャのオブジェクト
+    public GameObject EnemyManagerObj;    //エネミーマネージャのオブジェクト
+    public GameObject CountDownObj;       //カウントダウンのオブジェクト
+    public GameObject ScoreManagerObj;    //スコアマネージャのオブジェクト
+
+    public GameObject PlayersObj;         //プレイヤー達のオブジェクト
      
 
 	void Update( )
@@ -34,40 +40,42 @@ public class Manager : MonoBehaviour
         {
             //BGMの再生
             case GAME_PHASE.PHASE_BGM_START :
-                BGMPrefab.GetComponent< BGM >( ).EmitBGM( );
+                BGMObj.GetComponent< BGM >( ).EmitBGM( );
             break;
 
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
             break;
 
-            //敵の生成
+            //敵の出現
             case GAME_PHASE.PHASE_ENEMY_APPEARANCE :
-                EnemyManagerPrefab.GetComponent< EnemyManager >( ).Create( );
+                EnemyManagerObj.GetComponent< EnemyManager >( ).Create( );
             break;
 
             //カウントダウン
             case GAME_PHASE.PHASE_COUNT_DOWN :
-                CountDownPrefab.GetComponent< CountDown >( ).CountFrame( );
+                CountDownObj.GetComponent< CountDown >( ).ChangeText( );
             break;
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
-                PlayerManagerPrefab.GetComponent< PlayerManager >( ).Dance( );
+                PlayerManagerObj.GetComponent< PlayerManager >( ).Dance( );
             break;
 
-             //スコアの加算
-            case GAME_PHASE.PHASE_ADD_SCORE :
-                 ScoreManagerPrefab.GetComponent< ScoreManager >( ).AddScore( );
+             //スコアの集計
+            case GAME_PHASE.PHASE_AGGREGATE_SCORE :
+                 ScoreManagerObj.GetComponent< ScoreManager >( ).AggregateScore( );
             break;
 
             //カメラのパフォーマンス
             case GAME_PHASE.PHASE_CAMERA_PERFORMANCE :
+                 CameraObj.GetComponent< CameraPerformance >( ).PerformanceMove( );
+                 PlayerManagerObj.GetComponent< PlayerManager >( ).PlayersMove( );
             break;
 
             //BGMの終了状態をチェック
             case GAME_PHASE.PHASE_BGM_END_CHECK :
-                 BGMPrefab.GetComponent< BGM >( ).CheckEndBGM( );
+                 BGMObj.GetComponent< BGM >( ).CheckEndBGM( );
             break;
          
             //ゲーム終了時の演出(ここから遷移)
@@ -89,5 +97,54 @@ public class Manager : MonoBehaviour
     public GAME_PHASE GetPhase( )
     {
        return GamePhase;
+    }
+
+
+    //BGMのオブジェクトを取得
+    public GameObject GetBGM( )
+    {
+       return BGMObj;
+    }
+
+
+    //リズムのオブジェクトを取得
+    public GameObject GetRhythm( )
+    {
+       return RhythmObj;
+    }
+
+
+    //プレイヤーマネージャのオブジェクトを取得
+    public GameObject GetPlayerManager( )
+    {
+       return PlayerManagerObj;
+    }
+
+
+    //エネミーマネージャのオブジェクトを取得
+    public GameObject GetEnemyManager( )
+    {
+       return EnemyManagerObj;
+    }
+
+
+    //カウントダウンのオブジェクトを取得
+    public GameObject GetCountDown( )
+    {
+       return CountDownObj;
+    }
+
+
+    //スコアマネージャのオブジェクトを取得
+    public GameObject GetScoreManagr( )
+    {
+       return ScoreManagerObj;
+    }
+
+
+    //プレイヤー達のオブジェクトを取得
+    public GameObject GetPlayers( )
+    {
+       return PlayersObj;
     }
 }
