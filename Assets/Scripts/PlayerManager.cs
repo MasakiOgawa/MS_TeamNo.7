@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject ManagerObj;           //マネージャのオブジェクト
+           GameObject EnemyManagerObj;      //エネミーマネージャのオブジェクト
+           GameObject RhythmObj;            //リズムのオブジェクト
+           GameObject PlayersObj;           //プレイヤー達のオブジェクト
     public GameObject PlayerLeftPrefab;     //左プレイヤーのプレハブ
     public GameObject PlayerCenterPrefab;   //中央プレイヤーのプレハブ
     public GameObject PlayerRightPrefab;    //右プレイヤーのプレハブ
@@ -31,7 +34,16 @@ public class PlayerManager : MonoBehaviour
         bTargetChangeFlg = false;  
         bRhythmFlg       = false;
         nTargetNo        = 0;
-        fDist           = 0.0f;
+        fDist            = 0.0f;
+
+        //エネミーーマネージャのオブジェクトを取得
+        EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( );
+
+        //リズムのオブジェクトを取得
+        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( );
+
+        //プレイヤー達のオブジェクトを取得
+        PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
 	}
 	
 
@@ -51,7 +63,7 @@ public class PlayerManager : MonoBehaviour
             bTargetChangeFlg = true;
             
             //次のターゲットを設定
-            ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( ).SetTarget( nTargetNo );
+            EnemyManagerObj.GetComponent< EnemyManager >( ).SetTarget( nTargetNo );
             nTargetNo++;
 
             //ジョイコンを振れる様にする
@@ -71,7 +83,7 @@ public class PlayerManager : MonoBehaviour
             fOneBeat   = 0.0f;
             bRhythmFlg = true;
             
-            ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( ).Emit( );
+            RhythmObj.GetComponent< Rhythm >( ).Emit( );
         }
 
         //四拍でダンスの終了
@@ -94,7 +106,7 @@ public class PlayerManager : MonoBehaviour
     {
 		fCntFrame += Time.deltaTime;
 
-        ManagerObj.GetComponent< Manager >( ).GetPlayers( ).transform.position += new Vector3( 0.0f , 0.0f , fMove );
+        PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
         fDist += fMove;
 
         if( fCntFrame >= ( 60.0f / fBPM ) * 8.0f )
