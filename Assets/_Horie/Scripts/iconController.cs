@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class iconController : MonoBehaviour {
+public class iconController : MonoBehaviour
+{
 
     [SerializeField]
     private float FadeTime;     // フェードの時間
@@ -32,11 +33,13 @@ public class iconController : MonoBehaviour {
     // タイムカウンタ(Readyから一定時間でshakeItに後退)
     private float seconds;
 
+    private bool bFade;
 
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         if (shakeIt1 == null || shakeIt2 == null || shakeIt3 == null)
             Debug.Log("error : shakeIt GameObject none");
 
@@ -53,19 +56,22 @@ public class iconController : MonoBehaviour {
         //  タイムカウンタ
         seconds = 0;
 
+        bFade = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         Example_gyro.JOYCON_STATE state;
-        
+
         // 1:falseのときジョイコン取って見てtrue
-        if ( isReady1 == false)
+        if (isReady1 == false)
         {
             state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_L1);
             // 振られた
-            if ( state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER)
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.S))
             {
                 isReady1 = true;
                 shakeIt1.SetActive(false);
@@ -76,7 +82,7 @@ public class iconController : MonoBehaviour {
         // readyのとき
         else
         {
-            if ( seconds > reverseTime)
+            if (seconds > reverseTime)
             {
                 isReady1 = false;
                 shakeIt1.SetActive(true);
@@ -89,7 +95,8 @@ public class iconController : MonoBehaviour {
         {
             state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_R1);
             // 振られた
-            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER)
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.A))
             {
                 isReady2 = true;
                 shakeIt2.SetActive(false);
@@ -113,7 +120,8 @@ public class iconController : MonoBehaviour {
         {
             state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_R2);
             // 振られた
-            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER)
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.D))
             {
                 isReady3 = true;
                 shakeIt3.SetActive(false);
@@ -141,10 +149,13 @@ public class iconController : MonoBehaviour {
         }
 
         //3つがtrueのとき
-        if (isReady1 == true && isReady2 == true && isReady3 == true)
+        if (isReady1 == true && isReady2 == true && isReady3 == true && bFade == false)
         {
             //scene change
             FadeManager.Instance.LoadScene(SceneName, FadeTime);
+            bFade = true;
         }
+
+
     }
 }
