@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class shakeitController : MonoBehaviour {
 
+    //  各shakeItテクスチャの描画処理
+
     [SerializeField]
     RectTransform rectTran;
 

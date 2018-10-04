@@ -62,7 +62,7 @@ public class Example_gyro : MonoBehaviour
     private Vector3[] m_prevGyro;
 
     //以下が追記のコード
-    public GameObject rCube1 , rCube2, lCube;
+    //public GameObject rCube1 , rCube2, lCube;
     private Quaternion rciq1, rciq2, lciq, riq1, riq2, liq;
     //private Animator anim;
     //private Transform RS_bone, LS_bone;
@@ -142,9 +142,9 @@ public class Example_gyro : MonoBehaviour
         //RS_bone = anim.GetBoneTransform(HumanBodyBones.RightUpperArm);
         //LS_bone = anim.GetBoneTransform(HumanBodyBones.LeftUpperArm);
 
-        rciq1 = rCube1.transform.rotation;
-        rciq2 = rCube2.transform.rotation;
-        lciq = lCube.transform.rotation;
+        //rciq1 = rCube1.transform.rotation;
+        //rciq2 = rCube2.transform.rotation;
+        //lciq = lCube.transform.rotation;
         //riq = RS_bone.rotation;
         //liq = LS_bone.rotation;
     }
@@ -558,7 +558,7 @@ public class Example_gyro : MonoBehaviour
         //―――――――――――――――――――――――
         // RightController1
         //―――――――――――――――――――――――
-        if (m_IsEnableJoyconR1 == true)
+       /* if (m_IsEnableJoyconR1 == true)
         {
             joyconGyro = m_joyconR1.GetGyro();
             rcqt = rCube1.transform.rotation;
@@ -634,7 +634,7 @@ public class Example_gyro : MonoBehaviour
                 //LS_bone.rotation = liq;
             }
         }
-
+        */
 
 
 
