@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject    ManagerObj;            //マネージャのオブジェクト
+           GameObject    PlayersObj;            //プレイヤー達のオブジェクト
     public GameObject    EnemyUpPrefab;         //上方向の敵のプレハブ
     public GameObject    EnemyDownPrefab;       //下方向の敵のプレハブ
     public GameObject    EnemyRightPrefab;      //右方向の敵のプレハブ
@@ -36,6 +37,9 @@ public class EnemyManager : MonoBehaviour
 
         //敵情報をファイルから読み込み
         EnemyText = Resources.Load( "enemy" ) as TextAsset;
+
+        //プレイヤー達のオブジェクトを取得
+        PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
 	}
 
 
@@ -43,7 +47,7 @@ public class EnemyManager : MonoBehaviour
     public void Create( )
     {  
         //プレイヤーのZ座標を取得
-        float fPosZ = ManagerObj.GetComponent< Manager >( ).GetPlayers( ).GetComponent< Transform >( ).position.z;
+        float fPosZ = PlayersObj.GetComponent< Transform >( ).position.z;
         
         //ファイルから方向を読み込み、プレハブを生成
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
@@ -130,7 +134,7 @@ public class EnemyManager : MonoBehaviour
                 TmpObj = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , 4.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity );
 
                 //プレイヤー達の子要素にする
-                TmpObj.transform.parent = ManagerObj.GetComponent< Manager >( ).GetPlayers( ).GetComponent< Transform >( ).transform;
+                TmpObj.transform.parent = PlayersObj.GetComponent< Transform >( ).transform;
 
                 //X座標をずらす
                 fPosX += fRoadSide / ( nCreateSide - 1 );

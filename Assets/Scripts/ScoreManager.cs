@@ -22,8 +22,9 @@ public class ScoreManager : MonoBehaviour
     int nCntFine;
     int nCntExcellent;
 
-    public GameObject ManagerObj;   //ゲームマネージャのオブジェクト
-    public static int nScore;       //スコア
+    public GameObject ManagerObj;         //ゲームマネージャのオブジェクト
+           GameObject EnemyManagerObj;    //エネミーマネージャのオブジェクト
+    public static int nScore;             //スコア
 
 
 	void Start( )
@@ -33,6 +34,9 @@ public class ScoreManager : MonoBehaviour
         nCntFine      = 0;
         nCntExcellent = 0;
         nScore        = 0;
+
+        //エネミーーマネージャのオブジェクトを取得
+        EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( );
 	}
 	
 
@@ -65,7 +69,7 @@ public class ScoreManager : MonoBehaviour
         ScoreManager.nScore += ( nCntExcellent * 3 ) + ( nCntFine * 2 ) + ( nCntBad * 0 );
 
         //敵を追従させる
-        ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( ).TakeIn( 30 );
+        EnemyManagerObj.GetComponent< EnemyManager >( ).TakeIn( 30 );
 
         //各評価のリセット
         nCntBad       = 0;
@@ -73,7 +77,7 @@ public class ScoreManager : MonoBehaviour
         nCntExcellent = 0;
 
         //現在の敵を破棄
-        ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( ).Kill( );
+        EnemyManagerObj.GetComponent< EnemyManager >( ).Kill( );
 
         //BGMの状態をチェック
         ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BGM_END_CHECK );
