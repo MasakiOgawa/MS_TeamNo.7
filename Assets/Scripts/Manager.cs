@@ -136,7 +136,7 @@ public class Manager : MonoBehaviour
 
 
     //スコアマネージャのオブジェクトを取得
-    public GameObject GetScoreManagr( )
+    public GameObject GetScoreManager( )
     {
        return ScoreManagerObj;
     }
