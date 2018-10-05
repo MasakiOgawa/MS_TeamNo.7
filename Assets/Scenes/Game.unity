@@ -325,9 +325,56 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1599087791595038, guid: cce238a5c702eb84c9c5108034e81cb1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cce238a5c702eb84c9c5108034e81cb1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &452839873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 452839875}
+  - component: {fileID: 452839874}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &452839874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 452839873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c81051304fb8d44a798ee1c87aa005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoadPrefab: {fileID: 1053665269539622, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
+  nNumRoad: 3
+  fRoadLength: 72
+--- !u!4 &452839875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 452839873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &559878789
 Prefab:
   m_ObjectHideFlags: 0
@@ -573,48 +620,6 @@ Transform:
   m_Father: {fileID: 1618574382}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &713980175
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4239443246787406, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 35a2c4122c68a36438fe3392e9f86bb6, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &994063168
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +965,10 @@ Prefab:
     - target: {fileID: 4887407554609710, guid: c5d7f9a4a4bfe704a96968a8ee537143, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861602570815140, guid: c5d7f9a4a4bfe704a96968a8ee537143, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5d7f9a4a4bfe704a96968a8ee537143, type: 2}
@@ -1404,6 +1413,7 @@ MonoBehaviour:
   fWidth: 4
   fLength: 13
   fTakeInEnemyDist: 1.5
+  nTakeInEnemyRange: 7
 --- !u!1 &2000776136
 GameObject:
   m_ObjectHideFlags: 0
