@@ -31,6 +31,7 @@ public class RankingManager : MonoBehaviour {
     private int Rank2ndScore;
     private int Rank3rdScore;
 
+    private int Rank;
 
     // Use this for initialization
     void Start () {
@@ -50,6 +51,9 @@ public class RankingManager : MonoBehaviour {
             // 表示スコア受け渡し
             TMPro.TextMeshProUGUI tmp = _1stScore.GetComponent<TMPro.TextMeshProUGUI>();
             tmp.text = Rank1stScore.ToString();
+
+            if ( Rank ==1 )
+               tmp.color = new Color(255, 0, 0, 255);
         }
 
         if ( bEnable2ndScore == false && fTime > _ranking2ndScoreStartTime)
@@ -59,6 +63,9 @@ public class RankingManager : MonoBehaviour {
             // 表示スコア受け渡し
             TMPro.TextMeshProUGUI tmp = _2ndScore.GetComponent<TMPro.TextMeshProUGUI>();
             tmp.text = Rank2ndScore.ToString();
+
+            if (Rank == 2)
+                tmp.color = new Color(255, 0, 0, 255);
         }
 
         if ( bEnable3rdScore == false && fTime > _ranking3rdScoreStartTime)
@@ -68,6 +75,9 @@ public class RankingManager : MonoBehaviour {
             // 表示スコア受け渡し
             TMPro.TextMeshProUGUI tmp = _3rdScore.GetComponent<TMPro.TextMeshProUGUI>();
             tmp.text = Rank3rdScore.ToString();
+
+            if (Rank == 3)
+                tmp.color = new Color(255, 0, 0, 255);
         }
 
         fTime += Time.deltaTime;
@@ -113,17 +123,24 @@ public class RankingManager : MonoBehaviour {
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = Rank1stScore;
             Rank1stScore = nScore;
+            Rank = 1;
         }
         // 1st > score > 2nd
         else if ( Rank1stScore > nScore && nScore >= Rank2ndScore)
         {
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = nScore;
+            Rank = 2;
         }
         // 2nd > score > 3rd
         else if ( Rank2ndScore > nScore && nScore >= Rank3rdScore )
         {
             Rank3rdScore = nScore;
+            Rank = 3;
+        }
+        else
+        {
+            Rank = 0;
         }
 
         // 保存
