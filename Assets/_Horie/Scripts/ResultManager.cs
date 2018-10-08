@@ -35,6 +35,8 @@ public class ResultManager : MonoBehaviour {
         _RankingManager.GetComponent<RankingManager>().InitRankingManager();
         _RankingManager.SetActive(false);
         bRunningRankingManager = false;
+
+        StartResult(100);
 	}
 	
 	// Update is called once per frame
