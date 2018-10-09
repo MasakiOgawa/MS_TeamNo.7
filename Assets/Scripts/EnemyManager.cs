@@ -19,6 +19,7 @@ public class EnemyManager : MonoBehaviour
     public float         fWidth;                //敵同士の横幅2.2??
     public float         fLength;               //敵同士の縦幅13
     public float         fTakeInEnemyDist;      //追従する敵同士の距離1.5
+    public int           nTakeInEnemyRange;     //敵同士の距離に乱数を追加
            int           nCreateNo;             //生成する敵の番号
            int           nCntLength;            //生成した段の数
   
@@ -109,7 +110,8 @@ public class EnemyManager : MonoBehaviour
     //評価を基に敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
-        GameObject TmpObj;        //オブジェクトの作業用変数
+        /*GameObject TmpObj;        //オブジェクトの作業用変数
+        int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
 
@@ -131,7 +133,9 @@ public class EnemyManager : MonoBehaviour
             //敵を横に生成する
             for( int nCnt2 = 0; nCnt2 < nCreateSide; nCnt2++ )
             {
-                TmpObj = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX , 4.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity );
+                nTmp = ( int )Random.Range( 0 , nTakeInEnemyRange );
+                nTmp -= ( nTakeInEnemyRange - 1 ) / 2;
+                TmpObj = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX + nTmp , 4.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity );
 
                 //プレイヤー達の子要素にする
                 TmpObj.transform.parent = PlayersObj.GetComponent< Transform >( ).transform;
@@ -145,6 +149,6 @@ public class EnemyManager : MonoBehaviour
 
             //生成数をカウンタ
             nCnt += nCreateSide;
-        }
+        }*/
     }
 }

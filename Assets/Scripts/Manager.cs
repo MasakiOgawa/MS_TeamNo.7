@@ -29,6 +29,7 @@ public class Manager : MonoBehaviour
     public GameObject EnemyManagerObj;    //エネミーマネージャのオブジェクト
     public GameObject CountDownObj;       //カウントダウンのオブジェクト
     public GameObject ScoreManagerObj;    //スコアマネージャのオブジェクト
+    public GameObject MapManagerObj;      //マップマネージャのオブジェクト
 
     public GameObject PlayersObj;         //プレイヤー達のオブジェクト
      
@@ -139,6 +140,13 @@ public class Manager : MonoBehaviour
     public GameObject GetScoreManager( )
     {
        return ScoreManagerObj;
+    }
+
+
+    //マップマネージャのオブジェクトを取得
+    public GameObject GetMapManager( )
+    {
+       return MapManagerObj;
     }
 
 
