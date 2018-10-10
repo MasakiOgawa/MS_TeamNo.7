@@ -69,6 +69,10 @@ public class EnemyManager : MonoBehaviour
             {
                 EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRightPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
             }
+            else
+            {
+                EnemyPrefabTmp[ nCnt2 ] = null;
+            }
         }
 
         //文字列の添え字を進める(敵8体+改行コード2文字分)
@@ -96,14 +100,28 @@ public class EnemyManager : MonoBehaviour
     //ターゲットを設定
     public void SetTarget( int nTarget )
     {
-        TargetEnemy = EnemyPrefabTmp[ nTarget ];
+        if( EnemyPrefabTmp[ nTarget ] != null)
+        {
+            TargetEnemy = EnemyPrefabTmp[ nTarget ];
+        }
+        else
+        {
+          TargetEnemy = null;
+        }
     }
 
 
     //ターゲットを取得
     public GameObject GetTarget( )
     {
-        return TargetEnemy;
+        if( TargetEnemy != null )
+        {
+            return TargetEnemy;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 
