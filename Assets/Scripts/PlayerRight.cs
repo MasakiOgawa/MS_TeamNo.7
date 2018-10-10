@@ -11,9 +11,14 @@ public class PlayerRight : MonoBehaviour
            GameObject Example_gyroObj;    //コントローラのオブジェクト
     public bool       bPoseFlg;           //判定重複防止のフラグ
            GameObject TmpObj;             //保存用のオブジェクト変数
+           float      fTargetFrameConst;  //該当ターゲットのフレーム数の定数
+    public float      fExcellentFrame;    //EXCELLENT判定のフレーム
    
 	void Start( )
     {
+        //BPMを取得
+        float fBPM = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
+
         //変数の初期化
 		bPoseFlg = false;
 
@@ -25,6 +30,8 @@ public class PlayerRight : MonoBehaviour
 
         //スコアマネージャのオブジェクトを取得
         ScoreManagerObj = ManagerObj.GetComponent< Manager >( ).GetScoreManager( );
+
+        fTargetFrameConst = ( ( 60.0f / fBPM ) * 4.0f ) / 8.0f;
 	}
 	
 
@@ -40,10 +47,23 @@ public class PlayerRight : MonoBehaviour
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetComponent< EnemyManager >( ).GetTarget( );
      
-                //一致していたら
-                if( TmpObj.tag == "Up" )//現在エクセレント
+               //一致していたら
+                if( TmpObj != null && TmpObj.tag == "Up" )//現在エクセレント
                 {
-                   ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    //振った瞬間の経過フレームを取得
+                    float fTmp = PlayerManagerObj.GetComponent< PlayerManager >( ).GetFourBeat( );
+
+                    //現在の敵の該当フレームを求める
+                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetComponent< PlayerManager >( ).GetTargetNo( ) - 1 );
+
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    }
+                    else
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                    }
                 }
                 else
                 {
@@ -59,9 +79,22 @@ public class PlayerRight : MonoBehaviour
                 TmpObj = EnemyManagerObj.GetComponent< EnemyManager >( ).GetTarget( );
      
                 //一致していたら
-                if( TmpObj.tag == "Down" )//現在エクセレント
+                if( TmpObj != null && TmpObj.tag == "Down" )//現在エクセレント
                 {
-                    ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    //振った瞬間の経過フレームを取得
+                    float fTmp = PlayerManagerObj.GetComponent< PlayerManager >( ).GetFourBeat( );
+
+                    //現在の敵の該当フレームを求める
+                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetComponent< PlayerManager >( ).GetTargetNo( ) - 1 );
+
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    }
+                    else
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                    }
                 }
                 else
                 {
@@ -76,10 +109,23 @@ public class PlayerRight : MonoBehaviour
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetComponent< EnemyManager >( ).GetTarget( );
      
-                //一致していたら
-                if( TmpObj.tag == "Left" )//現在エクセレント
+                 //一致していたら
+                if( TmpObj != null && TmpObj.tag == "Left" )//現在エクセレント
                 {
-                   ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    //振った瞬間の経過フレームを取得
+                    float fTmp = PlayerManagerObj.GetComponent< PlayerManager >( ).GetFourBeat( );
+
+                    //現在の敵の該当フレームを求める
+                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetComponent< PlayerManager >( ).GetTargetNo( ) - 1 );
+
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    }
+                    else 
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                    }
                 }
                 else
                 {
@@ -95,9 +141,22 @@ public class PlayerRight : MonoBehaviour
                 TmpObj = EnemyManagerObj.GetComponent< EnemyManager >( ).GetTarget( );
      
                 //一致していたら
-                if( TmpObj.tag == "Right" )//現在エクセレント
+                if( TmpObj != null && TmpObj.tag == "Right" )//現在エクセレント
                 {
-                   ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    //振った瞬間の経過フレームを取得
+                    float fTmp = PlayerManagerObj.GetComponent< PlayerManager >( ).GetFourBeat( );
+
+                    //現在の敵の該当フレームを求める
+                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetComponent< PlayerManager >( ).GetTargetNo( ) - 1 );
+
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    }
+                    else
+                    {
+                        ScoreManagerObj.GetComponent< ScoreManager >( ).Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                    }
                 }
                 else
                 {

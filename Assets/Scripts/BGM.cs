@@ -20,7 +20,7 @@ public class BGM : MonoBehaviour
     public void EmitBGM( )
     {
         //BGMを再生
-        audioSource.Play( );
+       // audioSource.Play( );
 
         //敵を出現させる
         ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
@@ -30,7 +30,7 @@ public class BGM : MonoBehaviour
     //BPMの取得
     public int GetBPM( )
     {
-        return 120;
+        return 60;
     }
 
 
@@ -40,7 +40,9 @@ public class BGM : MonoBehaviour
         //BGMが止まったら
         if( audioSource.isPlaying == false )
         {
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+            //実験！！
+            //ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
         }
         //BGMが止まっていなければ
         else if( ManagerObj.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
