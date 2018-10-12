@@ -128,7 +128,7 @@ public class EnemyManager : MonoBehaviour
     //評価を基に敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
-        /*GameObject TmpObj;        //オブジェクトの作業用変数
+        GameObject TmpObj;        //オブジェクトの作業用変数
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
@@ -167,6 +167,6 @@ public class EnemyManager : MonoBehaviour
 
             //生成数をカウンタ
             nCnt += nCreateSide;
-        }*/
+        }
     }
 }

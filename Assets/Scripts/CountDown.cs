@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CountDown : MonoBehaviour
 {
     public GameObject ManagerObj;      //マネージャのオブジェクト
-           GameObject RhythmObj;       //リズムのオブジェクト
+           Rhythm     RhythmObj;       //リズムのオブジェクト
            float      fBPM;            //BPM
            float      fCntFrame;       //経過フレーム
            Text       CountDownText;   //カウントダウンのテキスト情報
@@ -22,10 +22,10 @@ public class CountDown : MonoBehaviour
         CountDownText = GameObject.Find( "CountDown" ).GetComponent< Text >( );
 
         //リズムのオブジェクトを取得
-        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( );
+        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
         //テキストの設定
-        SetText( );
+      //  SetText( );
 	}
 	
 
@@ -43,17 +43,17 @@ public class CountDown : MonoBehaviour
             if( CountDownText.text == "3" )
             {
                 CountDownText.text = "2";
-                RhythmObj.GetComponent< Rhythm >( ).Emit( );
+                RhythmObj.Emit( );
             }
             else if( CountDownText.text == "2" )
             {
                 CountDownText.text = "1";
-                RhythmObj.GetComponent< Rhythm >( ).Emit( );
+                RhythmObj.Emit( );
             }
             else if( CountDownText.text == "1" )
             {
                 CountDownText.text = "GO!!";
-                RhythmObj.GetComponent< Rhythm >( ).Emit( );
+                RhythmObj.Emit( );
             }
 
             //カウントダウンの終了
@@ -75,7 +75,7 @@ public class CountDown : MonoBehaviour
         {
             CountDownText.text = "3";
 
-            RhythmObj.GetComponent< Rhythm >( ).Emit( );
+            RhythmObj.Emit( );
         }
     }
 }

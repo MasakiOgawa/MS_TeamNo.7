@@ -15,8 +15,9 @@ public class Manager : MonoBehaviour
         PHASE_PLAYER_DANCE         ,   //プレイヤーのダンス
         PHASE_AGGREGATE_SCORE      ,   //スコアの集計
         PHASE_CAMERA_PERFORMANCE   ,   //カメラのパフォーマンス
-        PHASE_BGM_END_CHECK        ,   //BGMの終了状態をチェック(ゲーム終了に繋げる)
-        PHASE_END_PERFORMANCE          //ゲーム終了時の演出
+        PHASE_GAME_END_CHECK       ,   //ゲームの終了状態をチェック(ゲーム終了に繋げる)
+        PHASE_END_PERFORMANCE      ,   //ゲーム終了時の演出
+        PHASE_RESULT                   //リザルト
     };
 
     //ゲームの初期状態の設定
@@ -25,6 +26,7 @@ public class Manager : MonoBehaviour
     public GameObject CameraObj;          //カメラのオブジェクト
     public GameObject BGMObj;             //BGMのオブジェクト
     public GameObject RhythmObj;          //リズムのオブジェクト
+    public GameObject PerformanceManagerObj;     //パフォーマンスマネージャのオブジェクト
     public GameObject PlayerManagerObj;   //プレイヤーマネージャのオブジェクト
     public GameObject EnemyManagerObj;    //エネミーマネージャのオブジェクト
     public GameObject CountDownObj;       //カウントダウンのオブジェクト
@@ -33,6 +35,15 @@ public class Manager : MonoBehaviour
 
     public GameObject PlayersObj;         //プレイヤー達のオブジェクト
      
+    int nCntEndCheck;   //ゲーム終了までのカウンタ
+
+
+    void Start( )
+    {
+        //変数の初期化
+        nCntEndCheck = 0;
+    }
+
 
 	void Update( )
     {
@@ -46,6 +57,7 @@ public class Manager : MonoBehaviour
 
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
+                PerformanceManagerObj.GetComponent< PerformanceManager >( ).FirstPerformance( );
             break;
 
             //敵の出現
@@ -66,6 +78,7 @@ public class Manager : MonoBehaviour
              //スコアの集計
             case GAME_PHASE.PHASE_AGGREGATE_SCORE :
                  ScoreManagerObj.GetComponent< ScoreManager >( ).AggregateScore( );
+                 nCntEndCheck++;
             break;
 
             //カメラのパフォーマンス
@@ -74,17 +87,38 @@ public class Manager : MonoBehaviour
                  PlayerManagerObj.GetComponent< PlayerManager >( ).PlayersMove( );
             break;
 
-            //BGMの終了状態をチェック
-            case GAME_PHASE.PHASE_BGM_END_CHECK :
-                 BGMObj.GetComponent< BGM >( ).CheckEndBGM( );
+            //ゲームの終了状態をチェック
+            case GAME_PHASE.PHASE_GAME_END_CHECK :
+                 CheckGameEnd( );
             break;
          
             //ゲーム終了時の演出(ここから遷移)
-            case GAME_PHASE.PHASE_END_PERFORMANCE :
-                 SceneManager.LoadScene( "Result" );
+            case GAME_PHASE.PHASE_END_PERFORMANCE :  
+                 PerformanceManagerObj.GetComponent< PerformanceManager >( ).FinalPerformance( );
+            break;
+
+            //リザルト
+            case GAME_PHASE.PHASE_RESULT :
             break;
         }
 	}
+
+
+    //ゲームの終了状態をチェック
+    void CheckGameEnd( )
+    {
+        //一定ターンが経過したら、終了時のパフォーマンスに遷移
+        if( nCntEndCheck == 3 )
+        {
+            GamePhase = GAME_PHASE.PHASE_END_PERFORMANCE;
+        }
+        else
+        {   
+            //実験！！ここで常にカメラパフォーマンスに移す！
+            GamePhase = GAME_PHASE.PHASE_CAMERA_PERFORMANCE;
+        }
+           
+    }
 
 
     //ゲームの進行状態を設定
