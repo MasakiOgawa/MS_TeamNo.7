@@ -25,7 +25,7 @@ public class CountDown : MonoBehaviour
         RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
         //テキストの設定
-        SetText( );
+      //  SetText( );
 	}
 	
 

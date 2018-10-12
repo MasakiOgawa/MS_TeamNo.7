@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RankingManager : MonoBehaviour {
 
@@ -78,10 +78,16 @@ public class RankingManager : MonoBehaviour {
 
             if (Rank == 3)
                 tmp.color = new Color(255, 0, 0, 255);
+
+            fTime = 0.0f;
         }
 
         fTime += Time.deltaTime;
 
+        if( bEnable3rdScore == true && fTime > 10.0f )
+        {
+            SceneManager.LoadScene( "Result" );
+        }
 	}
 
     // RankingManager起動

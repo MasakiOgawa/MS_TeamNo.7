@@ -28,7 +28,7 @@ public class PlayerRight : MonoBehaviour
         //プレイヤーマネージャのオブジェクトを取得
         PlayerManagerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( );
 
-        //エネミーーマネージャのオブジェクトを取得
+        //エネミーマネージャのオブジェクトを取得
         EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( );
 
         //スコアマネージャのオブジェクトを取得

@@ -80,6 +80,6 @@ public class ScoreManager : MonoBehaviour
         EnemyManagerObj.Kill( );
 
         //BGMの状態をチェック
-        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BGM_END_CHECK );
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_GAME_END_CHECK );
     }
 }

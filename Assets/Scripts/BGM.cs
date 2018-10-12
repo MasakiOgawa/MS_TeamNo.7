@@ -22,36 +22,14 @@ public class BGM : MonoBehaviour
         //BGMを再生
        // audioSource.Play( );
 
-        //敵を出現させる
-        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+        //最初のパフォーマンスに遷移
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_FIRST_PERFORMANCE );
     }
 
 
     //BPMの取得
     public int GetBPM( )
     {
-        return 60;
-    }
-
-
-    //曲が終了しているかをチェック
-    public void CheckEndBGM( )
-    {
-        //BGMが止まったら
-        if( audioSource.isPlaying == false )
-        {
-            //実験！！
-            //ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
-             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
-        }
-        //BGMが止まっていなければ
-        else if( ManagerObj.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
-        {
-            //ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-            //CountDownPrefab.GetComponent< CountDown >( ).SetText( );
-
-            //実験！！ここで常にカメラパフォーマンスに移す！
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
-        }
+        return 65;
     }
 }
