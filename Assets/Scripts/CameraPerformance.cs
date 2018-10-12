@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraPerformance : MonoBehaviour
 {
     public GameObject ManagerObj;          //マネージャのオブジェクト
-           GameObject MapManagerObj;       //マップマネージャのオブジェクト
+           MapManager MapManagerObj;       //マップマネージャのオブジェクト
     public float      fMove;               //カメラの移動量
            float      fRoadDist;           //カメラの移動距離(道用)
     public float      fRoadCreateBorder;   //道路の生成時の境界
@@ -20,7 +20,7 @@ public class CameraPerformance : MonoBehaviour
         fCityDist = 0.0f;
 
         //マップマネージャオブジェクトを取得
-        MapManagerObj = ManagerObj.GetComponent< Manager >( ).GetMapManager( );
+        MapManagerObj = ManagerObj.GetComponent< Manager >( ).GetMapManager( ).GetComponent< MapManager >( );
     }
 
 
@@ -36,7 +36,7 @@ public class CameraPerformance : MonoBehaviour
         {
             fRoadDist = 0.0f;
 
-            MapManagerObj.GetComponent< MapManager >( ).RoadCreate( );
+            MapManagerObj.RoadCreate( );
         }
 
          //一定距離を移動したら建物の生成
@@ -44,7 +44,7 @@ public class CameraPerformance : MonoBehaviour
         {
             fCityDist = 0.0f;
 
-            MapManagerObj.GetComponent< MapManager >( ).CityCreate( );
+            MapManagerObj.CityCreate( );
         }
     }
 }
