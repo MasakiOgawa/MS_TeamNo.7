@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    public GameObject ManagerObj;      //マネージャのオブジェクト
-           Rhythm     RhythmObj;       //リズムのオブジェクト
-           float      fBPM;            //BPM
-           float      fCntFrame;       //経過フレーム
-           Text       CountDownText;   //カウントダウンのテキスト情報
+    public GameObject ManagerObj;    //マネージャのオブジェクト
+    public GameObject CountNo3Obj;   //3のオブジェクト
+    public GameObject CountNo2Obj;   //2のオブジェクト
+    public GameObject CountNo1Obj;   //1のオブジェクト
+    public GameObject CountGoObj;    //GOのオブジェクト
+           Rhythm     RhythmObj;     //リズムのオブジェクト
+           float      fBPM;          //BPM
+           float      fCntFrame;     //経過フレーム
+           int        nCnt;
+           bool       bFlg;
 
 
 	void Start( )
@@ -17,15 +22,17 @@ public class CountDown : MonoBehaviour
         //変数の初期化
 		fCntFrame = 0.0f;
         fBPM      = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
-
-        //テキスト情報を取得
-        CountDownText = GameObject.Find( "CountDown" ).GetComponent< Text >( );
+        nCnt      = 3;
+        bFlg      = false;
 
         //リズムのオブジェクトを取得
         RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
-        //テキストの設定
-      //  SetText( );
+        //カウントダウンオブジェクトを非表示にしておく
+       /* CountNo3Obj.SetActive( false );
+        CountNo2Obj.SetActive( false );
+        CountNo1Obj.SetActive( false );
+        CountGoObj.SetActive( false );*/
 	}
 	
 
@@ -36,30 +43,38 @@ public class CountDown : MonoBehaviour
 		fCntFrame += Time.deltaTime;
 
         //1拍毎にカウントダウン
-        if( fCntFrame >= 60.0f / ( float )fBPM )
+        if( fCntFrame > 60.0f / ( float )fBPM )
         {
+            bFlg      = true;
             fCntFrame = 0.0f;
           
-            if( CountDownText.text == "3" )
+            if( nCnt == 3 )
             {
-                CountDownText.text = "2";
+                nCnt = 2;
+                CountNo3Obj.SetActive( false );
+                CountNo2Obj.SetActive( true );
                 RhythmObj.Emit( );
             }
-            else if( CountDownText.text == "2" )
+            else if( nCnt == 2 )
             {
-                CountDownText.text = "1";
+                nCnt = 1;
+                CountNo2Obj.SetActive( false );
+                CountNo1Obj.SetActive( true );
                 RhythmObj.Emit( );
             }
-            else if( CountDownText.text == "1" )
+            else if( nCnt == 1 )
             {
-                CountDownText.text = "GO!!";
+                nCnt = 0;
+                CountNo1Obj.SetActive( false );
+                CountGoObj.SetActive( true );
                 RhythmObj.Emit( );
             }
 
             //カウントダウンの終了
-            else if( CountDownText.text == "GO!!" )
+            else if( nCnt == 0 )
             {
-                CountDownText.text = " ";
+                nCnt = 3;
+                CountGoObj.SetActive( false );
          
                 //プレイヤーのダンス
                 ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
@@ -73,8 +88,8 @@ public class CountDown : MonoBehaviour
     {
         if( ManagerObj.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
         {
-            CountDownText.text = "3";
-
+            nCnt = 3;
+            CountNo3Obj.SetActive( true );
             RhythmObj.Emit( );
         }
     }

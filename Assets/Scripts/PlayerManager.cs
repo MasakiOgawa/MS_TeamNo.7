@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject ManagerObj;           //マネージャのオブジェクト
            GameObject EnemyManagerObj;      //エネミーマネージャのオブジェクト
-           GameObject RhythmObj;            //リズムのオブジェクト
+           Rhythm     RhythmObj;            //リズムのオブジェクト
            GameObject PlayersObj;           //プレイヤー達のオブジェクト
     public GameObject PlayerLeftPrefab;     //左プレイヤーのプレハブ
     public GameObject PlayerCenterPrefab;   //中央プレイヤーのプレハブ
@@ -21,12 +21,13 @@ public class PlayerManager : MonoBehaviour
            int        nTargetNo;            //現在のターゲット
     public float      fDist;                //プレイヤー達の移動距離
     public float      fMove;                //プレイヤー達の移動量
+           int        nPerformanceTmp;
         
 
 	void Start( )
     {
 		//変数の初期化
-        fBPM             = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
+        fBPM             = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
 		fHalfBeat        = 0.0f;
         fOneBeat         = 0.0f;
         fFourBeat        = 0.0f;
@@ -40,7 +41,7 @@ public class PlayerManager : MonoBehaviour
         EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( );
 
         //リズムのオブジェクトを取得
-        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( );
+        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
         //プレイヤー達のオブジェクトを取得
         PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
@@ -57,20 +58,19 @@ public class PlayerManager : MonoBehaviour
 		fFourBeat += fTmp;
         
          //1拍毎にリズムを鳴らす
-        if( fOneBeat > 60.0f / fBPM || bRhythmFlg == false )
+        if( fOneBeat >= fBPM || bRhythmFlg == false )
         {
             fOneBeat   = 0.0f;
             bRhythmFlg = true;
             
-            RhythmObj.GetComponent< Rhythm >( ).Emit( );
+            RhythmObj.Emit( );
         }
 
          //半拍毎にターゲットを切り替える
-        if( fHalfBeat > ( 60.0f / fBPM ) * 0.5f || bTargetChangeFlg == false )
+        if( fHalfBeat >= fBPM * 0.5f || bTargetChangeFlg == false )
         {
             fHalfBeat        = 0.0f;
             bTargetChangeFlg = true;
-           // Debug.Log( nTargetNo.ToString( ));
             
             //次のターゲットを設定
             EnemyManagerObj.GetComponent< EnemyManager >( ).SetTarget( nTargetNo );
@@ -87,10 +87,8 @@ public class PlayerManager : MonoBehaviour
         PlayerCenterPrefab.GetComponent< PlayerCenter >( ).Pose( );
         PlayerRightPrefab.GetComponent< PlayerRight >( ).Pose( );
 
-       
-
         //四拍でダンスの終了
-        if( fFourBeat > ( 60.0f / fBPM ) * 4.0f )
+        if( fFourBeat >= fBPM * 4.0f )
         {
             fHalfBeat        = 0.0f;
             fFourBeat        = 0.0f;
@@ -112,7 +110,7 @@ public class PlayerManager : MonoBehaviour
         PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
         fDist += fMove;
 
-        if( fCntFrame >= ( 60.0f / fBPM ) * 8.0f )
+        if( fCntFrame >= ( 60.0f / fBPM ) * nPerformanceTmp )
         {
             fCntFrame = 0.0f;
 
@@ -134,5 +132,12 @@ public class PlayerManager : MonoBehaviour
     public int GetTargetNo( )
     {
         return nTargetNo;
+    }
+
+
+    //パフォーマンスの小節数を設定
+    public void SetnPerformanceTmp( int nPerformanceMeasure )
+    {
+        nPerformanceTmp = nPerformanceMeasure;
     }
 }

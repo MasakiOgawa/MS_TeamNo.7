@@ -33,6 +33,8 @@ public class RankingManager : MonoBehaviour {
 
     private int Rank;
 
+    public float fEndFrame;
+
     // Use this for initialization
     void Start () {
         // 初期化
@@ -84,7 +86,7 @@ public class RankingManager : MonoBehaviour {
 
         fTime += Time.deltaTime;
 
-        if( bEnable3rdScore == true && fTime > 10.0f )
+        if( bEnable3rdScore == true && fTime > fEndFrame )
         {
             SceneManager.LoadScene( "Result" );
         }

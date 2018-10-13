@@ -15,13 +15,13 @@ public class Manager : MonoBehaviour
         PHASE_PLAYER_DANCE         ,   //プレイヤーのダンス
         PHASE_AGGREGATE_SCORE      ,   //スコアの集計
         PHASE_CAMERA_PERFORMANCE   ,   //カメラのパフォーマンス
-        PHASE_GAME_END_CHECK       ,   //ゲームの終了状態をチェック(ゲーム終了に繋げる)
+        PHASE_CHECK                ,   //次の遷移先を決める
         PHASE_END_PERFORMANCE      ,   //ゲーム終了時の演出
         PHASE_RESULT                   //リザルト
     };
 
     //ゲームの初期状態の設定
-    public GAME_PHASE GamePhase = GAME_PHASE.PHASE_BGM_START;
+    public GAME_PHASE GamePhase;
 
     public GameObject CameraObj;          //カメラのオブジェクト
     public GameObject BGMObj;             //BGMのオブジェクト
@@ -87,9 +87,9 @@ public class Manager : MonoBehaviour
                  PlayerManagerObj.GetComponent< PlayerManager >( ).PlayersMove( );
             break;
 
-            //ゲームの終了状態をチェック
-            case GAME_PHASE.PHASE_GAME_END_CHECK :
-                 CheckGameEnd( );
+            //遷移先をチェック
+            case GAME_PHASE.PHASE_CHECK :
+                 PerformanceManagerObj.GetComponent< PerformanceManager >( ).PhaseCheck( );
             break;
          
             //ゲーム終了時の演出(ここから遷移)
@@ -108,7 +108,7 @@ public class Manager : MonoBehaviour
     void CheckGameEnd( )
     {
         //一定ターンが経過したら、終了時のパフォーマンスに遷移
-        if( nCntEndCheck == 3 )
+        if( nCntEndCheck == 500 )
         {
             GamePhase = GAME_PHASE.PHASE_END_PERFORMANCE;
         }
@@ -188,5 +188,12 @@ public class Manager : MonoBehaviour
     public GameObject GetPlayers( )
     {
        return PlayersObj;
+    }
+
+
+    //パフォーマンスマネージャのオブジェクトを取得
+    public GameObject GetPerformanceManager( )
+    {
+       return PerformanceManagerObj;
     }
 }
