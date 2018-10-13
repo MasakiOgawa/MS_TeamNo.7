@@ -137,3 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aec72b4937b50442a6da0645f4746c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fEvaluationEndFrame: 0.6
+  fMoveY: 0.05

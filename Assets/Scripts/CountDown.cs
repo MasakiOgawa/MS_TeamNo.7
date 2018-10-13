@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class CountDown : MonoBehaviour
 {
-    public GameObject ManagerPrefab;   //マネージャのプレハブ
-    public GameObject BGMPrefab;       //BGMのプレハブ
-    public GameObject SamplePrefab;   
+    public GameObject ManagerObj;      //マネージャのオブジェクト
+           Rhythm     RhythmObj;       //リズムのオブジェクト
+           float      fBPM;            //BPM
            float      fCntFrame;       //経過フレーム
            Text       CountDownText;   //カウントダウンのテキスト情報
 
@@ -15,39 +16,44 @@ public class CountDown : MonoBehaviour
     {
         //変数の初期化
 		fCntFrame = 0.0f;
+        fBPM      = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
 
         //テキスト情報を取得
         CountDownText = GameObject.Find( "CountDown" ).GetComponent< Text >( );
 
+        //リズムのオブジェクトを取得
+        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
+
         //テキストの設定
-        SetText( );
+      //  SetText( );
 	}
 	
 
-    public void CountFrame( )
+    //テキストの内容をカウントダウン
+    public void ChangeText( )
     {
         //フレーム数を計測
 		fCntFrame += Time.deltaTime;
 
-        //一定フレームが経過したらカウントダウン
-        if( fCntFrame >= 60.0f / ( float )BGMPrefab.GetComponent< BGM >( ).GetBPM( ) )
+        //1拍毎にカウントダウン
+        if( fCntFrame >= 60.0f / ( float )fBPM )
         {
             fCntFrame = 0.0f;
           
             if( CountDownText.text == "3" )
             {
                 CountDownText.text = "2";
-                SamplePrefab.GetComponent< Sample >( ).Emit( );
+                RhythmObj.Emit( );
             }
             else if( CountDownText.text == "2" )
             {
                 CountDownText.text = "1";
-                SamplePrefab.GetComponent< Sample >( ).Emit( );
+                RhythmObj.Emit( );
             }
             else if( CountDownText.text == "1" )
             {
                 CountDownText.text = "GO!!";
-                SamplePrefab.GetComponent< Sample >( ).Emit( );
+                RhythmObj.Emit( );
             }
 
             //カウントダウンの終了
@@ -56,16 +62,20 @@ public class CountDown : MonoBehaviour
                 CountDownText.text = " ";
          
                 //プレイヤーのダンス
-                ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
+                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
             }
         }
     }
 
 
+    //カウントダウンテキストを可視化
     public void SetText( )
     {
-        CountDownText.text = "3";
+        if( ManagerObj.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
+        {
+            CountDownText.text = "3";
 
-        SamplePrefab.GetComponent< Sample >( ).Emit( );
+            RhythmObj.Emit( );
+        }
     }
 }

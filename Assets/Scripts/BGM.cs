@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+
 public class BGM : MonoBehaviour
 {
-    public GameObject  ManagerPrefab;   //マネージャ情報
-    public AudioClip   BGMData;         //BGM情報
+    public GameObject  ManagerObj;   //マネージャのオブジェクト
+    public AudioClip   BGMData;      //BGM情報
            AudioSource audioSource;     
-           int         nBpm;            //BPM
 
 
 	void Start( )
     {
-        //BPMを取得
-        nBpm = UniBpmAnalyzer.AnalyzeBpm( BGMData );
-
         audioSource      = gameObject.GetComponent< AudioSource >( );
         audioSource.clip = BGMData;
 	}
@@ -23,16 +20,16 @@ public class BGM : MonoBehaviour
     public void EmitBGM( )
     {
         //BGMを再生
-      //  audioSource.Play( );
+       // audioSource.Play( );
 
-        //敵を生成
-        ManagerPrefab.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+        //最初のパフォーマンスに遷移
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_FIRST_PERFORMANCE );
     }
 
 
-    //BPMを返す
+    //BPMの取得
     public int GetBPM( )
     {
-        return 60;
+        return 65;
     }
 }
