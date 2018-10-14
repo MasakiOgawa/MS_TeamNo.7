@@ -22,9 +22,10 @@ public class ScoreManager : MonoBehaviour
     int nCntFine;
     int nCntExcellent;
 
-    public GameObject   ManagerObj;         //ゲームマネージャのオブジェクト
-           EnemyManager EnemyManagerObj;    //エネミーマネージャのオブジェクト
-    public static int   nScore;             //スコア
+    public GameObject         ManagerObj;              //ゲームマネージャのオブジェクト
+           EnemyManager       EnemyManagerObj;         //エネミーマネージャのオブジェクト
+           PerformanceManager PerformanceManagerObj;   //パフォーマンスマネージャのオブジェクト
+    public static int         nScore;                  //スコア
 
 
 	void Start( )
@@ -35,8 +36,11 @@ public class ScoreManager : MonoBehaviour
         nCntExcellent = 0;
         nScore        = 0;
 
-        //エネミーーマネージャのオブジェクトを取得
+        //エネミーマネージャのオブジェクトを取得
         EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( );
+
+        //パフォーマンスマネージャのオブジェクトを取得
+        PerformanceManagerObj = ManagerObj.GetComponent< Manager >( ).GetPerformanceManager( ).GetComponent< PerformanceManager >( );
 	}
 	
 
@@ -79,7 +83,7 @@ public class ScoreManager : MonoBehaviour
         //現在の敵を破棄
         EnemyManagerObj.Kill( );
 
-        //BGMの状態をチェック
-        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_GAME_END_CHECK );
+        //ダンスの回数をカウントしチェック
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CHECK );
     }
 }
