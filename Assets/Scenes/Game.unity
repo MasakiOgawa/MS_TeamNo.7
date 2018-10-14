@@ -160,11 +160,54 @@ MonoBehaviour:
   RhythmObj: {fileID: 1388002714}
   PerformanceManagerObj: {fileID: 1300189111}
   PlayerManagerObj: {fileID: 1232893689}
+  PlayersObj: {fileID: 1618574381}
   EnemyManagerObj: {fileID: 1858523154}
   CountDownObj: {fileID: 2094422707}
   ScoreManagerObj: {fileID: 2000776136}
   MapManagerObj: {fileID: 452839873}
-  PlayersObj: {fileID: 1618574381}
+  BonusObj: {fileID: 86348944}
+--- !u!1 &86348944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 86348945}
+  - component: {fileID: 86348946}
+  m_Layer: 0
+  m_Name: Bonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86348945
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86348944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.724213, y: -6.299062, z: 36.101234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &86348946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86348944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f415562bd633b04f865345079b9e1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ManagerObj: {fileID: 1040674}
+  CountDownObj: {fileID: 2094422711}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +661,12 @@ Prefab:
     - target: {fileID: 114767555408035800, guid: 03edd43e2c65c3c47a39f7e65b52e4fc,
         type: 2}
       propertyPath: SceneName
-      value: Result
+      value: Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 114767555408035800, guid: 03edd43e2c65c3c47a39f7e65b52e4fc,
+        type: 2}
+      propertyPath: FadeTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03edd43e2c65c3c47a39f7e65b52e4fc, type: 2}
@@ -818,7 +866,7 @@ Transform:
   m_GameObject: {fileID: 684074293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.5, z: 0}
-  m_LocalScale: {x: 1, y: 9.14, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1618574382}
   m_RootOrder: 1
@@ -1064,7 +1112,7 @@ MonoBehaviour:
   PlayerCenterPrefab: {fileID: 684074293}
   PlayerRightPrefab: {fileID: 1648557946}
   fDist: 0
-  fMove: 0.3
+  fMove: 0.1
 --- !u!4 &1232893691
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fd705f4f587334aabe5e72f6fb3800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: c4058d8cb0b861f47b922d137287ff84, type: 3}
+  audioClip: {fileID: 8300000, guid: d3ba53752d998a54f92d9ff75a73460d, type: 3}
 --- !u!82 &1388002716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1872,9 +1920,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
-  fMove: 0.3
-  fRoadCreateBorder: 75
-  fCityCreateBorder: 204
+  fMove: 0.1
+  fRoadCreateBorder: 200
+  fCityCreateBorder: 200
 --- !u!114 &1831284508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,33 +1950,24 @@ MonoBehaviour:
       occlusionCullingAccuracy: 2
       enableTemporalReprojection: 1
       temporalReprojectionFactor: 0.9
-      resolution: {x: 160, y: 88, z: 128}
+      resolution: {x: 160, y: 90, z: 128}
       farClipPlaneDistance: 50
       density: 0.25
       anisotropy: 0.5
       color: {r: 0.25, g: 0.25, b: 0.25, a: 1}
       colorStrength: 0.25
-    _computeMaximumDepthComputeShader: {fileID: 7200000, guid: a5d52c8a306e8b746ab60b306575aa3e,
-      type: 3}
-    _processOcclusionMapShader: {fileID: 4800000, guid: b9b5b0990ea6cfa4d96c89a9c1cec3e9,
-      type: 3}
-    _computeDataComputeShader: {fileID: 7200000, guid: 971d5d94be5bebc44aa6d832c17f5e62,
-      type: 3}
-    _computeAccumulationComputeShader: {fileID: 7200000, guid: 41ac7d79af1f9614ebe54df4f30ac3e0,
-      type: 3}
+    _computeMaximumDepthComputeShader: {fileID: 0}
+    _processOcclusionMapShader: {fileID: 0}
+    _computeDataComputeShader: {fileID: 0}
+    _computeAccumulationComputeShader: {fileID: 0}
   applyAsPostProcess: 1
-  computeMaximumDepthComputeShader: {fileID: 7200000, guid: a5d52c8a306e8b746ab60b306575aa3e,
-    type: 3}
-  processOcclusionMapShader: {fileID: 4800000, guid: b9b5b0990ea6cfa4d96c89a9c1cec3e9,
-    type: 3}
-  computeDataComputeShader: {fileID: 7200000, guid: 971d5d94be5bebc44aa6d832c17f5e62,
-    type: 3}
-  computeAccumulationComputeShader: {fileID: 7200000, guid: 41ac7d79af1f9614ebe54df4f30ac3e0,
-    type: 3}
-  postProcessShader: {fileID: 4800000, guid: 50255fa344dbd814c910fdafc5692b09, type: 3}
-  blueNoiseTexturesArray: {fileID: 18700000, guid: 518b8337a0340444aa49dd0780efa9c2,
-    type: 2}
-  _hasBeenAssigned: 1
+  computeMaximumDepthComputeShader: {fileID: 0}
+  processOcclusionMapShader: {fileID: 0}
+  computeDataComputeShader: {fileID: 0}
+  computeAccumulationComputeShader: {fileID: 0}
+  postProcessShader: {fileID: 0}
+  blueNoiseTexturesArray: {fileID: 0}
+  _hasBeenAssigned: 0
 --- !u!108 &1831284509
 Light:
   m_ObjectHideFlags: 0

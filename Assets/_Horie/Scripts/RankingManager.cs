@@ -88,7 +88,7 @@ public class RankingManager : MonoBehaviour {
 
         if( bEnable3rdScore == true && fTime > fEndFrame )
         {
-            SceneManager.LoadScene( "Result" );
+            SceneManager.LoadScene( "Title" );
         }
 	}
 

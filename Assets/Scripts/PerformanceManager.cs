@@ -31,9 +31,21 @@ public class PerformanceManager : MonoBehaviour
         fBPM             = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
         PlayerManagerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( );
         CountDownObj     = ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( );
+
+
         aPerformanceType = new PerformanceType[ 10 ];
         aPerformanceType[ 0 ].nPerformanceTiming  = 4;
-        aPerformanceType[ 0 ].nPerformanceMeasure = 32;
+        aPerformanceType[ 0 ].nPerformanceMeasure = 16;
+        aPerformanceType[ 1 ].nPerformanceTiming  = 6;
+        aPerformanceType[ 1 ].nPerformanceMeasure = 8;
+        aPerformanceType[ 2 ].nPerformanceTiming  = 8;
+        aPerformanceType[ 2 ].nPerformanceMeasure = 8; 
+        aPerformanceType[ 3 ].nPerformanceTiming  = 0;
+        aPerformanceType[ 3 ].nPerformanceMeasure = 0; 
+        aPerformanceType[ 4 ].nPerformanceTiming  = 9;
+        aPerformanceType[ 4 ].nPerformanceMeasure = 16; 
+        aPerformanceType[ 5 ].nPerformanceTiming  = 15;
+        aPerformanceType[ 5 ].nPerformanceMeasure = 16;   
     }
 
 
@@ -57,9 +69,16 @@ public class PerformanceManager : MonoBehaviour
     //最後のパフォーマンス
     public void FinalPerformance( )
     {
-        //パフォーマンスを終えたら、ランキングの生成
-        Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
-        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
+         //フレーム数を計測
+        fCntFrame += Time.deltaTime;
+        
+        //16拍でダンスの終了
+        if( fCntFrame >= fBPM * 12.0f )
+        {
+            //パフォーマンスを終えたら、ランキングの生成
+            Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
+        }
     }
 
 
@@ -69,10 +88,22 @@ public class PerformanceManager : MonoBehaviour
         nCntPose++;
 
         //パフォーマンスを挟む
-        if( nCntPose == aPerformanceType[ 0 ].nPerformanceTiming )
+        if( nCntPose == 9 )
         {
-            PlayerManagerObj.SetnPerformanceTmp( aPerformanceType[ 0 ].nPerformanceMeasure );
+           nCntPerformance = 4; 
+        }
+
+        if( nCntPose == aPerformanceType[ nCntPerformance ].nPerformanceTiming )
+        {
+            PlayerManagerObj.SetnPerformanceTmp( aPerformanceType[ nCntPerformance ].nPerformanceMeasure );
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
+
+            nCntPerformance++;
+
+            if( nCntPerformance == 6 )
+            {
+                 ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+            }
         }
         //敵を生成する
         else
@@ -80,5 +111,11 @@ public class PerformanceManager : MonoBehaviour
             CountDownObj.SetText( );
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
         }
+    }
+
+
+    public int GetnCntPerformance( )
+    {
+        return nCntPerformance;
     }
 }

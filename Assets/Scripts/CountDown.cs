@@ -21,7 +21,7 @@ public class CountDown : MonoBehaviour
     {
         //変数の初期化
 		fCntFrame = 0.0f;
-        fBPM      = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
+        fBPM      = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
         nCnt      = 3;
         bFlg      = false;
 
@@ -43,7 +43,7 @@ public class CountDown : MonoBehaviour
 		fCntFrame += Time.deltaTime;
 
         //1拍毎にカウントダウン
-        if( fCntFrame > 60.0f / ( float )fBPM )
+        if( fCntFrame >= fBPM )
         {
             bFlg      = true;
             fCntFrame = 0.0f;

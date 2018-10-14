@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour
         PHASE_AGGREGATE_SCORE      ,   //スコアの集計
         PHASE_CAMERA_PERFORMANCE   ,   //カメラのパフォーマンス
         PHASE_CHECK                ,   //次の遷移先を決める
+        PHASE_BONUS                ,   //ボーナスタイム
         PHASE_END_PERFORMANCE      ,   //ゲーム終了時の演出
         PHASE_RESULT                   //リザルト
     };
@@ -23,17 +24,19 @@ public class Manager : MonoBehaviour
     //ゲームの初期状態の設定
     public GAME_PHASE GamePhase;
 
-    public GameObject CameraObj;          //カメラのオブジェクト
-    public GameObject BGMObj;             //BGMのオブジェクト
-    public GameObject RhythmObj;          //リズムのオブジェクト
-    public GameObject PerformanceManagerObj;     //パフォーマンスマネージャのオブジェクト
-    public GameObject PlayerManagerObj;   //プレイヤーマネージャのオブジェクト
-    public GameObject EnemyManagerObj;    //エネミーマネージャのオブジェクト
-    public GameObject CountDownObj;       //カウントダウンのオブジェクト
-    public GameObject ScoreManagerObj;    //スコアマネージャのオブジェクト
-    public GameObject MapManagerObj;      //マップマネージャのオブジェクト
+    public GameObject CameraObj;               //カメラのオブジェクト
+    public GameObject BGMObj;                  //BGMのオブジェクト
+    public GameObject RhythmObj;               //リズムのオブジェクト
+    public GameObject PerformanceManagerObj;   //パフォーマンスマネージャのオブジェクト
+    public GameObject PlayerManagerObj;        //プレイヤーマネージャのオブジェクト
+    public GameObject PlayersObj;              //プレイヤー達のオブジェクト
+    public GameObject EnemyManagerObj;         //エネミーマネージャのオブジェクト
+    public GameObject CountDownObj;            //カウントダウンのオブジェクト
+    public GameObject ScoreManagerObj;         //スコアマネージャのオブジェクト
+    public GameObject MapManagerObj;           //マップマネージャのオブジェクト
+    public GameObject BonusObj;                //ボーナスのオブジェクト
 
-    public GameObject PlayersObj;         //プレイヤー達のオブジェクト
+   
      
     int nCntEndCheck;   //ゲーム終了までのカウンタ
 
@@ -85,6 +88,11 @@ public class Manager : MonoBehaviour
             case GAME_PHASE.PHASE_CAMERA_PERFORMANCE :
                  CameraObj.GetComponent< CameraPerformance >( ).PerformanceMove( );
                  PlayerManagerObj.GetComponent< PlayerManager >( ).PlayersMove( );
+            break;
+
+             //ボーナスタイム
+            case GAME_PHASE.PHASE_BONUS :
+                 BonusObj.GetComponent< Bonus >( ).BonusTime( );
             break;
 
             //遷移先をチェック

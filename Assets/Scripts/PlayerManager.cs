@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour
     public float      fDist;                //プレイヤー達の移動距離
     public float      fMove;                //プレイヤー達の移動量
            int        nPerformanceTmp;
+
+    PerformanceManager PerformanceManagerObj;
         
 
 	void Start( )
@@ -37,7 +39,7 @@ public class PlayerManager : MonoBehaviour
         nTargetNo        = 0;
         fDist            = 0.0f;
 
-        //エネミーーマネージャのオブジェクトを取得
+        //エネミーマネージャのオブジェクトを取得
         EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( );
 
         //リズムのオブジェクトを取得
@@ -45,6 +47,8 @@ public class PlayerManager : MonoBehaviour
 
         //プレイヤー達のオブジェクトを取得
         PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
+
+        PerformanceManagerObj =  ManagerObj.GetComponent< Manager >( ).GetPerformanceManager( ).GetComponent< PerformanceManager >( );
 	}
 	
 
@@ -110,13 +114,25 @@ public class PlayerManager : MonoBehaviour
         PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
         fDist += fMove;
 
-        if( fCntFrame >= ( 60.0f / fBPM ) * nPerformanceTmp )
+        if( fCntFrame >= fBPM * nPerformanceTmp )
         {
             fCntFrame = 0.0f;
 
-            //敵を出現させる
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-            ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+            if( PerformanceManagerObj.GetnCntPerformance( ) == 3 )
+            {
+                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BONUS );
+            }
+            else if( PerformanceManagerObj.GetnCntPerformance( ) == 6 )
+            {
+                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                Debug.Log( "aaa");
+            }
+            else
+            {
+                //敵を出現させる
+                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+                ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+            }
         }
     }
 

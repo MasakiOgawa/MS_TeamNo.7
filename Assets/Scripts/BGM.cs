@@ -30,6 +30,6 @@ public class BGM : MonoBehaviour
     //BPMの取得
     public float GetBPM( )
     {
-        return 65.0f;
+        return 65.7f;
     }
 }

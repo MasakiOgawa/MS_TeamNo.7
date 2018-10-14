@@ -3,37 +3,49 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject    ManagerObj;            //マネージャのオブジェクト
-           GameObject    PlayersObj;            //プレイヤー達のオブジェクト
-    public GameObject    EnemyUpPrefab;         //上方向の敵のプレハブ
-    public GameObject    EnemyDownPrefab;       //下方向の敵のプレハブ
-    public GameObject    EnemyRightPrefab;      //右方向の敵のプレハブ
-    public GameObject    EnemyLeftPrefab;       //左方向の敵のプレハブ
-    public GameObject    TakeInEnemyPrefab;     //追従する敵のプレハブ
-           TextAsset     EnemyText;             //敵情報が格納されたファイルの情報
-           GameObject[ ] EnemyPrefabTmp;        //生成した敵のオブジェクト保存用配列
-           GameObject    TargetEnemy;           //現在ターゲットにされている敵のオブジェクト
-    public float         fRoadSide;             //道の幅16
-    public float         fPlayerToEnemyDist;    //プレイヤーと敵の距離11
-    public Vector2       LeftEndPos;            //左端の敵の座標
-    public float         fWidth;                //敵同士の横幅2.2??
-    public float         fLength;               //敵同士の縦幅13
-    public float         fTakeInEnemyDist;      //追従する敵同士の距離1.5
-    public int           nTakeInEnemyRange;     //敵同士の距離に乱数を追加
-           int           nCreateNo;             //生成する敵の番号
-           int           nCntLength;            //生成した段の数
+    public GameObject       ManagerObj;            //マネージャのオブジェクト
+           GameObject       PlayersObj;            //プレイヤー達のオブジェクト
+    public GameObject       EnemyUpPrefab;         //上方向の敵のプレハブ
+    public GameObject       EnemyDownPrefab;       //下方向の敵のプレハブ
+    public GameObject       EnemyRightPrefab;      //右方向の敵のプレハブ
+    public GameObject       EnemyLeftPrefab;       //左方向の敵のプレハブ
+    public GameObject       TakeInEnemyPrefab;     //追従する敵のプレハブ
+           TextAsset        EnemyText;             //敵情報が格納されたファイルの情報
+           GameObject[ , ]  EnemyPrefabTmp;        //生成した敵のオブジェクト保存用配列
+           GameObject       TargetEnemy;           //現在ターゲットにされている敵のオブジェクト
+    public float            fRoadSide;             //道の幅16
+    public float            fPlayerToEnemyDist;    //プレイヤーと敵の距離11
+    public Vector2          LeftEndPos;            //左端の敵の座標
+    public float            fWidth;                //敵同士の横幅2.2??
+    public float            fLength;               //敵同士の縦幅13
+    public float            fTakeInEnemyDist;      //追従する敵同士の距離1.5
+    public int              nTakeInEnemyRange;     //敵同士の距離に乱数を追加
+           int              nCreateNo;             //生成する敵の番号
+           int              nCntLength;            //生成した段の数
+
+
+    
   
 
 	void Start( )
     {
         //変数の初期化
-        EnemyPrefabTmp = new GameObject[ 8 ];
+        EnemyPrefabTmp = new GameObject[ 8 , 4 ];
         nCreateNo      = 0;
         nCntLength     = 0;
 
+        //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
-            EnemyPrefabTmp[ nCnt ] = null;
+            EnemyPrefabTmp[ nCnt , 0 ] = Instantiate( EnemyUpPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+            EnemyPrefabTmp[ nCnt , 1 ] = Instantiate( EnemyDownPrefab , new Vector3( 0.0f, 0.0f, 0.0f ) , Quaternion.identity );
+            EnemyPrefabTmp[ nCnt , 2 ] = Instantiate( EnemyLeftPrefab , new Vector3( 0.0f , 0.0f, 0.0f ) , Quaternion.identity );
+            EnemyPrefabTmp[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.identity );
+
+            EnemyPrefabTmp[ nCnt , 0 ].gameObject.SetActive( false );
+            EnemyPrefabTmp[ nCnt , 1 ].gameObject.SetActive( false );
+            EnemyPrefabTmp[ nCnt , 2 ].gameObject.SetActive( false );
+            EnemyPrefabTmp[ nCnt , 3 ].gameObject.SetActive( false );
         }
 
         //敵情報をファイルから読み込み
@@ -47,31 +59,33 @@ public class EnemyManager : MonoBehaviour
     //敵の生成
     public void Create( )
     {  
-        //プレイヤーのZ座標を取得
-        float fPosZ = PlayersObj.GetComponent< Transform >( ).position.z;
-        
-        //ファイルから方向を読み込み、プレハブを生成
+        float fPosZ = PlayersObj.transform.position.z;
+
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyUpPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ), LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 , 0 ].gameObject.SetActive( true );
+                EnemyPrefabTmp[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyDownPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 , 1 ].gameObject.SetActive( true );
+                EnemyPrefabTmp[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyLeftPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
+                EnemyPrefabTmp[ nCnt2 , 2 ].gameObject.SetActive( true );
+                EnemyPrefabTmp[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
-                EnemyPrefabTmp[ nCnt2 ] = Instantiate( EnemyRightPrefab , new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist ) , Quaternion.identity );
+               EnemyPrefabTmp[ nCnt2 , 3 ].gameObject.SetActive( true );
+               EnemyPrefabTmp[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else
             {
-                EnemyPrefabTmp[ nCnt2 ] = null;
+
             }
         }
 
@@ -79,7 +93,7 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
-        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN );
+        ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
     }
 
     
@@ -88,10 +102,12 @@ public class EnemyManager : MonoBehaviour
     {
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
-            if( EnemyPrefabTmp[ nCnt ] != null )
-            {
-                Destroy( EnemyPrefabTmp[ nCnt ].gameObject );
-                EnemyPrefabTmp[ nCnt ] = null;
+            for( int nCnt2 = 0; nCnt2 < 4; nCnt2++ )
+            {   
+                if( EnemyPrefabTmp[ nCnt , nCnt2 ].activeSelf == true )
+                {
+                    EnemyPrefabTmp[ nCnt , nCnt2 ].SetActive( false );
+                }
             }
         }
     }
@@ -100,19 +116,24 @@ public class EnemyManager : MonoBehaviour
     //ターゲットを設定
     public void SetTarget( int nTarget )
     {
-        if( EnemyPrefabTmp[ nTarget ] != null)
+        for( int nCnt = 0; nCnt < 4; nCnt++ )
         {
-            TargetEnemy = EnemyPrefabTmp[ nTarget ];
-        }
-        else
-        {
-          TargetEnemy = null;
+            if( EnemyPrefabTmp[ nTarget , nCnt ].activeSelf == true )
+            {
+                TargetEnemy = EnemyPrefabTmp[ nTarget , nCnt ];
+
+                break;
+            }
+            else
+            {
+                TargetEnemy = null;
+            }
         }
     }
 
 
     //ターゲットを取得
-    public GameObject GetTarget( )
+     public GameObject GetTarget( )
     {
         if( TargetEnemy != null )
         {
