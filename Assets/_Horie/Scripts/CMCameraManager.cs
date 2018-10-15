@@ -40,7 +40,7 @@ public class CMCameraManager : MonoBehaviour {
             // どれかのカットシーンを再生している場合
             if ( isPlayingCutScene[n] == true)
             {
-                Debug.Log("再生終了1");
+               // Debug.Log("再生終了1");
                 // 再生終了した場合
                 PlayableDirector pDirector = CutSceneCamera[n].GetComponent<PlayableDirector>();
                 if (pDirector.state != PlayState.Playing)
@@ -51,7 +51,7 @@ public class CMCameraManager : MonoBehaviour {
 
                     // Mainカメラを復活させる
                     MainCamera.SetActive(true);
-                    Debug.Log("再生終了2");
+                    //Debug.Log("再生終了2");
                     // 終了フラグにする
                     isPlayingCutScene[n] = false;
                 }
