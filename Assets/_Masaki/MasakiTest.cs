@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MasakiTest : MonoBehaviour {
 
+    public const string hoge = "masaki";
+
 	// Use this for initialization
 	void Start () {
 		
