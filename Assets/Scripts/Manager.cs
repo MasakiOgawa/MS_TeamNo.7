@@ -36,15 +36,15 @@ public class Manager : MonoBehaviour
     public GameObject MapManagerObj;           //マップマネージャのオブジェクト
     public GameObject BonusObj;                //ボーナスのオブジェクト
 
-   
-     
-    int nCntEndCheck;   //ゲーム終了までのカウンタ
-
+    PerformanceManager PerformanceManagerClass;
+    EnemyManager       EnemyManagerClass;
+    CountDown          CountDownClass;
 
     void Start( )
     {
-        //変数の初期化
-        nCntEndCheck = 0;
+        PerformanceManagerClass = PerformanceManagerObj.GetComponent< PerformanceManager >( );
+        EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
+        CountDownClass = CountDownObj.GetComponent< CountDown >( );
     }
 
 
@@ -55,22 +55,22 @@ public class Manager : MonoBehaviour
         {
             //BGMの再生
             case GAME_PHASE.PHASE_BGM_START :
-                BGMObj.GetComponent< BGM >( ).EmitBGM( );
+                //BGMObj.GetComponent< BGM >( ).EmitBGM( );
             break;
 
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
-                PerformanceManagerObj.GetComponent< PerformanceManager >( ).FirstPerformance( );
+                PerformanceManagerClass.FirstPerformance( );
             break;
 
             //敵の出現
             case GAME_PHASE.PHASE_ENEMY_APPEARANCE :
-                EnemyManagerObj.GetComponent< EnemyManager >( ).Create( );
+                EnemyManagerClass.Create( );
             break;
 
             //カウントダウン
             case GAME_PHASE.PHASE_COUNT_DOWN :
-                CountDownObj.GetComponent< CountDown >( ).ChangeText( );
+                CountDownClass.ChangeText( );
             break;
 
             //プレイヤーのダンス
@@ -81,7 +81,6 @@ public class Manager : MonoBehaviour
              //スコアの集計
             case GAME_PHASE.PHASE_AGGREGATE_SCORE :
                  ScoreManagerObj.GetComponent< ScoreManager >( ).AggregateScore( );
-                 nCntEndCheck++;
             break;
 
             //カメラのパフォーマンス
@@ -109,23 +108,6 @@ public class Manager : MonoBehaviour
             case GAME_PHASE.PHASE_RESULT :
             break;
         }
-	}
-
-
-    //ゲームの終了状態をチェック
-    void CheckGameEnd( )
-    {
-        //一定ターンが経過したら、終了時のパフォーマンスに遷移
-        if( nCntEndCheck == 500 )
-        {
-            GamePhase = GAME_PHASE.PHASE_END_PERFORMANCE;
-        }
-        else
-        {   
-            //実験！！ここで常にカメラパフォーマンスに移す！
-            GamePhase = GAME_PHASE.PHASE_CAMERA_PERFORMANCE;
-        }
-           
     }
 
 

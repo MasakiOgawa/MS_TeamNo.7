@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
            int              nCntLength;            //生成した段の数
 
 
-    
+    CountDown CountDownClass;
   
 
 	void Start( )
@@ -53,6 +53,8 @@ public class EnemyManager : MonoBehaviour
 
         //プレイヤー達のオブジェクトを取得
         PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
+
+        CountDownClass =  ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( );
 	}
 
 
@@ -93,6 +95,7 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
+        CountDownClass.SetText( );
         ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
     }
 
