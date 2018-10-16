@@ -16,6 +16,9 @@ public class CountDown : MonoBehaviour
            int        nCnt;
            bool       bFlg;
 
+    BGM  BGMObj;
+    bool BFlg;
+
 
 	void Start( )
     {
@@ -28,11 +31,9 @@ public class CountDown : MonoBehaviour
         //リズムのオブジェクトを取得
         RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
-        //カウントダウンオブジェクトを非表示にしておく
-       /* CountNo3Obj.SetActive( false );
-        CountNo2Obj.SetActive( false );
-        CountNo1Obj.SetActive( false );
-        CountGoObj.SetActive( false );*/
+        BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
+
+        bFlg = false;
 	}
 	
 
@@ -42,11 +43,25 @@ public class CountDown : MonoBehaviour
         //フレーム数を計測
 		fCntFrame += Time.deltaTime;
 
+       if( bFlg == false )
+       {
+           bFlg = true;
+           BGMObj.InitCollect( );
+           BGMObj.SetTime( 0 , fCntFrame );
+           BGMObj.SetAllFrame( );
+       }
+       else
+       {
+           BGMObj.SetTime( 1 , fCntFrame );
+       }
+
         //1拍毎にカウントダウン
         if( fCntFrame >= fBPM )
         {
-            bFlg      = true;
             fCntFrame = 0.0f;
+
+            BGMObj.SetAllFrame( );
+            bFlg = false;
           
             if( nCnt == 3 )
             {

@@ -21,6 +21,9 @@ public class PerformanceManager : MonoBehaviour
 
     PerformanceType[ ] aPerformanceType;   //パフォーマンスタイプの情報
 
+    BGM BGMObj;
+    bool bFlg;
+
 
     void Start( )
     {
@@ -31,6 +34,9 @@ public class PerformanceManager : MonoBehaviour
         fBPM             = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
         PlayerManagerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( );
         CountDownObj     = ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( );
+
+        BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
+        bFlg = false;
 
 
         aPerformanceType = new PerformanceType[ 10 ];
@@ -52,16 +58,31 @@ public class PerformanceManager : MonoBehaviour
     //最初のパフォーマンス
     public void FirstPerformance( )
     {
-        //フレーム数を計測
+         //フレーム数を計測
         fCntFrame += Time.deltaTime;
+
+        if( bFlg == false )
+        {
+            bFlg = true;
+            BGMObj.EmitBGM( );
+            BGMObj.SetTime( 0 , fCntFrame );
+            BGMObj.SetAllFrame( );
+        }
+        else
+        {
+            BGMObj.SetTime( 1 , fCntFrame );
+        }
+        
         
         //16拍でダンスの終了
         if( fCntFrame >= fBPM * 16.0f )
         {
             //パフォーマンスを終えたら、敵の生成
-            ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+           // ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
             fCntFrame = 0.0f;
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+
+            BGMObj.SetAllFrame( );
         }
     }
 
@@ -73,7 +94,7 @@ public class PerformanceManager : MonoBehaviour
         fCntFrame += Time.deltaTime;
         
         //16拍でダンスの終了
-        if( fCntFrame >= fBPM * 12.0f )
+        if( fCntFrame >= fBPM * 16.0f )
         {
             //パフォーマンスを終えたら、ランキングの生成
             Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
@@ -100,6 +121,7 @@ public class PerformanceManager : MonoBehaviour
 
             nCntPerformance++;
 
+            //最後のパフォーマンスに遷移
             if( nCntPerformance == 6 )
             {
                  ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
