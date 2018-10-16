@@ -12,7 +12,6 @@ public class Evaluation : MonoBehaviour
 	void Start( )
     {
         //変数の初期化
-        fMoveY    = 0.0f;
 	    fCntFrame = 0.0f;	
 	}
 	
@@ -25,7 +24,8 @@ public class Evaluation : MonoBehaviour
 
         if( fCntFrame >= fEvaluationEndFrame )
         {
-            Destroy( this.gameObject );
+            fCntFrame = 0.0f;
+            this.gameObject.SetActive( false );
         }
 	}
 }

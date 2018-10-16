@@ -27,7 +27,7 @@ public class BGM : MonoBehaviour
     public void EmitBGM( )
     {
         //BGMを再生
-        audioSource.Play( );
+       // audioSource.Play( );
 
         //最初のパフォーマンスに遷移
        // ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_FIRST_PERFORMANCE );

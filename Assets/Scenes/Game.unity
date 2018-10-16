@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 1
+  GamePhase: 2
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.5
+  fExcellentFrame: 0.3
 --- !u!23 &632992500
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.5
+  fExcellentFrame: 0.3
 --- !u!23 &684074295
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.5
+  fExcellentFrame: 0.3
 --- !u!23 &1648557948
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2104,12 +2104,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a696879448a26ce4eab227d22362f239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EvaluationBadPrefab: {fileID: 1527133751297510, guid: f791bcd036c990c4eb5c1fb63ad2d795,
+  EvaluationBadPrefab: {fileID: 1722106391772928, guid: f791bcd036c990c4eb5c1fb63ad2d795,
     type: 2}
-  EvaluationFinePrefab: {fileID: 1182309090063826, guid: e07ec6c688d286e4c8db9fdbbf5ba5b7,
+  EvaluationFinePrefab: {fileID: 1769623768151302, guid: e07ec6c688d286e4c8db9fdbbf5ba5b7,
     type: 2}
-  EvaluationExcellentPrefab: {fileID: 1459627691571838, guid: 00cc15b0bb711a54c9279411be45bb4a,
+  EvaluationExcellentPrefab: {fileID: 1446581866464456, guid: 00cc15b0bb711a54c9279411be45bb4a,
     type: 2}
+  EvaluationBadPrefabTmp: []
+  EvaluationFinePrefabTmp: []
+  EvaluationExcellentPrefabTmp: []
   ManagerObj: {fileID: 1040674}
 --- !u!1 &2094422707
 GameObject:

@@ -43,7 +43,7 @@ public class CountDown : MonoBehaviour
         //フレーム数を計測
 		fCntFrame += Time.deltaTime;
 
-       if( bFlg == false )
+ /*      if( bFlg == false )
        {
            bFlg = true;
            BGMObj.InitCollect( );
@@ -53,14 +53,14 @@ public class CountDown : MonoBehaviour
        else
        {
            BGMObj.SetTime( 1 , fCntFrame );
-       }
+       }*/
 
         //1拍毎にカウントダウン
         if( fCntFrame >= fBPM )
         {
             fCntFrame = 0.0f;
 
-            BGMObj.SetAllFrame( );
+         //   BGMObj.SetAllFrame( );
             bFlg = false;
           
             if( nCnt == 3 )

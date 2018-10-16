@@ -88,7 +88,7 @@ public class Example_gyro : MonoBehaviour
         //m_joyconR1 = m_joycons.Find(c => !c.isLeft);
         
         // ３本に満たない場合
-        if (m_joycons.Count < 3) Debug.Log("<<Warning : Not Enough JoyCon>> Connected JoyConNum :" + m_joycons.Count);
+     //   if (m_joycons.Count < 3) //Debug.Log("<<Warning : Not Enough JoyCon>> Connected JoyConNum :" + m_joycons.Count);
 
 
         int nCntRight = 0;
@@ -96,12 +96,12 @@ public class Example_gyro : MonoBehaviour
         for ( int nCnt = 0 ; nCnt < m_joycons.Count; nCnt ++)
         {
             // 現在のジョイコンのインデックス番号
-            Debug.Log("---Now JoyCon No." + nCnt + "--------------------------------------------------------");
+            //Debug.Log("---Now JoyCon No." + nCnt + "--------------------------------------------------------");
 
             // 今見てるコントローラーが右なのか左なのか
             if (m_joycons[nCnt].isLeft)
             {
-                Debug.Log("LeftController");
+                //Debug.Log("LeftController");
 
                 // Leftコントローラーを格納
                 m_joyconL1 = m_joycons[nCnt];
@@ -110,7 +110,7 @@ public class Example_gyro : MonoBehaviour
             }
             else
             {
-                Debug.Log("RightController");
+                //Debug.Log("RightController");
 
                 // 右1本目
                 if (nCntRight == 0)
@@ -128,7 +128,7 @@ public class Example_gyro : MonoBehaviour
                 }
             }
 
-           // Debug.Log( nCnt + "----------------------------------------------------------------------");
+           // //Debug.Log( nCnt + "----------------------------------------------------------------------");
         }
         
 
@@ -268,7 +268,7 @@ public class Example_gyro : MonoBehaviour
                         if ( m_prevGyro[nCnt].y < m_joyconL1.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconL1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
+                            //Debug.Log("joyconL1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconL1.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -281,7 +281,7 @@ public class Example_gyro : MonoBehaviour
                         if ( m_prevGyro[nCnt].z < m_joyconL1.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconL1 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
+                            //Debug.Log("joyconL1 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_LEFT_TRIGGER;
                             m_joyconL1.SetRumble(100, 100, 0.6f, 1);
                         }
@@ -294,7 +294,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].z > m_joyconL1.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconL1 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
+                            //Debug.Log("joyconL1 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_RIGHT_TRIGGER;
                             m_joyconL1.SetRumble(100, 9, 0.6f, 1);
                         }
@@ -306,7 +306,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].y > m_joyconL1.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconL1 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            //Debug.Log("joyconL1 : <color=orange>SHAKE_UP_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
                             m_joyconL1.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -379,7 +379,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].y < m_joyconR1.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
+                            //Debug.Log("joyconR1 : <color=red>SHAKE_FRONT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconR1.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -392,7 +392,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].z < m_joyconR1.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR1 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
+                            //Debug.Log("joyconR1 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_LEFT_TRIGGER;
                             m_joyconR1.SetRumble(100, 100, 0.6f, 1);
                         }
@@ -405,7 +405,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].z > m_joyconR1.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR1 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
+                            //Debug.Log("joyconR1 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_RIGHT_TRIGGER;
                             m_joyconR1.SetRumble(100, 9, 0.6f, 1);
                         }
@@ -417,7 +417,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].y > m_joyconR1.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR1 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            //Debug.Log("joyconR1 : <color=orange>SHAKE_UP_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
                             m_joyconR1.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -489,7 +489,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].y < m_joyconR2.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR2 : <color=red>SHAKE_FRONT_TRIGGER</color>");
+                            //Debug.Log("joyconR2 : <color=red>SHAKE_FRONT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_DOWN_TRIGGER;
                             m_joyconR2.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -502,7 +502,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].z < m_joyconR2.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR2 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
+                            //Debug.Log("joyconR2 : <color=blue>SHAKE_LEFT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_LEFT_TRIGGER;
                             m_joyconR2.SetRumble(100, 100, 0.6f, 1);
                         }
@@ -515,7 +515,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].z > m_joyconR2.GetGyro().z)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR2 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
+                            //Debug.Log("joyconR2 : <color=green>SHAKE_RIGHT_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_RIGHT_TRIGGER;
                             m_joyconR2.SetRumble(100, 9, 0.6f, 1);
                         }
@@ -528,7 +528,7 @@ public class Example_gyro : MonoBehaviour
                         if (m_prevGyro[nCnt].y > m_joyconR2.GetGyro().y)
                         {
                             // トリガーに切り替え
-                            Debug.Log("joyconR2 : <color=orange>SHAKE_UP_TRIGGER</color>");
+                            //Debug.Log("joyconR2 : <color=orange>SHAKE_UP_TRIGGER</color>");
                             m_stateShakeJoycon[nCnt] = SHAKE_STATE.SHAKE_UP_TRIGGER;
                             m_joyconR2.SetRumble(160, 320, 0.6f, 1);
                         }
@@ -685,7 +685,7 @@ public class Example_gyro : MonoBehaviour
                 return JOYCON_STATE.STATE_NONE;
         }
 
-        Debug.Log("Error : out of range");
+        //Debug.Log("Error : out of range");
         return JOYCON_STATE.STATE_NONE;
     }
 
@@ -723,7 +723,7 @@ public class Example_gyro : MonoBehaviour
             else
             {
                 if ( !isLeft)
-                    Debug.Log("<R1> ジャイロ：" + gyro);
+                    //Debug.Log("<R1> ジャイロ：" + gyro);
               
             }
 
@@ -735,7 +735,7 @@ public class Example_gyro : MonoBehaviour
             else
             {
                 if (!isLeft)
-                    Debug.Log("<R1> 加速度：" + accel);
+                    //Debug.Log("<R1> 加速度：" + accel);
             }
 
 
@@ -749,7 +749,7 @@ public class Example_gyro : MonoBehaviour
             else
             {
                 if (isLeft)
-                    Debug.Log("<L1> ジャイロ：" + gyro);
+                    //Debug.Log("<L1> ジャイロ：" + gyro);
             }
 
             if (m_joyconL1.GetButton(Joycon.Button.DPAD_DOWN) == false &&
@@ -760,7 +760,7 @@ public class Example_gyro : MonoBehaviour
             else
             {
                 if (isLeft)
-                    Debug.Log("<L1> 加速度：" + accel);
+                    //Debug.Log("<L1> 加速度：" + accel);
             }
             
 

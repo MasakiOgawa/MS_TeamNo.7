@@ -65,13 +65,14 @@ public class PerformanceManager : MonoBehaviour
         {
             bFlg = true;
             BGMObj.EmitBGM( );
-            BGMObj.SetTime( 0 , fCntFrame );
+        }
+        /*    BGMObj.SetTime( 0 , fCntFrame );
             BGMObj.SetAllFrame( );
         }
         else
         {
             BGMObj.SetTime( 1 , fCntFrame );
-        }
+        }*/
         
         
         //16拍でダンスの終了
@@ -82,7 +83,7 @@ public class PerformanceManager : MonoBehaviour
             fCntFrame = 0.0f;
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
-            BGMObj.SetAllFrame( );
+       //     BGMObj.SetAllFrame( );
         }
     }
 

@@ -17,6 +17,10 @@ public class ScoreManager : MonoBehaviour
     public GameObject EvaluationFinePrefab;
     public GameObject EvaluationExcellentPrefab;
 
+    public GameObject[ ] EvaluationBadPrefabTmp;
+    public GameObject[ ] EvaluationFinePrefabTmp;
+    public GameObject[ ] EvaluationExcellentPrefabTmp;
+
     //各評価のカウンタ
     int nCntBad;
     int nCntFine;
@@ -41,6 +45,21 @@ public class ScoreManager : MonoBehaviour
 
         //パフォーマンスマネージャのオブジェクトを取得
         PerformanceManagerObj = ManagerObj.GetComponent< Manager >( ).GetPerformanceManager( ).GetComponent< PerformanceManager >( );
+
+        EvaluationBadPrefabTmp       = new GameObject[ 3 ];
+        EvaluationFinePrefabTmp      = new GameObject[ 3 ];
+        EvaluationExcellentPrefabTmp = new GameObject[ 3 ];
+
+        for( int nCnt = 0; nCnt < 3; nCnt++ )
+        {
+            EvaluationBadPrefabTmp[ nCnt ]       = Instantiate( EvaluationBadPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+            EvaluationFinePrefabTmp[ nCnt ]      = Instantiate( EvaluationFinePrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+            EvaluationExcellentPrefabTmp[ nCnt ] = Instantiate( EvaluationExcellentPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+
+            EvaluationBadPrefabTmp[ nCnt ].gameObject.SetActive( false );
+            EvaluationFinePrefabTmp[ nCnt ].gameObject.SetActive( false );
+            EvaluationExcellentPrefabTmp[ nCnt ].gameObject.SetActive( false );
+        }
 	}
 	
 
@@ -50,17 +69,47 @@ public class ScoreManager : MonoBehaviour
         switch( Evaluation )
         {
             case EVALUATION.EVALUATION_BAD :
-                Instantiate( EvaluationBadPrefab , Pos , Quaternion.identity );
+                
+                for( int nCnt = 0; nCnt < 3; nCnt++ )
+                {
+                    if( EvaluationBadPrefabTmp[ nCnt ].gameObject.activeSelf == false )
+                    {
+                         EvaluationBadPrefabTmp[ nCnt ].gameObject.SetActive( true );
+                         EvaluationBadPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                         break;
+                    }
+                }
+
                 nCntBad++;
             break;
 
             case EVALUATION.EVALUATION_FINE :
-                Instantiate( EvaluationFinePrefab , Pos , Quaternion.identity );
+
+                 for( int nCnt = 0; nCnt < 3; nCnt++ )
+                 {
+                     if( EvaluationFinePrefabTmp[ nCnt ].gameObject.activeSelf == false )
+                     {
+                          EvaluationFinePrefabTmp[ nCnt ].gameObject.SetActive( true );
+                          EvaluationFinePrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                          break;
+                     }
+                 }
+                
                 nCntFine++;
             break;
 
             case EVALUATION.EVALUATION_EXCELLENT :
-                Instantiate( EvaluationExcellentPrefab , Pos , Quaternion.identity );
+
+                 for( int nCnt = 0; nCnt < 3; nCnt++ )
+                 {
+                     if( EvaluationExcellentPrefabTmp[ nCnt ].gameObject.activeSelf == false )
+                     {
+                          EvaluationExcellentPrefabTmp[ nCnt ].gameObject.SetActive( true );
+                          EvaluationExcellentPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                          break;
+                     }
+                 }
+              
                 nCntExcellent++;
             break;
         }
