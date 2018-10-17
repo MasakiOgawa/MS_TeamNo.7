@@ -122,7 +122,7 @@ public class ScoreManager : MonoBehaviour
         ScoreManager.nScore += ( nCntExcellent * 3 ) + ( nCntFine * 2 );
 
         //敵を追従させる
-        EnemyManagerObj.TakeIn( ( nCntExcellent * 3 ) + ( nCntFine * 2 ) );
+        EnemyManagerObj.TakeIn( /*( nCntExcellent * 3 ) + ( nCntFine * 2 )*/10 );
 
         //各評価のリセット
         nCntBad       = 0;

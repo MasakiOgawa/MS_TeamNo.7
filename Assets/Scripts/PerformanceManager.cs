@@ -25,6 +25,8 @@ public class PerformanceManager : MonoBehaviour
     bool bFlg;
     public float PerformanceStartTime;
 
+    public GameObject CMCameraManagerObj;
+
 
     void Start( )
     {
@@ -63,6 +65,7 @@ public class PerformanceManager : MonoBehaviour
         {
             bFlg = true;
             BGMObj.EmitBGM( );
+            CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
         }
 
         //16拍でダンスの終了
@@ -105,6 +108,23 @@ public class PerformanceManager : MonoBehaviour
 
         if( nCntPose == aPerformanceType[ nCntPerformance ].nPerformanceTiming )
         {
+            if( nCntPerformance == 0 )
+            {
+                CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 1 );
+            }
+            else if( nCntPerformance == 1 )
+            {
+                CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 2 );
+            }
+            else if( nCntPerformance == 2 )
+            {
+                CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
+            }
+            else if( nCntPerformance == 4 )
+            {
+                CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
+            }
+
             PlayerManagerObj.SetnPerformanceTmp( aPerformanceType[ nCntPerformance ].nPerformanceMeasure );
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
 
@@ -113,6 +133,7 @@ public class PerformanceManager : MonoBehaviour
             //最後のパフォーマンスに遷移
             if( nCntPerformance == 6 )
             {
+                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
                  ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
         }
