@@ -63,10 +63,10 @@ public class PlayerManager : MonoBehaviour
     public void Dance( )
     {
         //フレーム数を計測
-       // float fTmp = Time.deltaTime;
-        fHalfBeat = 
-        fOneBeat  = 
-		fFourBeat += Time.deltaTime;
+        float fTmp = Time.deltaTime;
+        fHalfBeat += fTmp;
+        fOneBeat  += fTmp;
+		fFourBeat += fTmp;
         
          //1拍毎にリズムを鳴らす
         if( fOneBeat >= fBPM /*|| bRhythmFlg == false*/ )

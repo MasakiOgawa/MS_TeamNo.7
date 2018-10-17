@@ -25,6 +25,8 @@ public class EnemyManager : MonoBehaviour
 
 
     CountDown CountDownClass;
+
+    public GameObject AuraSpotObj;
   
 
 	void Start( )
@@ -124,12 +126,14 @@ public class EnemyManager : MonoBehaviour
             if( EnemyPrefabTmp[ nTarget , nCnt ].activeSelf == true )
             {
                 TargetEnemy = EnemyPrefabTmp[ nTarget , nCnt ];
-
+            //    AuraSpotObj.SetActive( true );
+             //   AuraSpotObj.transform.position = new Vector3( TargetEnemy.transform.position.x , TargetEnemy.transform.position.y + 3.0f , TargetEnemy.transform.position.z );
                 break;
             }
             else
             {
                 TargetEnemy = null;
+            //    AuraSpotObj.SetActive( false );
             }
         }
     }

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 1
+  GamePhase: 2
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -397,6 +397,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &345592720
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1618574382}
+    m_Modifications:
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333038316353770, guid: 873df86ee603a904db70f4af3f652b5a,
+        type: 2}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 1831284502}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 873df86ee603a904db70f4af3f652b5a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &387755336 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400108, guid: b08c3bc239e6aab48a61ef6af3e6a57a, type: 3}
@@ -954,6 +1001,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &996749593 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1539954559909878, guid: 873df86ee603a904db70f4af3f652b5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 345592720}
+--- !u!4 &996749594 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4786287874301948, guid: 873df86ee603a904db70f4af3f652b5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 345592720}
 --- !u!1001 &1076306573
 Prefab:
   m_ObjectHideFlags: 0
@@ -1117,6 +1174,7 @@ MonoBehaviour:
   PlayerManagerObj: {fileID: 1232893690}
   CountDownObj: {fileID: 2094422711}
   PerformanceStartTime: 14.7
+  CMCameraManagerObj: {fileID: 996749593}
 --- !u!4 &1300189113
 Transform:
   m_ObjectHideFlags: 0
@@ -1414,6 +1472,53 @@ GameObject:
   m_PrefabParentObject: {fileID: 1813977107215812, guid: e172026ab3322b44db1af29af3cfe13e,
     type: 2}
   m_PrefabInternal: {fileID: 1441196130}
+--- !u!1 &1444690610 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1340758984110510, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14,
+    type: 2}
+  m_PrefabInternal: {fileID: 1461416156}
+--- !u!1001 &1461416156
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 32.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583610490347760, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 04ac7e2c4cb06284e9aec3ec0a3ecf14, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1605832857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1700,7 @@ Transform:
   - {fileID: 684074298}
   - {fileID: 1648557951}
   - {fileID: 1636949851}
+  - {fileID: 996749594}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2086,12 +2192,13 @@ MonoBehaviour:
   TakeInEnemyPrefab: {fileID: 1510964080347018, guid: 16e0a5872b2a12c45bf6f06b3ccedb93,
     type: 2}
   fRoadSide: 16
-  fPlayerToEnemyDist: 11
-  LeftEndPos: {x: -13.77, y: 2.22}
-  fWidth: 4
-  fLength: 13
-  fTakeInEnemyDist: 1.5
+  fPlayerToEnemyDist: 28
+  LeftEndPos: {x: -10.3, y: 2.22}
+  fWidth: 3
+  fLength: 8
+  fTakeInEnemyDist: 5.15
   nTakeInEnemyRange: 7
+  AuraSpotObj: {fileID: 1444690610}
 --- !u!4 &1994096189 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400108, guid: b08c3bc239e6aab48a61ef6af3e6a57a, type: 3}
