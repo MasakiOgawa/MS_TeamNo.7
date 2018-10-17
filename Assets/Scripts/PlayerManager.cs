@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour
            int        nPerformanceTmp;
 
     PerformanceManager PerformanceManagerObj;
+    PlayerLeft         PlayerLeftObj;
+    PlayerRight        PlayerRightObj;
+    PlayerCenter       PlayerCenterObj;
         
 
 	void Start( )
@@ -49,6 +52,10 @@ public class PlayerManager : MonoBehaviour
         PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
 
         PerformanceManagerObj =  ManagerObj.GetComponent< Manager >( ).GetPerformanceManager( ).GetComponent< PerformanceManager >( );
+
+        PlayerLeftObj = PlayerLeftPrefab.GetComponent< PlayerLeft >( );
+        PlayerRightObj = PlayerRightPrefab.GetComponent< PlayerRight >( );
+        PlayerCenterObj = PlayerCenterPrefab.GetComponent< PlayerCenter >( );
 	}
 	
 
@@ -56,16 +63,16 @@ public class PlayerManager : MonoBehaviour
     public void Dance( )
     {
         //フレーム数を計測
-        float fTmp = Time.deltaTime;
-        fHalfBeat += fTmp;
-        fOneBeat  += fTmp;
-		fFourBeat += fTmp;
+       // float fTmp = Time.deltaTime;
+        fHalfBeat = 
+        fOneBeat  = 
+		fFourBeat += Time.deltaTime;
         
          //1拍毎にリズムを鳴らす
-        if( fOneBeat >= fBPM || bRhythmFlg == false )
+        if( fOneBeat >= fBPM /*|| bRhythmFlg == false*/ )
         {
             fOneBeat   = 0.0f;
-            bRhythmFlg = true;
+         //   bRhythmFlg = true;
             
             RhythmObj.Emit( );
         }
@@ -81,15 +88,15 @@ public class PlayerManager : MonoBehaviour
             nTargetNo++;
 
             //ジョイコンを振れる様にする
-            PlayerLeftPrefab.GetComponent< PlayerLeft >( ).ReleasePoseFlg( );
-            PlayerCenterPrefab.GetComponent< PlayerCenter >( ).ReleasePoseFlg( );
-            PlayerRightPrefab.GetComponent< PlayerRight >( ).ReleasePoseFlg( );
+            PlayerLeftObj.ReleasePoseFlg( );
+            PlayerRightObj.ReleasePoseFlg( );
+            PlayerCenterObj.ReleasePoseFlg( );
         }
 
         //プレイヤーの振りを検出
-        PlayerLeftPrefab.GetComponent< PlayerLeft >( ).Pose( );
-        PlayerCenterPrefab.GetComponent< PlayerCenter >( ).Pose( );
-        PlayerRightPrefab.GetComponent< PlayerRight >( ).Pose( );
+        PlayerLeftObj.Pose( );
+        PlayerRightObj.Pose( );
+        PlayerCenterObj.Pose( );
 
         //四拍でダンスの終了
         if( fFourBeat >= fBPM * 4.0f )

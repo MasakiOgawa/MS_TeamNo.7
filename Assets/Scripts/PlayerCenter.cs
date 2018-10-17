@@ -45,7 +45,8 @@ public class PlayerCenter : MonoBehaviour
         if( bPoseFlg == false )
         {
             //上
-            if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER )
+            if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                Input.GetKeyDown(KeyCode.UpArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
@@ -76,7 +77,8 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //下
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER )
+            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.DownArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
@@ -107,7 +109,8 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //左
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER )
+            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
@@ -138,7 +141,8 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //右
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER )
+            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+                Input.GetKeyDown(KeyCode.RightArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );

@@ -95,7 +95,7 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
-        CountDownClass.SetText( );
+      //  CountDownClass.SetText( );
         ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
     }
 

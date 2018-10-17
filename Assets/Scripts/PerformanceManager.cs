@@ -23,6 +23,7 @@ public class PerformanceManager : MonoBehaviour
 
     BGM BGMObj;
     bool bFlg;
+    public float PerformanceStartTime;
 
 
     void Start( )
@@ -58,32 +59,19 @@ public class PerformanceManager : MonoBehaviour
     //最初のパフォーマンス
     public void FirstPerformance( )
     {
-         //フレーム数を計測
-        fCntFrame += Time.deltaTime;
-
         if( bFlg == false )
         {
             bFlg = true;
             BGMObj.EmitBGM( );
         }
-        /*    BGMObj.SetTime( 0 , fCntFrame );
-            BGMObj.SetAllFrame( );
-        }
-        else
-        {
-            BGMObj.SetTime( 1 , fCntFrame );
-        }*/
-        
-        
+
         //16拍でダンスの終了
-        if( fCntFrame >= fBPM * 16.0f )
+        if( BGMObj.GetBGMTime( ) >= PerformanceStartTime )
         {
             //パフォーマンスを終えたら、敵の生成
-           // ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+            ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
             fCntFrame = 0.0f;
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-
-       //     BGMObj.SetAllFrame( );
         }
     }
 

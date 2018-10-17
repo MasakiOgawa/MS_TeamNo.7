@@ -75,7 +75,7 @@ public class ScoreManager : MonoBehaviour
                     if( EvaluationBadPrefabTmp[ nCnt ].gameObject.activeSelf == false )
                     {
                          EvaluationBadPrefabTmp[ nCnt ].gameObject.SetActive( true );
-                         EvaluationBadPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                         EvaluationBadPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
                          break;
                     }
                 }
@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
                      if( EvaluationFinePrefabTmp[ nCnt ].gameObject.activeSelf == false )
                      {
                           EvaluationFinePrefabTmp[ nCnt ].gameObject.SetActive( true );
-                          EvaluationFinePrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                          EvaluationFinePrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
                           break;
                      }
                  }
@@ -105,7 +105,7 @@ public class ScoreManager : MonoBehaviour
                      if( EvaluationExcellentPrefabTmp[ nCnt ].gameObject.activeSelf == false )
                      {
                           EvaluationExcellentPrefabTmp[ nCnt ].gameObject.SetActive( true );
-                          EvaluationExcellentPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z );
+                          EvaluationExcellentPrefabTmp[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
                           break;
                      }
                  }
