@@ -40,17 +40,20 @@ public class CMCameraManager : MonoBehaviour {
             // どれかのカットシーンを再生している場合
             if ( isPlayingCutScene[n] == true)
             {
-               // Debug.Log("再生終了1");
+                //Debug.Log("再生終了1");
                 // 再生終了した場合
                 PlayableDirector pDirector = CutSceneCamera[n].GetComponent<PlayableDirector>();
                 if (pDirector.state != PlayState.Playing)
                 {
+
+                    // Mainカメラを復活させる
+                    MainCamera.GetComponent<Camera>().enabled = true;
+                    MainCamera.GetComponent<AudioListener>().enabled = true;
+
                     // CutScene , CutSceneCameraを終了させる
                     CutScene[n].SetActive(false);
                     CutSceneCamera[n].SetActive(false);
 
-                    // Mainカメラを復活させる
-                    MainCamera.SetActive(true);
                     //Debug.Log("再生終了2");
                     // 終了フラグにする
                     isPlayingCutScene[n] = false;
@@ -58,53 +61,56 @@ public class CMCameraManager : MonoBehaviour {
             }
         }
 
+        // 作業用BGM再生
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+           
+        }
+
         // 0を押してシーン0を再生
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            // カットシーンの数だけ繰り返す
-            for (int n = 0; n < CutScene.Length; n++)
-            {
-                // どれかのカットシーンを再生している場合
-                if (isPlayingCutScene[n] == true)
-                    return;
-            }
+            SetCutScene(0);
 
-            PlayableDirector pd = CutSceneCamera[0].GetComponent<PlayableDirector>();
-
-            // メインカメラを終了させる
-            MainCamera.SetActive(false);
-            // CutScene , CutSceneCameraを起動する
-            CutScene[0].SetActive(true);
-            CutSceneCamera[0].SetActive(true);
-            // 再生する
-            pd.Play();
-            isPlayingCutScene[0] = true;
-            //Debug.Log("再生開始");
         }
 
         // 1を押してシーン1を再生
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            // カットシーンの数だけ繰り返す
-            for (int n = 0; n < CutScene.Length; n++)
-            {
-                // どれかのカットシーンを再生している場合
-                if (isPlayingCutScene[n] == true)
-                    return;
-            }
+            SetCutScene(1);
 
-            PlayableDirector pd = CutSceneCamera[1].GetComponent<PlayableDirector>();
-
-            // メインカメラを終了させる
-            MainCamera.SetActive(false);
-            // CutScene , CutSceneCameraを起動する
-            CutScene[1].SetActive(true);
-            CutSceneCamera[1].SetActive(true);
-            // 再生する
-            pd.Play();
-            isPlayingCutScene[1] = true;
-            //Debug.Log("再生開始");
+ 
         }
+
+        // 2を押してシーン2を再生
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            
+        {
+            SetCutScene(2);
+
+        }
+        // 3を押してシーン3を再生
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetCutScene(3);
+
+        }
+        // 4を押してシーン4を再生
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetCutScene(4);
+
+        }
+
+        // 5を押してシーン5を再生
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetCutScene(5);
+            // BGMを再生する
+            //GetComponent<AudioSource>().Play();
+        }
+
+
 
     }
 
@@ -123,7 +129,10 @@ public class CMCameraManager : MonoBehaviour {
         PlayableDirector pd = CutSceneCamera[SceneNo].GetComponent<PlayableDirector>();
 
         // メインカメラを終了させる
-        MainCamera.SetActive(false);
+        //MainCamera.SetActive(false);
+        MainCamera.GetComponent<Camera>().enabled = false;
+        MainCamera.GetComponent<AudioListener>().enabled = false;
+
         // CutScene , CutSceneCameraを起動する
         CutScene[SceneNo].SetActive(true);
         CutSceneCamera[SceneNo].SetActive(true);
