@@ -40,6 +40,8 @@ public class Manager : MonoBehaviour
     EnemyManager       EnemyManagerClass;
     CountDown          CountDownClass;
 
+    float fAllFrame;
+
     void Start( )
     {
         PerformanceManagerClass = PerformanceManagerObj.GetComponent< PerformanceManager >( );

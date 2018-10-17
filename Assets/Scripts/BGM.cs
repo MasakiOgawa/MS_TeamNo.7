@@ -10,6 +10,7 @@ public class BGM : MonoBehaviour
            int         nCntCollect;
            float       fAllFrame;
            float       fAllFrameTmp;
+    public float       fBPM;
 
 
 	void Start( )
@@ -27,7 +28,7 @@ public class BGM : MonoBehaviour
     public void EmitBGM( )
     {
         //BGMを再生
-       // audioSource.Play( );
+        audioSource.Play( );
 
         //最初のパフォーマンスに遷移
        // ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_FIRST_PERFORMANCE );
@@ -37,7 +38,7 @@ public class BGM : MonoBehaviour
     //BPMの取得
     public float GetBPM( )
     {
-        return 65.5f;
+        return fBPM;
     }
 
 
@@ -68,4 +69,12 @@ public class BGM : MonoBehaviour
         fAllFrame += ( audioSource.time - fAllFrame );
        // Debug.Log( fAllFrame.ToString( ));
     }
+
+
+    //再生されてからの時間を取得
+    public float GetBGMTime( )
+    { 
+        return audioSource.time;
+    }
+
 }
