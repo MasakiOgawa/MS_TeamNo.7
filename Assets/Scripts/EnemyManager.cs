@@ -27,6 +27,8 @@ public class EnemyManager : MonoBehaviour
     CountDown CountDownClass;
 
     public GameObject AuraSpotObj;
+
+    Manager ManagerClass; 
   
 
 	void Start( )
@@ -57,6 +59,8 @@ public class EnemyManager : MonoBehaviour
         PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
 
         CountDownClass =  ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( );
+
+        ManagerClass =  ManagerObj.GetComponent< Manager >( );
 	}
 
 
@@ -97,8 +101,10 @@ public class EnemyManager : MonoBehaviour
         nCreateNo += 10;
 
         //カウントダウンの開始
-      //  CountDownClass.SetText( );
+        CountDownClass.SetText( );
         ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
+
+        ManagerClass.ResetlCntFrame( );
     }
 
     

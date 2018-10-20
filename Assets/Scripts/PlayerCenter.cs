@@ -13,6 +13,8 @@ public class PlayerCenter : MonoBehaviour
            GameObject    TmpObj;              //保存用のオブジェクト変数
            float         fTargetFrameConst;   //該当ターゲットのフレーム数の定数
     public float         fExcellentFrame;     //EXCELLENT判定のフレーム
+
+    Manager ManagerClass;
    
 	void Start( )
     {
@@ -35,6 +37,8 @@ public class PlayerCenter : MonoBehaviour
         ScoreManagerObj = ManagerObj.GetComponent< Manager >( ).GetScoreManager( ).GetComponent< ScoreManager >( );
 
         fTargetFrameConst = ( ( 60.0f / fBPM ) * 4.0f ) / 8.0f;
+
+        ManagerClass = ManagerObj.GetComponent< Manager >( );
 	}
 	
 
@@ -47,7 +51,7 @@ public class PlayerCenter : MonoBehaviour
             //上
             if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
                 Input.GetKeyDown(KeyCode.UpArrow))
-            {
+            { 
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
      
@@ -55,12 +59,13 @@ public class PlayerCenter : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Up" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    //float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -78,21 +83,23 @@ public class PlayerCenter : MonoBehaviour
             }
             //下
             else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
-                Input.GetKeyDown(KeyCode.DownArrow))
-            {
+                     Input.GetKeyDown(KeyCode.DownArrow))
+            {   
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
+
      
                 //一致していたら
                 if( TmpObj != null && TmpObj.tag == "Down" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                   // float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                   float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -110,7 +117,7 @@ public class PlayerCenter : MonoBehaviour
             }
             //左
             else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
-                Input.GetKeyDown(KeyCode.LeftArrow))
+                     Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
@@ -119,12 +126,13 @@ public class PlayerCenter : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Left" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    //float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -142,7 +150,7 @@ public class PlayerCenter : MonoBehaviour
             }
             //右
             else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
-                Input.GetKeyDown(KeyCode.RightArrow))
+                     Input.GetKeyDown(KeyCode.RightArrow))
             {
                 //敵の番号を取得
                 TmpObj = EnemyManagerObj.GetTarget( );
@@ -151,12 +159,13 @@ public class PlayerCenter : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Right" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                   // float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }

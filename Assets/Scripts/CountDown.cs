@@ -14,10 +14,11 @@ public class CountDown : MonoBehaviour
            float      fBPM;          //BPM
            float      fCntFrame;     //経過フレーム
            int        nCnt;
-           bool       bFlg;
 
     BGM  BGMObj;
     bool BFlg;
+
+    Manager ManagerClass;
 
 
 	void Start( )
@@ -26,14 +27,15 @@ public class CountDown : MonoBehaviour
 		fCntFrame = 0.0f;
         fBPM      = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
         nCnt      = 3;
-        bFlg      = false;
 
         //リズムのオブジェクトを取得
         RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
 
         BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
 
-        bFlg = false;
+        ManagerClass = ManagerObj.GetComponent< Manager >( );
+
+        BFlg = false;
 	}
 	
 
@@ -41,28 +43,28 @@ public class CountDown : MonoBehaviour
     public void ChangeText( )
     {
         //フレーム数を計測
-		fCntFrame += Time.deltaTime;
+		//fCntFrame += Time.deltaTime;
 
- /*      if( bFlg == false )
+       if( BFlg == false )
        {
-           bFlg = true;
-           BGMObj.InitCollect( );
+           BFlg = true;
+        /*   BGMObj.InitCollect( );
            BGMObj.SetTime( 0 , fCntFrame );
-           BGMObj.SetAllFrame( );
+           BGMObj.SetAllFrame( );*/
+           ManagerClass.ResetlCntFrame( );
        }
-       else
+    /*   else
        {
            BGMObj.SetTime( 1 , fCntFrame );
        }*/
 
         //1拍毎にカウントダウン
-        if( fCntFrame >= fBPM )
+        if( /*fCntFrame >= fBPM*/ManagerClass.GetlCntFrame( ) >= 55 )
         {
+            ManagerClass.ResetlCntFrame( );
+
             fCntFrame = 0.0f;
 
-         //   BGMObj.SetAllFrame( );
-            bFlg = false;
-          
             if( nCnt == 3 )
             {
                 nCnt = 2;
@@ -90,6 +92,10 @@ public class CountDown : MonoBehaviour
             {
                 nCnt = 3;
                 CountGoObj.SetActive( false );
+
+                BFlg = false;
+
+                RhythmObj.Emit( );
          
                 //プレイヤーのダンス
                 ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
