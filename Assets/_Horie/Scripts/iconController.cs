@@ -12,6 +12,19 @@ public class iconController : MonoBehaviour
     [SerializeField]
     private string SceneName;   // シーン遷移させたいシーンの名前
 
+    [SerializeField]
+    private GameObject ShakeParticleObj0;   // 振って出すパーティクル
+    [SerializeField]
+    private GameObject ShakeParticleObj1;   // 振って出すパーティクル
+    [SerializeField]
+    private GameObject ShakeParticleObj2;   // 振って出すパーティクル
+    [SerializeField]
+    private Vector3 ShakeParticlePos0;
+    [SerializeField]
+    private Vector3 ShakeParticlePos1;
+    [SerializeField]
+    private Vector3 ShakeParticlePos2;
+
     [SerializeField] public float reverseTime;
 
     // shakeItからreadyテクスチャに変更管理画面遷移
@@ -77,11 +90,23 @@ public class iconController : MonoBehaviour
                 shakeIt1.SetActive(false);
                 ready1.SetActive(true);
                 seconds = 0;
+                // particle再生
+                ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
             }
         }
         // readyのとき
         else
         {
+            state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_L1);
+            // 振られた
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.S))
+            {
+                // particle再生
+                ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
+            }
+
+
             if (seconds > reverseTime)
             {
                 isReady1 = false;
@@ -102,11 +127,23 @@ public class iconController : MonoBehaviour
                 shakeIt2.SetActive(false);
                 ready2.SetActive(true);
                 seconds = 0;
+
+                // particle再生
+                ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
             }
         }
         // readyのとき
         else
         {
+            state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_R1);
+            // 振られた
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.A))
+            {
+                // particle再生
+                ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
+            }
+
             if (seconds > reverseTime)
             {
                 isReady2 = false;
@@ -127,11 +164,22 @@ public class iconController : MonoBehaviour
                 shakeIt3.SetActive(false);
                 ready3.SetActive(true);
                 seconds = 0;
+                // particle再生
+                ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
             }
         }
         // readyのとき
         else
         {
+            state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_R2);
+            // 振られた
+            if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                Input.GetKeyDown(KeyCode.D))
+            {
+                // particle再生
+                ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
+            }
+
             if (seconds > reverseTime)
             {
                 isReady3 = false;
