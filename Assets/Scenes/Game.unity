@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 2
+  GamePhase: 1
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -166,6 +166,9 @@ MonoBehaviour:
   ScoreManagerObj: {fileID: 2000776136}
   MapManagerObj: {fileID: 452839873}
   BonusObj: {fileID: 86348944}
+  lCntFrame: 0
+  lCntHalfFrame: 0
+  lPoseFrame: 0
 --- !u!1 &86348944
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.3
+  fExcellentFrame: 0.5
 --- !u!33 &632992502
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -803,7 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.3
+  fExcellentFrame: 0.8
 --- !u!33 &684074297
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1173,8 +1176,9 @@ MonoBehaviour:
     type: 2}
   PlayerManagerObj: {fileID: 1232893690}
   CountDownObj: {fileID: 2094422711}
-  PerformanceStartTime: 14.7
+  PerformanceStartTime: 14.8
   CMCameraManagerObj: {fileID: 996749593}
+  ManagerClass: {fileID: 0}
 --- !u!4 &1300189113
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,7 +1819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
-  fExcellentFrame: 0.3
+  fExcellentFrame: 0.5
 --- !u!33 &1648557950
 MeshFilter:
   m_ObjectHideFlags: 0

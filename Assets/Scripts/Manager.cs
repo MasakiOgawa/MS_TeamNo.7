@@ -39,18 +39,28 @@ public class Manager : MonoBehaviour
     PerformanceManager PerformanceManagerClass;
     EnemyManager       EnemyManagerClass;
     CountDown          CountDownClass;
+    PlayerManager      PlayerManagerClass;
+    Bonus              BonusClass;
 
-    float fAllFrame;
+    public int lCntFrame;
+    public int lCntHalfFrame;
+    public int lPoseFrame;
 
     void Start( )
     {
         PerformanceManagerClass = PerformanceManagerObj.GetComponent< PerformanceManager >( );
         EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
         CountDownClass = CountDownObj.GetComponent< CountDown >( );
+        PlayerManagerClass = PlayerManagerObj.GetComponent< PlayerManager >( );
+        BonusClass = BonusObj.GetComponent< Bonus >( );
+
+        lCntFrame = 0;
+        lCntHalfFrame = 0;
+        lPoseFrame = 0;
     }
 
 
-	void Update( )
+	void FixedUpdate( )
     {
         //ゲームの進行状態によって遷移
         switch( GamePhase )
@@ -77,7 +87,9 @@ public class Manager : MonoBehaviour
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
-                PlayerManagerObj.GetComponent< PlayerManager >( ).Dance( );
+                PlayerManagerClass.Dance( );
+                lCntHalfFrame++;
+                lPoseFrame++;
             break;
 
              //スコアの集計
@@ -88,12 +100,12 @@ public class Manager : MonoBehaviour
             //カメラのパフォーマンス
             case GAME_PHASE.PHASE_CAMERA_PERFORMANCE :
                  CameraObj.GetComponent< CameraPerformance >( ).PerformanceMove( );
-                 PlayerManagerObj.GetComponent< PlayerManager >( ).PlayersMove( );
+                 PlayerManagerClass.PlayersMove( );
             break;
 
              //ボーナスタイム
             case GAME_PHASE.PHASE_BONUS :
-                 BonusObj.GetComponent< Bonus >( ).BonusTime( );
+                 BonusClass.BonusTime( );
             break;
 
             //遷移先をチェック
@@ -110,6 +122,8 @@ public class Manager : MonoBehaviour
             case GAME_PHASE.PHASE_RESULT :
             break;
         }
+
+        lCntFrame++;
     }
 
 
@@ -187,5 +201,41 @@ public class Manager : MonoBehaviour
     public GameObject GetPerformanceManager( )
     {
        return PerformanceManagerObj;
+    }
+
+
+    public int GetlCntFrame( )
+    {
+        return lCntFrame;
+    }
+
+
+    public void ResetlCntFrame( )
+    {
+        lCntFrame = 0;
+    }
+
+
+    public int GetlCntHalfFrame( )
+    {
+        return lCntHalfFrame;
+    }
+
+
+    public void ResetlCntHalfFrame( )
+    {
+        lCntHalfFrame = 0;
+    }
+
+
+    public int GetPoseFrame( )
+    {
+        return lPoseFrame;
+    }
+
+
+    public void ResetPoseFrame( )
+    {
+        lPoseFrame = 0;
     }
 }

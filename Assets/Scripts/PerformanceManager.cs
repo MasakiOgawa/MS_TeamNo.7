@@ -26,6 +26,7 @@ public class PerformanceManager : MonoBehaviour
     public float PerformanceStartTime;
 
     public GameObject CMCameraManagerObj;
+    public Manager ManagerClass;
 
 
     void Start( )
@@ -40,6 +41,8 @@ public class PerformanceManager : MonoBehaviour
 
         BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
         bFlg = false;
+
+        ManagerClass = ManagerObj.GetComponent< Manager >( );
 
 
         aPerformanceType = new PerformanceType[ 10 ];
@@ -69,12 +72,14 @@ public class PerformanceManager : MonoBehaviour
         }
 
         //16拍でダンスの終了
-        if( BGMObj.GetBGMTime( ) >= PerformanceStartTime )
+        if( /*BGMObj.GetBGMTime( ) >= PerformanceStartTime*/ManagerClass.GetlCntFrame( ) >= 885 )
         {
             //パフォーマンスを終えたら、敵の生成
-            ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+       //     CountDownObj.SetText( );
             fCntFrame = 0.0f;
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+
+            ManagerClass.ResetlCntFrame( );
         }
     }
 
@@ -83,10 +88,10 @@ public class PerformanceManager : MonoBehaviour
     public void FinalPerformance( )
     {
          //フレーム数を計測
-        fCntFrame += Time.deltaTime;
+        //fCntFrame += Time.deltaTime;
         
         //16拍でダンスの終了
-        if( fCntFrame >= fBPM * 16.0f )
+        if( ManagerClass.GetlCntFrame( ) >= 885 )
         {
             //パフォーマンスを終えたら、ランキングの生成
             Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
@@ -124,7 +129,7 @@ public class PerformanceManager : MonoBehaviour
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
             }
-
+          
             PlayerManagerObj.SetnPerformanceTmp( aPerformanceType[ nCntPerformance ].nPerformanceMeasure );
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
 
@@ -140,9 +145,11 @@ public class PerformanceManager : MonoBehaviour
         //敵を生成する
         else
         {
-            CountDownObj.SetText( );
+          //  CountDownObj.SetText( );
             ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
         }
+
+        ManagerClass.ResetlCntFrame( );
     }
 
 

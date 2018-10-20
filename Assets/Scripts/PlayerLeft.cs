@@ -13,6 +13,8 @@ public class PlayerLeft : MonoBehaviour
            GameObject    TmpObj;              //保存用のオブジェクト変数
            float         fTargetFrameConst;   //該当ターゲットのフレーム数の定数
     public float         fExcellentFrame;     //EXCELLENT判定のフレーム
+
+    Manager ManagerClass;
    
 	void Start( )
     {
@@ -35,6 +37,8 @@ public class PlayerLeft : MonoBehaviour
         ScoreManagerObj = ManagerObj.GetComponent< Manager >( ).GetScoreManager( ).GetComponent< ScoreManager >( );
 
         fTargetFrameConst = ( ( 60.0f / fBPM ) * 4.0f ) / 8.0f;
+
+        ManagerClass = ManagerObj.GetComponent< Manager >( );
 	}
 	
 
@@ -54,12 +58,12 @@ public class PlayerLeft : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Up" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -85,12 +89,12 @@ public class PlayerLeft : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Down" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -116,12 +120,12 @@ public class PlayerLeft : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Left" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
@@ -147,12 +151,12 @@ public class PlayerLeft : MonoBehaviour
                 if( TmpObj != null && TmpObj.tag == "Right" )//現在エクセレント
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = fTargetFrameConst * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentFrame )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
                         ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }

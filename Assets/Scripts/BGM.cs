@@ -77,4 +77,10 @@ public class BGM : MonoBehaviour
         return audioSource.time;
     }
 
+
+    //BGMの再生箇所を設定
+    public void SetBGMTime( float fSetTime )
+    { 
+        audioSource.time = fSetTime;
+    }
 }
