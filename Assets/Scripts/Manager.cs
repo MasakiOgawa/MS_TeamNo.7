@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class Manager : MonoBehaviour
@@ -8,7 +7,6 @@ public class Manager : MonoBehaviour
     //列挙型定義
     public enum GAME_PHASE
     { 
-        PHASE_BGM_START            ,   //BGMの再生
         PHASE_FIRST_PERFORMANCE    ,   //ゲーム開始時の演出
         PHASE_ENEMY_APPEARANCE     ,   //敵の出現
         PHASE_COUNT_DOWN           ,   //カウントダウン
@@ -33,7 +31,6 @@ public class Manager : MonoBehaviour
     public GameObject EnemyManagerObj;         //エネミーマネージャのオブジェクト
     public GameObject CountDownObj;            //カウントダウンのオブジェクト
     public GameObject ScoreManagerObj;         //スコアマネージャのオブジェクト
-    public GameObject MapManagerObj;           //マップマネージャのオブジェクト
     public GameObject BonusObj;                //ボーナスのオブジェクト
 
     PerformanceManager PerformanceManagerClass;
@@ -42,9 +39,10 @@ public class Manager : MonoBehaviour
     PlayerManager      PlayerManagerClass;
     Bonus              BonusClass;
 
-    public int lCntFrame;
-    public int lCntHalfFrame;
-    public int lPoseFrame;
+    public float fCntFrame;       //フレーム数のカウンタ
+    public float fCntHalfFrame;   //半拍分のカウンタ
+    public float fPoseFrame;      //四拍分のカウンタ
+
 
     void Start( )
     {
@@ -54,22 +52,21 @@ public class Manager : MonoBehaviour
         PlayerManagerClass = PlayerManagerObj.GetComponent< PlayerManager >( );
         BonusClass = BonusObj.GetComponent< Bonus >( );
 
-        lCntFrame = 0;
-        lCntHalfFrame = 0;
-        lPoseFrame = 0;
+        //フレームカウンタの初期化
+        fCntFrame     = 0;
+        fCntHalfFrame = 0;
+        fPoseFrame    = 0;
     }
 
 
+    //一定間隔で呼ばれる
 	void FixedUpdate( )
     {
+        fCntFrame += 0.01666667f;
+
         //ゲームの進行状態によって遷移
         switch( GamePhase )
         {
-            //BGMの再生
-            case GAME_PHASE.PHASE_BGM_START :
-                //BGMObj.GetComponent< BGM >( ).EmitBGM( );
-            break;
-
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
                 PerformanceManagerClass.FirstPerformance( );
@@ -77,19 +74,19 @@ public class Manager : MonoBehaviour
 
             //敵の出現
             case GAME_PHASE.PHASE_ENEMY_APPEARANCE :
-                EnemyManagerClass.Create( );
+                EnemyManagerClass.ActiveTrue( );
             break;
 
             //カウントダウン
             case GAME_PHASE.PHASE_COUNT_DOWN :
-                CountDownClass.ChangeText( );
+                CountDownClass.ChangeCount( );
             break;
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
                 PlayerManagerClass.Dance( );
-                lCntHalfFrame++;
-                lPoseFrame++;
+                fCntHalfFrame += 0.01666667f; ///???
+                fPoseFrame    += 0.01666667f; ///??
             break;
 
              //スコアの集計
@@ -121,9 +118,7 @@ public class Manager : MonoBehaviour
             //リザルト
             case GAME_PHASE.PHASE_RESULT :
             break;
-        }
-
-        lCntFrame++;
+        }  
     }
 
 
@@ -183,13 +178,6 @@ public class Manager : MonoBehaviour
     }
 
 
-    //マップマネージャのオブジェクトを取得
-    public GameObject GetMapManager( )
-    {
-       return MapManagerObj;
-    }
-
-
     //プレイヤー達のオブジェクトを取得
     public GameObject GetPlayers( )
     {
@@ -204,38 +192,38 @@ public class Manager : MonoBehaviour
     }
 
 
-    public int GetlCntFrame( )
+    public float GetfCntFrame( )
     {
-        return lCntFrame;
+        return fCntFrame;
     }
 
 
-    public void ResetlCntFrame( )
+    public void ResetfCntFrame( )
     {
-        lCntFrame = 0;
+        fCntFrame = 0;
     }
 
 
-    public int GetlCntHalfFrame( )
+    public float GetfCntHalfFrame( )
     {
-        return lCntHalfFrame;
+        return fCntHalfFrame;
     }
 
 
-    public void ResetlCntHalfFrame( )
+    public void ResetfCntHalfFrame( )
     {
-        lCntHalfFrame = 0;
+        fCntHalfFrame = 0;
     }
 
 
-    public int GetPoseFrame( )
+    public float GetPoseFrame( )
     {
-        return lPoseFrame;
+        return fPoseFrame;
     }
 
 
-    public void ResetPoseFrame( )
+    public void ResetfPoseFrame( )
     {
-        lPoseFrame = 0;
+        fPoseFrame = 0;
     }
 }
