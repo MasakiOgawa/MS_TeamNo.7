@@ -5,113 +5,90 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
-    public GameObject ManagerObj;    //マネージャのオブジェクト
-    public GameObject CountNo3Obj;   //3のオブジェクト
-    public GameObject CountNo2Obj;   //2のオブジェクト
-    public GameObject CountNo1Obj;   //1のオブジェクト
-    public GameObject CountGoObj;    //GOのオブジェクト
-           Rhythm     RhythmObj;     //リズムのオブジェクト
-           float      fBPM;          //BPM
-           float      fCntFrame;     //経過フレーム
-           int        nCnt;
-
-    BGM  BGMObj;
-    bool BFlg;
-
-    Manager ManagerClass;
+           Manager    ManagerClass;   //マネージャのクラス
+    public GameObject ManagerObj;     //マネージャのオブジェクト
+    public GameObject CountNo3Obj;    //3のオブジェクト
+    public GameObject CountNo2Obj;    //2のオブジェクト
+    public GameObject CountNo1Obj;    //1のオブジェクト
+    public GameObject CountGoObj;     //GOのオブジェクト
+           BGM        BGMClass;       //BGMのクラス
+           Rhythm     RhythmClass;    //リズムのクラス
+           int        nCountDown;     //カウントダウンのカウンタ
+           bool       BFlg;//??
 
 
 	void Start( )
     {
-        //変数の初期化
-		fCntFrame = 0.0f;
-        fBPM      = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
-        nCnt      = 3;
+          //変数の初期化
+        nCountDown = 3;
+        BFlg       = false;
 
-        //リズムのオブジェクトを取得
-        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
-
-        BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
-
+        //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
-
-        BFlg = false;
+        BGMClass     = ManagerClass.GetBGM( ).GetComponent< BGM >( );
+        RhythmClass  = ManagerClass.GetRhythm( ).GetComponent< Rhythm >( );
 	}
 	
 
-    //テキストの内容をカウントダウン
-    public void ChangeText( )
+    //カウントダウン
+    public void ChangeCount( )
     {
-        //フレーム数を計測
-		//fCntFrame += Time.deltaTime;
-
        if( BFlg == false )
        {
            BFlg = true;
-        /*   BGMObj.InitCollect( );
-           BGMObj.SetTime( 0 , fCntFrame );
-           BGMObj.SetAllFrame( );*/
-           ManagerClass.ResetlCntFrame( );
-       }
-    /*   else
-       {
-           BGMObj.SetTime( 1 , fCntFrame );
-       }*/
+       //    ManagerClass.ResetfCntFrame( );
+       }//??
 
         //1拍毎にカウントダウン
-        if( /*fCntFrame >= fBPM*/ManagerClass.GetlCntFrame( ) >= 55 )
+        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f )
         {
-            ManagerClass.ResetlCntFrame( );
+            ManagerClass.ResetfCntFrame( );//??
 
-            fCntFrame = 0.0f;
-
-            if( nCnt == 3 )
+            if( nCountDown == 3 )
             {
-                nCnt = 2;
+                nCountDown = 2;
                 CountNo3Obj.SetActive( false );
                 CountNo2Obj.SetActive( true );
-                RhythmObj.Emit( );
+                RhythmClass.Emit( );
             }
-            else if( nCnt == 2 )
+            else if( nCountDown == 2 )
             {
-                nCnt = 1;
+                nCountDown = 1;
                 CountNo2Obj.SetActive( false );
                 CountNo1Obj.SetActive( true );
-                RhythmObj.Emit( );
+                RhythmClass.Emit( );
             }
-            else if( nCnt == 1 )
+            else if( nCountDown == 1 )
             {
-                nCnt = 0;
+                nCountDown = 0;
                 CountNo1Obj.SetActive( false );
                 CountGoObj.SetActive( true );
-                RhythmObj.Emit( );
+                RhythmClass.Emit( );
             }
-
             //カウントダウンの終了
-            else if( nCnt == 0 )
+            else if( nCountDown == 0 )
             {
-                nCnt = 3;
+                BFlg = false;//??
+
+                nCountDown = 3;
                 CountGoObj.SetActive( false );
-
-                BFlg = false;
-
-                RhythmObj.Emit( );
+                RhythmClass.Emit( );
          
                 //プレイヤーのダンス
-                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
+                ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
             }
         }
     }
 
 
-    //カウントダウンテキストを可視化
-    public void SetText( )
+    //カウントダウンを可視化
+    public void ActiveCountDown( )
     {
-        if( ManagerObj.GetComponent< Manager >( ).GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
+        if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
         {
-            nCnt = 3;
+            nCountDown = 3;
             CountNo3Obj.SetActive( true );
-            RhythmObj.Emit( );
+            RhythmClass.Emit( );
         }
     }
 }
