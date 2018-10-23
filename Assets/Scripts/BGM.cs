@@ -21,4 +21,11 @@ public class BGM : MonoBehaviour
     {
         AudioSource.Play( );
     }
+
+
+    //BGMの再生位置を設定
+    public void SetBGM( float fBGMTime )
+    {
+        AudioSource.time = fBGMTime;
+    }
 }

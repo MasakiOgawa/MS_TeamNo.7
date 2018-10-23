@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         //1拍毎にリズムを鳴らす
-        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f ) 
+        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f )
         {
             nCntRhythm++;
 
