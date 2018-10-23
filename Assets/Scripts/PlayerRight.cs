@@ -4,41 +4,27 @@ using UnityEngine;
 
 public class PlayerRight : MonoBehaviour
 {
-    public GameObject    ManagerObj;          //マネージャのオブジェクト
-           Example_gyro  ControllerObj;       //コントローラのオブジェクト
-           PlayerManager PlayerManagerObj;    //プレイヤーマネージャのオブジェクト
-           EnemyManager  EnemyManagerObj;     //エネミーマネージャのオブジェクト
-           ScoreManager  ScoreManagerObj;     //スコアマネージャのオブジェクト
-    public bool          bPoseFlg;            //判定重複防止のフラグ
-           GameObject    TmpObj;              //保存用のオブジェクト変数
-           float         fTargetFrameConst;   //該当ターゲットのフレーム数の定数
-    public float         fExcellentFrame;     //EXCELLENT判定のフレーム
+           Manager       ManagerClass;         //マネージャのクラス
+    public GameObject    ManagerObj;           //マネージャのオブジェクト
+           Example_gyro  ControllerClass;      //コントローラのクラス
+           PlayerManager PlayerManagerClass;   //プレイヤーマネージャのクラス
+           EnemyManager  EnemyManagerClass;    //エネミーマネージャのクラス
+           ScoreManager  ScoreManagerClass;    //スコアマネージャのクラス
+           GameObject    EnemyObj;             //敵オブジェクト保存用の変数
+    public bool          bPoseFlg;             //判定重複防止のフラグ
+        
 
-    Manager ManagerClass;
-   
 	void Start( )
     {
-        //BPMを取得
-        float fBPM = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
-
         //変数の初期化
 		bPoseFlg = false;
 
-        //コントローラのオブジェクトを取得
-        ControllerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< Example_gyro >( );
-
-        //プレイヤーマネージャのオブジェクトを取得
-        PlayerManagerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( );
-
-        //エネミーーマネージャのオブジェクトを取得
-        EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( );
-
-        //スコアマネージャのオブジェクトを取得
-        ScoreManagerObj = ManagerObj.GetComponent< Manager >( ).GetScoreManager( ).GetComponent< ScoreManager >( );
-
-        fTargetFrameConst = ( ( 60.0f / fBPM ) * 4.0f ) / 8.0f;
-
-        ManagerClass = ManagerObj.GetComponent< Manager >( );
+        //各クラスの情報を取得
+        ManagerClass       = ManagerObj.GetComponent< Manager>( );
+        ControllerClass    = ManagerClass.GetPlayerManager( ).GetComponent< Example_gyro >( );
+        PlayerManagerClass = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( );
+        EnemyManagerClass  = ManagerClass.GetEnemyManager( ).GetComponent< EnemyManager >( );
+        ScoreManagerClass  = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( ); 
 	}
 	
 
@@ -49,125 +35,129 @@ public class PlayerRight : MonoBehaviour
         if( bPoseFlg == false )
         {
             //上
-            if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER )
+            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                Input.GetKeyDown( KeyCode.UpArrow ) )
             { 
-                //敵の番号を取得
-                TmpObj = EnemyManagerObj.GetTarget( );
+                //現在の敵の情報を取得
+                EnemyObj = EnemyManagerClass.GetTarget( );
      
                 //一致していたら
-                if( TmpObj != null && TmpObj.tag == "Up" )//現在エクセレント
+                if( EnemyObj != null && EnemyObj.tag == "Up" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
                     else
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
                 }
                 else
                 {
-                   ScoreManagerObj.Create(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
 
                 bPoseFlg = true;
             }
             //下
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER )
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                     Input.GetKeyDown( KeyCode.DownArrow ) )
             {   
-                //敵の番号を取得
-                TmpObj = EnemyManagerObj.GetTarget( );
-     
+                //現在の敵の情報を取得
+                EnemyObj = EnemyManagerClass.GetTarget( );
+
                 //一致していたら
-                if( TmpObj != null && TmpObj.tag == "Down" )//現在エクセレント
+                if( EnemyObj != null && EnemyObj.tag == "Down" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                   float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
                     else
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
                 }
                 else
                 {
-                    ScoreManagerObj.Create(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                    ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
 
                 bPoseFlg = true;
             }
             //左
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER )
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                     Input.GetKeyDown( KeyCode.LeftArrow ) )
             {
-                //敵の番号を取得
-                TmpObj = EnemyManagerObj.GetTarget( );
+                //現在の敵の情報を取得
+                EnemyObj = EnemyManagerClass.GetTarget( );
      
                  //一致していたら
-                if( TmpObj != null && TmpObj.tag == "Left" )//現在エクセレント
+                if( EnemyObj != null && EnemyObj.tag == "Left" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
                     else 
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
                 }
                 else
                 {
-                   ScoreManagerObj.Create(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
 
                 bPoseFlg = true;
             }
             //右
-            else if( ControllerObj.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER )
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+                     Input.GetKeyDown( KeyCode.RightArrow ) )
             {
-                //敵の番号を取得
-                TmpObj = EnemyManagerObj.GetTarget( );
+                //現在の敵の情報を取得
+                EnemyObj = EnemyManagerClass.GetTarget( );
      
                 //一致していたら
-                if( TmpObj != null && TmpObj.tag == "Right" )//現在エクセレント
+                if( EnemyObj != null && EnemyObj.tag == "Right" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetlCntFrame( );//PlayerManagerObj.GetFourBeat( );
+                    float fTmp = ManagerClass.GetPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = /*fTargetFrameConst*/28 * ( PlayerManagerObj.GetTargetNo( ) - 1 );
+                    float fTargetFrame =0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
                     else
                     {
-                        ScoreManagerObj.Create( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
                 }
                 else
                 {
-                   ScoreManagerObj.Create(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
 
                 //コントローラを触れない様にする
@@ -178,7 +168,7 @@ public class PlayerRight : MonoBehaviour
 
 
     //コントローラの判定を開始
-    public void ReleasePoseFlg( )
+    public void ReleasebPoseFlg( )
     {
         bPoseFlg = false;
     }

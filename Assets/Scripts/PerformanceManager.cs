@@ -4,82 +4,76 @@ using UnityEngine;
 
 public class PerformanceManager : MonoBehaviour
 {
-    public GameObject    ManagerObj;            //マネージャのオブジェクト
-    public GameObject    ResultManagerPrefab;   //リザルトマネージャのプレハブ
-    public PlayerManager PlayerManagerObj;      //プレイヤーマネージャのオブジェクト
-    public CountDown     CountDownObj;          //カウントダウンのオブジェクト
-           float         fBPM;                  //BPM
-           float         fCntFrame;             //フレーム数のカウンタ
-           int           nCntPose;              //プレイヤーのダンス数のカウンタ
-           int           nCntPerformance;       //パフォーマンス数のカウンタ
-
+    //列挙型定義
     struct PerformanceType
     {
-        public int nPerformanceTiming;    //何回ダンスを行った後に、パフォーマンスに入るか？
-        public int nPerformanceMeasure;   //何小節パフォーマンスを行うか？
+        public int nCntTiming;   //何回ダンスを行った後にパフォーマンスに入るか？
+        public int nBar;         //何小節パフォーマンスを行うか？
     }
 
-    PerformanceType[ ] aPerformanceType;   //パフォーマンスタイプの情報
-
-    BGM BGMObj;
-    bool bFlg;
-    public float PerformanceStartTime;
-
-    public GameObject CMCameraManagerObj;
-    public Manager ManagerClass;
-
+           Manager            ManagerClass;           //マネージャのクラス
+    public GameObject         ManagerObj;             //マネージャのオブジェクト
+           BGM                BGMClass;               //BGmのクラス
+           PlayerManager      PlayerManagerClass;     //プレイヤーマネージャのクラス
+           CountDown          CountDownClass;         //カウントダウンのクラス
+    public GameObject         ResultManagerPrefab;    //リザルトマネージャのプレハブ
+    public GameObject         CMCameraManagerObj;
+           PerformanceType[ ] aPerformanceType;       //パフォーマンス情報の配列
+           int                nCntDance;              //ダンス数のカウンタ
+           int                nCntPerformance;        //パフォーマンス数のカウンタ
+           bool               bFlg;
+   
 
     void Start( )
     {
         //変数の初期化
-        fCntFrame        = 0.0f;
-        nCntPose         = 0;
-        nCntPerformance  = 0;
-        fBPM             = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
-        PlayerManagerObj = ManagerObj.GetComponent< Manager >( ).GetPlayerManager( ).GetComponent< PlayerManager >( );
-        CountDownObj     = ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( );
-
-        BGMObj = ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( );
-        bFlg = false;
-
-        ManagerClass = ManagerObj.GetComponent< Manager >( );
-
+        nCntDance       = 0;
+        nCntPerformance = 0;
+        bFlg            = false;
 
         aPerformanceType = new PerformanceType[ 10 ];
-        aPerformanceType[ 0 ].nPerformanceTiming  = 4;
-        aPerformanceType[ 0 ].nPerformanceMeasure = 16;
-        aPerformanceType[ 1 ].nPerformanceTiming  = 6;
-        aPerformanceType[ 1 ].nPerformanceMeasure = 8;
-        aPerformanceType[ 2 ].nPerformanceTiming  = 8;
-        aPerformanceType[ 2 ].nPerformanceMeasure = 8; 
-        aPerformanceType[ 3 ].nPerformanceTiming  = 0;
-        aPerformanceType[ 3 ].nPerformanceMeasure = 0; 
-        aPerformanceType[ 4 ].nPerformanceTiming  = 9;
-        aPerformanceType[ 4 ].nPerformanceMeasure = 16; 
-        aPerformanceType[ 5 ].nPerformanceTiming  = 15;
-        aPerformanceType[ 5 ].nPerformanceMeasure = 16;   
+        aPerformanceType[ 0 ].nCntTiming = 4;
+        aPerformanceType[ 0 ].nBar       = 16;
+        aPerformanceType[ 1 ].nCntTiming = 6;
+        aPerformanceType[ 1 ].nBar       = 8;
+        aPerformanceType[ 2 ].nCntTiming = 8;
+        aPerformanceType[ 2 ].nBar       = 8; 
+        aPerformanceType[ 3 ].nCntTiming = 0;
+        aPerformanceType[ 3 ].nBar       = 0; 
+        aPerformanceType[ 4 ].nCntTiming = 9;
+        aPerformanceType[ 4 ].nBar       = 16; 
+        aPerformanceType[ 5 ].nCntTiming = 15;
+        aPerformanceType[ 5 ].nBar       = 16;   
+
+        //各クラスの情報を取得
+        ManagerClass       = ManagerObj.GetComponent< Manager >( );
+        BGMClass           = ManagerClass.GetBGM( ).GetComponent< BGM >( );
+        PlayerManagerClass = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( );
+        CountDownClass     = ManagerClass.GetCountDown( ).GetComponent< CountDown >( );
     }
 
 
     //最初のパフォーマンス
     public void FirstPerformance( )
     {
+        //一度だけBGMの再生
         if( bFlg == false )
         {
             bFlg = true;
-            BGMObj.EmitBGM( );
+            BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
+            ManagerClass.ResetfCntFrame( );//??
         }
 
         //16拍でダンスの終了
-        if( /*BGMObj.GetBGMTime( ) >= PerformanceStartTime*/ManagerClass.GetlCntFrame( ) >= 885 )
+        if( ManagerClass.GetfCntFrame( ) >= 14.765823f )
         {
-            //パフォーマンスを終えたら、敵の生成
-       //     CountDownObj.SetText( );
-            fCntFrame = 0.0f;
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+            //パフォーマンスを終えたら敵の生成
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
-            ManagerClass.ResetlCntFrame( );
+            ManagerClass.ResetfCntFrame( );//??
+
+          //  BGMClass.SetBGM( 14.765823f );
         }
     }
 
@@ -87,15 +81,12 @@ public class PerformanceManager : MonoBehaviour
     //最後のパフォーマンス
     public void FinalPerformance( )
     {
-         //フレーム数を計測
-        //fCntFrame += Time.deltaTime;
-        
         //16拍でダンスの終了
-        if( ManagerClass.GetlCntFrame( ) >= 885 )
+        if( ManagerClass.GetfCntFrame( ) > 14.765823f )
         {
-            //パフォーマンスを終えたら、ランキングの生成
+            //パフォーマンスを終えたらランキングの生成
             Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
         }
     }
 
@@ -103,15 +94,15 @@ public class PerformanceManager : MonoBehaviour
     //遷移先の状態を決める
     public void PhaseCheck( )
     {
-        nCntPose++;
+        nCntDance++;
 
         //パフォーマンスを挟む
-        if( nCntPose == 9 )
+        if( nCntDance == 9 )
         {
            nCntPerformance = 4; 
         }
 
-        if( nCntPose == aPerformanceType[ nCntPerformance ].nPerformanceTiming )
+        if( nCntDance == aPerformanceType[ nCntPerformance ].nCntTiming )
         {
             if( nCntPerformance == 0 )
             {
@@ -130,8 +121,8 @@ public class PerformanceManager : MonoBehaviour
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
             }
           
-            PlayerManagerObj.SetnPerformanceTmp( aPerformanceType[ nCntPerformance ].nPerformanceMeasure );
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
+            PlayerManagerClass.SetnPerformanceBar( aPerformanceType[ nCntPerformance ].nBar );
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CAMERA_PERFORMANCE );
 
             nCntPerformance++;
 
@@ -139,20 +130,20 @@ public class PerformanceManager : MonoBehaviour
             if( nCntPerformance == 6 )
             {
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
-                 ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                 ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
         }
         //敵を生成する
         else
         {
-          //  CountDownObj.SetText( );
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
         }
 
-        ManagerClass.ResetlCntFrame( );
+       // ManagerClass.ResetfCntFrame( );//??
     }
 
 
+    //何回目のパフォーマンスかを取得
     public int GetnCntPerformance( )
     {
         return nCntPerformance;

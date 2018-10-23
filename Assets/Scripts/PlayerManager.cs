@@ -4,76 +4,58 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject ManagerObj;           //マネージャのオブジェクト
-           EnemyManager EnemyManagerObj;      //エネミーマネージャのオブジェクト
-           Rhythm     RhythmObj;            //リズムのオブジェクト
-           GameObject PlayersObj;           //プレイヤー達のオブジェクト
-    public GameObject PlayerLeftPrefab;     //左プレイヤーのプレハブ
-    public GameObject PlayerCenterPrefab;   //中央プレイヤーのプレハブ
-    public GameObject PlayerRightPrefab;    //右プレイヤーのプレハブ
-           float      fBPM;                 //BPM
-           int       nHalfBeat;            //半拍分のフレーム
-      /*     float      fOneBeat;             //1拍分のフレーム
-           float      fFourBeat;            //4拍分のフレーム*/
-           float      fCntFrame;            //フレーム数のカウンタ(演出のフレーム数が決まっていない為、名前は適当)
-           bool       bTargetChangeFlg;     //ターゲット切り替えのフラグ
-           bool       bRhythmFlg;           //リズム再生のフラグ
-           int        nTargetNo;            //現在のターゲット
-    public float      fDist;                //プレイヤー達の移動距離
-    public float      fMove;                //プレイヤー達の移動量
-           int        nPerformanceTmp;
-
-    PerformanceManager PerformanceManagerObj;
-    PlayerLeft         PlayerLeftObj;
-    PlayerRight        PlayerRightObj;
-    PlayerCenter       PlayerCenterObj;
-
-    Manager ManagerClass;
-    int nCntRhythm;
+    public GameObject         ManagerObj;                //マネージャのオブジェクト
+           Manager            ManagerClass;              //マネージャのクラス
+           GameObject         PlayersObj;                //プレイヤー達のオブジェクト
+           PlayerLeft         PlayerLeftClass;           //左プレイヤーのクラス
+           PlayerCenter       PlayerCenterClass;         //中央プレイヤーのクラス
+           PlayerRight        PlayerRightClass;          //右プレイヤーのクラス
+    public GameObject         PlayerLeftPrefab;          //左プレイヤーのプレハブ
+    public GameObject         PlayerCenterPrefab;        //中央プレイヤーのプレハブ
+    public GameObject         PlayerRightPrefab;         //右プレイヤーのプレハブ 
+           EnemyManager       EnemyManagerClass;         //エネミーマネージャのクラス
+           Rhythm             RhythmClass;               //リズムのクラス
+           PerformanceManager PerformanceManagerClass;   //パフォーマンスマネージャのクラス
+           bool               bTargetChangeFlg;          //ターゲット切り替えのフラグ
+           int                nTargetNo;                 //現在のターゲット
+    public float              fMove;                     //プレイヤー達の移動量
+    public float              fDist;                     //プレイヤー達の移動距離
+           int                nCntRhythm;                //リズムが鳴った回数
+           int                nPerformanceBar;           //パフォーマンスの小節数
+    public float              fHalfBar;                  //半拍分のリズム
 
 
 	void Start( )
     {
-		//変数の初期化
-        fBPM             = 60.0f / ManagerObj.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).GetBPM( );
-		nHalfBeat        = 0;
-    /*    fOneBeat         = 0.0f;
-        fFourBeat        = 0.0f;*/
-        fCntFrame        = 0.0f;
+        //変数の初期化
         bTargetChangeFlg = false;  
-        bRhythmFlg       = false;
         nTargetNo        = 0;
         fDist            = 0.0f;
+        nCntRhythm       = 0;
 
-        //エネミーマネージャのオブジェクトを取得
-        EnemyManagerObj = ManagerObj.GetComponent< Manager >( ).GetEnemyManager( ).GetComponent< EnemyManager >( );
-
-        //リズムのオブジェクトを取得
-        RhythmObj = ManagerObj.GetComponent< Manager >( ).GetRhythm( ).GetComponent< Rhythm >( );
-
+        //各クラスの情報を取得
+        ManagerClass            = ManagerObj.GetComponent< Manager >( );
+        EnemyManagerClass       = ManagerClass.GetEnemyManager( ).GetComponent< EnemyManager >( );
+        RhythmClass             = ManagerClass.GetRhythm( ).GetComponent< Rhythm >( );
+        PlayerLeftClass         = PlayerLeftPrefab.GetComponent< PlayerLeft >( );
+        PlayerCenterClass       = PlayerCenterPrefab.GetComponent< PlayerCenter >( );
+        PlayerRightClass        = PlayerRightPrefab.GetComponent< PlayerRight >( );
+        PerformanceManagerClass =  ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
+        
         //プレイヤー達のオブジェクトを取得
-        PlayersObj = ManagerObj.GetComponent< Manager >( ).GetPlayers( );
-
-        PerformanceManagerObj =  ManagerObj.GetComponent< Manager >( ).GetPerformanceManager( ).GetComponent< PerformanceManager >( );
-
-        PlayerLeftObj = PlayerLeftPrefab.GetComponent< PlayerLeft >( );
-        PlayerRightObj = PlayerRightPrefab.GetComponent< PlayerRight >( );
-        PlayerCenterObj = PlayerCenterPrefab.GetComponent< PlayerCenter >( );
-
-        ManagerClass = ManagerObj.GetComponent< Manager >( );
-        nCntRhythm = 0;
+        PlayersObj = ManagerClass.GetPlayers( );   
 	}
 	
 
-    //
+    //プレイヤー達の入力処理
     void Update( )
     {
+        //ダンス状態ならプレイヤーの入力を検出
         if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE )
         {
-             //プレイヤーの振りを検出
-            PlayerLeftObj.Pose( );
-            PlayerRightObj.Pose( );
-            PlayerCenterObj.Pose( );
+            PlayerLeftClass.Pose( );
+            PlayerCenterClass.Pose( );
+            PlayerRightClass.Pose( );
         }
     }
 
@@ -81,58 +63,47 @@ public class PlayerManager : MonoBehaviour
     //プレイヤーのダンス
     public void Dance( )
     {
-        int nTmp = 28;
-
-        if( nTargetNo == 6 )
-        {
-            nTmp = 27;
-        }
-
          //半拍毎にターゲットを切り替える
-        if( ManagerClass.GetlCntHalfFrame( ) >= nTmp || bTargetChangeFlg == false )
+        if( ManagerClass.GetfCntHalfFrame( ) >= fHalfBar || bTargetChangeFlg == false )
         {
-            ManagerClass.ResetlCntHalfFrame( );
             bTargetChangeFlg = true;
+
+            ManagerClass.ResetfCntHalfFrame( );//???
             
             //次のターゲットを設定
-            EnemyManagerObj.SetTarget( nTargetNo );
+            EnemyManagerClass.SetTarget( nTargetNo );
             nTargetNo++;
 
             //ジョイコンを振れる様にする
-            PlayerLeftObj.ReleasePoseFlg( );
-            PlayerRightObj.ReleasePoseFlg( );
-            PlayerCenterObj.ReleasePoseFlg( );
+            PlayerLeftClass.ReleasebPoseFlg( );
+            PlayerCenterClass.ReleasebPoseFlg( );
+            PlayerRightClass.ReleasebPoseFlg( );
         }
 
-       //元々Poseがあった場所
-
-           //1拍毎にリズムを鳴らす
-        if( ManagerClass.GetlCntFrame( ) >= 55 ) 
+        //1拍毎にリズムを鳴らす
+        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f )
         {
-            nHalfBeat = 0;
-            ManagerClass.ResetlCntFrame( );
             nCntRhythm++;
-            bRhythmFlg = true;
-            
+
             if( nCntRhythm < 4 )
             {
-               RhythmObj.Emit( );
+               RhythmClass.Emit( );
             }
+
+            ManagerClass.ResetfCntFrame( );//???
         }
 
         //四拍でダンスの終了
         if( nCntRhythm >= 4 )
         {
-            nCntRhythm = 0;
-            ManagerClass.ResetlCntFrame( );
-            ManagerClass.ResetPoseFrame( );
-        
-            bTargetChangeFlg = false;
-            bRhythmFlg       = false;
+            nCntRhythm       = 0;
             nTargetNo        = 0;
+            bTargetChangeFlg = false;
+
+            ManagerClass.ResetfPoseFrame( );//???
 
             //スコアの集計
-            ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
         }
     }
 
@@ -140,52 +111,45 @@ public class PlayerManager : MonoBehaviour
     //プレイヤー達の移動
     public void PlayersMove( )
     {
-		//fCntFrame += Time.deltaTime;
-
         PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
-        fDist += fMove;
+        fDist                         += fMove;
 
-        if( /*fCntFrame >= fBPM * nPerformanceTmp*/ ManagerClass.GetlCntFrame( ) > nPerformanceTmp * 55 )
+        //パフォーマンスが終了したら
+        if( ManagerClass.GetfCntFrame( ) > nPerformanceBar * 0.92286395f )
         {
-            //fCntFrame = 0.0f;
-
-            if( PerformanceManagerObj.GetnCntPerformance( ) == 3 )
+            //現在のパフォーマンスによって遷移先を決める
+            if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )
             {
-                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_BONUS );
+                //ボーナス
+                ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_BONUS );
             }
-            else if( PerformanceManagerObj.GetnCntPerformance( ) == 6 )
+            else if( PerformanceManagerClass.GetnCntPerformance( ) == 6 )
             {
-                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                //最後のパフォーマンス
+                ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
             else
             {
                 //敵を出現させる
-                ManagerObj.GetComponent< Manager >( ).SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-                ManagerObj.GetComponent< Manager >( ).GetCountDown( ).GetComponent< CountDown >( ).SetText( );
+                ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
+                ManagerClass.GetCountDown( ).GetComponent< CountDown >( ).ActiveCountDown( );
             }
 
-            ManagerClass.ResetlCntFrame( );
+            ManagerClass.ResetfCntFrame( );//???
         }
     }
 
 
-    //プレイヤーが振った瞬間のフレーム数を取得
-    public float GetFourBeat( )
-    {
-        return 0.0f;//fFourBeat;
-    }
-
-
-    //ターゲットの添え字を取得
-    public int GetTargetNo( )
+    //ターゲットの番号を取得
+    public int GetnTargetNo( )
     {
         return nTargetNo;
     }
 
 
     //パフォーマンスの小節数を設定
-    public void SetnPerformanceTmp( int nPerformanceMeasure )
+    public void SetnPerformanceBar( int nSetPerformanceBar )
     {
-        nPerformanceTmp = nPerformanceMeasure;
+        nPerformanceBar = nSetPerformanceBar;
     }
 }
