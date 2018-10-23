@@ -62,7 +62,7 @@ public class Manager : MonoBehaviour
     //一定間隔で呼ばれる
 	void FixedUpdate( )
     {
-        fCntFrame += 0.01666667f;
+        fCntFrame += 0.008333334f;
 
         //ゲームの進行状態によって遷移
         switch( GamePhase )
@@ -85,8 +85,8 @@ public class Manager : MonoBehaviour
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
                 PlayerManagerClass.Dance( );
-                fCntHalfFrame += 0.01666667f; ///???
-                fPoseFrame    += 0.01666667f; ///??
+                fCntHalfFrame += 0.008333334f; ///???
+                fPoseFrame    += 0.008333334f; ///??
             break;
 
              //スコアの集計
