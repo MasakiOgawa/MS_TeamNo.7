@@ -62,6 +62,7 @@ public class PerformanceManager : MonoBehaviour
             bFlg = true;
             BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
+            ManagerClass.ResetfCntFrame( );//??
         }
 
         //16拍でダンスの終了
@@ -71,6 +72,8 @@ public class PerformanceManager : MonoBehaviour
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
             ManagerClass.ResetfCntFrame( );//??
+
+          //  BGMClass.SetBGM( 14.765823f );
         }
     }
 
