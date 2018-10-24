@@ -582,6 +582,7 @@ MonoBehaviour:
   _1stScore: {fileID: 1970884860569042}
   _2ndScore: {fileID: 1022967853440236}
   _3rdScore: {fileID: 1530931327118080}
+  fEndFrame: 0
 --- !u!114 &114312009362550874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1195,7 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
