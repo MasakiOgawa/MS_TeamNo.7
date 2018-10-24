@@ -36,7 +36,7 @@ public class ResultManager : MonoBehaviour {
         _RankingManager.SetActive(false);
         bRunningRankingManager = false;
 
-        StartResult(ScoreManager.nScore);
+        //StartResult(ScoreManager.nScore);
 	}
 	
 	// Update is called once per frame
