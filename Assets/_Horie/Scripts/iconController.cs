@@ -48,6 +48,10 @@ public class iconController : MonoBehaviour
 
     private bool bFade;
 
+    // SE
+    AudioSource ShakeAloneSE;
+    AudioSource ShakeAllSE;
+    AudioSource ShakeCancelSE;
 
 
     // Use this for initialization
@@ -70,6 +74,13 @@ public class iconController : MonoBehaviour
         seconds = 0;
 
         bFade = false;
+
+        // SEコンポーネント取得
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        ShakeAloneSE = audioSources[0];
+        ShakeAllSE = audioSources[1];
+        ShakeCancelSE = audioSources[2];
+
     }
 
     // Update is called once per frame
@@ -92,6 +103,7 @@ public class iconController : MonoBehaviour
                 seconds = 0;
                 // particle再生
                 ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
+                ShakeAloneSE.Play();
             }
         }
         // readyのとき
@@ -104,6 +116,7 @@ public class iconController : MonoBehaviour
             {
                 // particle再生
                 ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
+                ShakeAloneSE.Play();
             }
 
 
@@ -112,6 +125,7 @@ public class iconController : MonoBehaviour
                 isReady1 = false;
                 shakeIt1.SetActive(true);
                 ready1.SetActive(false);
+                ShakeCancelSE.Play();
             }
         }
 
@@ -130,6 +144,7 @@ public class iconController : MonoBehaviour
 
                 // particle再生
                 ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
+                ShakeAloneSE.Play();
             }
         }
         // readyのとき
@@ -142,6 +157,7 @@ public class iconController : MonoBehaviour
             {
                 // particle再生
                 ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
+                ShakeAloneSE.Play();
             }
 
             if (seconds > reverseTime)
@@ -149,6 +165,7 @@ public class iconController : MonoBehaviour
                 isReady2 = false;
                 shakeIt2.SetActive(true);
                 ready2.SetActive(false);
+                ShakeCancelSE.Play();
             }
         }
 
@@ -166,6 +183,7 @@ public class iconController : MonoBehaviour
                 seconds = 0;
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
+                ShakeAloneSE.Play();
             }
         }
         // readyのとき
@@ -178,6 +196,7 @@ public class iconController : MonoBehaviour
             {
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
+                ShakeAloneSE.Play();
             }
 
             if (seconds > reverseTime)
@@ -186,6 +205,7 @@ public class iconController : MonoBehaviour
                 shakeIt3.SetActive(true);
                 ready3.SetActive(false);
                 seconds = 0;
+                ShakeCancelSE.Play();
             }
         }
 
@@ -202,6 +222,7 @@ public class iconController : MonoBehaviour
             //scene change
             FadeManager.Instance.LoadScene(SceneName, FadeTime);
             bFade = true;
+            ShakeAllSE.Play();
         }
 
 
