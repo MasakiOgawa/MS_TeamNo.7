@@ -62,18 +62,18 @@ public class PerformanceManager : MonoBehaviour
             bFlg = true;
             BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
-            ManagerClass.ResetfCntFrame( );//??
         }
 
         //16拍でダンスの終了
-        if( ManagerClass.GetfCntFrame( ) >= 14.765823f )
+        if( ManagerClass.GetdCntFrame( ) >= 14.765823d )
         {
             //パフォーマンスを終えたら敵の生成
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
-            ManagerClass.ResetfCntFrame( );//??
+            //ManagerClass.ResetfCntFrame( );//??
+            ManagerClass.SetFlg( );
 
-          //  BGMClass.SetBGM( 14.765823f );
+            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
         }
     }
 
@@ -82,7 +82,7 @@ public class PerformanceManager : MonoBehaviour
     public void FinalPerformance( )
     {
         //16拍でダンスの終了
-        if( ManagerClass.GetfCntFrame( ) > 14.765823f )
+        if( ManagerClass.GetdCntFrame( ) > 14.765823d )
         {
             //パフォーマンスを終えたらランキングの生成
             Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
@@ -140,6 +140,7 @@ public class PerformanceManager : MonoBehaviour
         }
 
        // ManagerClass.ResetfCntFrame( );//??
+       //ManagerClass.SetFlg( );
     }
 
 

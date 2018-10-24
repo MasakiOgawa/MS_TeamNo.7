@@ -97,7 +97,8 @@ public class EnemyManager : MonoBehaviour
         CountDownClass.ActiveCountDown( );
         ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
 
-      //  ManagerClass.ResetfCntFrame( );//??
+       // ManagerClass.ResetdCntFrame( );//??
+      //  ManagerClass.SetFlg( );
     }
 
     

@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour
            int                nPerformanceBar;           //パフォーマンスの小節数
     public float              fHalfBar;                  //半拍分のリズム
 
+    ScoreManager ScoreClass;
+    PerformanceManager PerformanceClass;
+
 
 	void Start( )
     {
@@ -44,6 +47,9 @@ public class PlayerManager : MonoBehaviour
         
         //プレイヤー達のオブジェクトを取得
         PlayersObj = ManagerClass.GetPlayers( );   
+
+        ScoreClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
+        PerformanceClass = ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
 	}
 	
 
@@ -64,11 +70,11 @@ public class PlayerManager : MonoBehaviour
     public void Dance( )
     {
          //半拍毎にターゲットを切り替える
-        if( ManagerClass.GetfCntHalfFrame( ) >= fHalfBar || bTargetChangeFlg == false )
+        if( ManagerClass.GetdCntHalfFrame( ) >= fHalfBar || bTargetChangeFlg == false )
         {
             bTargetChangeFlg = true;
 
-            ManagerClass.ResetfCntHalfFrame( );//???
+            ManagerClass.ResetdCntHalfFrame( );//???
             
             //次のターゲットを設定
             EnemyManagerClass.SetTarget( nTargetNo );
@@ -81,16 +87,19 @@ public class PlayerManager : MonoBehaviour
         }
 
         //1拍毎にリズムを鳴らす
-        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f )
+        if( ManagerClass.GetdCntFrame( ) >= 0.92286395d )
         {
             nCntRhythm++;
-
+            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
+            
             if( nCntRhythm < 4 )
             {
                RhythmClass.Emit( );
             }
 
-            ManagerClass.ResetfCntFrame( );//???
+           // ManagerClass.ResetfCntFrame( );//???
+            ManagerClass.SetFlg( );
+           // ManagerClass.SstdDeviated( ManagerClass.GetdCntFrame( ) - 0.92286395d );
         }
 
         //四拍でダンスの終了
@@ -100,10 +109,13 @@ public class PlayerManager : MonoBehaviour
             nTargetNo        = 0;
             bTargetChangeFlg = false;
 
-            ManagerClass.ResetfPoseFrame( );//???
+            ManagerClass.ResetdPoseFrame( );//???
 
             //スコアの集計
-            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
+            //ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
+
+            ScoreClass.AggregateScore( );
+            PerformanceClass.PhaseCheck( );
         }
     }
 
@@ -115,7 +127,7 @@ public class PlayerManager : MonoBehaviour
         fDist                         += fMove;
 
         //パフォーマンスが終了したら
-        if( ManagerClass.GetfCntFrame( ) > nPerformanceBar * 0.92286395f )
+        if( ManagerClass.GetdCntFrame( ) >= nPerformanceBar * /*0.92286395f*/0.9d )
         {
             //現在のパフォーマンスによって遷移先を決める
             if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )
@@ -135,7 +147,7 @@ public class PlayerManager : MonoBehaviour
                 ManagerClass.GetCountDown( ).GetComponent< CountDown >( ).ActiveCountDown( );
             }
 
-            ManagerClass.ResetfCntFrame( );//???
+            ManagerClass.ResetdCntFrame( );//???
         }
     }
 

@@ -45,7 +45,7 @@ public class PlayerCenter : MonoBehaviour
                 if( EnemyObj != null && EnemyObj.tag == "Up" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetPoseFrame( );
+                    float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
@@ -77,7 +77,7 @@ public class PlayerCenter : MonoBehaviour
                 if( EnemyObj != null && EnemyObj.tag == "Down" )
                 {
                     //振った瞬間の経過フレームを取得
-                   float fTmp = ManagerClass.GetPoseFrame( );
+                   float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
@@ -109,7 +109,7 @@ public class PlayerCenter : MonoBehaviour
                 if( EnemyObj != null && EnemyObj.tag == "Left" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetPoseFrame( );
+                    float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
@@ -141,7 +141,7 @@ public class PlayerCenter : MonoBehaviour
                 if( EnemyObj != null && EnemyObj.tag == "Right" )
                 {
                     //振った瞬間の経過フレームを取得
-                    float fTmp = ManagerClass.GetPoseFrame( );
+                    float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
                     float fTargetFrame =0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
