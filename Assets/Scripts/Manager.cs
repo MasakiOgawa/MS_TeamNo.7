@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour
     //列挙型定義
     public enum GAME_PHASE
     { 
+        PHASE_NONE ,
         PHASE_FIRST_PERFORMANCE    ,   //ゲーム開始時の演出
         PHASE_ENEMY_APPEARANCE     ,   //敵の出現
         PHASE_COUNT_DOWN           ,   //カウントダウン
@@ -39,9 +40,12 @@ public class Manager : MonoBehaviour
     PlayerManager      PlayerManagerClass;
     Bonus              BonusClass;
 
-    public float fCntFrame;       //フレーム数のカウンタ
-    public float fCntHalfFrame;   //半拍分のカウンタ
-    public float fPoseFrame;      //四拍分のカウンタ
+    public double dCntFrame;       //フレーム数のカウンタ
+    public double dCntHalfFrame;   //半拍分のカウンタ
+    public double dPoseFrame;      //四拍分のカウンタ
+
+    bool bFlg;
+    double dDeviated;
 
 
     void Start( )
@@ -53,20 +57,29 @@ public class Manager : MonoBehaviour
         BonusClass = BonusObj.GetComponent< Bonus >( );
 
         //フレームカウンタの初期化
-        fCntFrame     = 0;
-        fCntHalfFrame = 0;
-        fPoseFrame    = 0;
+        dCntFrame     = 0;
+        dCntHalfFrame = 0;
+        dPoseFrame    = 0;
+
+        bFlg = false;
+        dDeviated = 0;
     }
 
 
     //一定間隔で呼ばれる
 	void FixedUpdate( )
     {
-        fCntFrame += 0.008333334f;
-
         //ゲームの進行状態によって遷移
         switch( GamePhase )
         {
+            case GAME_PHASE.PHASE_NONE :
+                if( dCntFrame >= 5.0d )
+                {
+                    bFlg = true;
+                    GamePhase = GAME_PHASE.PHASE_FIRST_PERFORMANCE;
+                }
+            break;
+
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
                 PerformanceManagerClass.FirstPerformance( );
@@ -85,13 +98,13 @@ public class Manager : MonoBehaviour
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
                 PlayerManagerClass.Dance( );
-                fCntHalfFrame += 0.008333334f; ///???
-                fPoseFrame    += 0.008333334f; ///??
+                dCntHalfFrame += 0.0076905d; ///???
+                dPoseFrame    += 0.01538107d; ///??
             break;
 
              //スコアの集計
             case GAME_PHASE.PHASE_AGGREGATE_SCORE :
-                 ScoreManagerObj.GetComponent< ScoreManager >( ).AggregateScore( );
+                 //ScoreManagerObj.GetComponent< ScoreManager >( ).AggregateScore( );
             break;
 
             //カメラのパフォーマンス
@@ -107,7 +120,7 @@ public class Manager : MonoBehaviour
 
             //遷移先をチェック
             case GAME_PHASE.PHASE_CHECK :
-                 PerformanceManagerObj.GetComponent< PerformanceManager >( ).PhaseCheck( );
+                 //PerformanceManagerObj.GetComponent< PerformanceManager >( ).PhaseCheck( );
             break;
          
             //ゲーム終了時の演出(ここから遷移)
@@ -119,6 +132,14 @@ public class Manager : MonoBehaviour
             case GAME_PHASE.PHASE_RESULT :
             break;
         }  
+
+        dCntFrame += 0.01538107d;
+
+        if( bFlg == true )
+        {
+            bFlg = false;
+            dCntFrame = 0.0f;
+        }
     }
 
 
@@ -192,38 +213,50 @@ public class Manager : MonoBehaviour
     }
 
 
-    public float GetfCntFrame( )
+    public double GetdCntFrame( )
     {
-        return fCntFrame;
+        return dCntFrame;
     }
 
 
-    public void ResetfCntFrame( )
+    public void ResetdCntFrame( )
     {
-        fCntFrame = 0;
+        dCntFrame = 0;
     }
 
 
-    public float GetfCntHalfFrame( )
+    public double GetdCntHalfFrame( )
     {
-        return fCntHalfFrame;
+        return dCntHalfFrame;
     }
 
 
-    public void ResetfCntHalfFrame( )
+    public void ResetdCntHalfFrame( )
     {
-        fCntHalfFrame = 0;
+        dCntHalfFrame = 0;
     }
 
 
-    public float GetPoseFrame( )
+    public double GetdPoseFrame( )
     {
-        return fPoseFrame;
+        return dPoseFrame;
     }
 
 
-    public void ResetfPoseFrame( )
+    public void  ResetdPoseFrame( )
     {
-        fPoseFrame = 0;
+        dPoseFrame = 0.0f;
+    }
+
+
+    public void SetFlg( )
+    {
+        bFlg = true;
+    }
+
+
+    public void SstdDeviated( double Deviated )
+    {
+        dDeviated = Deviated;
     }
 }

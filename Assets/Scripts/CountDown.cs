@@ -14,14 +14,12 @@ public class CountDown : MonoBehaviour
            BGM        BGMClass;       //BGMのクラス
            Rhythm     RhythmClass;    //リズムのクラス
            int        nCountDown;     //カウントダウンのカウンタ
-           bool       BFlg;//??
 
 
 	void Start( )
     {
-          //変数の初期化
+        //変数の初期化
         nCountDown = 3;
-        BFlg       = false;
 
         //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
@@ -33,16 +31,14 @@ public class CountDown : MonoBehaviour
     //カウントダウン
     public void ChangeCount( )
     {
-       if( BFlg == false )
-       {
-           BFlg = true;
-       //    ManagerClass.ResetfCntFrame( );
-       }//??
-
         //1拍毎にカウントダウン
-        if( ManagerClass.GetfCntFrame( ) >= 0.92286395f )
+        if( ManagerClass.GetdCntFrame( ) >= 0.92286395d )
         {
-            ManagerClass.ResetfCntFrame( );//??
+            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
+           
+            //ManagerClass.ResetfCntFrame( );//??
+            ManagerClass.SetFlg( );
+            //ManagerClass.SstdDeviated( ManagerClass.GetdCntFrame( ) - 0.92286395d );
 
             if( nCountDown == 3 )
             {
@@ -68,9 +64,7 @@ public class CountDown : MonoBehaviour
             //カウントダウンの終了
             else if( nCountDown == 0 )
             {
-                BFlg = false;//??
-
-                nCountDown = 3;
+                nCountDown = 0;
                 CountGoObj.SetActive( false );
                 RhythmClass.Emit( );
          

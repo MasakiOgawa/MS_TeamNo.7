@@ -19,7 +19,7 @@ public class BGM : MonoBehaviour
     //BGMを再生
     public void EmitBGM( )
     {
-        AudioSource.Play( );
+       AudioSource.Play( );
     }
 
 

@@ -19,6 +19,6 @@ public class Rhythm : MonoBehaviour
     //リズムを鳴らす
     public void Emit( )
     {
-        AudioSource.Play( );
+        AudioSource.PlayOneShot( AudioClip );
     }
 }

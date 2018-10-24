@@ -165,9 +165,9 @@ MonoBehaviour:
   CountDownObj: {fileID: 2094422707}
   ScoreManagerObj: {fileID: 2000776136}
   BonusObj: {fileID: 86348944}
-  fCntFrame: 0
-  fCntHalfFrame: 0
-  fPoseFrame: 0
+  dCntFrame: 0
+  dCntHalfFrame: 0
+  dPoseFrame: 0
 --- !u!1 &86348944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1232893692
 MonoBehaviour:
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fd705f4f587334aabe5e72f6fb3800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioClip: {fileID: 8300000, guid: d3ba53752d998a54f92d9ff75a73460d, type: 3}
+  AudioClip: {fileID: 8300000, guid: 0fdfd00d296821d4e81a08d303235089, type: 3}
 --- !u!82 &1388002716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ Transform:
   - {fileID: 1636949851}
   - {fileID: 996749594}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1636949850
 Prefab:
@@ -2414,13 +2414,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1831284502}
-  m_LocalRotation: {x: 0.039957408, y: 0, z: 0, w: 0.9992014}
+  m_LocalRotation: {x: 0.0050614406, y: 0, z: 0, w: 0.99998724}
   m_LocalPosition: {x: 0, y: 4.82, z: 8.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 4.58, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.58, y: 0, z: 0}
 --- !u!114 &1831284507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1858523157
 MonoBehaviour:
