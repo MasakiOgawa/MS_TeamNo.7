@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 320189445692783000}
   - component: {fileID: 95962628606445072}
   - component: {fileID: 114288812386703562}
+  - component: {fileID: 114054927795293848}
   m_Layer: 0
   m_Name: CutSceneCamera0
   m_TagString: Untagged
@@ -3635,6 +3636,18 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4804434236895746}
+--- !u!114 &114054927795293848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739101716928304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: c0fd12f95183aa546bf0b6b61b798c06, type: 2}
 --- !u!114 &114055893283117514
 MonoBehaviour:
   m_ObjectHideFlags: 1
