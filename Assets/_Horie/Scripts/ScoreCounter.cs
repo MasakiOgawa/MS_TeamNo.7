@@ -18,11 +18,16 @@ public class ScoreCounter : MonoBehaviour {
     // 起動フラグ
     private bool isEnableScoreCounter;
 
+    private AudioSource ScoreCounterSE;
+    private AudioSource ScoreStopSE;
+    
+
     // Use this for initialization
     void Start () {
         TMPscore = GetComponent<TMPro.TextMeshProUGUI>();
-        
-	}
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -51,6 +56,11 @@ public class ScoreCounter : MonoBehaviour {
                 // スコアカウンタ終了合図を送る
                 ResultManager rm = _ResultManager.GetComponent<ResultManager>();
                 rm.GetFinishScoreCounter();
+
+                ScoreCounterSE.Stop();
+                ScoreStopSE.Play();
+
+
             }
             TMPscore.text = _score.ToString();
         }
@@ -59,6 +69,13 @@ public class ScoreCounter : MonoBehaviour {
     // スコア受け取り
     public void SetScore ( int score )
     {
+        // SE・BGM取得
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        ScoreCounterSE = audioSources[0];
+        ScoreStopSE = audioSources[1];
+
+        ScoreCounterSE.Play();
+
         // ResultManagerからスコアを受け取り
         TMPscore = GetComponent<TMPro.TextMeshProUGUI>();
         _maxScore = score;
