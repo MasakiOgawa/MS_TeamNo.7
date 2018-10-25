@@ -15,7 +15,7 @@ public class TitleLogo1 : MonoBehaviour {
         // 3秒かけて2倍の大きさに
         // スケールシェイク
         tweener = rectTran.DOPunchScale(
-        new Vector3(0.25f, 0.25f),    // scale1.5倍指定
+        new Vector3(0.5f, 0.5f),    // scale1.5倍指定
         0.5f,                        // アニメーション時間
         0
         ).SetLoops(-1);

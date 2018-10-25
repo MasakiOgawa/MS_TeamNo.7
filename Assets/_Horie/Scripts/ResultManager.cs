@@ -81,6 +81,9 @@ public class ResultManager : MonoBehaviour {
 
         // リザルトロゴの起動
         _ResultLogo.SetActive(true);
+
+        // BGM
+        GetComponent<AudioSource>().Play();
     }
 
     // Scoreカウンタから終了フラグをもらう
@@ -90,5 +93,10 @@ public class ResultManager : MonoBehaviour {
 
         // タイムカウンタ初期化
         fTime = 0;
+    }
+
+    public void StopBGM ()
+    {
+        GetComponent<AudioSource>().Stop();
     }
 }

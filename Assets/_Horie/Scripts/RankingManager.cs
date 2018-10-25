@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class RankingManager : MonoBehaviour {
 
+    [SerializeField] private GameObject m_ResultManager;
+
     [SerializeField] private float _ranking1stScoreStartTime;   // 1st表示までの時間
     [SerializeField] private float _ranking2ndScoreStartTime;   // 2nd表示までの時間
     [SerializeField] private float _ranking3rdScoreStartTime;   // 3rd表示までの時間
@@ -56,6 +58,9 @@ public class RankingManager : MonoBehaviour {
 
             if ( Rank ==1 )
                tmp.color = new Color(255, 0, 0, 255);
+
+            // SE
+            GetComponent<AudioSource>().Play();
         }
 
         if ( bEnable2ndScore == false && fTime > _ranking2ndScoreStartTime)
@@ -68,6 +73,8 @@ public class RankingManager : MonoBehaviour {
 
             if (Rank == 2)
                 tmp.color = new Color(255, 0, 0, 255);
+            // SE
+            GetComponent<AudioSource>().Play();
         }
 
         if ( bEnable3rdScore == false && fTime > _ranking3rdScoreStartTime)
@@ -80,6 +87,8 @@ public class RankingManager : MonoBehaviour {
 
             if (Rank == 3)
                 tmp.color = new Color(255, 0, 0, 255);
+            // SE
+            GetComponent<AudioSource>().Play();
 
             fTime = 0.0f;
         }
@@ -88,6 +97,9 @@ public class RankingManager : MonoBehaviour {
 
         if( bEnable3rdScore == true && fTime > fEndFrame )
         {
+            // BGM STOP
+            m_ResultManager.GetComponent<ResultManager>().StopBGM();
+
            // SceneManager.LoadScene( "Title" );
             FadeManager.Instance.LoadScene( "Title" , 0.5f );
         }
