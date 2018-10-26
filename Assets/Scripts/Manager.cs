@@ -40,9 +40,9 @@ public class Manager : MonoBehaviour
     PlayerManager      PlayerManagerClass;
     Bonus              BonusClass;
 
-    public double dCntFrame;       //フレーム数のカウンタ
-    public double dCntHalfFrame;   //半拍分のカウンタ
-    public double dPoseFrame;      //四拍分のカウンタ
+    public float dCntFrame;       //フレーム数のカウンタ
+    public float dCntHalfFrame;   //半拍分のカウンタ
+    public float dPoseFrame;      //四拍分のカウンタ
 
     bool bFlg;
     double dDeviated;
@@ -98,8 +98,8 @@ public class Manager : MonoBehaviour
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
                 PlayerManagerClass.Dance( );
-                dCntHalfFrame += 0.0076905d; ///???
-                dPoseFrame    += 0.01538107d; ///??
+                dCntHalfFrame += 0.00833333f; ///???
+                dPoseFrame    += 0.01666667f; ///??
             break;
 
              //スコアの集計
@@ -120,7 +120,7 @@ public class Manager : MonoBehaviour
 
             //遷移先をチェック
             case GAME_PHASE.PHASE_CHECK :
-                 //PerformanceManagerObj.GetComponent< PerformanceManager >( ).PhaseCheck( );
+                 PerformanceManagerObj.GetComponent< PerformanceManager >( ).PhaseCheck( );
             break;
          
             //ゲーム終了時の演出(ここから遷移)
@@ -133,7 +133,7 @@ public class Manager : MonoBehaviour
             break;
         }  
 
-        dCntFrame += 0.01538107d;
+        dCntFrame += 0.01666667f;
 
         if( bFlg == true )
         {
@@ -213,7 +213,7 @@ public class Manager : MonoBehaviour
     }
 
 
-    public double GetdCntFrame( )
+    public float GetdCntFrame( )
     {
         return dCntFrame;
     }
@@ -225,7 +225,7 @@ public class Manager : MonoBehaviour
     }
 
 
-    public double GetdCntHalfFrame( )
+    public float GetdCntHalfFrame( )
     {
         return dCntHalfFrame;
     }
@@ -237,7 +237,7 @@ public class Manager : MonoBehaviour
     }
 
 
-    public double GetdPoseFrame( )
+    public float GetdPoseFrame( )
     {
         return dPoseFrame;
     }
@@ -252,11 +252,5 @@ public class Manager : MonoBehaviour
     public void SetFlg( )
     {
         bFlg = true;
-    }
-
-
-    public void SstdDeviated( double Deviated )
-    {
-        dDeviated = Deviated;
     }
 }

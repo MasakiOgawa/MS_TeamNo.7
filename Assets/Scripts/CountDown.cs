@@ -15,6 +15,8 @@ public class CountDown : MonoBehaviour
            Rhythm     RhythmClass;    //リズムのクラス
            int        nCountDown;     //カウントダウンのカウンタ
 
+    public float OneBeat;
+
 
 	void Start( )
     {
@@ -32,14 +34,10 @@ public class CountDown : MonoBehaviour
     public void ChangeCount( )
     {
         //1拍毎にカウントダウン
-        if( ManagerClass.GetdCntFrame( ) >= 0.92286395d )
+        if( ManagerClass.GetdCntFrame( ) >= OneBeat )
         {
-            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
-           
-            //ManagerClass.ResetfCntFrame( );//??
             ManagerClass.SetFlg( );
-            //ManagerClass.SstdDeviated( ManagerClass.GetdCntFrame( ) - 0.92286395d );
-
+            
             if( nCountDown == 3 )
             {
                 nCountDown = 2;

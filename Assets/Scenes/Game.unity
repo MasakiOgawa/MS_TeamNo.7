@@ -1356,6 +1356,7 @@ MonoBehaviour:
   fMove: 0.1
   fDist: 0
   fHalfBar: 0.46143198
+  OneBeat: 0.89
 --- !u!4 &1232893691
 Transform:
   m_ObjectHideFlags: 0
@@ -2397,7 +2398,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -2735,3 +2736,4 @@ MonoBehaviour:
   CountNo2Obj: {fileID: 497239988}
   CountNo1Obj: {fileID: 747480030}
   CountGoObj: {fileID: 1441196132}
+  OneBeat: 0.89

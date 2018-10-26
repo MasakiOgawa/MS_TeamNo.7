@@ -26,6 +26,10 @@ public class PlayerManager : MonoBehaviour
 
     ScoreManager ScoreClass;
     PerformanceManager PerformanceClass;
+    
+    BGM BGMClass;
+
+    public float OneBeat;
 
 
 	void Start( )
@@ -50,6 +54,8 @@ public class PlayerManager : MonoBehaviour
 
         ScoreClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
         PerformanceClass = ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
+
+        BGMClass = ManagerClass.GetBGM( ).GetComponent< BGM >( );
 	}
 	
 
@@ -87,19 +93,15 @@ public class PlayerManager : MonoBehaviour
         }
 
         //1拍毎にリズムを鳴らす
-        if( ManagerClass.GetdCntFrame( ) >= 0.92286395d )
+        if( ManagerClass.GetdCntFrame( ) >= OneBeat )
         {
             nCntRhythm++;
-            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
+            ManagerClass.SetFlg( );
             
             if( nCntRhythm < 4 )
             {
                RhythmClass.Emit( );
-            }
-
-           // ManagerClass.ResetfCntFrame( );//???
-            ManagerClass.SetFlg( );
-           // ManagerClass.SstdDeviated( ManagerClass.GetdCntFrame( ) - 0.92286395d );
+            }  
         }
 
         //四拍でダンスの終了
@@ -127,7 +129,7 @@ public class PlayerManager : MonoBehaviour
         fDist                         += fMove;
 
         //パフォーマンスが終了したら
-        if( ManagerClass.GetdCntFrame( ) >= nPerformanceBar * /*0.92286395f*/0.9d )
+        if( ManagerClass.GetdCntFrame( ) >= ( float )nPerformanceBar * /*OneBeat*/0.92f )
         {
             //現在のパフォーマンスによって遷移先を決める
             if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )
@@ -147,7 +149,7 @@ public class PlayerManager : MonoBehaviour
                 ManagerClass.GetCountDown( ).GetComponent< CountDown >( ).ActiveCountDown( );
             }
 
-            ManagerClass.ResetdCntFrame( );//???
+            ManagerClass.SetFlg( );
         }
     }
 
