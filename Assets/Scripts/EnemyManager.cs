@@ -27,6 +27,10 @@ public class EnemyManager : MonoBehaviour
            CountDown       CountDownClass;       //カウントダウンのクラス
     public GameObject      AuraSpotObj;
 
+    float [ ]afStartArray;
+    int nCnt;
+    BGM BGMClass;
+
    
 	void Start( )
     {
@@ -58,6 +62,25 @@ public class EnemyManager : MonoBehaviour
 
         //プレイヤー達のオブジェクトを取得
         PlayersObj = ManagerClass.GetPlayers( );  
+
+        afStartArray = new float[ 13 ];
+        afStartArray[ 0 ] = 22.15f;   //ちょうど
+        afStartArray[ 1 ] = 29.528f;  //ちょうど
+        afStartArray[ 2 ] = 36.91f;  //ちょうど
+        afStartArray[ 3 ] = 59.1f;  //???
+        afStartArray[ 4 ] = 66.482f;  //???
+        afStartArray[ 5 ] = 81.2f;  //???
+        afStartArray[ 6 ] = 88.582f;  //???
+        afStartArray[ 7 ] = 147.65f;  //???
+        afStartArray[ 8 ] = 155.1f;  //???
+        afStartArray[ 9 ] = 162.45f;  //???
+        afStartArray[ 10 ] = 169.8f;  //???
+        afStartArray[ 11 ] = 177.2f;  //???
+        afStartArray[ 12 ] = 184.6f;  //???
+
+
+        nCnt = -1;
+        BGMClass =  ManagerClass.GetBGM( ).GetComponent< BGM >( );
 	}
 
 
@@ -96,6 +119,13 @@ public class EnemyManager : MonoBehaviour
         //カウントダウンの開始
         CountDownClass.ActiveCountDown( );
         ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_COUNT_DOWN ); 
+
+        if( nCnt != -1 )
+        {
+            BGMClass.SetBGM( afStartArray[ nCnt ] );
+        }
+        
+        nCnt++;
 
        // ManagerClass.ResetdCntFrame( );//??
       //  ManagerClass.SetFlg( );

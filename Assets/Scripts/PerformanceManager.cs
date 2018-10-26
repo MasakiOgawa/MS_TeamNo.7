@@ -65,15 +65,13 @@ public class PerformanceManager : MonoBehaviour
         }
 
         //16拍でダンスの終了
-        if( ManagerClass.GetdCntFrame( ) >= 14.765823d )
+        if( ManagerClass.GetdCntFrame( ) >= 14.765823f )
         {
             //パフォーマンスを終えたら敵の生成
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
-            //ManagerClass.ResetfCntFrame( );//??
-            ManagerClass.SetFlg( );
-
-            Debug.Log( ManagerClass.GetdCntFrame( ).ToString( ) );
+            BGMClass.SetBGM( 14.765823f );
+            ManagerClass.SetFlg( );    
         }
     }
 
@@ -82,7 +80,7 @@ public class PerformanceManager : MonoBehaviour
     public void FinalPerformance( )
     {
         //16拍でダンスの終了
-        if( ManagerClass.GetdCntFrame( ) > 14.765823d )
+        if( ManagerClass.GetdCntFrame( ) >= 14.765823d )
         {
             //パフォーマンスを終えたらランキングの生成
             Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );

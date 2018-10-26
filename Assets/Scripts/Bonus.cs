@@ -22,10 +22,11 @@ public class Bonus : MonoBehaviour
     public void BonusTime( )
     {
          //33拍でボーナスの終了
-        if(  ManagerClass.GetdCntFrame( ) > 30.45451049d )
+        if(  ManagerClass.GetdCntFrame( ) >= 0.895 * 33.0f )
         {
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );
-            ManagerClass.ResetdCntFrame( );///???
+           // ManagerClass.ResetdCntFrame( );///???
+              ManagerClass.SetFlg( );
         }
     }
 }
