@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -345,7 +345,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9e206d1844de0b14abc71f577475133e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1391,13 +1391,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1031094277}
-  m_LocalRotation: {x: 0.093291655, y: 0, z: 0, w: 0.99563885}
-  m_LocalPosition: {x: 0, y: 5.5, z: 13}
+  m_LocalRotation: {x: 0.17270273, y: 0, z: 0, w: 0.984974}
+  m_LocalPosition: {x: 0, y: 2.6, z: -4.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10.706, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.89, y: 0, z: 0}
 --- !u!1 &1091264440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,7 +2802,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4405325081792784, guid: 27ba2fc9cb32d6d4e973fe57f04fbe85, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.22
       objectReference: {fileID: 0}
     - target: {fileID: 4405325081792784, guid: 27ba2fc9cb32d6d4e973fe57f04fbe85, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2827,6 +2827,10 @@ Prefab:
     - target: {fileID: 4405325081792784, guid: 27ba2fc9cb32d6d4e973fe57f04fbe85, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4405325081792784, guid: 27ba2fc9cb32d6d4e973fe57f04fbe85, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba2fc9cb32d6d4e973fe57f04fbe85, type: 2}
