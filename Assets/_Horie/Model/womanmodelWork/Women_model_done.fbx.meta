@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 00055464763f9af4cada9dc1167c3316
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Accessories
+    100002: Body
+    100004: Eye_Ball
+    100006: Eye_lash
+    100008: front_branch
+    100010: Hair
+    100012: L_back_tale_hair1
+    100014: L_ear_branch
+    100016: L_Eye_Ball
+    100018: L_Eye_Ball1
+    100020: L_eye_lash
+    100022: L_eye_lash1
+    100024: L_heel
+    100026: L_leg
+    100028: L_side_branch
+    100030: L_side_hair
+    100032: Legs
+    100034: Main_body
+    100036: Nape_of_neck_01
+    100038: Nape_of_neck_02
+    100040: Nape_of_neck_03
+    100042: Pants
+    100044: pants
+    100046: pants_Ribbon
+    100048: pCube1
+    100050: pCube1 1
+    100052: pCube1 2
+    100054: pCube2
+    100056: pCylinder1
+    100058: pCylinder10
+    100060: pCylinder11
+    100062: pCylinder12
+    100064: pCylinder2
+    100066: pCylinder3
+    100068: pCylinder4
+    100070: pCylinder5
+    100072: pCylinder8
+    100074: pCylinder9
+    100076: Piercing
+    100078: Piercing_stomach
+    100080: Pirece
+    100082: polySurface3
+    100084: polySurface3 1
+    100086: polySurface3 2
+    100088: polySurface4
+    100090: polySurface4 1
+    100092: polySurface4 2
+    100094: polySurface5
+    100096: polySurface6
+    100098: polySurface7
+    100100: polySurface7 1
+    100102: polySurface8
+    100104: polySurface8 1
+    100106: pPlane1
+    100108: pPlane2
+    100110: pPlane3
+    100112: pPlane4
+    100114: R_back_tale_hair
+    100116: R_ear_branch
+    100118: R_heel
+    100120: R_leg
+    100122: R_side_branch
+    100124: R_side_hair
+    100126: Ribbon1
+    100128: Ribbon2
+    100130: Tops
+    100132: tops
+    100134: Upper_body
+    100136: //RootNode
+    400000: Accessories
+    400002: Body
+    400004: Eye_Ball
+    400006: Eye_lash
+    400008: front_branch
+    400010: Hair
+    400012: L_back_tale_hair1
+    400014: L_ear_branch
+    400016: L_Eye_Ball
+    400018: L_Eye_Ball1
+    400020: L_eye_lash
+    400022: L_eye_lash1
+    400024: L_heel
+    400026: L_leg
+    400028: L_side_branch
+    400030: L_side_hair
+    400032: Legs
+    400034: Main_body
+    400036: Nape_of_neck_01
+    400038: Nape_of_neck_02
+    400040: Nape_of_neck_03
+    400042: Pants
+    400044: pants
+    400046: pants_Ribbon
+    400048: pCube1
+    400050: pCube1 1
+    400052: pCube1 2
+    400054: pCube2
+    400056: pCylinder1
+    400058: pCylinder10
+    400060: pCylinder11
+    400062: pCylinder12
+    400064: pCylinder2
+    400066: pCylinder3
+    400068: pCylinder4
+    400070: pCylinder5
+    400072: pCylinder8
+    400074: pCylinder9
+    400076: Piercing
+    400078: Piercing_stomach
+    400080: Pirece
+    400082: polySurface3
+    400084: polySurface3 1
+    400086: polySurface3 2
+    400088: polySurface4
+    400090: polySurface4 1
+    400092: polySurface4 2
+    400094: polySurface5
+    400096: polySurface6
+    400098: polySurface7
+    400100: polySurface7 1
+    400102: polySurface8
+    400104: polySurface8 1
+    400106: pPlane1
+    400108: pPlane2
+    400110: pPlane3
+    400112: pPlane4
+    400114: R_back_tale_hair
+    400116: R_ear_branch
+    400118: R_heel
+    400120: R_leg
+    400122: R_side_branch
+    400124: R_side_hair
+    400126: Ribbon1
+    400128: Ribbon2
+    400130: Tops
+    400132: tops
+    400134: Upper_body
+    400136: //RootNode
+    2100000: blinn1
+    2300000: front_branch
+    2300002: L_back_tale_hair1
+    2300004: L_ear_branch
+    2300006: L_Eye_Ball
+    2300008: L_Eye_Ball1
+    2300010: L_eye_lash
+    2300012: L_eye_lash1
+    2300014: L_heel
+    2300016: L_leg
+    2300018: L_side_branch
+    2300020: L_side_hair
+    2300022: Nape_of_neck_01
+    2300024: Nape_of_neck_02
+    2300026: Nape_of_neck_03
+    2300028: pants
+    2300030: pCube1
+    2300032: pCube1 1
+    2300034: pCube1 2
+    2300036: pCube2
+    2300038: pCylinder1
+    2300040: pCylinder10
+    2300042: pCylinder11
+    2300044: pCylinder12
+    2300046: pCylinder2
+    2300048: pCylinder3
+    2300050: pCylinder4
+    2300052: pCylinder5
+    2300054: pCylinder8
+    2300056: pCylinder9
+    2300058: Pirece
+    2300060: polySurface3
+    2300062: polySurface3 1
+    2300064: polySurface3 2
+    2300066: polySurface4
+    2300068: polySurface4 1
+    2300070: polySurface4 2
+    2300072: polySurface5
+    2300074: polySurface6
+    2300076: polySurface7
+    2300078: polySurface7 1
+    2300080: polySurface8
+    2300082: polySurface8 1
+    2300084: pPlane1
+    2300086: pPlane2
+    2300088: pPlane3
+    2300090: pPlane4
+    2300092: R_back_tale_hair
+    2300094: R_ear_branch
+    2300096: R_heel
+    2300098: R_leg
+    2300100: R_side_branch
+    2300102: R_side_hair
+    2300104: tops
+    2300106: Upper_body
+    3300000: front_branch
+    3300002: L_back_tale_hair1
+    3300004: L_ear_branch
+    3300006: L_Eye_Ball
+    3300008: L_Eye_Ball1
+    3300010: L_eye_lash
+    3300012: L_eye_lash1
+    3300014: L_heel
+    3300016: L_leg
+    3300018: L_side_branch
+    3300020: L_side_hair
+    3300022: Nape_of_neck_01
+    3300024: Nape_of_neck_02
+    3300026: Nape_of_neck_03
+    3300028: pants
+    3300030: pCube1
+    3300032: pCube1 1
+    3300034: pCube1 2
+    3300036: pCube2
+    3300038: pCylinder1
+    3300040: pCylinder10
+    3300042: pCylinder11
+    3300044: pCylinder12
+    3300046: pCylinder2
+    3300048: pCylinder3
+    3300050: pCylinder4
+    3300052: pCylinder5
+    3300054: pCylinder8
+    3300056: pCylinder9
+    3300058: Pirece
+    3300060: polySurface3
+    3300062: polySurface3 1
+    3300064: polySurface3 2
+    3300066: polySurface4
+    3300068: polySurface4 1
+    3300070: polySurface4 2
+    3300072: polySurface5
+    3300074: polySurface6
+    3300076: polySurface7
+    3300078: polySurface7 1
+    3300080: polySurface8
+    3300082: polySurface8 1
+    3300084: pPlane1
+    3300086: pPlane2
+    3300088: pPlane3
+    3300090: pPlane4
+    3300092: R_back_tale_hair
+    3300094: R_ear_branch
+    3300096: R_heel
+    3300098: R_leg
+    3300100: R_side_branch
+    3300102: R_side_hair
+    3300104: tops
+    3300106: Upper_body
+    4300000: Upper_body
+    4300002: R_leg
+    4300004: L_leg
+    4300006: L_heel
+    4300008: R_heel
+    4300010: L_eye_lash
+    4300012: L_eye_lash1
+    4300014: L_Eye_Ball
+    4300016: L_Eye_Ball1
+    4300018: R_side_hair
+    4300020: L_side_hair
+    4300022: R_side_branch
+    4300024: L_side_branch
+    4300026: R_ear_branch
+    4300028: L_ear_branch
+    4300030: front_branch
+    4300032: Nape_of_neck_03
+    4300034: Nape_of_neck_02
+    4300036: Nape_of_neck_01
+    4300038: L_back_tale_hair1
+    4300040: R_back_tale_hair
+    4300042: tops
+    4300044: pants
+    4300046: pPlane3
+    4300048: pPlane1
+    4300050: Pirece
+    4300052: pPlane4
+    4300054: pCylinder1
+    4300056: pPlane2
+    4300058: pCylinder2
+    4300060: pCylinder3
+    4300062: pCylinder4
+    4300064: pCylinder5
+    4300066: pCube2
+    4300068: pCylinder10
+    4300070: pCylinder9
+    4300072: pCylinder11
+    4300074: pCylinder8
+    4300076: pCylinder12
+    4300078: polySurface4
+    4300080: polySurface7
+    4300082: polySurface3
+    4300084: polySurface8
+    4300086: pCube1
+    4300088: polySurface4
+    4300090: polySurface7
+    4300092: polySurface3
+    4300094: polySurface8
+    4300096: pCube1
+    4300098: polySurface3
+    4300100: polySurface4
+    4300102: polySurface5
+    4300104: polySurface6
+    4300106: pCube1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
