@@ -14,6 +14,14 @@ public class InputTest : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
+        }
+
+
+
+
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
         {
