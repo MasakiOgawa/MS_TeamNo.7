@@ -64,19 +64,33 @@ public class EnemyManager : MonoBehaviour
         PlayersObj = ManagerClass.GetPlayers( );  
 
         afStartArray = new float[ 13 ];
-        afStartArray[ 0 ] = 22.15f;   //ちょうど
-        afStartArray[ 1 ] = 29.528f;  //ちょうど
-        afStartArray[ 2 ] = 36.91f;  //ちょうど
-        afStartArray[ 3 ] = 59.1f;  //???
-        afStartArray[ 4 ] = 66.482f;  //???
-        afStartArray[ 5 ] = 81.2f;  //???
-        afStartArray[ 6 ] = 88.582f;  //???
-        afStartArray[ 7 ] = 147.65f;  //???
-        afStartArray[ 8 ] = 155.1f;  //???
-        afStartArray[ 9 ] = 162.45f;  //???
-        afStartArray[ 10 ] = 169.8f;  //???
-        afStartArray[ 11 ] = 177.2f;  //???
-        afStartArray[ 12 ] = 184.6f;  //???
+      /*  afStartArray[ 0 ] = 22.21f;   //
+        afStartArray[ 1 ] = 29.1f;  //
+        afStartArray[ 2 ] = 37.0f;  //
+        afStartArray[ 3 ] = 59.1f;  //
+        afStartArray[ 4 ] = 66.482f;  //
+        afStartArray[ 5 ] = 81.2f;  //
+        afStartArray[ 6 ] = 88.582f;  //
+        afStartArray[ 7 ] = 147.65f;  //
+        afStartArray[ 8 ] = 155.1f;  //
+        afStartArray[ 9 ] = 162.45f;  //
+        afStartArray[ 10 ] = 169.8f;  //
+        afStartArray[ 11 ] = 177.2f;  //
+        afStartArray[ 12 ] = 184.6f;  //*/
+
+        afStartArray[ 0 ] = 22.20f;   //OK!!
+        afStartArray[ 1 ] = 29.597f;  //OK!!
+        afStartArray[ 2 ] = 36.96f;  //OK!!
+        afStartArray[ 3 ] = 59.11f;  //OK!!
+        afStartArray[ 4 ] = 66.50f;  //OK!!
+        afStartArray[ 5 ] = 81.28f;  //OK!!
+        afStartArray[ 6 ] = 88.63f;  //OK!!
+        afStartArray[ 7 ] = 147.7f;  //OK!!
+        afStartArray[ 8 ] = 155.05f;  //OK!!
+        afStartArray[ 9 ] = 162.45f;  //OK!!
+        afStartArray[ 10 ] = 169.82f;  //OK!!
+        afStartArray[ 11 ] = 177.17f;  //
+        afStartArray[ 12 ] = 184.57f;  //
 
 
         nCnt = -1;
@@ -111,6 +125,8 @@ public class EnemyManager : MonoBehaviour
                aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
+
+            //  AuraSpotObj.SetActive( false );
         }
 
         //文字列の添え字を進める(敵8体+改行コード2文字分)
@@ -156,6 +172,8 @@ public class EnemyManager : MonoBehaviour
             if( aEnemyPrefabArray[ nTargetNo , nCnt ].activeSelf == true )
             {
                 TargetEnemy = aEnemyPrefabArray[ nTargetNo , nCnt ];
+                 // AuraSpotObj.SetActive( true );
+               // AuraSpotObj.transform.position = TargetEnemy.transform.position;
                 break;
             }
             else

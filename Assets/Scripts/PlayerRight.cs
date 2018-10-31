@@ -36,11 +36,11 @@ public class PlayerRight : MonoBehaviour
         {
             //上
             if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
-                Input.GetKeyDown( KeyCode.UpArrow ) )
+                Input.GetKeyDown( KeyCode.A ) )
             { 
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
-     
+
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Up" )
                 {
@@ -48,13 +48,13 @@ public class PlayerRight : MonoBehaviour
                     float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
+                    float fTargetFrame = 0.445f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
-                    else
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
@@ -72,7 +72,7 @@ public class PlayerRight : MonoBehaviour
             {   
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
-
+               
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Down" )
                 {
@@ -80,13 +80,13 @@ public class PlayerRight : MonoBehaviour
                    float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
+                    float fTargetFrame = 0.445f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
-                    else
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
@@ -104,7 +104,7 @@ public class PlayerRight : MonoBehaviour
             {
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
-     
+                
                  //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Left" )
                 {
@@ -112,13 +112,13 @@ public class PlayerRight : MonoBehaviour
                     float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame = 0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
+                    float fTargetFrame = 0.445f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
-                    else 
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }
@@ -133,9 +133,9 @@ public class PlayerRight : MonoBehaviour
             //右
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.RightArrow ) )
-            {
+            {  
                 //現在の敵の情報を取得
-                EnemyObj = EnemyManagerClass.GetTarget( );
+                EnemyObj = EnemyManagerClass.GetTarget( );      
      
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Right" )
@@ -144,13 +144,13 @@ public class PlayerRight : MonoBehaviour
                     float fTmp = ( float )ManagerClass.GetdPoseFrame( );
 
                     //現在の敵の該当フレームを求める
-                    float fTargetFrame =0.461432f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
+                    float fTargetFrame =0.445f * ( PlayerManagerClass.GetnTargetNo( ) - 1 ); 
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 7 )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                     }
-                    else
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
                     }

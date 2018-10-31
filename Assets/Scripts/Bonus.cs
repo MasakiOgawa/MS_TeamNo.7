@@ -6,15 +6,13 @@ public class Bonus : MonoBehaviour
 {
            Manager    ManagerClass;     //マネージャのクラス
     public GameObject ManagerObj;       //マネージャのオブジェクト
-    public CountDown  CountDownClass;   //カウントダウンのクラス
            bool       bFlg;
 
 
 	void Start( )
     {  
         //各クラスの情報を取得
-        ManagerClass   = ManagerObj.GetComponent< Manager >( );
-        CountDownClass = ManagerClass.GetCountDown( ).GetComponent< CountDown >( );
+        ManagerClass = ManagerObj.GetComponent< Manager >( );
 	}
 
 
@@ -22,11 +20,10 @@ public class Bonus : MonoBehaviour
     public void BonusTime( )
     {
          //33拍でボーナスの終了
-        if(  ManagerClass.GetdCntFrame( ) >= 0.895 * 33.0f )
+        if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )
         {
-            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );
-           // ManagerClass.ResetdCntFrame( );///???
-              ManagerClass.SetFlg( );
+            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
+            ManagerClass.SetFlg( );
         }
     }
 }
