@@ -35,6 +35,9 @@ public class iconController : MonoBehaviour
     [SerializeField] private GameObject ready1;
     [SerializeField] private GameObject ready2;
     [SerializeField] private GameObject ready3;
+    [SerializeField] private GameObject shakeUIObj1;
+    [SerializeField] private GameObject shakeUIObj2;
+    [SerializeField] private GameObject shakeUIObj3;
 
     private bool isReady1;
     private bool isReady2;
@@ -100,6 +103,7 @@ public class iconController : MonoBehaviour
                 isReady1 = true;
                 shakeIt1.SetActive(false);
                 ready1.SetActive(true);
+                shakeUIObj1.SetActive(false);
                 seconds = 0;
                 // particle再生
                 ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
@@ -125,6 +129,7 @@ public class iconController : MonoBehaviour
                 isReady1 = false;
                 shakeIt1.SetActive(true);
                 ready1.SetActive(false);
+                shakeUIObj1.SetActive(true);
                 ShakeCancelSE.Play();
             }
         }
@@ -140,6 +145,7 @@ public class iconController : MonoBehaviour
                 isReady2 = true;
                 shakeIt2.SetActive(false);
                 ready2.SetActive(true);
+                shakeUIObj2.SetActive(false);
                 seconds = 0;
 
                 // particle再生
@@ -165,6 +171,7 @@ public class iconController : MonoBehaviour
                 isReady2 = false;
                 shakeIt2.SetActive(true);
                 ready2.SetActive(false);
+                shakeUIObj2.SetActive(true);
                 ShakeCancelSE.Play();
             }
         }
@@ -180,6 +187,7 @@ public class iconController : MonoBehaviour
                 isReady3 = true;
                 shakeIt3.SetActive(false);
                 ready3.SetActive(true);
+                shakeUIObj3.SetActive(false);
                 seconds = 0;
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
@@ -204,6 +212,7 @@ public class iconController : MonoBehaviour
                 isReady3 = false;
                 shakeIt3.SetActive(true);
                 ready3.SetActive(false);
+                shakeUIObj3.SetActive(true);
                 seconds = 0;
                 ShakeCancelSE.Play();
             }

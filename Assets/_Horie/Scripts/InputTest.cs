@@ -5,7 +5,8 @@ using UnityEngine;
 public class InputTest : MonoBehaviour {
 
     [SerializeField] private GameObject _ResultManager;
-
+    [SerializeField] private GameObject Woman;
+    [SerializeField] private GameObject ThunderTaerget;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,7 +21,11 @@ public class InputTest : MonoBehaviour {
         }
 
 
-
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            WomanController womanScript = Woman.GetComponent<WomanController>();
+            womanScript.SetThunder(ThunderTaerget);
+        }
 
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
