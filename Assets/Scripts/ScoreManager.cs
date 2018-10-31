@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject         ManagerObj;                //マネージャのオブジェクト
            EnemyManager       EnemyManagerClass;         //エネミーマネージャのクラス
            PerformanceManager PerformanceManagerClass;   //パフォーマンスマネージャのクラス
-    public static int         nScore;                    //スコア
+    public int                nScore;                    //スコア
 
 
 	void Start( )
@@ -75,7 +75,7 @@ public class ScoreManager : MonoBehaviour
                     if( aEvaluationBadArray[ nCnt ].gameObject.activeSelf == false )
                     {
                          aEvaluationBadArray[ nCnt ].gameObject.SetActive( true );
-                         aEvaluationBadArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
+                         aEvaluationBadArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
                          break;
                     }
                 }
@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
                      if( aEvaluationFineArray[ nCnt ].gameObject.activeSelf == false )
                      {
                           aEvaluationFineArray[ nCnt ].gameObject.SetActive( true );
-                          aEvaluationFineArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
+                          aEvaluationFineArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
                           break;
                      }
                  }
@@ -105,7 +105,7 @@ public class ScoreManager : MonoBehaviour
                      if( aEvaluationExcellentArray[ nCnt ].gameObject.activeSelf == false )
                      {
                           aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
-                          aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y , Pos.z - 0.5f );
+                          aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
                           break;
                      }
                  }
@@ -119,10 +119,10 @@ public class ScoreManager : MonoBehaviour
     //スコアの集計
     public void AggregateScore( )
     {
-        nScore += ( nCntExcellent * 3 ) + ( nCntFine * 2 );
+        nScore += ( nCntExcellent * 2 ) + ( nCntFine * 1 );
 
         //敵を追従させる
-        EnemyManagerClass.TakeIn( ( nCntExcellent * 3 ) + ( nCntFine * 2 ) );
+        EnemyManagerClass.TakeIn( ( nCntExcellent * 2 ) + ( nCntFine * 1 ) );
 
         //各評価のリセット
         nCntBad       = 0;
@@ -134,5 +134,17 @@ public class ScoreManager : MonoBehaviour
 
         //遷移先をチェック
         ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );
+    }
+
+
+    //
+    public int GetnScore( )
+    {
+        return nScore;
+    }
+
+    public int ResetnScore( )
+    {
+        return nScore = 0;
     }
 }

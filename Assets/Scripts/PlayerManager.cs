@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour
     public void Dance( )
     {
          //半拍毎にターゲットを切り替える
-        if( ManagerClass.GetdCntHalfFrame( ) >= fHalfBar || bTargetChangeFlg == false )
+        if( ManagerClass.GetdCntHalfFrame( ) > fHalfBar || bTargetChangeFlg == false )
         {
             bTargetChangeFlg = true;
 

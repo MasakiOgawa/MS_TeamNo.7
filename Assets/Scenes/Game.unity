@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
-  CountDownClass: {fileID: 0}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1199,7 @@ MonoBehaviour:
   PlayerRightPrefab: {fileID: 1648557946}
   fMove: 0.1
   fDist: 0
-  fHalfBar: 0.46143198
+  fHalfBar: 0.455
   OneBeat: 0.89
 --- !u!4 &1232893691
 Transform:
@@ -1272,7 +1271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
-  ResultManagerPrefab: {fileID: 1246240111370002, guid: 58c06df9a0a2bf54fa635f66b7d548ee,
+  ResultManagerPrefab: {fileID: 1892261053291832, guid: 153b6003b7a1cd249a3a4c66f9c4b890,
     type: 2}
   CMCameraManagerObj: {fileID: 996749593}
 --- !u!4 &1300189113
@@ -2412,6 +2411,7 @@ MonoBehaviour:
   aEvaluationFineArray: []
   aEvaluationExcellentArray: []
   ManagerObj: {fileID: 1040674}
+  nScore: 0
 --- !u!1001 &2018539170
 Prefab:
   m_ObjectHideFlags: 0

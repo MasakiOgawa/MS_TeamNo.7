@@ -80,7 +80,7 @@ public class CountDown : MonoBehaviour
         {
             nCountDown = 3;
             CountNo3Obj.SetActive( true );
-            RhythmClass.Emit( );
+          //  RhythmClass.Emit( );
         }
     }
 }
