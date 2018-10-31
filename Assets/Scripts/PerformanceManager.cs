@@ -22,6 +22,8 @@ public class PerformanceManager : MonoBehaviour
            int                nCntDance;              //ダンス数のカウンタ
            int                nCntPerformance;        //パフォーマンス数のカウンタ
            bool               bFlg;
+
+    ScoreManager ScoreManagerClass;
    
 
     void Start( )
@@ -50,6 +52,8 @@ public class PerformanceManager : MonoBehaviour
         BGMClass           = ManagerClass.GetBGM( ).GetComponent< BGM >( );
         PlayerManagerClass = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( );
         CountDownClass     = ManagerClass.GetCountDown( ).GetComponent< CountDown >( );
+
+        ScoreManagerClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
     }
 
 
@@ -70,7 +74,7 @@ public class PerformanceManager : MonoBehaviour
             //パフォーマンスを終えたら敵の生成
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
 
-            BGMClass.SetBGM( 14.765823f );
+            BGMClass.SetBGM( 14.78f );//OK!!
             ManagerClass.SetFlg( );    
         }
     }
@@ -83,8 +87,10 @@ public class PerformanceManager : MonoBehaviour
         if( ManagerClass.GetdCntFrame( ) >= 14.765823d )
         {
             //パフォーマンスを終えたらランキングの生成
-            Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+           // ResultManagerPrefab = Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
+            ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) );
+            ScoreManagerClass.ResetnScore( );
         }
     }
 

@@ -97,9 +97,9 @@ public class Manager : MonoBehaviour
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
-                PlayerManagerClass.Dance( );
-                dCntHalfFrame += 0.00833333f; ///???
+                dCntHalfFrame += 0.01666667f; ///???
                 dPoseFrame    += 0.01666667f; ///??
+                PlayerManagerClass.Dance( );
             break;
 
              //スコアの集計
