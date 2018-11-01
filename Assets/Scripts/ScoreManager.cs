@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Uniduino;
 
 
 public class ScoreManager : MonoBehaviour
@@ -31,6 +32,11 @@ public class ScoreManager : MonoBehaviour
            PerformanceManager PerformanceManagerClass;   //パフォーマンスマネージャのクラス
     public int                nScore;                    //スコア
 
+    public SerialHandler SerialHandlerClass;
+    public Arduino ArdiunoClass;
+    bool bFlg;
+    float fCntFrame;
+
 
 	void Start( )
     {
@@ -60,7 +66,34 @@ public class ScoreManager : MonoBehaviour
             aEvaluationFineArray[ nCnt ].gameObject.SetActive( false );
             aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( false );
         }
+
+        ArdiunoClass = Arduino.global;
+        ArdiunoClass.Setup( ConfigurePins );
+        bFlg = false;
+        fCntFrame = 0.0f;
 	}
+
+
+    void ConfigurePins( )
+    {
+        ArdiunoClass.pinMode( 6 , PinMode.OUTPUT );
+    }
+
+
+    void Update( )
+    {
+        if ( bFlg == true )
+        {
+            fCntFrame += Time.deltaTime;
+
+            if( fCntFrame >= 3.0f )
+            {
+                bFlg = false;
+                fCntFrame = 0.0f;
+                SerialHandlerClass.Write( "3" );
+            }
+        }
+    }
 	
 
     //評価のアクティブ化
@@ -75,7 +108,7 @@ public class ScoreManager : MonoBehaviour
                     if( aEvaluationBadArray[ nCnt ].gameObject.activeSelf == false )
                     {
                          aEvaluationBadArray[ nCnt ].gameObject.SetActive( true );
-                         aEvaluationBadArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
+                         aEvaluationBadArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );    
                          break;
                     }
                 }
@@ -104,9 +137,16 @@ public class ScoreManager : MonoBehaviour
                  {
                      if( aEvaluationExcellentArray[ nCnt ].gameObject.activeSelf == false )
                      {
-                          aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
-                          aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
-                          break;
+                        aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
+                        aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
+
+                        if( nCnt == 2 && bFlg == false )
+                        {
+                            bFlg = true;
+                            SerialHandlerClass.Write( "4" );
+                        }
+                      
+                        break;
                      }
                  }
               

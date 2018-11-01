@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 86348945}
   - component: {fileID: 86348946}
   m_Layer: 0
-  m_Name: Bonus
+  m_Name: BonusManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,6 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
+  SerialHandlerClass: {fileID: 761611140}
+  ArdiunoClass: {fileID: 0}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +626,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1309851763944476, guid: 432fa9fbaafebc64bb58737c5a2ae533,
     type: 2}
   m_PrefabInternal: {fileID: 497239986}
+--- !u!1001 &530040293
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+      propertyPath: AutoConnect
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f79e7ab35c4d4ab4b6ccd9f24ecc815, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &559878789
 Prefab:
   m_ObjectHideFlags: 0
@@ -992,6 +1040,48 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1343027157162492, guid: eef25de3a310b3240882079c4622d1f8,
     type: 2}
   m_PrefabInternal: {fileID: 747480028}
+--- !u!1 &761611139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761611141}
+  - component: {fileID: 761611140}
+  m_Layer: 0
+  m_Name: SerialHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &761611140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761611139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f949b95877614440b7da0aa4e869002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM3
+  baudRate: 9600
+--- !u!4 &761611141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761611139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994063168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1364,8 @@ MonoBehaviour:
   ResultManagerPrefab: {fileID: 1246240111370002, guid: 58c06df9a0a2bf54fa635f66b7d548ee,
     type: 2}
   CMCameraManagerObj: {fileID: 996749593}
+  SerialHandlerClass: {fileID: 761611140}
+  ArdiunoClass: {fileID: 0}
 --- !u!4 &1300189113
 Transform:
   m_ObjectHideFlags: 0
@@ -2412,6 +2504,8 @@ MonoBehaviour:
   aEvaluationExcellentArray: []
   ManagerObj: {fileID: 1040674}
   nScore: 0
+  SerialHandlerClass: {fileID: 761611140}
+  ArdiunoClass: {fileID: 0}
 --- !u!1001 &2018539170
 Prefab:
   m_ObjectHideFlags: 0
