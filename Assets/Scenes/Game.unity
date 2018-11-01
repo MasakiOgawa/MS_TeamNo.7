@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
-  CountDownClass: {fileID: 0}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1199,7 @@ MonoBehaviour:
   PlayerRightPrefab: {fileID: 1648557946}
   fMove: 0.1
   fDist: 0
-  fHalfBar: 0.46143198
+  fHalfBar: 0.455
   OneBeat: 0.89
 --- !u!4 &1232893691
 Transform:
@@ -2412,6 +2411,7 @@ MonoBehaviour:
   aEvaluationFineArray: []
   aEvaluationExcellentArray: []
   ManagerObj: {fileID: 1040674}
+  nScore: 0
 --- !u!1001 &2018539170
 Prefab:
   m_ObjectHideFlags: 0
