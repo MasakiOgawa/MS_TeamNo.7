@@ -10,13 +10,15 @@ public class TitleLogo1 : MonoBehaviour {
 
     Tweener tweener;            // トゥイーンの情報
 
+    [SerializeField] private float animTime;        // アニメーション時間
+    [SerializeField] private float Scale;           // サイズ
                                 // Use this for initialization
     void Start () {
         // 3秒かけて2倍の大きさに
         // スケールシェイク
         tweener = rectTran.DOPunchScale(
-        new Vector3(0.5f, 0.5f),    // scale1.5倍指定
-        0.5f,                        // アニメーション時間
+        new Vector3(Scale, Scale),    // scale1.5倍指定
+        animTime,                        // アニメーション時間
         0
         ).SetLoops(-1);
 
