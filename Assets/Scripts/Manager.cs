@@ -38,7 +38,7 @@ public class Manager : MonoBehaviour
     EnemyManager       EnemyManagerClass;
     CountDown          CountDownClass;
     PlayerManager      PlayerManagerClass;
-    Bonus              BonusClass;
+    BonusManager       BonusClass;
 
     public float dCntFrame;       //フレーム数のカウンタ
     public float dCntHalfFrame;   //半拍分のカウンタ
@@ -54,7 +54,7 @@ public class Manager : MonoBehaviour
         EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
         CountDownClass = CountDownObj.GetComponent< CountDown >( );
         PlayerManagerClass = PlayerManagerObj.GetComponent< PlayerManager >( );
-        BonusClass = BonusObj.GetComponent< Bonus >( );
+        BonusClass = BonusObj.GetComponent< BonusManager >( );
 
         //フレームカウンタの初期化
         dCntFrame     = 0;
