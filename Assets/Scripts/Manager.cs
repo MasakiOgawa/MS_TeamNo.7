@@ -43,8 +43,10 @@ public class Manager : MonoBehaviour
     public float dCntFrame;       //フレーム数のカウンタ
     public float dCntHalfFrame;   //半拍分のカウンタ
     public float dPoseFrame;      //四拍分のカウンタ
+    public float fBonusFrame;
 
     bool bFlg;
+    bool bFlg2;
     double dDeviated;
 
 
@@ -60,8 +62,10 @@ public class Manager : MonoBehaviour
         dCntFrame     = 0;
         dCntHalfFrame = 0;
         dPoseFrame    = 0;
+        fBonusFrame = 0.0f;
 
         bFlg = false;
+        bFlg2 = false;
         dDeviated = 0;
     }
 
@@ -116,6 +120,7 @@ public class Manager : MonoBehaviour
              //ボーナスタイム
             case GAME_PHASE.PHASE_BONUS :
                  BonusClass.BonusTime( );
+                 fBonusFrame += 0.01666667f;
             break;
 
             //遷移先をチェック
@@ -139,6 +144,12 @@ public class Manager : MonoBehaviour
         {
             bFlg = false;
             dCntFrame = 0.0f;
+        }
+
+        if( bFlg2 == true )
+        {
+            bFlg2 = false;
+            fBonusFrame = 0.0f;
         }
     }
 
@@ -249,8 +260,20 @@ public class Manager : MonoBehaviour
     }
 
 
+    public float GetdBonusFrame( )
+    {
+        return fBonusFrame;
+    }
+
+
     public void SetFlg( )
     {
         bFlg = true;
+    }
+
+
+    public void SetFlg2( )
+    {
+        bFlg2 = true;
     }
 }
