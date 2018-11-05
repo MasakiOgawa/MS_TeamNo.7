@@ -69,6 +69,13 @@ public class PlayerManager : MonoBehaviour
             PlayerCenterClass.Pose( );
             PlayerRightClass.Pose( );
         }
+        //ボーナス状態ならプレイヤーの入力を検出
+        else if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS )
+        {
+            PlayerLeftClass.Bonus( );
+            PlayerCenterClass.Bonus( );
+            PlayerRightClass.Bonus( );
+        }
     }
 
 

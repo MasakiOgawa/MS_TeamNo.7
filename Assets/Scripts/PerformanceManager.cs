@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Uniduino;
 
 
 public class PerformanceManager : MonoBehaviour
@@ -24,6 +25,9 @@ public class PerformanceManager : MonoBehaviour
            bool               bFlg;
 
     ScoreManager ScoreManagerClass;
+
+    public SerialHandler SerialHandlerClass;
+    public Arduino ArdiunoClass;
    
 
     void Start( )
@@ -54,6 +58,15 @@ public class PerformanceManager : MonoBehaviour
         CountDownClass     = ManagerClass.GetCountDown( ).GetComponent< CountDown >( );
 
         ScoreManagerClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
+
+        ArdiunoClass = Arduino.global;
+        ArdiunoClass.Setup( ConfigurePins );
+    }
+
+
+    void ConfigurePins( )
+    {
+        ArdiunoClass.pinMode( 6 , PinMode.OUTPUT );
     }
 
 
@@ -64,6 +77,7 @@ public class PerformanceManager : MonoBehaviour
         if( bFlg == false )
         {
             bFlg = true;
+            SerialHandlerClass.Write( "3" );
             BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
         }

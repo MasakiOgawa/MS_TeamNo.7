@@ -1,29 +1,57 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
 public class Bonus : MonoBehaviour
 {
-           Manager    ManagerClass;     //マネージャのクラス
-    public GameObject ManagerObj;       //マネージャのオブジェクト
-           bool       bFlg;
+    Vector3 Vec;
+    Vector3 Goal;
+    float   fMove;
+     Manager       ManagerClass;         //マネージャのクラス
+    BonusManager BonusManagerClass;
+
+     //列挙型定義
+    public enum BONUS_TYPE
+    { 
+        LEFT = 0 ,
+        CENTER ,
+        RIGHT
+    }
+
+    BONUS_TYPE BonusType;
+
+    void Start( )
+    {
+          ManagerClass       = GameObject.Find( "GameManager" ).GetComponent< Manager>( );
+         BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
+    }
 
 
-	void Start( )
-    {  
-        //各クラスの情報を取得
-        ManagerClass = ManagerObj.GetComponent< Manager >( );
+	void Update( )
+    {
+		this.transform.position += new Vector3( Vec.x * fMove , Vec.y * fMove , Vec.z * fMove );
+
+        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.LEFT )
+        { 
+            BonusManagerClass.SetBonusLeft( this.gameObject );
+        }
+        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.CENTER )
+        { 
+            BonusManagerClass.SetBonusCenter( this.gameObject );
+        }
+        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.RIGHT )
+        { 
+            BonusManagerClass.SetBonusRight( this.gameObject );
+        }
 	}
 
 
-    //ボーナスタイム
-    public void BonusTime( )
+    public void SetState( Vector3 Dist , Vector3 VecGoal , BONUS_TYPE Bonus )
     {
-         //33拍でボーナスの終了
-        if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )
-        {
-            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
-            ManagerClass.SetFlg( );
-        }
+       // Vec     = 
+        Vec     = new Vector3( Dist.x , Dist.y , Dist.z );
+        Vec     = Vec.normalized;
+        fMove   = Vec.magnitude / 0.4475f;
+        Goal    = VecGoal;
+        BonusType = Bonus;
     }
 }

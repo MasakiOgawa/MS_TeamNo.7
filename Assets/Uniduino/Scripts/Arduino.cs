@@ -38,7 +38,7 @@ namespace Uniduino
 			Log("Arduino awake");
 			if (instance == null) instance = this; // track the first instance that was created as a convenience, but dont preclude multiple uniduino's coexisting
 	
-			DontDestroyOnLoad(this);
+			//DontDestroyOnLoad(this);
 			
 			if (AutoConnect)
 			{
