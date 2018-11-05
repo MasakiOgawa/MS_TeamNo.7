@@ -12,6 +12,9 @@ public class PlayerLeft : MonoBehaviour
            ScoreManager  ScoreManagerClass;    //スコアマネージャのクラス
            GameObject    EnemyObj;             //敵オブジェクト保存用の変数
     public bool          bPoseFlg;             //判定重複防止のフラグ
+
+    public bool          bBonusFlg;          
+    BonusManager BonusManagerClass;
         
 
 	void Start( )
@@ -19,12 +22,16 @@ public class PlayerLeft : MonoBehaviour
         //変数の初期化
 		bPoseFlg = false;
 
+        bBonusFlg = false;
+
         //各クラスの情報を取得
         ManagerClass       = ManagerObj.GetComponent< Manager>( );
         ControllerClass    = ManagerClass.GetPlayerManager( ).GetComponent< Example_gyro >( );
         PlayerManagerClass = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( );
         EnemyManagerClass  = ManagerClass.GetEnemyManager( ).GetComponent< EnemyManager >( );
         ScoreManagerClass  = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( ); 
+
+        BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
 	}
 	
 
@@ -167,9 +174,43 @@ public class PlayerLeft : MonoBehaviour
     }
 
 
+    //ボーナス
+    public void Bonus( )
+    {
+        //まだ振られていなかったら
+        if( bBonusFlg == false )
+        {
+            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER )
+            {
+                GameObject Tmp = BonusManagerClass.GetBonusLeft( );
+                Vector3 Pos = new Vector3( -2.96f , 3.44f , 195.52f );
+              
+                Debug.Log( "左");
+              //  Debug.Log( Vector3.Distance( Tmp.gameObject.transform.position , Pos ));
+                if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
+                {
+                    ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                }
+
+                bBonusFlg = true;
+            }  
+        }
+    }
+
+
     //コントローラの判定を開始
     public void ReleasebPoseFlg( )
     {
         bPoseFlg = false;
+    }
+
+
+ 
+    public void ReleasebBonusFlg( )
+    {
+        bBonusFlg = false;
     }
 }

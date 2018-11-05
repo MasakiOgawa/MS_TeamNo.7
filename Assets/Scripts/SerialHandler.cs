@@ -40,12 +40,8 @@ public class SerialHandler : MonoBehaviour
    // void OnDestroy()
    void OnApplicationQuit( )
     {
-        Debug.Log( "デストロイ前");
-        Debug.Log( "Close4" );
-            serialPort_.Close();
-            Debug.Log( "Close5" );
-            serialPort_.Dispose();
-            Debug.Log( "Close6" );
+        serialPort_.Close(); 
+        serialPort_.Dispose();     
         Close();
     }
 
@@ -64,27 +60,13 @@ public class SerialHandler : MonoBehaviour
 
     private void Close()
     {
-        Debug.Log( "Close1" );
-
         isNewMessageReceived_ = false;
         isRunning_ = false;
 
         if (thread_ != null && thread_.IsAlive)
         {
-            Debug.Log( "Close2" );
-            thread_.Join();
-            Debug.Log( "Close3" );
+            thread_.Join(); 
         }
-
-        if (serialPort_ != null && serialPort_.IsOpen)
-        {
-          /*  Debug.Log( "Close4" );
-            serialPort_.Close();
-            Debug.Log( "Close5" );
-            serialPort_.Dispose();
-            Debug.Log( "Close6" );*/
-        }
-        Debug.Log( "Close7" );
     }
 
     private void Read()
