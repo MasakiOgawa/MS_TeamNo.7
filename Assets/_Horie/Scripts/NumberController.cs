@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class NumberController : MonoBehaviour {
 
     // 表示したい数字を受け取ってそのテクスチャを表示するだけ
@@ -17,4 +17,10 @@ public class NumberController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void SetSprite ( int nNumber , GameObject TargetSpriteObj )
+    {
+        TargetSpriteObj.GetComponent<Image>().sprite = spriteObj[nNumber];
+
+    }
 }

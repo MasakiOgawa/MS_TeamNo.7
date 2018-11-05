@@ -30,7 +30,13 @@ public class InputTest : MonoBehaviour {
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            _ResultManager.GetComponent<ResultManager>().StartResult(702500);
+            _ResultManager.GetComponent<ResultManager>().StartResult(183);
+        }
+
+        // セーブデータ削除
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            PlayerPrefs.DeleteAll();
         }
     }
 }
