@@ -8,29 +8,46 @@ public class BonusManager : MonoBehaviour
            Manager    ManagerClass;   //マネージャのクラス
     public GameObject ManagerObj;     //マネージャのオブジェクト
            bool       bFlg;
-
     public GameObject    BonusPrefab;         //ボーナスのプレハブ
+     int           nCntBeat;            //一拍のカウンタ
+
+
            GameObject[ ] aBonusPrefabArray;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString;
            int[ ]        nTimingArray;        //タイミングフレームを格納した配列
            int           nCreateNo;           //生成する敵の番号
-           int           nCntBeat;            //一拍のカウンタ
+           GameObject    BonusTmp;
+          
 
            GameObject[ ] aBonusPrefabArray2;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText2;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString2;
            int[ ]        nTimingArray2;        //タイミングフレームを格納した配列
            int           nCreateNo2;           //生成する敵の番号 
+      GameObject    BonusTmp2;
 
            GameObject[ ] aBonusPrefabArray3;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText3;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString3;
            int[ ]        nTimingArray3;        //タイミングフレームを格納した配列
            int           nCreateNo3;           //生成する敵の番号 
+      GameObject    BonusTmp3;
            
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
+
+
+     PlayerLeft         PlayerLeftClass;           //左プレイヤーのクラス
+           PlayerCenter       PlayerCenterClass;         //中央プレイヤーのクラス
+           PlayerRight        PlayerRightClass;          //右プレイヤーのクラス
+     public GameObject         PlayerLeftPrefab;          //左プレイヤーのプレハブ
+    public GameObject         PlayerCenterPrefab;        //中央プレイヤーのプレハブ
+    public GameObject         PlayerRightPrefab;         //右プレイヤーのプレハブ 
+
+
+     ScoreManager ScoreClass;
+    PerformanceManager PerformanceClass;
 
 
 	void Start( )
@@ -41,6 +58,10 @@ public class BonusManager : MonoBehaviour
         nCreateNo2 = 0;
         nCreateNo3 = 0;
         nCntBeat  = 1;
+
+        BonusTmp = null;
+        BonusTmp2 = null;
+        BonusTmp3 = null;
 
         //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
@@ -90,6 +111,13 @@ public class BonusManager : MonoBehaviour
         //アルディーノの設定
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
+
+        PlayerLeftClass         = PlayerLeftPrefab.GetComponent< PlayerLeft >( );
+        PlayerCenterClass       = PlayerCenterPrefab.GetComponent< PlayerCenter >( );
+        PlayerRightClass        = PlayerRightPrefab.GetComponent< PlayerRight >( );
+
+          ScoreClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
+        PerformanceClass = ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
 	}
 
 
@@ -117,19 +145,27 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( -2.96f - -5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( -2.96f - -5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
+                                                                                             new Vector3( -2.96f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.LEFT );
+               
+                //ジョイコンを振れる様にする
+                PlayerLeftClass.ReleasebBonusFlg( );
                 nCreateNo++;
             }
             if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 1 && nTimingArray2[ nCreateNo2 ] != 999 )
             {
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 3.44f - 1.232f , 195.52f - 226.1f ) );
+                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
+                                                                                             new Vector3( 0.0f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.CENTER );
+                 PlayerCenterClass.ReleasebBonusFlg( );   
                 nCreateNo2++;
             }
             if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 1 && nTimingArray3[ nCreateNo3 ] != 999 )
             {
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 2.96f - 5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) );
+                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 2.96f - 5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
+                                                                                            new Vector3( 0.0f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.RIGHT );
+                 PlayerRightClass.ReleasebBonusFlg( );    
                 nCreateNo3++;
             }
 
@@ -139,9 +175,66 @@ public class BonusManager : MonoBehaviour
          //33拍でボーナスの終了
         if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )
         {
-            ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
+           // ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
+           ScoreClass.AggregateScore( );
+            PerformanceClass.PhaseCheck( );
+            BonusFalse( );
             ManagerClass.SetFlg( );
             SerialHandlerClass.Write( "3" );
+        }
+    }
+
+    public void SetBonusLeft( GameObject BonusLeft )
+    {
+        BonusTmp = BonusLeft;
+    }
+
+
+    public GameObject GetBonusLeft( )
+    {
+        return BonusTmp;
+    }
+
+
+    public void SetBonusCenter( GameObject BonusCenter )
+    {
+        BonusTmp2 = BonusCenter;
+    }
+
+
+    public GameObject GetBonusCenter( )
+    {
+        return BonusTmp2;
+    }
+
+
+    public void SetBonusRight( GameObject BonusRight )
+    {
+        BonusTmp3 = BonusRight;
+    }
+
+
+    public GameObject GetBonusRight( )
+    {
+        return BonusTmp3;
+    }
+
+
+    public void BonusFalse( )
+    {
+        for( int nCnt = 0; nCnt < 15; nCnt++ )
+        {
+            aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
+        }
+   
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
+        {
+            aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
+        }
+     
+        for( int nCnt = 0; nCnt < 15; nCnt++ )
+        {
+            aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );
         }
     }
 }

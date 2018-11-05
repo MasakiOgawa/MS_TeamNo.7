@@ -168,6 +168,7 @@ MonoBehaviour:
   dCntFrame: 0
   dCntHalfFrame: 0
   dPoseFrame: 0
+  fBonusFrame: 0
 --- !u!1 &86348944
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,52 +210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
-  BonusPrefab: {fileID: 1566684723670350, guid: cde9e5a025b471e4fa6ce6a112f0c606,
+  BonusPrefab: {fileID: 1241498739011568, guid: cde9e5a025b471e4fa6ce6a112f0c606,
     type: 2}
   SerialHandlerClass: {fileID: 761611140}
   ArdiunoClass: {fileID: 0}
---- !u!1001 &211908818
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669068721951376, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cde9e5a025b471e4fa6ce6a112f0c606, type: 2}
-  m_IsPrefabAsset: 0
+  PlayerLeftPrefab: {fileID: 632992498}
+  PlayerCenterPrefab: {fileID: 684074293}
+  PlayerRightPrefab: {fileID: 1648557946}
 --- !u!1 &217715829
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
+  bBonusFlg: 0
 --- !u!33 &632992502
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -223,6 +223,12 @@ public class Manager : MonoBehaviour
        return PerformanceManagerObj;
     }
 
+      public GameObject GetBonusManager( )
+    {
+       return BonusObj;
+    }
+
+
 
     public float GetdCntFrame( )
     {
