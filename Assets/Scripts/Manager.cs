@@ -47,7 +47,9 @@ public class Manager : MonoBehaviour
 
     bool bFlg;
     bool bFlg2;
-    double dDeviated;
+
+    public GameObject StartFilterObj;
+    StartFilter StartFilterClass;
 
 
     void Start( )
@@ -66,7 +68,8 @@ public class Manager : MonoBehaviour
 
         bFlg = false;
         bFlg2 = false;
-        dDeviated = 0;
+     
+        StartFilterClass = StartFilterObj.GetComponent< StartFilter >( );
     }
 
 
@@ -87,6 +90,7 @@ public class Manager : MonoBehaviour
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
                 PerformanceManagerClass.FirstPerformance( );
+                StartFilterClass.AddAlpha( );
             break;
 
             //敵の出現
