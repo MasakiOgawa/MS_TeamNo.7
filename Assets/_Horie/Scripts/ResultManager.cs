@@ -8,7 +8,8 @@ public class ResultManager : MonoBehaviour {
     // scoreCounter
     [SerializeField] private GameObject _ResultLogo;
     [SerializeField] private GameObject _ScoreCounter;
-    [SerializeField] private GameObject _RankingManager;    
+    [SerializeField] private GameObject _RankingManager;
+    [SerializeField] private GameObject _ResultBGOBJ;
     [SerializeField] private float _scoreCounterStartTime;      // ResultLogo出てからスコア回転開始までの時間
     [SerializeField] private float _rankingManagerStartTime;    // score回転終了してからランキング起動までの時間
     // 稼働中フラグ
@@ -34,6 +35,7 @@ public class ResultManager : MonoBehaviour {
         _ScoreCounter.SetActive(false);
         _RankingManager.GetComponent<RankingManager>().InitRankingManager();
         _RankingManager.SetActive(false);
+        _ResultBGOBJ.SetActive(false);
         bRunningRankingManager = false;
 
         //StartResult(ScoreManager.nScore);
@@ -81,6 +83,10 @@ public class ResultManager : MonoBehaviour {
 
         // リザルトロゴの起動
         _ResultLogo.SetActive(true);
+
+        //BG起動
+        _ResultBGOBJ.SetActive(true);
+        _ResultBGOBJ.GetComponent<ResultBG>().StartBG();
 
         // BGM
         GetComponent<AudioSource>().Play();
