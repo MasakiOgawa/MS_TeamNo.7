@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Uniduino;
 
 public class iconController : MonoBehaviour
 {
@@ -56,10 +57,21 @@ public class iconController : MonoBehaviour
     AudioSource ShakeAllSE;
     AudioSource ShakeCancelSE;
 
+    // ard
+    [SerializeField] private SerialHandler serialHandler;
+    [SerializeField] private Arduino arduino;
 
     // Use this for initialization
     void Start()
     {
+        //
+        arduino = Arduino.global;
+        arduino.Setup(ConfigurePins);
+
+        // 1番起動
+        //serialHandler.Write("1");
+        
+
         if (shakeIt1 == null || shakeIt2 == null || shakeIt3 == null)
             Debug.Log("error : shakeIt GameObject none");
 
@@ -84,6 +96,14 @@ public class iconController : MonoBehaviour
         ShakeAllSE = audioSources[1];
         ShakeCancelSE = audioSources[2];
 
+        // 
+
+    }
+
+    void ConfigurePins ()
+    {
+        arduino.pinMode(6, PinMode.OUTPUT);
+
     }
 
     // Update is called once per frame
@@ -96,6 +116,7 @@ public class iconController : MonoBehaviour
         if (isReady1 == false)
         {
             state = gyro.GetJoyconState(Example_gyro.JOYCON_TYPE.JOYCON_L1);
+
             // 振られた
             if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                 Input.GetKeyDown(KeyCode.S))
@@ -202,6 +223,10 @@ public class iconController : MonoBehaviour
             if (state == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                 Input.GetKeyDown(KeyCode.D))
             {
+                // arduino
+                // 2番起動
+                //serialHandler.Write("2");
+
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
                 ShakeAloneSE.Play();
