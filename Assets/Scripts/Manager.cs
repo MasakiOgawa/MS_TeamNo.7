@@ -43,9 +43,13 @@ public class Manager : MonoBehaviour
     public float dCntFrame;       //フレーム数のカウンタ
     public float dCntHalfFrame;   //半拍分のカウンタ
     public float dPoseFrame;      //四拍分のカウンタ
+    public float fBonusFrame;
 
     bool bFlg;
-    double dDeviated;
+    bool bFlg2;
+
+    public GameObject StartFilterObj;
+    StartFilter StartFilterClass;
 
 
     void Start( )
@@ -60,9 +64,12 @@ public class Manager : MonoBehaviour
         dCntFrame     = 0;
         dCntHalfFrame = 0;
         dPoseFrame    = 0;
+        fBonusFrame = 0.0f;
 
         bFlg = false;
-        dDeviated = 0;
+        bFlg2 = false;
+     
+        StartFilterClass = StartFilterObj.GetComponent< StartFilter >( );
     }
 
 
@@ -83,6 +90,7 @@ public class Manager : MonoBehaviour
             //ゲーム開始時の演出
             case GAME_PHASE.PHASE_FIRST_PERFORMANCE :
                 PerformanceManagerClass.FirstPerformance( );
+                StartFilterClass.AddAlpha( );
             break;
 
             //敵の出現
@@ -116,6 +124,7 @@ public class Manager : MonoBehaviour
              //ボーナスタイム
             case GAME_PHASE.PHASE_BONUS :
                  BonusClass.BonusTime( );
+                 fBonusFrame += 0.01666667f;
             break;
 
             //遷移先をチェック
@@ -139,6 +148,12 @@ public class Manager : MonoBehaviour
         {
             bFlg = false;
             dCntFrame = 0.0f;
+        }
+
+        if( bFlg2 == true )
+        {
+            bFlg2 = false;
+            fBonusFrame = 0.0f;
         }
     }
 
@@ -212,6 +227,12 @@ public class Manager : MonoBehaviour
        return PerformanceManagerObj;
     }
 
+      public GameObject GetBonusManager( )
+    {
+       return BonusObj;
+    }
+
+
 
     public float GetdCntFrame( )
     {
@@ -249,8 +270,20 @@ public class Manager : MonoBehaviour
     }
 
 
+    public float GetdBonusFrame( )
+    {
+        return fBonusFrame;
+    }
+
+
     public void SetFlg( )
     {
         bFlg = true;
+    }
+
+
+    public void SetFlg2( )
+    {
+        bFlg2 = true;
     }
 }

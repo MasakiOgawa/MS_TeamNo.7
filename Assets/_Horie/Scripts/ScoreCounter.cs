@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour {
 
+    // スコア各桁
+    [SerializeField] private GameObject NumberObj100;
+    [SerializeField] private GameObject NumberObj10;
+    [SerializeField] private GameObject NumberObj1;
+
+    [SerializeField] private GameObject NumberAsset;
+
+
     // スコアカウンタ終了情報送信用
     [SerializeField] private GameObject _ResultManager;
 
@@ -62,7 +70,11 @@ public class ScoreCounter : MonoBehaviour {
 
 
             }
-            TMPscore.text = _score.ToString();
+
+            // このフレームで表示したいスコア
+            //_score
+
+
         }
     }
 
