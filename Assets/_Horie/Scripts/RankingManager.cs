@@ -53,11 +53,19 @@ public class RankingManager : MonoBehaviour {
             _1stScore.SetActive(true);
             bEnable1stScore = true;
             // 表示スコア受け渡し
-            TMPro.TextMeshProUGUI tmp = _1stScore.GetComponent<TMPro.TextMeshProUGUI>();
-            tmp.text = Rank1stScore.ToString();
 
-            if ( Rank ==1 )
-               tmp.color = new Color(255, 0, 0, 255);
+
+            if (Rank == 1)
+            {
+
+                //tmp.color = new Color(255, 0, 0, 255);
+                _1stScore.GetComponent<RankingScoreController>().SetScore(Rank1stScore, true);
+            }
+            else
+            {
+                _1stScore.GetComponent<RankingScoreController>().SetScore(Rank1stScore, false);
+            }
+
 
             // SE
             GetComponent<AudioSource>().Play();
@@ -68,11 +76,17 @@ public class RankingManager : MonoBehaviour {
             _2ndScore.SetActive(true);
             bEnable2ndScore = true;
             // 表示スコア受け渡し
-            TMPro.TextMeshProUGUI tmp = _2ndScore.GetComponent<TMPro.TextMeshProUGUI>();
-            tmp.text = Rank2ndScore.ToString();
+
 
             if (Rank == 2)
-                tmp.color = new Color(255, 0, 0, 255);
+            {
+                //tmp.color = new Color(255, 0, 0, 255);
+                _2ndScore.GetComponent<RankingScoreController>().SetScore(Rank2ndScore, true);
+            }
+            else
+            {
+                _2ndScore.GetComponent<RankingScoreController>().SetScore(Rank2ndScore, false);
+            }
             // SE
             GetComponent<AudioSource>().Play();
         }
@@ -82,11 +96,17 @@ public class RankingManager : MonoBehaviour {
             _3rdScore.SetActive(true);
             bEnable3rdScore = true;
             // 表示スコア受け渡し
-            TMPro.TextMeshProUGUI tmp = _3rdScore.GetComponent<TMPro.TextMeshProUGUI>();
-            tmp.text = Rank3rdScore.ToString();
+
 
             if (Rank == 3)
-                tmp.color = new Color(255, 0, 0, 255);
+            {
+                //tmp.color = new Color(255, 0, 0, 255);
+                _3rdScore.GetComponent<RankingScoreController>().SetScore(Rank3rdScore, true);
+            }
+            else
+            {
+                _3rdScore.GetComponent<RankingScoreController>().SetScore(Rank3rdScore, false);
+            }
             // SE
             GetComponent<AudioSource>().Play();
 
@@ -169,8 +189,8 @@ public class RankingManager : MonoBehaviour {
         PlayerPrefs.SetInt(_2ndKey, Rank2ndScore);
         PlayerPrefs.SetInt(_3rdKey, Rank3rdScore);
 
-        Debug.Log(Rank1stScore);
-        Debug.Log(Rank2ndScore);
-        Debug.Log(Rank3rdScore);
+        //Debug.Log(Rank1stScore);
+        //Debug.Log(Rank2ndScore);
+        //Debug.Log(Rank3rdScore);
     }
 }

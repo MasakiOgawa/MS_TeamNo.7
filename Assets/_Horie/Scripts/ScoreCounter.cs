@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ScoreCounter : MonoBehaviour {
 
     // スコア各桁
@@ -17,9 +17,7 @@ public class ScoreCounter : MonoBehaviour {
 
     // スコア上昇幅
     [SerializeField] private int scoreUpValue;
-
-    // TextMeshPro
-    private TMPro.TextMeshProUGUI TMPscore;
+    
     // score
     private int _score;
     private int _maxScore;
@@ -32,7 +30,6 @@ public class ScoreCounter : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        TMPscore = GetComponent<TMPro.TextMeshProUGUI>();
 
 
     }
@@ -74,6 +71,59 @@ public class ScoreCounter : MonoBehaviour {
             // このフレームで表示したいスコア
             //_score
 
+            // スコア表示処理
+            
+            // 現在の桁数に応じて分岐
+            
+            // 100で割って0以上の場合->3桁
+            if ( _score / 100 > 0)
+            {
+                NumberObj100.SetActive(true);
+                NumberObj10.SetActive(true);
+                NumberObj1.SetActive(true);
+
+                // 100
+                int score100 = _score / 100;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score100, NumberObj100);
+
+                // 10
+                int score10 = _score % 100;
+                score10 = score10 / 10;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score10, NumberObj10);
+                
+                // 1
+                int score1 = _score % 10;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score1, NumberObj1);
+
+            }
+            // 10で割って0
+            else if ( _score / 10 > 0)
+            {
+                NumberObj100.SetActive(false);
+                NumberObj10.SetActive(true);
+                NumberObj1.SetActive(true);
+
+                // 10
+                int score10 = _score % 100;
+                score10 = score10 / 10;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score10, NumberObj10);
+
+                // 1
+                int score1 = _score % 10;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score1, NumberObj1);
+            }
+            // 一桁しかない
+            else
+            {
+                NumberObj100.SetActive(false);
+                NumberObj10.SetActive(false);
+                NumberObj1.SetActive(true);
+                // 1
+                int score1 = _score % 10;
+                NumberAsset.GetComponent<NumberController>().SetSprite(score1, NumberObj1);
+            }
+
+
 
         }
     }
@@ -87,15 +137,12 @@ public class ScoreCounter : MonoBehaviour {
         ScoreStopSE = audioSources[1];
 
         ScoreCounterSE.Play();
-
-        // ResultManagerからスコアを受け取り
-        TMPscore = GetComponent<TMPro.TextMeshProUGUI>();
+        
         _maxScore = score;
 
         int nZeroScore = 0;
 
         _score = nZeroScore;
-        TMPscore.text = _score.ToString();
 
         isEnableScoreCounter = true;
     }
