@@ -28,6 +28,9 @@ public class PerformanceManager : MonoBehaviour
 
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
+
+    public GameObject MirrorBallColorObj;
+    MirrorBallMaterial MirrorBallMaterialClass;
    
 
     void Start( )
@@ -61,6 +64,8 @@ public class PerformanceManager : MonoBehaviour
 
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
+
+        MirrorBallMaterialClass = MirrorBallColorObj.GetComponent< MirrorBallMaterial >( );
     }
 
 
@@ -150,6 +155,8 @@ public class PerformanceManager : MonoBehaviour
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
                  ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
+
+             MirrorBallMaterialClass.SetColor( 4 );
         }
         //敵を生成する
         else
