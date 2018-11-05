@@ -50,6 +50,8 @@ public class Manager : MonoBehaviour
 
     public GameObject StartFilterObj;
     StartFilter StartFilterClass;
+    public GameObject MirrorBallObj;
+    MirrorBallMaterial MirrorBallClass;
 
 
     void Start( )
@@ -70,6 +72,8 @@ public class Manager : MonoBehaviour
         bFlg2 = false;
      
         StartFilterClass = StartFilterObj.GetComponent< StartFilter >( );
+
+        MirrorBallClass = MirrorBallObj.GetComponent< MirrorBallMaterial >( );
     }
 
 
@@ -123,6 +127,7 @@ public class Manager : MonoBehaviour
 
              //ボーナスタイム
             case GAME_PHASE.PHASE_BONUS :
+                MirrorBallClass.BonusMaterial( );
                  BonusClass.BonusTime( );
                  fBonusFrame += 0.01666667f;
             break;
