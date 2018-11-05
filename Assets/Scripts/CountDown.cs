@@ -7,15 +7,15 @@ public class CountDown : MonoBehaviour
 {
            Manager    ManagerClass;   //マネージャのクラス
     public GameObject ManagerObj;     //マネージャのオブジェクト
-    public GameObject CountNo3Obj;    //3のオブジェクト
-    public GameObject CountNo2Obj;    //2のオブジェクト
-    public GameObject CountNo1Obj;    //1のオブジェクト
-    public GameObject CountGoObj;     //GOのオブジェクト
            BGM        BGMClass;       //BGMのクラス
            Rhythm     RhythmClass;    //リズムのクラス
            int        nCountDown;     //カウントダウンのカウンタ
 
     public float OneBeat;
+
+
+    public GameObject MirrorBallColorObj;
+    MirrorBallMaterial MirrorBallMaterialClass;
 
 
 	void Start( )
@@ -27,6 +27,8 @@ public class CountDown : MonoBehaviour
         ManagerClass = ManagerObj.GetComponent< Manager >( );
         BGMClass     = ManagerClass.GetBGM( ).GetComponent< BGM >( );
         RhythmClass  = ManagerClass.GetRhythm( ).GetComponent< Rhythm >( );
+
+        MirrorBallMaterialClass = MirrorBallColorObj.GetComponent< MirrorBallMaterial >( );
 	}
 	
 
@@ -41,29 +43,26 @@ public class CountDown : MonoBehaviour
             if( nCountDown == 3 )
             {
                 nCountDown = 2;
-                CountNo3Obj.SetActive( false );
-                CountNo2Obj.SetActive( true );
+                MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
             }
             else if( nCountDown == 2 )
             {
                 nCountDown = 1;
-                CountNo2Obj.SetActive( false );
-                CountNo1Obj.SetActive( true );
+                MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
             }
             else if( nCountDown == 1 )
             {
                 nCountDown = 0;
-                CountNo1Obj.SetActive( false );
-                CountGoObj.SetActive( true );
+                MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
             }
             //カウントダウンの終了
             else if( nCountDown == 0 )
             {
                 nCountDown = 0;
-                CountGoObj.SetActive( false );
+                MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
          
                 //プレイヤーのダンス
@@ -79,7 +78,7 @@ public class CountDown : MonoBehaviour
         if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
         {
             nCountDown = 3;
-            CountNo3Obj.SetActive( true );
+            MirrorBallMaterialClass.SetColor( nCountDown );
             RhythmClass.Emit( );
         }
     }
