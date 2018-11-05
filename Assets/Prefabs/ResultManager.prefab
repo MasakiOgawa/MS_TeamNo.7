@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1581254455120674
 GameObject:
   m_ObjectHideFlags: 1
@@ -1412,6 +1412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6c034e01074f045ada64a70cdf03a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberObj100: {fileID: 0}
+  NumberObj10: {fileID: 0}
+  NumberObj1: {fileID: 0}
+  NumberAsset: {fileID: 0}
   _ResultManager: {fileID: 1246240111370002}
   scoreUpValue: 1000
 --- !u!114 &114770781735789600
