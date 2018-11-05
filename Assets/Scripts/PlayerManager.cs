@@ -142,6 +142,7 @@ public class PlayerManager : MonoBehaviour
             if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )
             {
                 //ボーナス
+                //虹色の何か？？？
                 ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_BONUS );
             }
             else if( PerformanceManagerClass.GetnCntPerformance( ) == 6 )
