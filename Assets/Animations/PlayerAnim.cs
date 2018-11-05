@@ -25,6 +25,7 @@ public class PlayerAnim : MonoBehaviour
     // プレイヤーアニメーション変更
     public void MotionChange(PlayerAnimDefine.Idx idx)
     {
+        anim = GetComponent<Animator>();
         anim.SetInteger("AnimIdx", (int)idx);
         AnimIdxOld = AnimIdx;
     }
