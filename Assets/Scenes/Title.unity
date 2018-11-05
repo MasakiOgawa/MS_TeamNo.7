@@ -1999,31 +1999,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4814232508303112, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4814232508303112, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4814232508303112, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1901275272507706, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384546268452306, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95706345573342854, guid: 3f868a2bb442c45448fe52bca50eabac,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f868a2bb442c45448fe52bca50eabac, type: 2}
   m_IsPrefabAsset: 0
