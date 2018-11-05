@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AuraLaserLight : MonoBehaviour
 {
-    //色が変わるタイミング(時間)を「Cube」のInspector(Duration)で指定、初期値は1.0F
+    //色が変わるタイミング(時間)
     public float duration = 1.0F;
 
     private Light light;
