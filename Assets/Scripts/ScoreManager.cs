@@ -62,6 +62,10 @@ public class ScoreManager : MonoBehaviour
             aEvaluationFineArray[ nCnt ]      = Instantiate( EvaluationFinePrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
             aEvaluationExcellentArray[ nCnt ] = Instantiate( EvaluationExcellentPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
 
+            aEvaluationBadArray[ nCnt ].transform.parent = this.transform;
+            aEvaluationFineArray[ nCnt ].transform.parent = this.transform;
+            aEvaluationExcellentArray[ nCnt ].transform.parent = this.transform;
+
             aEvaluationBadArray[ nCnt ].gameObject.SetActive( false );
             aEvaluationFineArray[ nCnt ].gameObject.SetActive( false );
             aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( false );

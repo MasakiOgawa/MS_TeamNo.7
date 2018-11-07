@@ -31,26 +31,44 @@ public class EnemyManager : MonoBehaviour
     int nCnt;
     BGM BGMClass;
 
+    public GameObject Enemy_01Prefab;
+    GameObject[ ] aEnemyPrefabArray2;
+
    
 	void Start( )
     {
         //変数の初期化
         aEnemyPrefabArray = new GameObject[ 8 , 4 ];
+        aEnemyPrefabArray2 = new GameObject[ 8 ];
         nCreateNo         = 0;
         nCntLength        = 0;
 
         //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
-            aEnemyPrefabArray[ nCnt , 0 ] = Instantiate( EnemyUpPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
+           /* aEnemyPrefabArray[ nCnt , 0 ] = Instantiate( EnemyUpPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
             aEnemyPrefabArray[ nCnt , 1 ] = Instantiate( EnemyDownPrefab , new Vector3( 0.0f, 0.0f, 0.0f ) , Quaternion.identity );
             aEnemyPrefabArray[ nCnt , 2 ] = Instantiate( EnemyLeftPrefab , new Vector3( 0.0f , 0.0f, 0.0f ) , Quaternion.identity );
-            aEnemyPrefabArray[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.identity );
+            aEnemyPrefabArray[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.identity );*/
+
+            aEnemyPrefabArray[ nCnt , 0 ] = Instantiate( EnemyUpPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
+            aEnemyPrefabArray[ nCnt , 1 ] = Instantiate( EnemyDownPrefab , new Vector3( 0.0f, 0.0f, 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
+            aEnemyPrefabArray[ nCnt , 2 ] = Instantiate( EnemyLeftPrefab , new Vector3( 0.0f , 0.0f, 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
+            aEnemyPrefabArray[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
+
+            aEnemyPrefabArray[ nCnt , 0 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 1 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 2 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 3 ].transform.parent = this.transform;
 
             aEnemyPrefabArray[ nCnt , 0 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 1 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 2 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 3 ].gameObject.SetActive( false );
+
+            aEnemyPrefabArray2[ nCnt ] = Instantiate( Enemy_01Prefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 180.0f , 0.0f ) );
+            aEnemyPrefabArray2[ nCnt ].transform.parent = this.transform;
+            aEnemyPrefabArray2[ nCnt ].gameObject.SetActive( false );
         }
 
         //敵情報をファイルから読み込み
@@ -109,21 +127,33 @@ public class EnemyManager : MonoBehaviour
             {
                 aEnemyPrefabArray[ nCnt2 , 0 ].gameObject.SetActive( true );
                 aEnemyPrefabArray[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+
+                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
                 aEnemyPrefabArray[ nCnt2 , 1 ].gameObject.SetActive( true );
                 aEnemyPrefabArray[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+
+                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
                 aEnemyPrefabArray[ nCnt2 , 2 ].gameObject.SetActive( true );
                 aEnemyPrefabArray[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+
+                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
-               aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
-               aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
+                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+
+                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
             }
 
             //  AuraSpotObj.SetActive( false );
@@ -159,6 +189,11 @@ public class EnemyManager : MonoBehaviour
                 {
                     aEnemyPrefabArray[ nCnt , nCnt2 ].SetActive( false );
                 }
+            }
+
+            if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
+            {
+                aEnemyPrefabArray2[ nCnt ].SetActive( false );
             }
         }
     }
