@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShakeUIController : MonoBehaviour {
 
@@ -9,12 +10,11 @@ public class ShakeUIController : MonoBehaviour {
 
     [SerializeField] private int ChangeFrame;
 
-
-
     private int nFrame;
 
 	// Use this for initialization
 	void Start () {
+
         nFrame = 0;
 
         ShakeUI1.SetActive(true);
