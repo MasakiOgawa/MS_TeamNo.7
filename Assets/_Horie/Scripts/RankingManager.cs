@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Uniduino;
 
 public class RankingManager : MonoBehaviour {
 
@@ -36,12 +37,21 @@ public class RankingManager : MonoBehaviour {
     private int Rank;
 
     public float fEndFrame;
+    public SerialHandler SerialHandlerClass;
+    public Arduino ArdiunoClass;
 
     // Use this for initialization
     void Start () {
         // 初期化
         InitRankingManager();
 
+        ArdiunoClass = Arduino.global;
+        ArdiunoClass.Setup( ConfigurePins );
+    }
+
+    void ConfigurePins( )
+    {
+        ArdiunoClass.pinMode( 6 , PinMode.OUTPUT );
     }
 	
 	// Update is called once per frame
@@ -161,6 +171,7 @@ public class RankingManager : MonoBehaviour {
         // 1stより大きい場合
         if ( Rank1stScore <= nScore)
         {
+            SerialHandlerClass.Write( "7" );
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = Rank1stScore;
             Rank1stScore = nScore;
@@ -169,6 +180,7 @@ public class RankingManager : MonoBehaviour {
         // 1st > score > 2nd
         else if ( Rank1stScore > nScore && nScore >= Rank2ndScore)
         {
+            SerialHandlerClass.Write( "7" );
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = nScore;
             Rank = 2;
@@ -176,6 +188,7 @@ public class RankingManager : MonoBehaviour {
         // 2nd > score > 3rd
         else if ( Rank2ndScore > nScore && nScore >= Rank3rdScore )
         {
+            SerialHandlerClass.Write( "7" );
             Rank3rdScore = nScore;
             Rank = 3;
         }

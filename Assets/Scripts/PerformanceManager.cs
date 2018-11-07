@@ -31,6 +31,9 @@ public class PerformanceManager : MonoBehaviour
 
     public GameObject MirrorBallColorObj;
     MirrorBallMaterial MirrorBallMaterialClass;
+
+    public GameObject MotionManagerObj;
+    MotionManager MotionManagerClass;
    
 
     void Start( )
@@ -66,6 +69,8 @@ public class PerformanceManager : MonoBehaviour
         ArdiunoClass.Setup( ConfigurePins );
 
         MirrorBallMaterialClass = MirrorBallColorObj.GetComponent< MirrorBallMaterial >( );
+
+        MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
     }
 
 
@@ -83,6 +88,7 @@ public class PerformanceManager : MonoBehaviour
         {
             bFlg = true;
             SerialHandlerClass.Write( "3" );
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing5 );
             BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
         }
@@ -92,7 +98,7 @@ public class PerformanceManager : MonoBehaviour
         {
             //パフォーマンスを終えたら敵の生成
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
-
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             BGMClass.SetBGM( 14.78f );//OK!!
             ManagerClass.SetFlg( );    
         }
@@ -108,6 +114,8 @@ public class PerformanceManager : MonoBehaviour
             //パフォーマンスを終えたらランキングの生成
            // ResultManagerPrefab = Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
+            SerialHandlerClass.Write( "6" );
             ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) );
             ScoreManagerClass.ResetnScore( );
         }
@@ -130,18 +138,22 @@ public class PerformanceManager : MonoBehaviour
             if( nCntPerformance == 0 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 1 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
             }
             else if( nCntPerformance == 1 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 2 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Walk );
             }
             else if( nCntPerformance == 2 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
             }
             else if( nCntPerformance == 4 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.GangnamStyle );
             }
           
             PlayerManagerClass.SetnPerformanceBar( aPerformanceType[ nCntPerformance ].nBar );
@@ -153,6 +165,7 @@ public class PerformanceManager : MonoBehaviour
             if( nCntPerformance == 6 )
             {
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
+                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing5 );
                  ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
 
@@ -161,6 +174,7 @@ public class PerformanceManager : MonoBehaviour
         //敵を生成する
         else
         {
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_ENEMY_APPEARANCE );
         }
 

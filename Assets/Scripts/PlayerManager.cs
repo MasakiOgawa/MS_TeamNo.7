@@ -31,6 +31,11 @@ public class PlayerManager : MonoBehaviour
 
     public float OneBeat;
 
+    bool bFlg;
+    bool bFlg2;
+
+    public GameObject MotionManagerObj;
+    MotionManager MotionManagerClass;
 
 	void Start( )
     {
@@ -39,6 +44,8 @@ public class PlayerManager : MonoBehaviour
         nTargetNo        = 0;
         fDist            = 0.0f;
         nCntRhythm       = 0;
+        bFlg = false;
+        bFlg2 = false;
 
         //各クラスの情報を取得
         ManagerClass            = ManagerObj.GetComponent< Manager >( );
@@ -56,6 +63,8 @@ public class PlayerManager : MonoBehaviour
         PerformanceClass = ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
 
         BGMClass = ManagerClass.GetBGM( ).GetComponent< BGM >( );
+
+        MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
 	}
 	
 
@@ -135,9 +144,33 @@ public class PlayerManager : MonoBehaviour
         PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
         fDist                         += fMove;
 
+        if( bFlg == false )
+        {
+            if( PerformanceManagerClass.GetnCntPerformance( ) == 1 && ManagerClass.GetdCntFrame( ) >= 8.28f )
+            {
+                bFlg = true;
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.JazzDancing1 );
+            }
+            else if( PerformanceManagerClass.GetnCntPerformance( ) == 5 && ManagerClass.GetdCntFrame( ) >= 7.36 )
+            {
+                bFlg = true;
+                bFlg2 = true;
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HeadSpinning );
+            }
+        }
+
+        if( bFlg2 ==true )
+        {
+            MotionManagerClass.HeadDanceRotate( );
+        }
+
+
         //パフォーマンスが終了したら
         if( ManagerClass.GetdCntFrame( ) >= ( float )nPerformanceBar * /*OneBeat*/0.92f )
         {
+            bFlg = false;
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
+
             //現在のパフォーマンスによって遷移先を決める
             if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )
             {
