@@ -987,6 +987,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95070115401235660, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711894611144002, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: AnimIdx
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
   m_IsPrefabAsset: 0
@@ -998,6 +1008,11 @@ Transform:
 --- !u!1 &661318279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1171937030013860, guid: defec5ff9c9b5ad438286e9786ae0450,
+    type: 2}
+  m_PrefabInternal: {fileID: 661318277}
+--- !u!1 &661318280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1387742711996390, guid: defec5ff9c9b5ad438286e9786ae0450,
     type: 2}
   m_PrefabInternal: {fileID: 661318277}
 --- !u!1 &684074293
@@ -1321,6 +1336,50 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0757778895c5be6468ec462c4cf5cdc7, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1099571937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099571939}
+  - component: {fileID: 1099571938}
+  m_Layer: 0
+  m_Name: MotionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1099571938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099571937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca97b4a3ccd44947805fd2a966450ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLeftObj: {fileID: 1429902233}
+  PlayerCenterObj: {fileID: 661318280}
+  PlayerRightObj: {fileID: 1301448921}
+  fAddRotateY: 20
+--- !u!4 &1099571939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099571937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232893689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1417,7 @@ MonoBehaviour:
   fDist: 0
   fHalfBar: 0.455
   OneBeat: 0.89
+  MotionManagerObj: {fileID: 1099571937}
 --- !u!4 &1232893691
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,6 +1488,7 @@ MonoBehaviour:
   SerialHandlerClass: {fileID: 761611140}
   ArdiunoClass: {fileID: 0}
   MirrorBallColorObj: {fileID: 1964382000}
+  MotionManagerObj: {fileID: 1099571937}
 --- !u!4 &1300189113
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,6 +1541,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95070115401235660, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711894611144002, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: AnimIdx
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
   m_IsPrefabAsset: 0
@@ -1491,6 +1562,11 @@ GameObject:
 --- !u!4 &1301448920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450,
+    type: 2}
+  m_PrefabInternal: {fileID: 1301448918}
+--- !u!1 &1301448921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1387742711996390, guid: defec5ff9c9b5ad438286e9786ae0450,
     type: 2}
   m_PrefabInternal: {fileID: 1301448918}
 --- !u!1 &1388002714
@@ -1717,6 +1793,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95070115401235660, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711894611144002, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: AnimIdx
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
   m_IsPrefabAsset: 0
@@ -1728,6 +1814,11 @@ Transform:
 --- !u!1 &1429902232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1171937030013860, guid: defec5ff9c9b5ad438286e9786ae0450,
+    type: 2}
+  m_PrefabInternal: {fileID: 1429902230}
+--- !u!1 &1429902233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1387742711996390, guid: defec5ff9c9b5ad438286e9786ae0450,
     type: 2}
   m_PrefabInternal: {fileID: 1429902230}
 --- !u!1001 &1441196130
