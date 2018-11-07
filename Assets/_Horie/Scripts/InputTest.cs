@@ -27,6 +27,19 @@ public class InputTest : MonoBehaviour {
             womanScript.SetThunder(ThunderTaerget);
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // ビーム発射
+            ExplodeController.Create(Woman, 1, ThunderTaerget, 2);
+            
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // 爆破
+            HitController.Create(ThunderTaerget , 1 , -1);
+
+        }
+
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
         {
