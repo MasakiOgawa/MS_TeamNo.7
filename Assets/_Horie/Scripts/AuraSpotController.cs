@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AuraSpotController : MonoBehaviour {
 
-    private enum AURA_TYPE
+    public enum AURA_TYPE
     {
         TYPE_0,
         TYPE_1,
@@ -39,7 +39,7 @@ public class AuraSpotController : MonoBehaviour {
         // すべてのAuraを消灯する
         for ( int n = 0; n < AuraPointLight.Length; n ++)
         {
-            //AuraPointLight[n].SetActive(false);
+            AuraPointLight[n].SetActive(false);
         }
 
         //auraType = AURA_TYPE.TYPE_0;
@@ -67,6 +67,9 @@ public class AuraSpotController : MonoBehaviour {
             case AURA_TYPE.TYPE_1:
                 {
                     AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
+
+
                     break;
                 }
             //―――――――――――――――――――――――――――――――――――――――
@@ -74,8 +77,11 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_2:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     TYPE_2_isUp = false;
                     AuraPointLight[1].SetActive(true);
+                    AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     moveSpeed = 1;
                     break;
                 }
@@ -84,10 +90,16 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_3:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[1].SetActive(true);
+                    AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
+
                     AuraPointLight[2].SetActive(true);
                     transform.position = new Vector3(7.0f,
                         transform.position.y,
                         transform.position.z);
+                    AuraPointLight[2].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     break;
                 }
             //―――――――――――――――――――――――――――――――――――――――
@@ -95,7 +107,15 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_4:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[1].SetActive(true);
+                    AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[2].SetActive(true);
+                    AuraPointLight[2].GetComponent<AuraAPI.AuraLight>().enabled = true;
+
                     AuraPointLight[3].SetActive(true);
+                    AuraPointLight[3].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     break;
                 }
         }
@@ -104,9 +124,28 @@ public class AuraSpotController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            IncreaseType(AURA_TYPE.TYPE_0);
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            IncreaseType(AURA_TYPE.TYPE_1);
+
+        }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            IncreaseType();
+            IncreaseType(AURA_TYPE.TYPE_2);
+
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            IncreaseType(AURA_TYPE.TYPE_3);
+
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            IncreaseType(AURA_TYPE.TYPE_4);
 
         }
 
@@ -170,23 +209,21 @@ public class AuraSpotController : MonoBehaviour {
 	}
 
     // type一つ進める
-    public void IncreaseType ()
+    public void IncreaseType ( AURA_TYPE Aura_Type)
     {
         // 位置初期化
         transform.position = new Vector3(0, 7, 20);
         transform.rotation = Quaternion.identity; 
-
-        int type = (int)auraType;
-        type++;
-
-        if ( type > (int)AURA_TYPE.TYPE_4 )
-        {
-            type = 0;
-        }
-        auraType = (AURA_TYPE)type;
+        auraType = Aura_Type;
 
         // 各タイプに応じて初期設定を行う
-        
+
+        // すべてのAuraを消灯する
+        for (int n = 0; n < AuraPointLight.Length; n++)
+        {
+            AuraPointLight[n].SetActive(false);
+
+        }
         switch (auraType)
         {
             //―――――――――――――――――――――――――――――――――――――――
@@ -217,6 +254,8 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_2:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     TYPE_2_isUp = false;
                     AuraPointLight[1].SetActive(true);
                     AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
@@ -228,6 +267,11 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_3:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[1].SetActive(true);
+                    AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
+
                     AuraPointLight[2].SetActive(true);
                     transform.position = new Vector3(7.0f,
                         transform.position.y,
@@ -240,6 +284,13 @@ public class AuraSpotController : MonoBehaviour {
             //―――――――――――――――――――――――――――――――――――――――
             case AURA_TYPE.TYPE_4:
                 {
+                    AuraPointLight[0].SetActive(true);
+                    AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[1].SetActive(true);
+                    AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
+                    AuraPointLight[2].SetActive(true);
+                    AuraPointLight[2].GetComponent<AuraAPI.AuraLight>().enabled = true;
+
                     AuraPointLight[3].SetActive(true);
                     AuraPointLight[3].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     break;
