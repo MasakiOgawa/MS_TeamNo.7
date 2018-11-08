@@ -49,6 +49,12 @@ public class InputTest : MonoBehaviour {
                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
 
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // 電撃
+            LightningManager.Create(MirrorBall, 0, ThunderTaerget, 0);
+
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -58,9 +64,10 @@ public class InputTest : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
+            // ランダムでいろいろ
             int Rand = Random.RandomRange(0, 10);
 
-            // 爆破
+            // 
             OneShot.Create( (OneShot.ONESHOT_TYPE) Rand, new Vector3 ( ThunderTaerget.transform.position.x ,
                 ThunderTaerget.transform.position.y + 2.0f ,
                 ThunderTaerget.transform.position.z));
