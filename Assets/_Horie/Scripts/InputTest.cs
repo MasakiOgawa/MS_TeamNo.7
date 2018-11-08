@@ -18,14 +18,14 @@ public class InputTest : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
+           // EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
         }
 
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            WomanController womanScript = Woman.GetComponent<WomanController>();
-            womanScript.SetThunder(ThunderTaerget);
+          //  WomanController womanScript = Woman.GetComponent<WomanController>();
+          //  womanScript.SetThunder(ThunderTaerget);
         }
 
         if (Input.GetKeyDown(KeyCode.U))
@@ -55,6 +55,19 @@ public class InputTest : MonoBehaviour {
             LightningManager.Create(MirrorBall, 0, ThunderTaerget, 0);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            // mirrorBallAura
+            MirrorBall.GetComponent<MirrorBall>().EnableAura();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            // mirrorBallAura
+            MirrorBall.GetComponent<MirrorBall>().DisableAura();
+        }
+
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
