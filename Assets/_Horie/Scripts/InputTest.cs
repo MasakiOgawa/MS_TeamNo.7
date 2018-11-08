@@ -7,6 +7,7 @@ public class InputTest : MonoBehaviour {
     [SerializeField] private GameObject _ResultManager;
     [SerializeField] private GameObject Woman;
     [SerializeField] private GameObject ThunderTaerget;
+    [SerializeField] private GameObject MirrorBall;
 	// Use this for initialization
 	void Start () {
 		
@@ -30,7 +31,8 @@ public class InputTest : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             // ビーム発射
-            ExplodeController.Create(Woman, 1, ThunderTaerget, 2);
+            ExplodeController.Create(Woman, 0, ThunderTaerget, 2 , MirrorBall , 2 ,
+                ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , 0.5f , 1.25f);
             
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -39,6 +41,17 @@ public class InputTest : MonoBehaviour {
             HitController.Create(ThunderTaerget , 1 , -1);
 
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            int Rand = Random.RandomRange(0, 10);
+
+            // 爆破
+            OneShot.Create( (OneShot.ONESHOT_TYPE) Rand, new Vector3 ( ThunderTaerget.transform.position.x ,
+                ThunderTaerget.transform.position.y + 2.0f ,
+                ThunderTaerget.transform.position.z));
+
+        }
+
 
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
