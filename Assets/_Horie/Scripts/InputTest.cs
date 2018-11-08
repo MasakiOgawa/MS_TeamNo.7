@@ -28,13 +28,28 @@ public class InputTest : MonoBehaviour {
             womanScript.SetThunder(ThunderTaerget);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             // ビーム発射
             ExplodeController.Create(Woman, 0, ThunderTaerget, 2 , MirrorBall , 2 ,
-                ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , 0.5f , 1.25f);
+                ExplodeController.EXPLODE_TYPE.TYPE_FINE , 0.5f , 1.25f);
             
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            // ビーム発射
+            ExplodeController.Create(Woman, 0, ThunderTaerget, 2, MirrorBall, 2,
+                ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
+
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // ビーム発射
+            ExplodeController.Create(Woman, 0, ThunderTaerget, 2, MirrorBall, 2,
+                ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
+
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             // 爆破
