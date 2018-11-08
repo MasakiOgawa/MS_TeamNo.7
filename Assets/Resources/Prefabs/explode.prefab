@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  SelfKillSize: 2
+  SelfKillSize: 1
 --- !u!198 &198226126385740312
 ParticleSystem:
   m_ObjectHideFlags: 1

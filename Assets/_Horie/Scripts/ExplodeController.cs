@@ -4,18 +4,41 @@ using UnityEngine;
 
 public class ExplodeController : MonoBehaviour {
 
+    // 球の種類列挙
+    public enum EXPLODE_TYPE
+    {
+        TYPE_BAD,
+        TYPE_FINE,
+        TYPE_EXCELLENT,
+        TYPE_BONUS,
+    };
+
+    private EXPLODE_TYPE m_explodeType;
+
+
     // 移動速度
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float m_SourceToMirrorBallMoveSpeed;
+    [SerializeField] private float m_MirrorBallToTargetMoveSpeed;
 
     [SerializeField] private float SelfKillSize;
 
-    private GameObject m_TargetObj;
-    private float m_TargetOffsetY;
+    public GameObject m_TargetObj;
+    public float m_TargetOffsetY;
 
-    private Vector3 SourcePos;
-    private Vector3 TargetPos;
+    public Vector3 SourcePos;      // 発射プレイヤー座標
+    public Vector3 TargetPos;      // 敵座標
+    public Vector3 MirrorBallPos;  // ミラーボール座標
 
-    private Vector3 MoveVector;
+    public Vector3 SourceToMirrorBallMoveVector;
+    public Vector3 MirrorBallToTargetMoveVector;
+
+    private enum EXPLODE_PHASE
+    {
+        PHASE_SOURCE_TO_MIRRORBALL,
+        PHASE_MIRRORBALL_TO_TARGET,
+    };
+
+    private EXPLODE_PHASE explodePhase;
 
 	// Use this for initialization
 	void Start () {
@@ -25,70 +48,110 @@ public class ExplodeController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // 現在のposにMoveVecを足す
-        this.transform.position = new Vector3(transform.position.x + MoveVector.x,
-            transform.position.y + MoveVector.y,
-            transform.position.z + MoveVector.z);
-
-        // 到達したら自殺
-        if ( TargetPos.x - SelfKillSize <= transform.position.x &&
-            transform.position.x <= TargetPos.x + SelfKillSize &&
-            TargetPos.z - SelfKillSize <= transform.position.z &&
-            transform.position.z <= TargetPos.z + SelfKillSize )
+        // プレイヤーからミラーボールへ発射
+        if (explodePhase == EXPLODE_PHASE.PHASE_SOURCE_TO_MIRRORBALL)
         {
+            // 現在のposにMoveVecを足す
+            this.transform.position = new Vector3(transform.position.x + SourceToMirrorBallMoveVector.x,
+                transform.position.y + SourceToMirrorBallMoveVector.y,
+                transform.position.z + SourceToMirrorBallMoveVector.z);
+            // ミラーボールに到達したらフェーズ変更
+            if (MirrorBallPos.x - SelfKillSize <= transform.position.x &&
+                transform.position.x <= MirrorBallPos.x + SelfKillSize &&
 
-            // 爆発
-            HitController.Create(m_TargetObj, m_TargetOffsetY , -1);
+                MirrorBallPos.y - SelfKillSize <= transform.position.y &&
+                transform.position.y <= MirrorBallPos.y + SelfKillSize &&
 
-            // 当たったので消滅
-            Destroy(this.gameObject);
+                MirrorBallPos.z - SelfKillSize <= transform.position.z &&
+                transform.position.z <= MirrorBallPos.z + SelfKillSize)
+            {
+                // フェーズ変更
+                explodePhase = EXPLODE_PHASE.PHASE_MIRRORBALL_TO_TARGET;
+            }
+        }
+        // ミラーボールから敵へ移動
+        else if (explodePhase == EXPLODE_PHASE.PHASE_MIRRORBALL_TO_TARGET)
+        {
+            // 現在のposにMoveVecを足す
+            this.transform.position = new Vector3(transform.position.x + MirrorBallToTargetMoveVector.x,
+                transform.position.y + MirrorBallToTargetMoveVector.y,
+                transform.position.z + MirrorBallToTargetMoveVector.z);
+            // ミラーボールに到達したらフェーズ変更
+            if (TargetPos.x - SelfKillSize <= transform.position.x &&
+                transform.position.x <= TargetPos.x + SelfKillSize &&
+                TargetPos.z - SelfKillSize <= transform.position.z &&
+                transform.position.z <= TargetPos.z + SelfKillSize)
+            {
+                // 爆発
+                HitController.Create(m_TargetObj, m_TargetOffsetY, -1);
+                // 当たったので消滅
+                Destroy(this.gameObject);
+            }
         }
 
 
-	}
 
-    public void StartFire ( GameObject Source , float SourceY , GameObject Target , float TargetY )
+    }
+
+    public void StartFire ( GameObject Source , float SourceY , GameObject Target , float TargetY ,
+        GameObject MirrorBall , float MirrorBallY , ExplodeController.EXPLODE_TYPE exType , float SourceToMirrorBallMoveSpeed,
+        float MirrorBallToTargetMoveSpeed)
     {
+        // 弾情報
+        m_explodeType = exType;
 
+        // ターゲット情報
         m_TargetObj = Target;
         m_TargetOffsetY = TargetY;
 
-        GameObject SourceObj;
-        GameObject TargetObj;
-        float OffsetSourceY;
-        float OffsetTargetY;
-
-        SourceObj = Source;
-        TargetObj = Target;
-        OffsetSourceY = SourceY;
-        OffsetTargetY = TargetY;
-
-        // 発射位置の設定
-        TargetPos = new Vector3(Target.transform.position.x,
-            Target.transform.position.y + OffsetTargetY,
-            Target.transform.position.z);
-
-        // 目的座標の設定
+        // 発射座標の設定
         SourcePos = new Vector3(Source.transform.position.x,
-            Source.transform.position.y + OffsetSourceY,
+            Source.transform.position.y + SourceY,
             Source.transform.position.z);
 
-        // ベクトル算出
-        MoveVector = TargetPos - SourcePos;
-        // 正規化
-        MoveVector = MoveVector.normalized;
+        // 目的位置の設定
+        TargetPos = new Vector3(Target.transform.position.x,
+            Target.transform.position.y + TargetY,
+            Target.transform.position.z);
 
+        // ミラーボール座標の設定
+        MirrorBallPos = new Vector3(MirrorBall.transform.position.x,
+            MirrorBall.transform.position.y + MirrorBallY,
+            MirrorBall.transform.position.z);
+
+        // 速度設定
+        m_SourceToMirrorBallMoveSpeed = SourceToMirrorBallMoveSpeed;
+        m_MirrorBallToTargetMoveSpeed = MirrorBallToTargetMoveSpeed;
+
+        // sourceToMirrorBallベクトル算出
+        SourceToMirrorBallMoveVector = MirrorBallPos - SourcePos;
+        // 正規化
+        SourceToMirrorBallMoveVector = SourceToMirrorBallMoveVector.normalized;
         // 移動ベクトルに指定した移動量をかける
-        MoveVector *= moveSpeed;
+        SourceToMirrorBallMoveVector *= m_SourceToMirrorBallMoveSpeed;
+
+        // MirrorBallToTargetベクトル算出
+        MirrorBallToTargetMoveVector = TargetPos - MirrorBallPos;
+        // 正規化
+        MirrorBallToTargetMoveVector = MirrorBallToTargetMoveVector.normalized;
+        // 移動ベクトルに指定した移動量をかける
+        MirrorBallToTargetMoveVector *= m_MirrorBallToTargetMoveSpeed;
+
+        // フェーズ設定
+        explodePhase = EXPLODE_PHASE.PHASE_SOURCE_TO_MIRRORBALL;
+
     }
 
-    static public void Create(GameObject Source, float SourceY, GameObject Target, float TargetY)
+    static public void Create(GameObject Source, float SourceY, GameObject Target, float TargetY , 
+        GameObject MirrorBall , float MirrorBallY, ExplodeController.EXPLODE_TYPE exType , float SourceToMirrorBallMoveSpeed,
+        float MirrorBallToTargetMoveSpeed)
     {
         // プレハブを取得
         GameObject prefab = (GameObject)Resources.Load("Prefabs/Explode");
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab);
         //  
-        obj.GetComponent<ExplodeController>().StartFire(Source, SourceY, Target, TargetY);
+        obj.GetComponent<ExplodeController>().StartFire(Source, SourceY, Target, TargetY ,
+            MirrorBall , MirrorBallY, exType , SourceToMirrorBallMoveSpeed , MirrorBallToTargetMoveSpeed);
     }
 }
