@@ -17,6 +17,9 @@ public class ExplodeController : MonoBehaviour {
 
 
     // 移動速度
+    [SerializeField] private GameObject ParticleSystem2;
+    [SerializeField] private GameObject PointLight;
+
     [SerializeField] private float m_SourceToMirrorBallMoveSpeed;
     [SerializeField] private float m_MirrorBallToTargetMoveSpeed;
 
@@ -56,14 +59,15 @@ public class ExplodeController : MonoBehaviour {
                 transform.position.y + SourceToMirrorBallMoveVector.y,
                 transform.position.z + SourceToMirrorBallMoveVector.z);
             // ミラーボールに到達したらフェーズ変更
-            if (MirrorBallPos.x - SelfKillSize <= transform.position.x &&
+            if (( MirrorBallPos.x - SelfKillSize <= transform.position.x &&
                 transform.position.x <= MirrorBallPos.x + SelfKillSize &&
 
                 MirrorBallPos.y - SelfKillSize <= transform.position.y &&
-                transform.position.y <= MirrorBallPos.y + SelfKillSize &&
 
                 MirrorBallPos.z - SelfKillSize <= transform.position.z &&
-                transform.position.z <= MirrorBallPos.z + SelfKillSize)
+                transform.position.z <= MirrorBallPos.z + SelfKillSize ) ||
+
+                MirrorBallPos.y - SelfKillSize <= transform.position.y)
             {
                 // フェーズ変更
                 explodePhase = EXPLODE_PHASE.PHASE_MIRRORBALL_TO_TARGET;
@@ -76,11 +80,13 @@ public class ExplodeController : MonoBehaviour {
             this.transform.position = new Vector3(transform.position.x + MirrorBallToTargetMoveVector.x,
                 transform.position.y + MirrorBallToTargetMoveVector.y,
                 transform.position.z + MirrorBallToTargetMoveVector.z);
-            // ミラーボールに到達したらフェーズ変更
-            if (TargetPos.x - SelfKillSize <= transform.position.x &&
+            // 敵に到達
+            if ( ( TargetPos.x - SelfKillSize <= transform.position.x &&
                 transform.position.x <= TargetPos.x + SelfKillSize &&
                 TargetPos.z - SelfKillSize <= transform.position.z &&
-                transform.position.z <= TargetPos.z + SelfKillSize)
+                transform.position.z <= TargetPos.z + SelfKillSize ) ||
+
+                TargetPos.z - SelfKillSize <= transform.position.z)
             {
                 // 爆発
                 HitController.Create(m_TargetObj, m_TargetOffsetY, -1);
@@ -140,6 +146,64 @@ public class ExplodeController : MonoBehaviour {
         // フェーズ設定
         explodePhase = EXPLODE_PHASE.PHASE_SOURCE_TO_MIRRORBALL;
 
+        // Typeに応じてパーティクルの色を変更
+        if ( exType == EXPLODE_TYPE.TYPE_BAD)
+        {
+            ParticleSystem.MinMaxGradient color = new ParticleSystem.MinMaxGradient();
+            color.mode = ParticleSystemGradientMode.TwoColors;
+
+            color.colorMax = new Color((float)94 / (float)255, (float)128 / (float)255, (float)226 / (float)255, (float)136 / (float)255);
+            color.colorMin = new Color((float)213 / (float)255, (float)215 / (float)255, (float)246 / (float)255, (float)138 / (float)255);
+
+
+            ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = particleSystem.main;
+            main.startColor = color;
+            //
+            //ParticleSystem.
+            ParticleSystem2.GetComponent<ExplodeParticleSystem>().SetColor(ExplodeParticleSystem.TYPE_COLOR.TYPE_BLUE);
+
+            // point Light
+            PointLight.GetComponent<ExplodePointLight>().SetColor(ExplodePointLight.LIGHT_TYPE.TYPE_BLUE);
+        }
+        else if ( exType == EXPLODE_TYPE.TYPE_FINE)
+        {
+            ParticleSystem.MinMaxGradient color = new ParticleSystem.MinMaxGradient();
+            color.mode = ParticleSystemGradientMode.TwoColors;
+            // みどり
+            color.colorMax = new Color((float)0 / (float)255, (float)15 / (float)255, (float)15 / (float)255, (float)136 / (float)255);
+            color.colorMin = new Color((float)160 / (float)255, (float)255 / (float)255, (float)0 / (float)255, (float)138 / (float)255);
+
+
+            ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = particleSystem.main;
+            main.startColor = color;
+            //
+            //ParticleSystem.
+            ParticleSystem2.GetComponent<ExplodeParticleSystem>().SetColor(ExplodeParticleSystem.TYPE_COLOR.TYPE_GREEN);
+
+            // point Light
+            PointLight.GetComponent<ExplodePointLight>().SetColor(ExplodePointLight.LIGHT_TYPE.TYPE_GREEN);
+        }
+        else if ( exType == EXPLODE_TYPE.TYPE_EXCELLENT)
+        {
+            ParticleSystem.MinMaxGradient color = new ParticleSystem.MinMaxGradient();
+            color.mode = ParticleSystemGradientMode.TwoColors;
+            // オレンジ
+            color.colorMax = new Color((float)255 / (float)255, (float)192 / (float)255, (float)0 / (float)255, (float)136 / (float)255);
+            color.colorMin = new Color((float)255 / (float)255, (float)177 / (float)255, (float)0 / (float)255, (float)138 / (float)255);
+
+
+            ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = particleSystem.main;
+            main.startColor = color;
+            //
+            //ParticleSystem.
+            ParticleSystem2.GetComponent<ExplodeParticleSystem>().SetColor(ExplodeParticleSystem.TYPE_COLOR.TYPE_ORANGE);
+
+            // point Light
+            PointLight.GetComponent<ExplodePointLight>().SetColor(ExplodePointLight.LIGHT_TYPE.TYPE_ORANGE);
+        }
     }
 
     static public void Create(GameObject Source, float SourceY, GameObject Target, float TargetY , 
