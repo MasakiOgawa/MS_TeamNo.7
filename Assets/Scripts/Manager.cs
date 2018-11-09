@@ -84,7 +84,7 @@ public class Manager : MonoBehaviour
         switch( GamePhase )
         {
             case GAME_PHASE.PHASE_NONE :
-                if( dCntFrame >= 5.0d )
+                if( dCntFrame >= 3.0d )
                 {
                     bFlg = true;
                     GamePhase = GAME_PHASE.PHASE_FIRST_PERFORMANCE;

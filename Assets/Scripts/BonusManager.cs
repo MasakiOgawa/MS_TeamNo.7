@@ -80,7 +80,7 @@ public class BonusManager : MonoBehaviour
 
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
-            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -5.92f , 1.232f , 226.1f ) , Quaternion.identity );
+            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -2.5f , 0.0f , 226.0f ) , Quaternion.identity );
             aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
             nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
@@ -92,7 +92,7 @@ public class BonusManager : MonoBehaviour
 
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 16; nCnt++ , nCnt2 += 2 )
         {
-            aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -0.0f , 1.232f , 226.1f ) , Quaternion.identity );
+            aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 0.0f , 0.0f , 226.0f ) , Quaternion.identity );
             aBonusPrefabArray2[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
             nTimingArray2[ nCnt ] = int.Parse( aString2[ nCnt ] );   
@@ -104,7 +104,7 @@ public class BonusManager : MonoBehaviour
 
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
-            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 5.92f , 1.232f , 226.1f ) , Quaternion.identity );
+            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 2.5f , 0.0f , 226.0f ) , Quaternion.identity );
             aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );
             nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] );   
@@ -148,8 +148,8 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( -2.96f - -5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
-                                                                                             new Vector3( -2.96f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.LEFT );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 177.101f - 226.0f ) ,
+                                                                                             new Vector3( -2.5f , 0.0f , 177.101f ) , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
                 PlayerLeftClass.ReleasebBonusFlg( );
@@ -158,16 +158,16 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 1 && nTimingArray2[ nCreateNo2 ] != 999 )
             {
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
-                                                                                             new Vector3( 0.0f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.CENTER );
+                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 177.101f - 226.0f ) ,
+                                                                                             new Vector3( 0.0f , 0.0f , 177.101f ) , Bonus.BONUS_TYPE.CENTER );
                  PlayerCenterClass.ReleasebBonusFlg( );   
                 nCreateNo2++;
             }
             if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 1 && nTimingArray3[ nCreateNo3 ] != 999 )
             {
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 2.96f - 5.92f , 3.44f - 1.232f , 195.52f - 226.1f ) ,
-                                                                                            new Vector3( 0.0f , 3.44f , 195.52f ) , Bonus.BONUS_TYPE.RIGHT );
+                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 177.101f - 226.0f ) ,
+                                                                                            new Vector3( 2.5f , 0.0f , 177.101f ) , Bonus.BONUS_TYPE.RIGHT );
                  PlayerRightClass.ReleasebBonusFlg( );    
                 nCreateNo3++;
             }

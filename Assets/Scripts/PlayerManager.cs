@@ -150,12 +150,14 @@ public class PlayerManager : MonoBehaviour
             {
                 bFlg = true;
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.JazzDancing1 );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.JazzDancing1 );
             }
             else if( PerformanceManagerClass.GetnCntPerformance( ) == 5 && ManagerClass.GetdCntFrame( ) >= 7.36 )
             {
                 bFlg = true;
                 bFlg2 = true;
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HeadSpinning );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HeadSpinning );
             }
         }
 
