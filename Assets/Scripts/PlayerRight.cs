@@ -190,10 +190,9 @@ public class PlayerRight : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
                 GameObject Tmp = BonusManagerClass.GetBonusRight( );
-                Vector3 Pos = new Vector3( 2.96f , 3.44f , 195.52f );
+                Vector3 Pos = new Vector3( 2.5f , 0.0f , 171.01f );
               
-                Debug.Log( "右");
-              //  Debug.Log( Vector3.Distance( Tmp.gameObject.transform.position , Pos ));
+           
                 if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
                 {
                     ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );

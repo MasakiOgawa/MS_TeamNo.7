@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 
 public class EnemyManager : MonoBehaviour
@@ -34,12 +35,15 @@ public class EnemyManager : MonoBehaviour
     public GameObject Enemy_01Prefab;
     GameObject[ ] aEnemyPrefabArray2;
 
+    List<GameObject> TakeInEnemyList;  //追従する敵の作業用変数
+
    
 	void Start( )
     {
         //変数の初期化
         aEnemyPrefabArray = new GameObject[ 8 , 4 ];
         aEnemyPrefabArray2 = new GameObject[ 8 ];
+        TakeInEnemyList = new List<GameObject>();  
         nCreateNo         = 0;
         nCntLength        = 0;
 
@@ -126,7 +130,7 @@ public class EnemyManager : MonoBehaviour
             if( EnemyText.text[ nCnt ] == '1' )
             {
                 aEnemyPrefabArray[ nCnt2 , 0 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
@@ -134,7 +138,7 @@ public class EnemyManager : MonoBehaviour
             else if( EnemyText.text[ nCnt ] == '2' )
             {
                 aEnemyPrefabArray[ nCnt2 , 1 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
@@ -142,7 +146,7 @@ public class EnemyManager : MonoBehaviour
             else if( EnemyText.text[ nCnt ] == '3' )
             {
                 aEnemyPrefabArray[ nCnt2 , 2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
@@ -150,7 +154,7 @@ public class EnemyManager : MonoBehaviour
             else if( EnemyText.text[ nCnt ] == '4' )
             {
                 aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
@@ -196,6 +200,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nCnt ].SetActive( false );
             }
         }
+
+         AuraSpotObj.SetActive( false );
     }
 
 
@@ -207,12 +213,13 @@ public class EnemyManager : MonoBehaviour
             if( aEnemyPrefabArray[ nTargetNo , nCnt ].activeSelf == true )
             {
                 TargetEnemy = aEnemyPrefabArray[ nTargetNo , nCnt ];
-                 // AuraSpotObj.SetActive( true );
-               // AuraSpotObj.transform.position = TargetEnemy.transform.position;
+                  AuraSpotObj.SetActive( true );
+                AuraSpotObj.transform.position = TargetEnemy.transform.position;
                 break;
             }
             else
             {
+                AuraSpotObj.SetActive( false );
                 TargetEnemy = null;   
             }
         }
@@ -236,11 +243,10 @@ public class EnemyManager : MonoBehaviour
     //評価を基に敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
-        GameObject TmpObj;        //オブジェクトの作業用変数
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-
+      
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -261,10 +267,10 @@ public class EnemyManager : MonoBehaviour
             {
                 nTmp   = ( int )Random.Range( 0 , nTakeInEnemyRange );
                 nTmp  -= ( nTakeInEnemyRange - 1 ) / 2;
-                TmpObj = Instantiate( TakeInEnemyPrefab , new Vector3( fPosX + nTmp , 4.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity );
+                TakeInEnemyList.Add( Instantiate( TakeInEnemyPrefab , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
 
                 //プレイヤー達の子要素にする
-                TmpObj.transform.parent = PlayersObj.GetComponent< Transform >( ).transform;
+                TakeInEnemyList[ TakeInEnemyList.Count - 1 ].transform.parent = PlayersObj.GetComponent< Transform >( ).transform;
 
                 //X座標をずらす
                 fPosX += fRoadSide / ( nCreateSide - 1 );
@@ -275,6 +281,15 @@ public class EnemyManager : MonoBehaviour
 
             //生成数をカウンタ
             nCnt += nCreateSide;
+        }
+    }
+
+
+    public void TakeInEnemyMotion( PlayerAnimDefine.Idx idx )
+    {
+        for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
+        {
+            TakeInEnemyList[ nCnt ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( idx );
         }
     }
 }

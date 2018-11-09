@@ -34,6 +34,9 @@ public class PerformanceManager : MonoBehaviour
 
     public GameObject MotionManagerObj;
     MotionManager MotionManagerClass;
+
+    public GameObject EnemyManagerObj;
+    EnemyManager EnemyManagerClass;
    
 
     void Start( )
@@ -71,6 +74,8 @@ public class PerformanceManager : MonoBehaviour
         MirrorBallMaterialClass = MirrorBallColorObj.GetComponent< MirrorBallMaterial >( );
 
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
+
+        EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
     }
 
 
@@ -139,21 +144,25 @@ public class PerformanceManager : MonoBehaviour
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 1 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
             }
             else if( nCntPerformance == 1 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 2 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Walk );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.Walk );
             }
             else if( nCntPerformance == 2 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
             }
             else if( nCntPerformance == 4 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.GangnamStyle );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.GangnamStyle );
             }
           
             PlayerManagerClass.SetnPerformanceBar( aPerformanceType[ nCntPerformance ].nBar );
