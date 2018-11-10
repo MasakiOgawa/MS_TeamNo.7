@@ -18,30 +18,58 @@ public class Bonus : MonoBehaviour
         RIGHT
     }
 
+    public enum BONUS_STATE
+    { 
+        MOVE = 0 ,
+        BIRIBIRI
+    }
+
     BONUS_TYPE BonusType;
+    BONUS_STATE BonusState;
+    float fCntFrame;
+    public float fFalseFrame;
 
     void Start( )
     {
-          ManagerClass       = GameObject.Find( "GameManager" ).GetComponent< Manager>( );
+         ManagerClass       = GameObject.Find( "GameManager" ).GetComponent< Manager>( );
          BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
+
+        BonusState = BONUS_STATE.MOVE;
+        fCntFrame = 0.0f;
     }
 
 
 	void Update( )
     {
-		this.transform.position += new Vector3( Vec.x * fMove , Vec.y * fMove , Vec.z * fMove );
+        switch (BonusState)
+        {
+            case BONUS_STATE.MOVE :
 
-        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.LEFT )
-        { 
-            BonusManagerClass.SetBonusLeft( this.gameObject );
-        }
-        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.CENTER )
-        { 
-            BonusManagerClass.SetBonusCenter( this.gameObject );
-        }
-        if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.RIGHT )
-        { 
-            BonusManagerClass.SetBonusRight( this.gameObject );
+                this.transform.position += new Vector3( Vec.x * fMove , Vec.y * fMove , Vec.z * fMove );
+
+                if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.LEFT )
+                { 
+                    BonusManagerClass.SetBonusLeft( this.gameObject );
+                }
+                if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.CENTER )
+                { 
+                    BonusManagerClass.SetBonusCenter( this.gameObject );
+                }
+                if( Vector3.Distance( this.transform.position , Goal ) <= 25.0f && BonusType == BONUS_TYPE.RIGHT )
+                { 
+                    BonusManagerClass.SetBonusRight( this.gameObject );  
+                }
+
+            break;
+
+            case BONUS_STATE.BIRIBIRI:
+                fCntFrame += Time.deltaTime;
+
+                if( fCntFrame >= fFalseFrame )
+                {
+                    this.gameObject.SetActive( false );
+                }
+            break;
         }
 	}
 
@@ -54,5 +82,10 @@ public class Bonus : MonoBehaviour
         fMove   = Vec.magnitude / 0.4475f;
         Goal    = VecGoal;
         BonusType = Bonus;
+    }
+
+    public void SetBiriBiri( )
+    {
+        BonusState = BONUS_STATE.BIRIBIRI;
     }
 }

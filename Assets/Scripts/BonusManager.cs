@@ -148,8 +148,8 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 177.101f - 226.0f ) ,
-                                                                                             new Vector3( -2.5f , 0.0f , 177.101f ) , Bonus.BONUS_TYPE.LEFT );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 17.0f - 66.0f ) ,
+                                                                                             new Vector3( -2.5f , 0.0f , 17.0f ) , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
                 PlayerLeftClass.ReleasebBonusFlg( );

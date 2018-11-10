@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 0
+  GamePhase: 8
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -696,7 +696,7 @@ Prefab:
     - target: {fileID: 114203985196828234, guid: e8ff9761ecad8f34fb6340c2fff9d1fd,
         type: 2}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ff9761ecad8f34fb6340c2fff9d1fd, type: 2}
@@ -999,6 +999,7 @@ MonoBehaviour:
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
   bBonusFlg: 0
+  MirrorBall: {fileID: 1429902232}
 --- !u!33 &632992502
 MeshFilter:
   m_ObjectHideFlags: 0
