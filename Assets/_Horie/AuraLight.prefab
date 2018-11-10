@@ -295,7 +295,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.8100014, g: 0, b: 1, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 2
   m_Range: 78.2
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -332,7 +332,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.99940795, g: 1, b: 0.41037738, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 2
   m_Range: 78.2
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -406,7 +406,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0, g: 0.49529266, b: 1, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 2
   m_Range: 78.2
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -443,7 +443,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.13231826, g: 1, b: 0, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 2
   m_Range: 78.2
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3b53f353b513b4db500bf7b584a74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auraType: 0
+  auraType: 4
   RotateSpeedY: 10
   AuraPointLight:
   - {fileID: 1598820824139614}
