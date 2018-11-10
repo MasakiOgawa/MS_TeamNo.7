@@ -115,6 +115,9 @@ public class ExplodeController : MonoBehaviour {
             Source.transform.position.y + SourceY,
             Source.transform.position.z);
 
+        Debug.Log(Source.transform.position);
+        Debug.Log(SourcePos);
+
         // 目的位置の設定
         TargetPos = new Vector3(Target.transform.position.x,
             Target.transform.position.y + TargetY,
@@ -213,7 +216,7 @@ public class ExplodeController : MonoBehaviour {
         // プレハブを取得
         GameObject prefab = (GameObject)Resources.Load("Prefabs/Explode");
         // プレハブからインスタンスを生成
-        GameObject obj = Instantiate(prefab);
+        GameObject obj = Instantiate(prefab,Source.transform);
         //  
         obj.GetComponent<ExplodeController>().StartFire(Source, SourceY, Target, TargetY ,
             MirrorBall , MirrorBallY, exType , SourceToMirrorBallMoveSpeed , MirrorBallToTargetMoveSpeed);
