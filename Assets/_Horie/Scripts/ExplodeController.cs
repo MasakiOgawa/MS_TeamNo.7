@@ -115,9 +115,6 @@ public class ExplodeController : MonoBehaviour {
             Source.transform.position.y + SourceY,
             Source.transform.position.z);
 
-        Debug.Log(Source.transform.position);
-        Debug.Log(SourcePos);
-
         // 目的位置の設定
         TargetPos = new Vector3(Target.transform.position.x,
             Target.transform.position.y + TargetY,
