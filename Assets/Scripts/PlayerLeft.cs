@@ -17,8 +17,13 @@ public class PlayerLeft : MonoBehaviour
     BonusManager BonusManagerClass;
 
     public GameObject MirrorBall;
-        
 
+    public GameObject Tmp;
+
+    public float PlayerToBallSpeed;
+    public float BallToEnemySpeed;
+
+        
 	void Start( )
     {
         //変数の初期化
@@ -35,6 +40,24 @@ public class PlayerLeft : MonoBehaviour
 
         BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
 	}
+
+
+    void Update( )
+    {
+         if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+                Input.GetKeyDown( KeyCode.UpArrow ) ||
+                Input.GetKeyDown( KeyCode.DownArrow ) ||
+                Input.GetKeyDown( KeyCode.LeftArrow ) ||
+                Input.GetKeyDown( KeyCode.RightArrow ) )
+        {
+            int Rand = Random.RandomRange(0, 10);
+
+            OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -2.5f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+        }
+    }
 	
 
     //プレイヤーのダンス
@@ -50,6 +73,8 @@ public class PlayerLeft : MonoBehaviour
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
+                Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
+
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Up" )
                 {
@@ -62,21 +87,21 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                      //                           ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
-                    //    ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                     //                            ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }
-                else
-                {
-                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
-                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                  //                          ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
+                    else
+                    {
+                          ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                             ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                    }
                 }
 
                 bPoseFlg = true;
@@ -87,6 +112,8 @@ public class PlayerLeft : MonoBehaviour
             {   
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
+
+                 Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
                
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Down" )
@@ -100,23 +127,23 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                   //     ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                   //                              ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
-                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                     //                            ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                    }
+                    else
+                    {
+                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                    ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                 }
-                else
-                {
-                    ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
-                 //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                  //                               ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
-                }
-
+                
                 bPoseFlg = true;
             }
             //左
@@ -125,6 +152,8 @@ public class PlayerLeft : MonoBehaviour
             {
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
+
+                 Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
            
                  //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Left" )
@@ -138,22 +167,22 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                      //                           ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
-                       // ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                       //                          ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }
-                else
-                {
-                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
-                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                  //                               ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
-                }
+                    else
+                    {
+                        ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                    }
+                }  
 
                 bPoseFlg = true;
             }
@@ -162,7 +191,9 @@ public class PlayerLeft : MonoBehaviour
                      Input.GetKeyDown( KeyCode.RightArrow ) )
             {  
                 //現在の敵の情報を取得
-                EnemyObj = EnemyManagerClass.GetTarget( );           
+                EnemyObj = EnemyManagerClass.GetTarget( );
+                
+                Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
      
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Right" )
@@ -176,23 +207,23 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                  //      ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                   //                              ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
+                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
-                   //     ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                   //                              ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
+                       ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                    }
+                    else
+                    {
+                       ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                       ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                                     ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                 }
-                else
-                {
-                   ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
-                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
-                 //                                ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
-                }
-
+               
                 //コントローラを触れない様にする
                 bPoseFlg = true;
             }
@@ -216,7 +247,7 @@ public class PlayerLeft : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
-                Vector3 Pos = new Vector3( -2.5f , 0.0f , 17.0f );
+                Vector3 Pos = new Vector3( -2.5f , 0.0f , 177.101f + 17.0f );
               
               
                 if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )

@@ -209,4 +209,10 @@ public class PlayerManager : MonoBehaviour
     {
         nPerformanceBar = nSetPerformanceBar;
     }
+
+
+    public float GetfDist( )
+    {
+        return fDist;
+    }
 }
