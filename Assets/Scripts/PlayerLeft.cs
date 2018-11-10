@@ -15,6 +15,8 @@ public class PlayerLeft : MonoBehaviour
 
     public bool          bBonusFlg;          
     BonusManager BonusManagerClass;
+
+    public GameObject MirrorBall;
         
 
 	void Start( )
@@ -60,15 +62,21 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                      //                           ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                    //    ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                     //                            ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
                     }
                 }
                 else
                 {
                    ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                  //                          ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
                 }
 
                 bPoseFlg = true;
@@ -92,15 +100,21 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                   //     ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                   //                              ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                     //                            ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
                     }
                 }
                 else
                 {
                     ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                 //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                  //                               ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
                 }
 
                 bPoseFlg = true;
@@ -124,15 +138,21 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                     //   ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                      //                           ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                       // ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                       //                          ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
                     }
                 }
                 else
                 {
                    ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                  //                               ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
                 }
 
                 bPoseFlg = true;
@@ -156,15 +176,21 @@ public class PlayerLeft : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                  //      ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                   //                              ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
                         ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                   //     ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                   //                              ExplodeController.EXPLODE_TYPE.TYPE_FINE, 0.5f, 1.25f);
                     }
                 }
                 else
                 {
                    ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                 //  ExplodeController.Create(this.gameObject, 0, EnemyObj, 0, MirrorBall, 2,
+                 //                                ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
                 }
 
                 //コントローラを触れない様にする
@@ -190,12 +216,14 @@ public class PlayerLeft : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
-                Vector3 Pos = new Vector3( -2.5f , 0.0f , 177.101f );
+                Vector3 Pos = new Vector3( -2.5f , 0.0f , 17.0f );
               
               
                 if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
-                {
+                { 
                     ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                    Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
+                    LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
                 }
 
                 bBonusFlg = true;
