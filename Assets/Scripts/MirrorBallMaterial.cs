@@ -69,4 +69,19 @@ public class MirrorBallMaterial : MonoBehaviour
         Obj2Renderer.material.color = Color.HSVToRGB(amplitude, 1, 1);
         Obj3Renderer.material.color = Color.HSVToRGB(amplitude, 1, 1);
 	}
+
+    public void BonusAllEnabule( )
+    {
+        Obj.GetComponent<MirrorBall>().EnableAura();
+        Obj2.GetComponent<MirrorBall>().EnableAura();
+        Obj3.GetComponent<MirrorBall>().EnableAura();
+    }
+
+
+    public void BonusAlDisable( )
+    {
+        Obj.GetComponent<MirrorBall>().DisableAura();
+        Obj2.GetComponent<MirrorBall>().DisableAura();
+        Obj3.GetComponent<MirrorBall>().DisableAura();
+    }
 }

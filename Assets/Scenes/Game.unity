@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 8
+  GamePhase: 0
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -224,6 +224,7 @@ MonoBehaviour:
   PlayerLeftPrefab: {fileID: 632992498}
   PlayerCenterPrefab: {fileID: 684074293}
   PlayerRightPrefab: {fileID: 1648557946}
+  MirrorBallMateriaObj: {fileID: 1964382000}
 --- !u!4 &154769728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4819962138400378, guid: 7410c10ef4394144083e98b2ead90d4f,
@@ -478,6 +479,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4816642389253b46a67b61313db1d09, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &329263325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329263326}
+  m_Layer: 0
+  m_Name: TmpRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329263326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329263325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1648557951}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &345592720
 Prefab:
   m_ObjectHideFlags: 0
@@ -587,6 +616,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c935a1e9bd5723747a101412f07d9ed8, type: 3}
   m_IsPrefabAsset: 0
+--- !u!1 &440771586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 440771587}
+  m_Layer: 0
+  m_Name: TmpCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440771587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440771586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 684074298}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &471718593
 Prefab:
   m_ObjectHideFlags: 0
@@ -1000,6 +1057,9 @@ MonoBehaviour:
   bPoseFlg: 0
   bBonusFlg: 0
   MirrorBall: {fileID: 1429902232}
+  Tmp: {fileID: 747699715}
+  PlayerToBallSpeed: 1
+  BallToEnemySpeed: 1.5
 --- !u!33 &632992502
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1018,6 +1078,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1429902231}
+  - {fileID: 747699716}
   m_Father: {fileID: 1618574382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1221,6 +1282,10 @@ MonoBehaviour:
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
   bBonusFlg: 0
+  MirrorBall: {fileID: 1569318108}
+  Tmp: {fileID: 440771586}
+  PlayerToBallSpeed: 1
+  BallToEnemySpeed: 1.5
 --- !u!33 &684074297
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1240,6 +1305,7 @@ Transform:
   m_Children:
   - {fileID: 661318278}
   - {fileID: 1412452379}
+  - {fileID: 440771587}
   m_Father: {fileID: 1618574382}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1357,6 +1423,34 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224964571993180856, guid: eef25de3a310b3240882079c4622d1f8,
     type: 2}
   m_PrefabInternal: {fileID: 747480028}
+--- !u!1 &747699715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747699716}
+  m_Layer: 0
+  m_Name: TmpLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747699716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747699715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 632992503}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761611139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,6 +2837,10 @@ MonoBehaviour:
   ManagerObj: {fileID: 1040674}
   bPoseFlg: 0
   bBonusFlg: 0
+  MirrorBall: {fileID: 1301448919}
+  Tmp: {fileID: 329263325}
+  PlayerToBallSpeed: 1
+  BallToEnemySpeed: 1.5
 --- !u!33 &1648557950
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2761,6 +2859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1301448920}
+  - {fileID: 329263326}
   m_Father: {fileID: 1618574382}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
