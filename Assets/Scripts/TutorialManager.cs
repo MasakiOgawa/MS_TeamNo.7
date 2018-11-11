@@ -30,4 +30,10 @@ public class TutorialManager : MonoBehaviour
     {
         Dance_02Obj.SetActive( false );
     }
+
+
+     public void FalseTutorial03( )
+    {
+        Dance_02Obj.SetActive( false );
+    }
 }
