@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FlameMachine01Flames
+  m_Shader: {fileID: 4800000, guid: a12d9b8f9ea136e4ebbb8141a81c8482, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CutTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c81334ad137d7464d8111c2cbcdca987, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _CutRotation: 0
+    - _Cutoff: 0.5
+    - _EmissionGain: 0
+    - _InvFade: 0.82
+    - _MainRotation: 0
+    - _UVCutScrollX: 0
+    - _UVCutScrollY: 0
+    - _UVMirrorX: 0
+    - _UVMirrorY: 0
+    - _UVScrollX: 0
+    - _UVScrollY: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 0.3647059}
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6
