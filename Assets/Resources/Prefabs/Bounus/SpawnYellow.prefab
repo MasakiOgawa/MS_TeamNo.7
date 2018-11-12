@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4617429839324618}
   - component: {fileID: 198247788963212440}
   - component: {fileID: 199268959992489074}
+  - component: {fileID: 114819791308085498}
   m_Layer: 0
   m_Name: SpawnYellow
   m_TagString: Untagged
@@ -183,6 +184,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sqr: 0
+--- !u!114 &114819791308085498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836523655218740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183deb3d657b668418215bb9a2db30f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198247788963212440
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -192,7 +204,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 0.1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   looping: 0
   prewarm: 0
   playOnAwake: 1

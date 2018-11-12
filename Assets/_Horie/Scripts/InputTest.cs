@@ -109,6 +109,11 @@ public class InputTest : MonoBehaviour {
             BounusArea.ChangeColor(2, true);
         }
 
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            BounusEffect.Create(ThunderTaerget);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
