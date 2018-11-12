@@ -22,6 +22,8 @@ public class MotionManager : MonoBehaviour
 		LeftAnimClass = PlayerLeftObj.GetComponent< PlayerAnim >( );
         CenterAnimClass = PlayerCenterObj.GetComponent< PlayerAnim >( );
         RightAnimClass = PlayerRightObj.GetComponent< PlayerAnim >( );
+
+        fRotY = 0.0f;
     }
 
 

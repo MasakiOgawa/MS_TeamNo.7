@@ -84,6 +84,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -2.5f , 0.0f , 226.0f ) , Quaternion.identity );
+            aBonusPrefabArray[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
             nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
@@ -96,6 +97,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 16; nCnt++ , nCnt2 += 2 )
         {
             aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 0.0f , 0.0f , 226.0f ) , Quaternion.identity );
+            aBonusPrefabArray2[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray2[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
             nTimingArray2[ nCnt ] = int.Parse( aString2[ nCnt ] );   
@@ -108,6 +110,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 2.5f , 0.0f , 226.0f ) , Quaternion.identity );
+            aBonusPrefabArray3[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );
             nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] );   
