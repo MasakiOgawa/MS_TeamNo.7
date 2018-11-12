@@ -171,7 +171,8 @@ public class RankingManager : MonoBehaviour {
         // 1stより大きい場合
         if ( Rank1stScore <= nScore)
         {
-            SerialHandlerClass.Write( "7" );
+            if ( SerialHandlerClass != null )
+                SerialHandlerClass.Write( "7" );
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = Rank1stScore;
             Rank1stScore = nScore;
@@ -180,7 +181,8 @@ public class RankingManager : MonoBehaviour {
         // 1st > score > 2nd
         else if ( Rank1stScore > nScore && nScore >= Rank2ndScore)
         {
-            SerialHandlerClass.Write( "7" );
+            if (SerialHandlerClass != null)
+                SerialHandlerClass.Write("7");
             Rank3rdScore = Rank2ndScore;
             Rank2ndScore = nScore;
             Rank = 2;
@@ -188,7 +190,8 @@ public class RankingManager : MonoBehaviour {
         // 2nd > score > 3rd
         else if ( Rank2ndScore > nScore && nScore >= Rank3rdScore )
         {
-            SerialHandlerClass.Write( "7" );
+            if (SerialHandlerClass != null)
+                SerialHandlerClass.Write("7");
             Rank3rdScore = nScore;
             Rank = 3;
         }
