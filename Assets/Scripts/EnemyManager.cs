@@ -218,7 +218,7 @@ public class EnemyManager : MonoBehaviour
             {
                 TargetEnemy = aEnemyPrefabArray[ nTargetNo , nCnt ];
                   AuraSpotObj.SetActive( true );
-                AuraSpotObj.transform.position = TargetEnemy.transform.position;
+                AuraSpotObj.transform.position = new Vector3( TargetEnemy.transform.position.x , TargetEnemy.transform.position.y + 5.0f , TargetEnemy.transform.position.z );
                 break;
             }
             else
