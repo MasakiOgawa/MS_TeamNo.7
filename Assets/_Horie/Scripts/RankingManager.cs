@@ -131,7 +131,7 @@ public class RankingManager : MonoBehaviour {
             m_ResultManager.GetComponent<ResultManager>().StopBGM();
 
            // SceneManager.LoadScene( "Title" );
-            FadeManager.Instance.LoadScene( "Title" , 0.5f );
+            FadeManager.Instance.LoadScene( "Title_2.0" , 0.5f );
         }
 	}
 
