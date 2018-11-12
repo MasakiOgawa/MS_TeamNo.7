@@ -67,6 +67,47 @@ public class InputTest : MonoBehaviour {
             MirrorBall.GetComponent<MirrorBall>().DisableAura();
         }
 
+        // bounusArea
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // 起動
+            BounusArea.Create(new Vector3(0, 0, 0), new Vector3(-2, 0, 0), new Vector3(2, 0, 0));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // 削除
+            BounusArea.Delete();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            // 0:黄色
+            BounusArea.ChangeColor(0, false);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            // 0:緑
+            BounusArea.ChangeColor(0, true);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            // 1:黄色
+            BounusArea.ChangeColor(1, false);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            // 1:緑
+            BounusArea.ChangeColor(1, true);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            // 2:黄色
+            BounusArea.ChangeColor(2, false);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            // 2:緑
+            BounusArea.ChangeColor(2, true);
+        }
 
 
         if (Input.GetKeyDown(KeyCode.R))
