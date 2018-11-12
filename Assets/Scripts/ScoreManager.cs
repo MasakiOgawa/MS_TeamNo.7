@@ -137,22 +137,25 @@ public class ScoreManager : MonoBehaviour
 
             case EVALUATION.EVALUATION_EXCELLENT :
 
-                 for( int nCnt = 0; nCnt < 3; nCnt++ )
-                 {
-                     if( aEvaluationExcellentArray[ nCnt ].gameObject.activeSelf == false )
+                if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_BONUS )
+                {
+                    for( int nCnt = 0; nCnt < 3; nCnt++ )
                      {
-                        aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
-                        aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
+                         if( aEvaluationExcellentArray[ nCnt ].gameObject.activeSelf == false )
+                         {
+                            aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
+                            aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
 
-                        if( nCnt == 2 && bFlg == false )
-                        {
-                            bFlg = true;
-                            SerialHandlerClass.Write( "4" );
-                        }
+                            if( nCnt == 2 && bFlg == false )
+                            {
+                                bFlg = true;
+                                SerialHandlerClass.Write( "4" );
+                            }
                       
-                        break;
+                            break;
+                         }
                      }
-                 }
+                }
               
                 nCntExcellent++;
             break;

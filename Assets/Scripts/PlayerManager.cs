@@ -164,6 +164,7 @@ public class PlayerManager : MonoBehaviour
         if( bFlg2 ==true )
         {
             MotionManagerClass.HeadDanceRotate( );
+            EnemyManagerClass.TakeInEnemyRotate( );
         }
 
 
@@ -172,6 +173,7 @@ public class PlayerManager : MonoBehaviour
         {
             bFlg = false;
             MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
+            EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.Idle );
 
             //現在のパフォーマンスによって遷移先を決める
             if( PerformanceManagerClass.GetnCntPerformance( ) == 3 )

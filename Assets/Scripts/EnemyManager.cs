@@ -37,6 +37,9 @@ public class EnemyManager : MonoBehaviour
 
     List<GameObject> TakeInEnemyList;  //追従する敵の作業用変数
 
+    public float fAddRotateY;
+    float fRotY;
+
    
 	void Start( )
     {
@@ -46,6 +49,7 @@ public class EnemyManager : MonoBehaviour
         TakeInEnemyList = new List<GameObject>();  
         nCreateNo         = 0;
         nCntLength        = 0;
+         fRotY = 0.0f;
 
         //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
@@ -107,12 +111,12 @@ public class EnemyManager : MonoBehaviour
         afStartArray[ 4 ] = 66.50f;  //OK!!
         afStartArray[ 5 ] = 81.28f;  //OK!!
         afStartArray[ 6 ] = 88.63f;  //OK!!
-        afStartArray[ 7 ] = 147.7f;  //OK!!
-        afStartArray[ 8 ] = 155.05f;  //OK!!
-        afStartArray[ 9 ] = 162.45f;  //OK!!
-        afStartArray[ 10 ] = 169.82f;  //OK!!
-        afStartArray[ 11 ] = 177.17f;  //
-        afStartArray[ 12 ] = 184.57f;  //
+        afStartArray[ 7 ] = 147.72f;  //
+        afStartArray[ 8 ] = 155.117f;  //
+        afStartArray[ 9 ] = 162.514f;  //
+        afStartArray[ 10 ] = 169.911f;  //
+        afStartArray[ 11 ] = 177.25f;  //
+        afStartArray[ 12 ] = 184.647f;  //
 
 
         nCnt = -1;
@@ -246,7 +250,7 @@ public class EnemyManager : MonoBehaviour
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-      
+     
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -289,7 +293,19 @@ public class EnemyManager : MonoBehaviour
     {
         for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
         {
+            TakeInEnemyList[ nCnt ].gameObject.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
             TakeInEnemyList[ nCnt ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( idx );
+        }
+    }
+
+
+    public void TakeInEnemyRotate( )
+    {
+        fRotY += fAddRotateY;
+
+        for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
+        {
+            TakeInEnemyList[ nCnt ].gameObject.transform.rotation = Quaternion.Euler( 0.0f , fRotY , 0.0f );
         }
     }
 }

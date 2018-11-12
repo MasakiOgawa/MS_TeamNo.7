@@ -37,6 +37,9 @@ public class PerformanceManager : MonoBehaviour
 
     public GameObject EnemyManagerObj;
     EnemyManager EnemyManagerClass;
+
+    public GameObject TutorialManagerObj;
+    TutorialManager TutorialManagerClass;
    
 
     void Start( )
@@ -76,6 +79,8 @@ public class PerformanceManager : MonoBehaviour
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
 
         EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
+
+        TutorialManagerClass = TutorialManagerObj.GetComponent< TutorialManager >( );
     }
 
 
@@ -93,7 +98,7 @@ public class PerformanceManager : MonoBehaviour
         {
             bFlg = true;
             SerialHandlerClass.Write( "3" );
-            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing5 );
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             BGMClass.EmitBGM( );
             CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 0 );
         }
@@ -106,6 +111,7 @@ public class PerformanceManager : MonoBehaviour
             MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             BGMClass.SetBGM( 14.78f );//OK!!
             ManagerClass.SetFlg( );    
+            TutorialManagerClass.TrueTutorial01( );
         }
     }
 
@@ -132,8 +138,16 @@ public class PerformanceManager : MonoBehaviour
     {
         nCntDance++;
 
-        //パフォーマンスを挟む
-        if( nCntDance == 9 )
+        if( nCntDance == 1 )
+        {
+            TutorialManagerClass.FalseTutorial01( );
+            TutorialManagerClass.TrueTutorial02( );
+        }
+        else if( nCntDance == 2 )
+        {
+            TutorialManagerClass.FalseTutorial02( );
+        }
+        else if( nCntDance == 9 )
         {
            nCntPerformance = 4; 
         }
@@ -174,7 +188,7 @@ public class PerformanceManager : MonoBehaviour
             if( nCntPerformance == 6 )
             {
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
-                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing5 );
+                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
                  ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
             }
 
