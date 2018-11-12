@@ -40,6 +40,8 @@ public class PerformanceManager : MonoBehaviour
 
     public GameObject TutorialManagerObj;
     TutorialManager TutorialManagerClass;
+
+    public GameObject AuraObj;
    
 
     void Start( )
@@ -112,6 +114,7 @@ public class PerformanceManager : MonoBehaviour
             BGMClass.SetBGM( 14.78f );//OK!!
             ManagerClass.SetFlg( );    
             TutorialManagerClass.TrueTutorial01( );
+            AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_1 );
         }
     }
 
@@ -159,18 +162,21 @@ public class PerformanceManager : MonoBehaviour
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 1 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
+                AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_2 );
             }
             else if( nCntPerformance == 1 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 2 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Walk );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.Walk );
+                AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_3 );
             }
             else if( nCntPerformance == 2 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
+                AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_4 );
             }
             else if( nCntPerformance == 4 )
             {
