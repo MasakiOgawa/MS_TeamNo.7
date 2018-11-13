@@ -8,6 +8,7 @@ public class InputTest : MonoBehaviour {
     [SerializeField] private GameObject Woman;
     [SerializeField] private GameObject ThunderTaerget;
     [SerializeField] private GameObject MirrorBall;
+    [SerializeField] private GameObject canvas;
 	// Use this for initialization
 	void Start () {
 		
@@ -112,6 +113,19 @@ public class InputTest : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.L))
         {
             BounusEffect.Create(ThunderTaerget);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            FontController.Create( canvas,FontController.FONT_TYPE.FONT_BAD, new Vector2(0, 0));
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_FINE, new Vector2(-1, 1));
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_EXCELLENT, new Vector2(1, -1));
         }
 
 
