@@ -13,14 +13,6 @@ public class ScoreManager : MonoBehaviour
        EVALUATION_EXCELLENT     //良い
     };
 
-    //評価テキストのプレハブ
-    public GameObject    EvaluationBadPrefab;
-    public GameObject    EvaluationFinePrefab;
-    public GameObject    EvaluationExcellentPrefab;
-    public GameObject[ ] aEvaluationBadArray;
-    public GameObject[ ] aEvaluationFineArray;
-    public GameObject[ ] aEvaluationExcellentArray;
-
     //各評価のカウンタ
     int nCntBad;
     int nCntFine;
@@ -37,6 +29,8 @@ public class ScoreManager : MonoBehaviour
     bool bFlg;
     float fCntFrame;
 
+    public GameObject CanvasObj;
+
 
 	void Start( )
     {
@@ -51,30 +45,10 @@ public class ScoreManager : MonoBehaviour
         nCntExcellent = 0;
         nScore        = 0;
 
-        //各評価を生成し、非アクティブにしておく
-        aEvaluationBadArray       = new GameObject[ 3 ];
-        aEvaluationFineArray      = new GameObject[ 3 ];
-        aEvaluationExcellentArray = new GameObject[ 3 ];
-
-        for( int nCnt = 0; nCnt < 3; nCnt++ )
-        {
-            aEvaluationBadArray[ nCnt ]       = Instantiate( EvaluationBadPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
-            aEvaluationFineArray[ nCnt ]      = Instantiate( EvaluationFinePrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
-            aEvaluationExcellentArray[ nCnt ] = Instantiate( EvaluationExcellentPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
-
-            aEvaluationBadArray[ nCnt ].transform.parent = this.transform;
-            aEvaluationFineArray[ nCnt ].transform.parent = this.transform;
-            aEvaluationExcellentArray[ nCnt ].transform.parent = this.transform;
-
-            aEvaluationBadArray[ nCnt ].gameObject.SetActive( false );
-            aEvaluationFineArray[ nCnt ].gameObject.SetActive( false );
-            aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( false );
-        }
-
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
         bFlg = false;
-        fCntFrame = 0.0f;
+        fCntFrame = 0.0f;     
 	}
 
 
@@ -101,63 +75,29 @@ public class ScoreManager : MonoBehaviour
 	
 
     //評価のアクティブ化
-    public void ActiveTrue( Vector3 Pos , EVALUATION Evaluation )
+    public void ActiveTrue( Vector2 Pos , EVALUATION Evaluation )
     {
         switch( Evaluation )
         {
-            case EVALUATION.EVALUATION_BAD :
-                
-                for( int nCnt = 0; nCnt < 3; nCnt++ )
-                {
-                    if( aEvaluationBadArray[ nCnt ].gameObject.activeSelf == false )
-                    {
-                         aEvaluationBadArray[ nCnt ].gameObject.SetActive( true );
-                         aEvaluationBadArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );    
-                         break;
-                    }
-                }
-
+            case EVALUATION.EVALUATION_BAD :   
+                FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_BAD , Pos );
                 nCntBad++;
             break;
 
             case EVALUATION.EVALUATION_FINE :
-
-                 for( int nCnt = 0; nCnt < 3; nCnt++ )
-                 {
-                     if( aEvaluationFineArray[ nCnt ].gameObject.activeSelf == false )
-                     {
-                          aEvaluationFineArray[ nCnt ].gameObject.SetActive( true );
-                          aEvaluationFineArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
-                          break;
-                     }
-                 }
-                
+                FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_FINE ,  Pos );
                 nCntFine++;
             break;
 
             case EVALUATION.EVALUATION_EXCELLENT :
-
-                if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_BONUS )
-                {
-                    for( int nCnt = 0; nCnt < 3; nCnt++ )
-                     {
-                         if( aEvaluationExcellentArray[ nCnt ].gameObject.activeSelf == false )
-                         {
-                            aEvaluationExcellentArray[ nCnt ].gameObject.SetActive( true );
-                            aEvaluationExcellentArray[ nCnt ].gameObject.transform.position = new Vector3( Pos.x , Pos.y + 4.0f , Pos.z + 3.0f );
-
-                            if( nCnt == 2 && bFlg == false )
-                            {
-                                bFlg = true;
-                                SerialHandlerClass.Write( "4" );
-                            }
-                      
-                            break;
-                         }
-                     }
-                }
-              
+                FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , Pos );
                 nCntExcellent++;
+
+                if( nCntExcellent >= 3 && bFlg == false )
+                {
+                    bFlg = true;
+                    SerialHandlerClass.Write( "4" );
+                }
             break;
         }
     }

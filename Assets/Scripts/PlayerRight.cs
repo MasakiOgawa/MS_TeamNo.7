@@ -86,19 +86,19 @@ public class PlayerRight : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                          ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                          ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                              ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -126,19 +126,19 @@ public class PlayerRight : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                     ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -166,19 +166,19 @@ public class PlayerRight : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                        ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                        ScoreManagerClass.ActiveTrue(new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                           ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -206,19 +206,19 @@ public class PlayerRight : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                       ScoreManagerClass.ActiveTrue(transform.position , ScoreManager.EVALUATION.EVALUATION_BAD );
+                       ScoreManagerClass.ActiveTrue(new Vector2( 230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                      ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -252,7 +252,7 @@ public class PlayerRight : MonoBehaviour
               
                 if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
                 { 
-                    ScoreManagerClass.ActiveTrue( transform.position , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                  
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
                     LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
                 }
