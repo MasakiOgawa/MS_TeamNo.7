@@ -9,7 +9,7 @@ public class BonusManager : MonoBehaviour
     public GameObject ManagerObj;     //マネージャのオブジェクト
            bool       bFlg;
     public GameObject    BonusPrefab;         //ボーナスのプレハブ
-   //  int           nCntBeat;            //一拍のカウンタ
+     int           nCntBeat;            //一拍のカウンタ
 
 
            GameObject[ ] aBonusPrefabArray;   //生成したボーナスのオブジェクト配列
@@ -17,6 +17,7 @@ public class BonusManager : MonoBehaviour
            string[ ]     aString;
            int[ ]        nTimingArray;        //タイミングフレームを格納した配列
            GameObject    BonusTmp;
+            int nCreateNo;
           
 
            GameObject[ ] aBonusPrefabArray2;   //生成したボーナスのオブジェクト配列
@@ -24,12 +25,14 @@ public class BonusManager : MonoBehaviour
            string[ ]     aString2;
            int[ ]        nTimingArray2;        //タイミングフレームを格納した配列  
       GameObject    BonusTmp2;
+    int nCreateNo2;
 
            GameObject[ ] aBonusPrefabArray3;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText3;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString3;
            int[ ]        nTimingArray3;        //タイミングフレームを格納した配列
       GameObject    BonusTmp3;
+     int nCreateNo3;
            
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
@@ -54,10 +57,13 @@ public class BonusManager : MonoBehaviour
     { 
         //変数の初期化
         bFlg      = false;
-
+        nCntBeat = 0;
         BonusTmp = null;
         BonusTmp2 = null;
         BonusTmp3 = null;
+        nCreateNo = 0;
+        nCreateNo2 = 0;
+        nCreateNo3 = 0;
 
         //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
@@ -77,7 +83,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
-            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -4.0f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray[ nCnt ] ) ) , Quaternion.identity );
+            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -4.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
@@ -91,7 +97,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 16; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray2[ nCnt ] = int.Parse( aString2[ nCnt ] );   
-            aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 0.0f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray2[ nCnt ] ) ) , Quaternion.identity );
+            aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 0.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray2[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray2[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray2[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
@@ -104,7 +110,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] ); 
-            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 4.0f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray3[ nCnt ] ) ) , Quaternion.identity );
+            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 4.0f , 0.0f , 130.0f /*92.0f + ( 5 * nTimingArray3[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray3[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );   
@@ -143,7 +149,7 @@ public class BonusManager : MonoBehaviour
             MirrorBallMateriaClass.BonusAllEnabule( );
             BounusArea.Create( new Vector3( -4.0f , 0.0f , 92.0f ) , new Vector3( 0.0f , 0.0f , 92.0f ) , new Vector3( 4.0f , 0.0f , 92.0f ) );
 
-            for( int nCnt = 0; nCnt < 15; nCnt++ )
+        /*    for( int nCnt = 0; nCnt < 15; nCnt++ )
             {
                  aBonusPrefabArray[ nCnt ].gameObject.SetActive( true );
                  aBonusPrefabArray[ nCnt ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCnt ] , aBonusPrefabArray[ nCnt ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
@@ -159,45 +165,42 @@ public class BonusManager : MonoBehaviour
             {
                  aBonusPrefabArray3[ nCnt ].gameObject.SetActive( true );
                  aBonusPrefabArray3[ nCnt ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCnt ] , aBonusPrefabArray3[ nCnt ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
-            }
+            }*/
         }
 
         //一拍毎に生成するかをチェックする
-      /*  if( ManagerClass.GetdBonusFrame( ) >= 0.4475f )
+        if( ManagerClass.GetdBonusFrame( ) >= 0.4475f )
         {
             nCntBeat++;
 
             //生成タイミングになったらボーナスを飛ばす
             //if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
-            if( nCntBeat == nTimingArray[ nCreateNo ] - 2 && nTimingArray[ nCreateNo ] != 999 )
+            if( nCntBeat == nTimingArray[ nCreateNo ] - 3 && nTimingArray[ nCreateNo ] != 999 )
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 17.0f - 1000.0f ) ,
-                                                                                             new Vector3( -2.5f , 0.0f , 17.0f ) , Bonus.BONUS_TYPE.LEFT );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
                 PlayerLeftClass.ReleasebBonusFlg( );
                 nCreateNo++;
             }
-            if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 2 && nTimingArray2[ nCreateNo2 ] != 999 )
+            if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 3 && nTimingArray2[ nCreateNo2 ] != 999 )
             {
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 17.0f - 1000.0f ) ,
-                                                                                             new Vector3( 0.0f , 0.0f , 17.0f ) , Bonus.BONUS_TYPE.CENTER );
+                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.CENTER );
                  PlayerCenterClass.ReleasebBonusFlg( );   
                 nCreateNo2++;
             }
-            if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 2 && nTimingArray3[ nCreateNo3 ] != 999 )
+            if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 3 && nTimingArray3[ nCreateNo3 ] != 999 )
             {
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( new Vector3( 0.0f , 0.0f , 17.0f - 1000.0f ) ,
-                                                                                            new Vector3( 2.5f , 0.0f , 17.0f ) , Bonus.BONUS_TYPE.RIGHT );
+                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
                  PlayerRightClass.ReleasebBonusFlg( );    
                 nCreateNo3++;
             }
 
             ManagerClass.SetFlg2( );
-        }*/
+        }
 
          //33拍でボーナスの終了
         if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )

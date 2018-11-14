@@ -112,13 +112,13 @@ public class Bonus : MonoBehaviour
 
     public void SetState( int nBeat , float Dist , float Goal , BONUS_TYPE Bonus )
     {
-      
-        //遅い
-        //早い
-        //15
-        //20
         fDist = Dist;
-        fMove = ( fDist / ( 0.4615f * nBeat ) ) / 60.0f;
+        //0.3
+        //0.25
+        //0.23
+        //0.18fで前半早い・後半遅い
+        //0.178
+        fMove = ( fDist / ( 0.175f * 3.0f ) ) / 60.0f;
       
         //分かってる事
         //・距離
