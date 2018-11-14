@@ -21,11 +21,13 @@ public class Bonus : MonoBehaviour
     public enum BONUS_STATE
     { 
         MOVE = 0 ,
+        TARGET ,
+        OUT ,
         BIRIBIRI
     }
 
     BONUS_TYPE BonusType;
-    BONUS_STATE BonusState;
+    public BONUS_STATE BonusState;
     float fCntFrame;
     public float fFalseFrame;
 
@@ -47,22 +49,53 @@ public class Bonus : MonoBehaviour
 
                 this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
 
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 25.0f && BonusType == BONUS_TYPE.LEFT )
+                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.LEFT )
                 { 
                     BonusManagerClass.SetBonusLeft( this.gameObject );
-                //    Debug.Log( "左セット");
-                }
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 25.0f && BonusType == BONUS_TYPE.CENTER )
-                { 
-                    BonusManagerClass.SetBonusCenter( this.gameObject );
-                  //  Debug.Log( "真ん中セット");
-                }
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 25.0f && BonusType == BONUS_TYPE.RIGHT )
-                { 
-                    BonusManagerClass.SetBonusRight( this.gameObject );  
-                   // Debug.Log( "右セット");
+                    BonusManagerClass.LeftAreaChange( false );
+                    BonusState = BONUS_STATE.TARGET;
                 }
 
+                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.CENTER )
+                { 
+                    BonusManagerClass.SetBonusCenter( this.gameObject );
+                    BonusManagerClass.CenterAreaChange( false );
+                    BonusState = BONUS_STATE.TARGET;
+                } 
+
+                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.RIGHT )
+                { 
+                    BonusManagerClass.SetBonusRight( this.gameObject );  
+                    BonusManagerClass.RightAreaChange( false );
+                    BonusState = BONUS_STATE.TARGET;
+                }
+             
+            break;
+
+            case BONUS_STATE.TARGET :
+
+                this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
+
+                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.LEFT )
+                { 
+                    BonusManagerClass.LeftAreaChange( true );
+                    BonusState = BONUS_STATE.OUT;
+                }
+                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.CENTER )
+                { 
+                    BonusManagerClass.CenterAreaChange( true );
+                    BonusState = BONUS_STATE.OUT;
+                }
+                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.RIGHT )
+                { 
+                    BonusManagerClass.RightAreaChange( true );
+                    BonusState = BONUS_STATE.OUT;
+                }
+
+            break;
+
+            case BONUS_STATE.OUT:
+                this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
             break;
 
             case BONUS_STATE.BIRIBIRI:
@@ -70,7 +103,7 @@ public class Bonus : MonoBehaviour
 
                 if( fCntFrame >= fFalseFrame )
                 {
-                    this.gameObject.SetActive( false );
+                    BonusState = BONUS_STATE.OUT;
                 }
             break;
         }
@@ -85,8 +118,7 @@ public class Bonus : MonoBehaviour
         //15
         //20
         fDist = Dist;
-        fMove = ( fDist / ( 0.4615f * nBeat ) );
-        fMove = ( fMove / 60.0f ) * ( fMove * 60.0f );
+        fMove = ( fDist / ( 0.4615f * nBeat ) ) / 60.0f;
       
         //分かってる事
         //・距離

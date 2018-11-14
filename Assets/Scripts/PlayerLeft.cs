@@ -45,18 +45,19 @@ public class PlayerLeft : MonoBehaviour
 
     void Update( )
     {
-         if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
-                Input.GetKeyDown( KeyCode.UpArrow ) ||
-                Input.GetKeyDown( KeyCode.DownArrow ) ||
-                Input.GetKeyDown( KeyCode.LeftArrow ) ||
-                Input.GetKeyDown( KeyCode.RightArrow ) )
+         if( (  ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+             ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+             ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+             ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+             Input.GetKeyDown( KeyCode.UpArrow ) ||
+             Input.GetKeyDown( KeyCode.DownArrow ) ||
+             Input.GetKeyDown( KeyCode.LeftArrow ) ||
+             Input.GetKeyDown( KeyCode.RightArrow ) )  &&
+             EnemyManagerClass.GetTarget( ) == null )
         {
             int Rand = Random.RandomRange(0, 10);
 
-            OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -2.5f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+            OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
     }
 	
@@ -74,7 +75,7 @@ public class PlayerLeft : MonoBehaviour
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
-                Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
+                Tmp.transform.position = new Vector3( -3.0f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
 
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Up" )
@@ -87,19 +88,19 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                          ScoreManagerClass.ActiveTrue(new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                          ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                              ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -114,7 +115,7 @@ public class PlayerLeft : MonoBehaviour
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
-                 Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
+                 Tmp.transform.position = new Vector3( -3.0f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
                
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Down" )
@@ -127,19 +128,19 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                     ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -154,7 +155,7 @@ public class PlayerLeft : MonoBehaviour
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
-                 Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
+                 Tmp.transform.position = new Vector3( -3.0f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
            
                  //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Left" )
@@ -167,19 +168,19 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                        ScoreManagerClass.ActiveTrue(new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                        ScoreManagerClass.ActiveTrue(new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                           ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -194,7 +195,7 @@ public class PlayerLeft : MonoBehaviour
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
                 
-                Tmp.transform.position = new Vector3( -2.5f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
+                Tmp.transform.position = new Vector3( -3.0f , 0.0f , PlayerManagerClass.GetfDist( ) + 17.0f );
      
                 //一致していたら
                 if( EnemyObj != null && EnemyObj.tag == "Right" )
@@ -207,19 +208,19 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                  ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
-                       ScoreManagerClass.ActiveTrue(new Vector2( -230.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                       ScoreManagerClass.ActiveTrue(new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
                                                      ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
@@ -233,7 +234,7 @@ public class PlayerLeft : MonoBehaviour
 
 
     //ボーナス
-    public void Bonus( )
+    public void BonusPlay( )
     {
         //まだ振られていなかったら
         if( bBonusFlg == false )
@@ -248,14 +249,12 @@ public class PlayerLeft : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
-                Vector3 Pos = new Vector3( -2.5f , 0.0f , 177.101f + 17.0f );
-              
-              
-                if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
+                
+                if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
                 { 
-                   
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
-                    LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
+                  //  LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
+                  BounusEffect.Create( Tmp );
                 }
 
                 bBonusFlg = true;

@@ -44,14 +44,15 @@ public class PlayerCenter : MonoBehaviour
 
     void Update( )
     {
-         if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+         if( ( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
                 ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                 ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
                 ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                 Input.GetKeyDown( KeyCode.UpArrow ) ||
                 Input.GetKeyDown( KeyCode.DownArrow ) ||
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
-                Input.GetKeyDown( KeyCode.RightArrow ) )
+                Input.GetKeyDown( KeyCode.RightArrow ) ) &&
+             EnemyManagerClass.GetTarget( ) == null )
         {
             int Rand = Random.RandomRange(0, 10);
 
@@ -232,7 +233,7 @@ public class PlayerCenter : MonoBehaviour
 
 
     //ボーナス
-    public void Bonus( )
+    public void BonusPlay( )
     {
         //まだ振られていなかったら
         if( bBonusFlg == false )
@@ -247,14 +248,14 @@ public class PlayerCenter : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
                 GameObject Tmp = BonusManagerClass.GetBonusCenter( );
-                 Vector3 Pos = new Vector3( 0.0f , 0.0f , 177.101f + 17.0f );
-              
-              
-                if( Tmp != null && Vector3.Distance( Tmp.gameObject.transform.position , Pos ) <= 20.0f )
+                 
+                          
+                if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
                 { 
                   
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
-                    LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
+                 //   LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
+                        BounusEffect.Create( Tmp );
                 }
 
                 bBonusFlg = true;

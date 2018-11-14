@@ -16,22 +16,19 @@ public class BonusManager : MonoBehaviour
            TextAsset     BonusText;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString;
            int[ ]        nTimingArray;        //タイミングフレームを格納した配列
-           int           nCreateNo;           //生成する敵の番号
            GameObject    BonusTmp;
           
 
            GameObject[ ] aBonusPrefabArray2;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText2;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString2;
-           int[ ]        nTimingArray2;        //タイミングフレームを格納した配列
-           int           nCreateNo2;           //生成する敵の番号 
+           int[ ]        nTimingArray2;        //タイミングフレームを格納した配列  
       GameObject    BonusTmp2;
 
            GameObject[ ] aBonusPrefabArray3;   //生成したボーナスのオブジェクト配列
            TextAsset     BonusText3;           //ボーナス情報が格納されたファイルの情報
            string[ ]     aString3;
            int[ ]        nTimingArray3;        //タイミングフレームを格納した配列
-           int           nCreateNo3;           //生成する敵の番号 
       GameObject    BonusTmp3;
            
     public SerialHandler SerialHandlerClass;
@@ -57,10 +54,6 @@ public class BonusManager : MonoBehaviour
     { 
         //変数の初期化
         bFlg      = false;
-        nCreateNo = 0;
-        nCreateNo2 = 0;
-        nCreateNo3 = 0;
-       // nCntBeat  = 0;
 
         BonusTmp = null;
         BonusTmp2 = null;
@@ -84,7 +77,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
-            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -2.5f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray[ nCnt ] ) ) , Quaternion.identity );
+            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -4.0f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray[ nCnt ] ) ) , Quaternion.identity );
             aBonusPrefabArray[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
@@ -111,7 +104,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] ); 
-            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 2.5f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray3[ nCnt ] ) ) , Quaternion.identity );
+            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 4.0f , 0.0f , /*192.0f*/92.0f + ( 5 * nTimingArray3[ nCnt ] ) ) , Quaternion.identity );
             aBonusPrefabArray3[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );   
@@ -144,11 +137,11 @@ public class BonusManager : MonoBehaviour
     {
         if( bFlg == false )
         {
-           ManagerClass.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).EmitBGM( );
-            ManagerClass.GetComponent< Manager >( ).GetBGM( ).GetComponent< BGM >( ).SetBGM( 103.5f );
+
             bFlg = true;
             SerialHandlerClass.Write( "5" );
             MirrorBallMateriaClass.BonusAllEnabule( );
+            BounusArea.Create( new Vector3( -4.0f , 0.0f , 92.0f ) , new Vector3( 0.0f , 0.0f , 92.0f ) , new Vector3( 4.0f , 0.0f , 92.0f ) );
 
             for( int nCnt = 0; nCnt < 15; nCnt++ )
             {
@@ -207,7 +200,7 @@ public class BonusManager : MonoBehaviour
         }*/
 
          //33拍でボーナスの終了
-        if( ManagerClass.GetdCntFrame( ) >= 0.895f * 3300.0f )
+        if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )
         {
            // ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
            ScoreClass.AggregateScore( );
@@ -216,6 +209,7 @@ public class BonusManager : MonoBehaviour
             ManagerClass.SetFlg( );
             SerialHandlerClass.Write( "3" );
             MirrorBallMateriaClass.BonusAlDisable( );
+            BounusArea.Delete( );
         }
     }
 
@@ -271,5 +265,23 @@ public class BonusManager : MonoBehaviour
         {
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );
         }
+    }
+
+
+    public void LeftAreaChange( bool bColor )
+    {
+        BounusArea.ChangeColor( 0 , bColor );
+    }
+
+
+    public void CenterAreaChange( bool bColor )
+    {
+        BounusArea.ChangeColor( 1 , bColor );
+    }
+
+
+    public void RightAreaChange( bool bColor )
+    {
+        BounusArea.ChangeColor( 2 , bColor );
     }
 }
