@@ -10,6 +10,13 @@ public class MirrorBall : MonoBehaviour {
 	void Start () {
 		
 	}
+
+    private void SetPos ( Vector3 pos )
+
+    {
+
+        transform.position = pos;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,7 +29,8 @@ public class MirrorBall : MonoBehaviour {
         // プレハブを取得
         GameObject prefab = (GameObject)Resources.Load("Prefabs/MirrorBallAura");
         // プレハブからインスタンスを生成
-        GameObject obj = Instantiate(prefab , this.transform);
+        GameObject obj = Instantiate(prefab );
+        obj.GetComponent<MirrorBall>().SetPos(this.transform.position);
 
         MirrorBallAura = obj;
     }
