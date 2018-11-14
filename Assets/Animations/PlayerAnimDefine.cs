@@ -26,6 +26,10 @@
 		,VictoryIdle = 23
 		,Walking = 24
 		,WavingGesture = 25
-		,SIZE = 26
+		,Down = 26
+		,Up = 27
+		,Left = 28
+		,Right = 29
+		,SIZE = 30
 	}
 }

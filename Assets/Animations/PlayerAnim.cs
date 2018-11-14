@@ -20,6 +20,31 @@ public class PlayerAnim : MonoBehaviour
             MotionChange(AnimIdx);
             AnimIdxOld = AnimIdx;
         }
+
+        //if (Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    MotionChange(PlayerAnimDefine.Idx.Up);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    MotionChange(PlayerAnimDefine.Idx.Down);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    MotionChange(PlayerAnimDefine.Idx.Left);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    MotionChange(PlayerAnimDefine.Idx.Right);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    MotionChange(PlayerAnimDefine.Idx.Idle);
+        //}
     }
 
     // プレイヤーアニメーション変更
