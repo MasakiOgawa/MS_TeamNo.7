@@ -23,6 +23,9 @@ public class PlayerRight : MonoBehaviour
     public float PlayerToBallSpeed;
     public float BallToEnemySpeed;
 
+     public GameObject MotionManagerObj;
+    MotionManager MotionManagerClass;
+
         
 	void Start( )
     {
@@ -39,6 +42,8 @@ public class PlayerRight : MonoBehaviour
         ScoreManagerClass  = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( ); 
 
         BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
+
+        MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
 	}
 
 
@@ -71,6 +76,8 @@ public class PlayerRight : MonoBehaviour
             if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
                 Input.GetKeyDown( KeyCode.A ) )
             { 
+                 MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Up );
+
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
@@ -111,6 +118,8 @@ public class PlayerRight : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                      Input.GetKeyDown( KeyCode.DownArrow ) )
             {   
+                MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Down );
+
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
@@ -151,6 +160,8 @@ public class PlayerRight : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.LeftArrow ) )
             {
+                MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Left );
+
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
 
@@ -191,6 +202,8 @@ public class PlayerRight : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R2 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.RightArrow ) )
             {  
+                MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Right );
+
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
                 

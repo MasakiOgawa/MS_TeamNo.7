@@ -132,8 +132,10 @@ public class PlayerManager : MonoBehaviour
             //スコアの集計
             //ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
 
+            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             ScoreClass.AggregateScore( );
             PerformanceClass.PhaseCheck( );
+         
         }
     }
 

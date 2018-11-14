@@ -5570,7 +5570,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &515401685
 MonoBehaviour:
@@ -6498,6 +6498,7 @@ MonoBehaviour:
   Tmp: {fileID: 747699715}
   PlayerToBallSpeed: 1
   BallToEnemySpeed: 1.5
+  MotionManagerObj: {fileID: 1099571937}
 --- !u!114 &632992500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6934,6 +6935,7 @@ MonoBehaviour:
   Tmp: {fileID: 440771586}
   PlayerToBallSpeed: 1
   BallToEnemySpeed: 1.5
+  MotionManagerObj: {fileID: 1099571937}
 --- !u!114 &684074295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10082,7 +10084,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1099571938
 MonoBehaviour:
@@ -15396,6 +15398,7 @@ MonoBehaviour:
   Tmp: {fileID: 329263325}
   PlayerToBallSpeed: 1
   BallToEnemySpeed: 1.5
+  MotionManagerObj: {fileID: 1099571937}
 --- !u!114 &1648557948
 MonoBehaviour:
   m_ObjectHideFlags: 0
