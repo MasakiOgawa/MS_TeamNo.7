@@ -56,7 +56,7 @@ public class PlayerRight : MonoBehaviour
         {
             int Rand = Random.RandomRange(0, 10);
 
-            OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+            OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 34.0f ) );
         }
     }
 	

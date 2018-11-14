@@ -48,7 +48,11 @@ public class ScoreManager : MonoBehaviour
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
         bFlg = false;
-        fCntFrame = 0.0f;     
+        fCntFrame = 0.0f;    
+        
+    /*    FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2( -240.0f , -180.0f ) );
+        FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2(  0.0f , -180.0f ) );
+        FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2( 240.0f , -180.0f ) );*/
 	}
 
 
