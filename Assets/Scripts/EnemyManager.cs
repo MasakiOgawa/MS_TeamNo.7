@@ -250,7 +250,7 @@ public class EnemyManager : MonoBehaviour
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-     
+        nEvaluation=7;
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -260,7 +260,7 @@ public class EnemyManager : MonoBehaviour
             //横に生成する数を決める(最大7体)
             do
             {
-                nCreateSide = ( int )Random.Range( 4, 8 ); 
+                nCreateSide = ( int )Random.Range( 4, 6 ); 
             }while( nCreateSide == 0 );
 
             //左端のX座標を決める
@@ -269,7 +269,7 @@ public class EnemyManager : MonoBehaviour
             //敵を横に生成する
             for( int nCnt2 = 0; nCnt2 < nCreateSide; nCnt2++ )
             {
-                nTmp   = ( int )Random.Range( 0 , nTakeInEnemyRange );
+                nTmp   = ( int )Random.Range( 2 , nTakeInEnemyRange );
                 nTmp  -= ( nTakeInEnemyRange - 1 ) / 2;
                 TakeInEnemyList.Add( Instantiate( TakeInEnemyPrefab , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
 
