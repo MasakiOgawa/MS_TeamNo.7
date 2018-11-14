@@ -29,10 +29,9 @@ public class MirrorBall : MonoBehaviour {
         // プレハブを取得
         GameObject prefab = (GameObject)Resources.Load("Prefabs/MirrorBallAura");
         // プレハブからインスタンスを生成
-        GameObject obj = Instantiate(prefab );
-        obj.GetComponent<MirrorBall>().SetPos(this.transform.position);
+        MirrorBallAura = Instantiate(prefab , transform );
+       // MirrorBallAura.transform.parent = null;
 
-        MirrorBallAura = obj;
     }
 
     // ミラーボールオーラ停止

@@ -250,7 +250,7 @@ public class EnemyManager : MonoBehaviour
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-        //nEvaluation=7;
+        nEvaluation=7;
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -258,10 +258,10 @@ public class EnemyManager : MonoBehaviour
         for( int nCnt = 0; nCnt < nEvaluation; )
         {
             //横に生成する数を決める(最大7体)
-            do
-            {
-                nCreateSide = ( int )Random.Range( 4, 6 ); 
-            }while( nCreateSide == 0 );
+           // do
+           // {
+                nCreateSide = ( int )Random.Range( 3, 5 ); 
+         //   }while( nCreateSide == 0 );
 
             //左端のX座標を決める
             fPosX = -( fRoadSide * 0.5f );
