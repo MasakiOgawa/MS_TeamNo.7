@@ -40,6 +40,9 @@ public class RankingManager : MonoBehaviour {
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
 
+    AudioSource RankingPrevew;
+    AudioSource RankingIn;
+
     // Use this for initialization
     void Start () {
         // 初期化
@@ -47,6 +50,7 @@ public class RankingManager : MonoBehaviour {
 
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
+
     }
 
     void ConfigurePins( )
@@ -70,6 +74,7 @@ public class RankingManager : MonoBehaviour {
 
                 //tmp.color = new Color(255, 0, 0, 255);
                 _1stScore.GetComponent<RankingScoreController>().SetScore(Rank1stScore, true);
+                RankingIn.Play();
             }
             else
             {
@@ -78,7 +83,7 @@ public class RankingManager : MonoBehaviour {
 
 
             // SE
-            GetComponent<AudioSource>().Play();
+            RankingPrevew.Play();
         }
 
         if ( bEnable2ndScore == false && fTime > _ranking2ndScoreStartTime)
@@ -92,13 +97,14 @@ public class RankingManager : MonoBehaviour {
             {
                 //tmp.color = new Color(255, 0, 0, 255);
                 _2ndScore.GetComponent<RankingScoreController>().SetScore(Rank2ndScore, true);
+                RankingIn.Play();
             }
             else
             {
                 _2ndScore.GetComponent<RankingScoreController>().SetScore(Rank2ndScore, false);
             }
             // SE
-            GetComponent<AudioSource>().Play();
+            RankingPrevew.Play();
         }
 
         if ( bEnable3rdScore == false && fTime > _ranking3rdScoreStartTime)
@@ -112,13 +118,14 @@ public class RankingManager : MonoBehaviour {
             {
                 //tmp.color = new Color(255, 0, 0, 255);
                 _3rdScore.GetComponent<RankingScoreController>().SetScore(Rank3rdScore, true);
+                RankingIn.Play();
             }
             else
             {
                 _3rdScore.GetComponent<RankingScoreController>().SetScore(Rank3rdScore, false);
             }
             // SE
-            GetComponent<AudioSource>().Play();
+            RankingPrevew.Play();
 
             fTime = 0.0f;
         }
@@ -143,6 +150,10 @@ public class RankingManager : MonoBehaviour {
 
         // スコア保存
         SaveRanking(nScore);
+
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        RankingPrevew = audioSources[0];
+        RankingIn = audioSources[1];
     }
 
     // 初期化

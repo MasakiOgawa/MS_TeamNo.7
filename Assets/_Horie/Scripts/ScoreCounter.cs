@@ -62,7 +62,7 @@ public class ScoreCounter : MonoBehaviour {
                 ResultManager rm = _ResultManager.GetComponent<ResultManager>();
                 rm.GetFinishScoreCounter();
 
-                ScoreCounterSE.Stop();
+                //ScoreCounterSE.Stop();
                 ScoreStopSE.Play();
 
 
