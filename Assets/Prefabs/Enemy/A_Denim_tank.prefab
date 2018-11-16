@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 4978927122108788}
   - component: {fileID: 95639083361707638}
   - component: {fileID: 114513446437724442}
+  - component: {fileID: 114151849260164778}
   m_Layer: 0
   m_Name: A_Denim_tank
   m_TagString: Untagged
@@ -2527,7 +2528,7 @@ Transform:
   m_GameObject: {fileID: 1226201687410870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4558600101010532}
   - {fileID: 4563215837082182}
@@ -2579,6 +2580,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114151849260164778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226201687410870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusState: 0
+  fFalseFrame: 0.3
 --- !u!114 &114513446437724442
 MonoBehaviour:
   m_ObjectHideFlags: 1

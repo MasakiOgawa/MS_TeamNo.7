@@ -412,7 +412,7 @@ MonoBehaviour:
   PlayerLeftObj: {fileID: 1595710449}
   PlayerCenterObj: {fileID: 2071652630}
   PlayerRightObj: {fileID: 1459995488}
-  fAddRotateZ: 0
+  fAddRotateY: 0
 --- !u!1001 &1561529745
 Prefab:
   m_ObjectHideFlags: 0
@@ -455,7 +455,12 @@ Prefab:
     - target: {fileID: 114711894611144002, guid: defec5ff9c9b5ad438286e9786ae0450,
         type: 2}
       propertyPath: AnimIdx
-      value: 11
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95070115401235660, guid: defec5ff9c9b5ad438286e9786ae0450,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
