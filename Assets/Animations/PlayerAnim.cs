@@ -23,22 +23,22 @@ public class PlayerAnim : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.UpArrow))
         //{
-        //    MotionChange(PlayerAnimDefine.Idx.Up);
+        //    MotionChange(PlayerAnimDefine.Idx.Player_Up);
         //}
 
         //if (Input.GetKeyDown(KeyCode.DownArrow))
         //{
-        //    MotionChange(PlayerAnimDefine.Idx.Down);
+        //    MotionChange(PlayerAnimDefine.Idx.Player_Down);
         //}
 
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
         //{
-        //    MotionChange(PlayerAnimDefine.Idx.Left);
+        //    MotionChange(PlayerAnimDefine.Idx.Player_Left);
         //}
 
         //if (Input.GetKeyDown(KeyCode.RightArrow))
         //{
-        //    MotionChange(PlayerAnimDefine.Idx.Right);
+        //    MotionChange(PlayerAnimDefine.Idx.Player_Right);
         //}
 
         //if (Input.GetKeyDown(KeyCode.Space))
