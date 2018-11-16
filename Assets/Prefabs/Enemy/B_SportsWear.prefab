@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 4094333772609402}
   - component: {fileID: 95933702607528910}
   - component: {fileID: 114825539715458994}
+  - component: {fileID: 114312444205687902}
   m_Layer: 0
   m_Name: B_SportsWear
   m_TagString: Untagged
@@ -1427,7 +1428,7 @@ Transform:
   m_GameObject: {fileID: 1362986089866070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4203819761227046}
   - {fileID: 4406239108992178}
@@ -2546,6 +2547,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114312444205687902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362986089866070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusState: 0
+  fFalseFrame: 0.3
 --- !u!114 &114825539715458994
 MonoBehaviour:
   m_ObjectHideFlags: 1

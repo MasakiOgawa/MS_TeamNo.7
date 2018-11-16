@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 4332334540817218}
   - component: {fileID: 95868506856125812}
   - component: {fileID: 114231890631476326}
+  - component: {fileID: 114432144570221520}
   m_Layer: 0
   m_Name: B_Foodie_girl
   m_TagString: Untagged
@@ -1883,7 +1884,7 @@ Transform:
   m_GameObject: {fileID: 1092965574613378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4131163891913968}
   - {fileID: 4473407710034708}
@@ -2735,6 +2736,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114432144570221520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092965574613378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusState: 0
+  fFalseFrame: 0.3
 --- !u!137 &137008722827721428
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

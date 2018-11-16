@@ -50,11 +50,16 @@ public class FontController : MonoBehaviour {
         }
     }
 
-    private void Set ( Vector2 pos )
+    private void Set ( Vector2 pos , FONT_TYPE type )
     {
         rect.anchoredPosition = new Vector3(pos.x, pos.y, 0);
 
-        tweener = rect.DOScale(0.2f, 0.2f).OnComplete(() => bRunComplete=true);
+        // エクセレントのとき
+        if ( type == FONT_TYPE.FONT_EXCELLENT)
+            tweener = rect.DOScale(0.14f, 0.2f).OnComplete(() => bRunComplete=true);
+        // それ以外
+        else
+            tweener = rect.DOScale(0.2f, 0.2f).OnComplete(() => bRunComplete=true);
 
     }
 
@@ -92,7 +97,7 @@ public class FontController : MonoBehaviour {
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab );
         obj.transform.SetParent(canvas.transform, false);
-        obj.GetComponent<FontController>().Set(pos);
+        obj.GetComponent<FontController>().Set(pos , type);
  
     }
 }

@@ -11,7 +11,6 @@ public class EnemyManager : MonoBehaviour
     public GameObject      EnemyDownPrefab;      //下方向の敵のプレハブ
     public GameObject      EnemyRightPrefab;     //右方向の敵のプレハブ
     public GameObject      EnemyLeftPrefab;      //左方向の敵のプレハブ
-    public GameObject      TakeInEnemyPrefab;    //追従する敵のプレハブ
            GameObject[ , ] aEnemyPrefabArray;    //生成した敵のオブジェクト配列
            GameObject      TargetEnemy;          //現在ターゲットにされている敵のオブジェクト
            TextAsset       EnemyText;            //敵情報が格納されたファイルの情報
@@ -32,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     int nCnt;
     BGM BGMClass;
 
-    public GameObject Enemy_01Prefab;
+    public GameObject [ ]Enemy_Prefab;
     GameObject[ ] aEnemyPrefabArray2;
 
     List<GameObject> TakeInEnemyList;  //追従する敵の作業用変数
@@ -40,12 +39,19 @@ public class EnemyManager : MonoBehaviour
     public float fAddRotateY;
     float fRotY;
 
+    bool bFlg;
+    float fCntFrame;
+
+    public Canvas CanvasObj;
+    public Vector2 LeftEndPosCanvas;           //左端の敵の座標(キャンバス)
+    public float  fWidthCanvas;
+
    
 	void Start( )
     {
         //変数の初期化
         aEnemyPrefabArray = new GameObject[ 8 , 4 ];
-        aEnemyPrefabArray2 = new GameObject[ 8 ];
+        aEnemyPrefabArray2 = new GameObject[ 12 ];
         TakeInEnemyList = new List<GameObject>();  
         nCreateNo         = 0;
         nCntLength        = 0;
@@ -64,17 +70,20 @@ public class EnemyManager : MonoBehaviour
             aEnemyPrefabArray[ nCnt , 2 ] = Instantiate( EnemyLeftPrefab , new Vector3( 0.0f , 0.0f, 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
             aEnemyPrefabArray[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
 
-            aEnemyPrefabArray[ nCnt , 0 ].transform.parent = this.transform;
-            aEnemyPrefabArray[ nCnt , 1 ].transform.parent = this.transform;
-            aEnemyPrefabArray[ nCnt , 2 ].transform.parent = this.transform;
-            aEnemyPrefabArray[ nCnt , 3 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 0 ].transform.parent = CanvasObj.transform;//this.transform;
+            aEnemyPrefabArray[ nCnt , 1 ].transform.parent = CanvasObj.transform;//this.transform;
+            aEnemyPrefabArray[ nCnt , 2 ].transform.parent = CanvasObj.transform;//this.transform;
+            aEnemyPrefabArray[ nCnt , 3 ].transform.parent = CanvasObj.transform;//this.transform;
 
             aEnemyPrefabArray[ nCnt , 0 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 1 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 2 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 3 ].gameObject.SetActive( false );
+        }
 
-            aEnemyPrefabArray2[ nCnt ] = Instantiate( Enemy_01Prefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 180.0f , 0.0f ) );
+        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        {
+            aEnemyPrefabArray2[ nCnt ] = Instantiate( Enemy_Prefab[ nCnt ] , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 180.0f , 0.0f ) );
             aEnemyPrefabArray2[ nCnt ].transform.parent = this.transform;
             aEnemyPrefabArray2[ nCnt ].gameObject.SetActive( false );
         }
@@ -121,49 +130,125 @@ public class EnemyManager : MonoBehaviour
 
         nCnt = -1;
         BGMClass =  ManagerClass.GetBGM( ).GetComponent< BGM >( );
+
+        bFlg = false;
+        fCntFrame = 0.0f;
 	}
+
+    void Update( )
+    {
+        if( bFlg == false )
+        {
+            for( int nCnt = 0; nCnt < 12; nCnt++ )
+            {
+                if( aEnemyPrefabArray2[ nCnt ].gameObject.activeSelf == true )
+                {
+                    if( aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f && bFlg == false )
+                    {
+                        bFlg = true;
+                    }
+                }
+            }
+        }
+       
+
+        if( bFlg == true )
+        {
+            fCntFrame += Time.deltaTime;
+
+            if( fCntFrame >= 0.5f )
+            {
+                bFlg = false;
+                fCntFrame = 0.0f;
+
+                for( int nCnt = 0; nCnt < 12; nCnt++ )
+                {
+                    if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
+                    {
+                        aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).ForceStateNormalizedTime( 0.0f );
+                    }
+                }
+            }
+        }
+    }
 
 
     //敵のアクティブ化
     public void ActiveTrue( )
     {  
         float fPosZ = PlayersObj.transform.position.z;
+        int [ ] nArray =  new int[ 12 ];
+        int nRand = 0;
+
+        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        {
+            nArray[ nCnt ] = 0;
+        }
+
 
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
-                aEnemyPrefabArray[ nCnt2 , 0 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
+                do
+                {
+                    nRand = Random.Range( 0 , 12 );
+                }while( nArray[ nRand ] != 0 );
+                nArray[ nRand ] = 999;
 
-                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 0 ].gameObject.SetActive( true );   
+                aEnemyPrefabArray[ nCnt2 , 0 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+
+                aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
+               
+                aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Up );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
-                aEnemyPrefabArray[ nCnt2 , 1 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
+                do
+                {
+                    nRand = Random.Range( 0 , 12 );
+                }while( nArray[ nRand ] != 0 );
+                nArray[ nRand ] = 999;
 
-                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 1 ].gameObject.SetActive( true );
+                aEnemyPrefabArray[ nCnt2 , 1 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+
+                aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Down );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
-                aEnemyPrefabArray[ nCnt2 , 2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
+                do
+                {
+                    nRand = Random.Range( 0 , 12 );
+                }while( nArray[ nRand ] != 0 );
+                nArray[ nRand ] = 999;
 
-                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 2 ].gameObject.SetActive( true );
+                aEnemyPrefabArray[ nCnt2 , 2 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+
+                aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Right );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
+                 do
+                {
+                    nRand = Random.Range( 0 , 12 );
+                }while( nArray[ nRand ] != 0 );
+                nArray[ nRand ] = 999;
+
                 aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x  + ( fWidth * nCnt2 ) , 0.5f , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray[ nCnt2 , 3 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
 
-                aEnemyPrefabArray2[ nCnt2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray2[ nCnt2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
+                aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Left );
             }
-
             //  AuraSpotObj.SetActive( false );
         }
 
@@ -197,15 +282,18 @@ public class EnemyManager : MonoBehaviour
                 {
                     aEnemyPrefabArray[ nCnt , nCnt2 ].SetActive( false );
                 }
-            }
+            } 
+        }
 
-            if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
+         AuraSpotObj.SetActive( false );
+
+        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        {
+             if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
             {
                 aEnemyPrefabArray2[ nCnt ].SetActive( false );
             }
         }
-
-         AuraSpotObj.SetActive( false );
     }
 
 
@@ -250,7 +338,7 @@ public class EnemyManager : MonoBehaviour
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-        nEvaluation=7;
+        nEvaluation=5;
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -271,7 +359,7 @@ public class EnemyManager : MonoBehaviour
             {
                 nTmp   = ( int )Random.Range( 2 , nTakeInEnemyRange );
                 nTmp  -= ( nTakeInEnemyRange - 1 ) / 2;
-                TakeInEnemyList.Add( Instantiate( TakeInEnemyPrefab , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
+                TakeInEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
 
                 //プレイヤー達の子要素にする
                 TakeInEnemyList[ TakeInEnemyList.Count - 1 ].transform.parent = PlayersObj.GetComponent< Transform >( ).transform;

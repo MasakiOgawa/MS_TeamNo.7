@@ -38,9 +38,6 @@ public class PerformanceManager : MonoBehaviour
     public GameObject EnemyManagerObj;
     EnemyManager EnemyManagerClass;
 
-    public GameObject TutorialManagerObj;
-    TutorialManager TutorialManagerClass;
-
     public GameObject AuraObj;
    
 
@@ -81,8 +78,6 @@ public class PerformanceManager : MonoBehaviour
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
 
         EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
-
-        TutorialManagerClass = TutorialManagerObj.GetComponent< TutorialManager >( );
     }
 
 
@@ -113,7 +108,7 @@ public class PerformanceManager : MonoBehaviour
             MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             BGMClass.SetBGM( 14.78f );//OK!!
             ManagerClass.SetFlg( );    
-            TutorialManagerClass.TrueTutorial01( );
+         //   TutorialManagerClass.TrueTutorial01( );
             AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_1 );
         }
     }
@@ -141,16 +136,8 @@ public class PerformanceManager : MonoBehaviour
     {
         nCntDance++;
 
-        if( nCntDance == 1 )
-        {
-            TutorialManagerClass.FalseTutorial01( );
-            TutorialManagerClass.TrueTutorial02( );
-        }
-        else if( nCntDance == 2 )
-        {
-            TutorialManagerClass.FalseTutorial02( );
-        }
-        else if( nCntDance == 9 )
+       
+        if( nCntDance == 9 )
         {
            nCntPerformance = 4; 
         }

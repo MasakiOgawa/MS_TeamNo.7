@@ -260,9 +260,10 @@ public class PlayerCenter : MonoBehaviour
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Up );
+
                 GameObject Tmp = BonusManagerClass.GetBonusCenter( );
-                 
-                          
+                      
                 if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
                 { 
                   

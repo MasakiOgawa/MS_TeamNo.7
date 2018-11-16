@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4585460430476286}
   - component: {fileID: 95258713005058202}
+  - component: {fileID: 114763249562991832}
+  - component: {fileID: 114436855983644740}
   m_Layer: 0
   m_Name: A_Half_tank
   m_TagString: Untagged
@@ -1970,7 +1972,7 @@ Transform:
   m_GameObject: {fileID: 1001171641865016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4554905818379904}
   - {fileID: 4662218137002178}
@@ -2546,6 +2548,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114436855983644740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001171641865016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusState: 0
+  fFalseFrame: 0.3
+--- !u!114 &114763249562991832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001171641865016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9fc7d2f4772834488101c0a7f20885c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimIdx: 0
 --- !u!137 &137010159104926384
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

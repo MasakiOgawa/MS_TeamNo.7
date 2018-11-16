@@ -8,7 +8,7 @@ public class BonusManager : MonoBehaviour
            Manager    ManagerClass;   //マネージャのクラス
     public GameObject ManagerObj;     //マネージャのオブジェクト
            bool       bFlg;
-    public GameObject    BonusPrefab;         //ボーナスのプレハブ
+    public GameObject [ ]Enemy_Prefab;
      int           nCntBeat;            //一拍のカウンタ
 
 
@@ -83,7 +83,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
-            aBonusPrefabArray[ nCnt ] = Instantiate( BonusPrefab , new Vector3( -4.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray[ nCnt ] )*/ ) , Quaternion.identity );
+            aBonusPrefabArray[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( -4.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
@@ -97,7 +97,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 16; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray2[ nCnt ] = int.Parse( aString2[ nCnt ] );   
-            aBonusPrefabArray2[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 0.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray2[ nCnt ] )*/ ) , Quaternion.identity );
+            aBonusPrefabArray2[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 0.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray2[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray2[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray2[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
@@ -110,7 +110,7 @@ public class BonusManager : MonoBehaviour
         for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
         {
             nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] ); 
-            aBonusPrefabArray3[ nCnt ] = Instantiate( BonusPrefab , new Vector3( 4.0f , 0.0f , 130.0f /*92.0f + ( 5 * nTimingArray3[ nCnt ] )*/ ) , Quaternion.identity );
+            aBonusPrefabArray3[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 4.0f , 0.0f , 130.0f /*92.0f + ( 5 * nTimingArray3[ nCnt ] )*/ ) , Quaternion.identity );
             aBonusPrefabArray3[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
             aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
             aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );   
@@ -178,6 +178,7 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray[ nCreateNo ] - 3 && nTimingArray[ nCreateNo ] != 999 )
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
                 aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
@@ -187,6 +188,7 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 3 && nTimingArray2[ nCreateNo2 ] != 999 )
             {
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
+                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.CENTER );
                  PlayerCenterClass.ReleasebBonusFlg( );   
                 nCreateNo2++;
@@ -194,6 +196,7 @@ public class BonusManager : MonoBehaviour
             if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 3 && nTimingArray3[ nCreateNo3 ] != 999 )
             {
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
+                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
                  PlayerRightClass.ReleasebBonusFlg( );    
                 nCreateNo3++;

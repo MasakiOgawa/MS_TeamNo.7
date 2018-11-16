@@ -260,6 +260,8 @@ public class PlayerRight : MonoBehaviour
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Right );
+
                 GameObject Tmp = BonusManagerClass.GetBonusRight( );
               
                

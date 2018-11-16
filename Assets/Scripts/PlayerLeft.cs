@@ -261,6 +261,8 @@ public class PlayerLeft : MonoBehaviour
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Left );
+
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
                 
                 if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
