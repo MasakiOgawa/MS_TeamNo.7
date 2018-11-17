@@ -106,6 +106,8 @@ public class PlayerManager : MonoBehaviour
             PlayerLeftClass.ReleasebPoseFlg( );
             PlayerCenterClass.ReleasebPoseFlg( );
             PlayerRightClass.ReleasebPoseFlg( );
+
+            ScoreClass.ResetnBeatEvaluation( );
         }
 
         //1拍毎にリズムを鳴らす

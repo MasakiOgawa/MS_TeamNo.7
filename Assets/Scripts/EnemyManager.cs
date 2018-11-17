@@ -33,6 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject [ ]Enemy_Prefab;
     GameObject[ ] aEnemyPrefabArray2;
+    GameObject[ ] aEnemyPrefabArray3;
 
     List<GameObject> TakeInEnemyList;  //追従する敵の作業用変数
 
@@ -46,16 +47,21 @@ public class EnemyManager : MonoBehaviour
     public Vector2 LeftEndPosCanvas;           //左端の敵の座標(キャンバス)
     public float  fWidthCanvas;
 
+    int nTargetNoTmp;
+
    
 	void Start( )
     {
         //変数の初期化
         aEnemyPrefabArray = new GameObject[ 8 , 4 ];
         aEnemyPrefabArray2 = new GameObject[ 12 ];
+        aEnemyPrefabArray3 = new GameObject[ 8 ];
         TakeInEnemyList = new List<GameObject>();  
         nCreateNo         = 0;
         nCntLength        = 0;
          fRotY = 0.0f;
+
+        nTargetNoTmp = 0;
 
         //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
@@ -203,6 +209,8 @@ public class EnemyManager : MonoBehaviour
                
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Up );
+
+                aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
@@ -218,6 +226,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Down );
+
+                aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
@@ -233,6 +243,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Right );
+
+                aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
@@ -248,8 +260,13 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Left );
+
+                aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
             }
-            //  AuraSpotObj.SetActive( false );
+            else
+            {
+                aEnemyPrefabArray3[ nCnt2 ] = null;
+            }
         }
 
         //文字列の添え字を進める(敵8体+改行コード2文字分)
@@ -294,12 +311,19 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nCnt ].SetActive( false );
             }
         }
+
+        for( int nCnt = 0; nCnt < 8; nCnt++ )
+        {
+            aEnemyPrefabArray3[ nCnt ] = null;
+        }
     }
 
 
     //ターゲットを設定
     public void SetTarget( int nTargetNo )
     {
+        nTargetNoTmp = nTargetNo;
+
         for( int nCnt = 0; nCnt < 4; nCnt++ )
         {
             if( aEnemyPrefabArray[ nTargetNo , nCnt ].activeSelf == true )
@@ -332,13 +356,26 @@ public class EnemyManager : MonoBehaviour
     }
 
 
+    public GameObject GetBeatTarget( )
+    {
+        if( aEnemyPrefabArray3[ nTargetNoTmp ] != null )
+        {
+            return aEnemyPrefabArray3[ nTargetNoTmp ] ;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
     //評価を基に敵をプレイヤーの後ろに生成
     public void TakeIn( int nEvaluation )
     {
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-        nEvaluation=5;
+     //   nEvaluation=5;
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
