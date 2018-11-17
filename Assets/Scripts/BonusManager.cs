@@ -172,6 +172,9 @@ public class BonusManager : MonoBehaviour
         if( ManagerClass.GetdBonusFrame( ) >= 0.4475f )
         {
             nCntBeat++;
+            PlayerLeftClass.ReleasebBonusFlg( );
+             PlayerCenterClass.ReleasebBonusFlg( );  
+              PlayerRightClass.ReleasebBonusFlg( );    
 
             //生成タイミングになったらボーナスを飛ばす
             //if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
@@ -182,7 +185,7 @@ public class BonusManager : MonoBehaviour
                 aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
-                PlayerLeftClass.ReleasebBonusFlg( );
+                
                 nCreateNo++;
             }
             if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 3 && nTimingArray2[ nCreateNo2 ] != 999 )
@@ -190,7 +193,7 @@ public class BonusManager : MonoBehaviour
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.CENTER );
-                 PlayerCenterClass.ReleasebBonusFlg( );   
+                 
                 nCreateNo2++;
             }
             if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 3 && nTimingArray3[ nCreateNo3 ] != 999 )
@@ -198,7 +201,7 @@ public class BonusManager : MonoBehaviour
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
-                 PlayerRightClass.ReleasebBonusFlg( );    
+               
                 nCreateNo3++;
             }
 

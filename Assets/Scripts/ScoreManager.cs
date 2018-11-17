@@ -31,6 +31,8 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject CanvasObj;
 
+    int nBeatExcellent;
+    int nBeatBad;
 
 	void Start( )
     {
@@ -49,6 +51,8 @@ public class ScoreManager : MonoBehaviour
         ArdiunoClass.Setup( ConfigurePins );
         bFlg = false;
         fCntFrame = 0.0f;    
+        nBeatExcellent = 0;
+        nBeatBad = 0;
         
     /*    FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2( -240.0f , -180.0f ) );
         FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2(  0.0f , -180.0f ) );
@@ -86,6 +90,16 @@ public class ScoreManager : MonoBehaviour
             case EVALUATION.EVALUATION_BAD :   
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_BAD , Pos );
                 nCntBad++;
+                nBeatBad++;
+
+                if( nBeatBad >= 3 )
+                {
+                    if( EnemyManagerClass.GetBeatTarget( ) != null )
+                    {
+                        EnemyManagerClass.GetBeatTarget( ).GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Angry );
+                    }
+                }
+
             break;
 
             case EVALUATION.EVALUATION_FINE :
@@ -96,12 +110,20 @@ public class ScoreManager : MonoBehaviour
             case EVALUATION.EVALUATION_EXCELLENT :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , Pos );
                 nCntExcellent++;
+                nBeatExcellent++;
 
-                if( nCntExcellent >= 3 && bFlg == false )
+                if( EnemyManagerClass.GetBeatTarget( ) != null )
+                {
+                    EnemyManagerClass.GetBeatTarget( ).GetComponent< Animator >( ).applyRootMotion = true;
+                    EnemyManagerClass.GetBeatTarget( ).GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.VictoryIdle );
+                }
+
+                if( nBeatExcellent >= 3 && bFlg == false )
                 {
                     bFlg = true;
                     SerialHandlerClass.Write( "4" );
                 }
+
             break;
         }
     }
@@ -137,5 +159,12 @@ public class ScoreManager : MonoBehaviour
     public int ResetnScore( )
     {
         return nScore = 0;
+    }
+
+
+    public void ResetnBeatEvaluation( )
+    {
+        nBeatBad = 0;
+        nBeatExcellent = 0;
     }
 }

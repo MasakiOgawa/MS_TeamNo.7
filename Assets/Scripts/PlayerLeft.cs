@@ -27,6 +27,8 @@ public class PlayerLeft : MonoBehaviour
     public GameObject MotionManagerObj;
     MotionManager MotionManagerClass;
 
+    Animator Child;
+
         
 	void Start( )
     {
@@ -45,6 +47,8 @@ public class PlayerLeft : MonoBehaviour
         BonusManagerClass = ManagerClass.GetBonusManager( ).GetComponent< BonusManager >( );
 
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
+
+        Child = transform.GetChild( 0 ).GetComponent< Animator >( );
 	}
 
 
@@ -77,7 +81,7 @@ public class PlayerLeft : MonoBehaviour
             if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
                 Input.GetKeyDown( KeyCode.A ) )
             { 
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Up );
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Up );
 
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
@@ -119,7 +123,7 @@ public class PlayerLeft : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                      Input.GetKeyDown( KeyCode.DownArrow ) )
             {   
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Down );
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Down );
 
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
@@ -161,7 +165,7 @@ public class PlayerLeft : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.LeftArrow ) )
             {
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Left );
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Left );
 
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
@@ -203,7 +207,7 @@ public class PlayerLeft : MonoBehaviour
             else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.RightArrow ) )
             {  
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Right );
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Right );
 
                 //現在の敵の情報を取得
                 EnemyObj = EnemyManagerClass.GetTarget( );
@@ -261,7 +265,7 @@ public class PlayerLeft : MonoBehaviour
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
                 Input.GetKeyDown( KeyCode.RightArrow ) )
             {
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Left );
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Left );
 
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
                 
@@ -273,7 +277,13 @@ public class PlayerLeft : MonoBehaviour
                 }
 
                 bBonusFlg = true;
-            }  
+            }   
+        }     
+
+          if( Child.GetCurrentAnimatorStateInfo( 0 ).nameHash == Animator.StringToHash("Base Layer.Left") &&
+                Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
+        {
+                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Idle );
         }
     }
 

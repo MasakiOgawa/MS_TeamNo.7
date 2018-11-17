@@ -31,6 +31,8 @@ public class Bonus : MonoBehaviour
     float fCntFrame;
     public float fFalseFrame;
 
+    bool bFlg;
+
     void Start( )
     {
          ManagerClass       = GameObject.Find( "GameManager" ).GetComponent< Manager>( );
@@ -38,6 +40,8 @@ public class Bonus : MonoBehaviour
 
         BonusState = BONUS_STATE.MOVE;
         fCntFrame = 0.0f;
+
+        bFlg = false;
     }
 
 
@@ -94,11 +98,15 @@ public class Bonus : MonoBehaviour
 
             break;
 
-            case BONUS_STATE.OUT:
-                this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
-            break;
-
             case BONUS_STATE.BIRIBIRI:
+
+                if( bFlg == false )
+                {
+                    bFlg = true;
+                    this.gameObject.GetComponent< Animator >( ).applyRootMotion = true;
+                    this.gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.VictoryIdle );
+                }
+
                 fCntFrame += Time.deltaTime;
 
                 if( fCntFrame >= fFalseFrame )
@@ -106,6 +114,12 @@ public class Bonus : MonoBehaviour
                     BonusState = BONUS_STATE.OUT;
                 }
             break;
+
+            case BONUS_STATE.OUT:
+                this.gameObject.SetActive( false );
+            break;
+
+          
         }
 	}
 
