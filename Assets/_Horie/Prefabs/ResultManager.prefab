@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 224344753900223028}
   - component: {fileID: 222879550351669692}
   - component: {fileID: 114144227087078900}
+  - component: {fileID: 114477551196303804}
   m_Layer: 5
   m_Name: ResultFont
   m_TagString: Untagged
@@ -223,6 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224182823677057512}
+  - component: {fileID: 114982778343309228}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -380,6 +382,7 @@ GameObject:
   - component: {fileID: 224304933023574754}
   - component: {fileID: 222782554683421270}
   - component: {fileID: 114589942040218060}
+  - component: {fileID: 114067456212338828}
   m_Layer: 5
   m_Name: waku2
   m_TagString: Untagged
@@ -496,6 +499,7 @@ GameObject:
   - component: {fileID: 224950680791311384}
   - component: {fileID: 222318930544014618}
   - component: {fileID: 114703410600385406}
+  - component: {fileID: 114398763505804286}
   m_Layer: 5
   m_Name: waku1
   m_TagString: Untagged
@@ -1464,6 +1468,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114067456212338828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600712647537388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4324a7ca44e1c45b6e5b00e9cd908e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashColor: 0.6
+  AddColor: 0.01
+  MaxColor: 0.7
+  MinColor: 0.5
 --- !u!114 &114074496659936260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1544,7 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: fc2315d82e593dd498d805a73279cd80, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1692,6 +1711,21 @@ MonoBehaviour:
   AddColor: 0.005
   MaxColor: 0.7
   MinColor: 0.5
+--- !u!114 &114398763505804286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753294867598320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4324a7ca44e1c45b6e5b00e9cd908e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashColor: 0.6
+  AddColor: 0.005
+  MaxColor: 0.7
+  MinColor: 0.5
 --- !u!114 &114427111522070206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1821,6 +1855,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114477551196303804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089888667163656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4324a7ca44e1c45b6e5b00e9cd908e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashColor: 0.7
+  AddColor: 0.01
+  MaxColor: 0.7
+  MinColor: 0.5
 --- !u!114 &114490801498894758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1955,7 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: fc2315d82e593dd498d805a73279cd80, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -2048,7 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: fc2315d82e593dd498d805a73279cd80, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -2217,6 +2266,20 @@ MonoBehaviour:
   AddColor: 0.005
   MaxColor: 0.7
   MinColor: 0.5
+--- !u!114 &114982778343309228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354036493914736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8116a715258b65a4fad7148ab59a36a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResultManagerOBJ: {fileID: 1761522235643296}
+  oneFrameDeltaSizeX: 0.5
+  oneFrameDeltaSizeY: 0.1
 --- !u!114 &114984025616264460
 MonoBehaviour:
   m_ObjectHideFlags: 1

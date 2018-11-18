@@ -76,21 +76,31 @@ public class ResultManager : MonoBehaviour {
     // Resultモード起動関数
     public void StartResult( int score )
     {
-        isEnableResultManager = true;
+        //BG起動
+        _ResultBGOBJ.SetActive(true);
+        _ResultBGOBJ.GetComponent<ResultBGController>().StartBG();
+
+
 
         // スコア受け取り
         getScore = score;
 
-        // リザルトロゴの起動
-        _ResultLogo.SetActive(true);
 
-        //BG起動
-        _ResultBGOBJ.SetActive(true);
-        //_ResultBGOBJ.GetComponent<ResultBG>().StartBG();
+
+        
 
         // BGM
         GetComponent<AudioSource>().Play();
     }
+
+    // BG 起動終わり
+    public void EndBGStartResult ()
+    {
+        isEnableResultManager = true;
+        // リザルトロゴの起動
+        _ResultLogo.SetActive(true);
+    }
+
 
     // Scoreカウンタから終了フラグをもらう
     public void GetFinishScoreCounter ( )
