@@ -49,7 +49,8 @@ public class RankingManager : MonoBehaviour {
         InitRankingManager();
 
         ArdiunoClass = Arduino.global;
-        ArdiunoClass.Setup( ConfigurePins );
+        if ( ArdiunoClass != null)
+            ArdiunoClass.Setup( ConfigurePins );
 
     }
 

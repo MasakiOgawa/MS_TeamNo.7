@@ -86,7 +86,7 @@ public class ResultManager : MonoBehaviour {
 
         //BG起動
         _ResultBGOBJ.SetActive(true);
-        _ResultBGOBJ.GetComponent<ResultBG>().StartBG();
+        //_ResultBGOBJ.GetComponent<ResultBG>().StartBG();
 
         // BGM
         GetComponent<AudioSource>().Play();
