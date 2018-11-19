@@ -147,7 +147,7 @@ public class BonusManager : MonoBehaviour
             bFlg = true;
             SerialHandlerClass.Write( "5" );
             MirrorBallMateriaClass.BonusAllEnabule( );
-            BounusArea.Create( new Vector3( -4.0f , 0.0f , 92.0f ) , new Vector3( 0.0f , 0.0f , 92.0f ) , new Vector3( 4.0f , 0.0f , 92.0f ) );
+            BounusArea.Create( new Vector3( -4.0f , 0.0f , 75.0f ) , new Vector3( 0.0f , 0.0f , 75.0f ) , new Vector3( 4.0f , 0.0f , 75.0f ) );
 
         /*    for( int nCnt = 0; nCnt < 15; nCnt++ )
             {
