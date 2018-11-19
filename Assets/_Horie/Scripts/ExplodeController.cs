@@ -25,7 +25,7 @@ public class ExplodeController : MonoBehaviour {
 
     [SerializeField] private float SelfKillSize;
 
-    public GameObject m_TargetObj;
+    //public GameObject m_TargetObj;
     public float m_TargetOffsetY;
 
     public Vector3 SourcePos;      // 発射プレイヤー座標
@@ -89,7 +89,7 @@ public class ExplodeController : MonoBehaviour {
                 TargetPos.z - SelfKillSize <= transform.position.z)
             {
                 // 爆発
-                HitController.Create(m_TargetObj, m_TargetOffsetY, -1);
+                HitController.Create(TargetPos, m_TargetOffsetY, -1);
                 // 当たったので消滅
                 Destroy(this.gameObject);
             }
@@ -99,31 +99,27 @@ public class ExplodeController : MonoBehaviour {
 
     }
 
-    public void StartFire ( GameObject Source , float SourceY , GameObject Target , float TargetY ,
-        GameObject MirrorBall , float MirrorBallY , ExplodeController.EXPLODE_TYPE exType , float SourceToMirrorBallMoveSpeed,
-        float MirrorBallToTargetMoveSpeed)
+    public void StartFire(Vector3 Source, Vector3 Target,
+        Vector3 MirrorBall, ExplodeController.EXPLODE_TYPE exType, float SourceToMirrorBallMoveSpeed,
+    float MirrorBallToTargetMoveSpeed)
     {
         // 弾情報
         m_explodeType = exType;
 
-        // ターゲット情報
-        m_TargetObj = Target;
-        m_TargetOffsetY = TargetY;
-
         // 発射座標の設定
-        SourcePos = new Vector3(Source.transform.position.x,
-            Source.transform.position.y + SourceY,
-            Source.transform.position.z);
+        SourcePos = new Vector3(Source.x,
+            Source.y,
+            Source.z);
 
         // 目的位置の設定
-        TargetPos = new Vector3(Target.transform.position.x,
-            Target.transform.position.y + TargetY,
-            Target.transform.position.z);
+        TargetPos = new Vector3(Target.x,
+            Target.y,
+            Target.z);
 
         // ミラーボール座標の設定
-        MirrorBallPos = new Vector3(MirrorBall.transform.position.x,
-            MirrorBall.transform.position.y + MirrorBallY,
-            MirrorBall.transform.position.z);
+        MirrorBallPos = new Vector3(MirrorBall.x,
+            MirrorBall.y ,
+            MirrorBall.z);
 
         // 速度設定
         m_SourceToMirrorBallMoveSpeed = SourceToMirrorBallMoveSpeed;
@@ -215,7 +211,23 @@ public class ExplodeController : MonoBehaviour {
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab,Source.transform);
         //  
-        obj.GetComponent<ExplodeController>().StartFire(Source, SourceY, Target, TargetY ,
-            MirrorBall , MirrorBallY, exType , SourceToMirrorBallMoveSpeed , MirrorBallToTargetMoveSpeed);
+        //obj.GetComponent<ExplodeController>().StartFire(Source, SourceY, Target, TargetY ,
+        //    MirrorBall , MirrorBallY, exType , SourceToMirrorBallMoveSpeed , MirrorBallToTargetMoveSpeed);
+    }
+
+    // 種類　それぞれのスピード　三つの座標　
+    static public void Create(Vector3 Source, Vector3 Target,
+        Vector3 MirrorBall, ExplodeController.EXPLODE_TYPE exType, float SourceToMirrorBallMoveSpeed,
+    float MirrorBallToTargetMoveSpeed)
+    {
+        // プレハブを取得
+        GameObject prefab = (GameObject)Resources.Load("Prefabs/Explode");
+        // プレハブからインスタンスを生成
+        GameObject obj = Instantiate(prefab );
+
+        obj.transform.position = Source;
+        //  
+        obj.GetComponent<ExplodeController>().StartFire(Source,  Target, 
+            MirrorBall,  exType, SourceToMirrorBallMoveSpeed, MirrorBallToTargetMoveSpeed);
     }
 }

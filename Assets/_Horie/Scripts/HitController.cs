@@ -25,17 +25,17 @@ public class HitController : MonoBehaviour {
 
 	}
 
-    private void SetPos ( GameObject Target , float OffsetY , float OffsetZ )
+    private void SetPos ( Vector3 Target , float OffsetY , float OffsetZ )
     {
-        this.transform.position = new Vector3(Target.transform.position.x,
-            Target.transform.position.y + OffsetY,
-            Target.transform.position.z + OffsetZ);
+        this.transform.position = new Vector3(Target.x,
+            Target.y ,
+            Target.z );
 
         nFrame = 0;
     }
        
 
-    static public void Create( GameObject Target , float OffsetY , float OffsetZ )
+    static public void Create( Vector3 Target , float OffsetY , float OffsetZ )
     {
         // プレハブを取得
         GameObject prefab = (GameObject)Resources.Load("Prefabs/Hit");
