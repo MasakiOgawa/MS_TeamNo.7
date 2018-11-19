@@ -40,14 +40,23 @@ public class EnemyManager : MonoBehaviour
     public float fAddRotateY;
     float fRotY;
 
-    bool bFlg;
-    float fCntFrame;
-
     public Canvas CanvasObj;
     public Vector2 LeftEndPosCanvas;           //左端の敵の座標(キャンバス)
     public float  fWidthCanvas;
 
     int nTargetNoTmp;
+
+    public enum EnemyPhase
+    {
+        ENEMY_DIST = 0 ,
+        ENEMY_STOP ,
+        ENEMY_JUMP ,
+        ENEMY_ANGRY
+    };
+
+    EnemyPhase[ ] aEnemyPhase;
+    float[ ] fCntFrame;
+    Animator[ ] aAnimator;
 
    
 	void Start( )
@@ -91,6 +100,8 @@ public class EnemyManager : MonoBehaviour
         {
             aEnemyPrefabArray2[ nCnt ] = Instantiate( Enemy_Prefab[ nCnt ] , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 180.0f , 0.0f ) );
             aEnemyPrefabArray2[ nCnt ].transform.parent = this.transform;
+
+            aAnimator[ nCnt ] = aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( );
             aEnemyPrefabArray2[ nCnt ].gameObject.SetActive( false );
         }
 
@@ -137,43 +148,83 @@ public class EnemyManager : MonoBehaviour
         nCnt = -1;
         BGMClass =  ManagerClass.GetBGM( ).GetComponent< BGM >( );
 
-        bFlg = false;
-        fCntFrame = 0.0f;
+        //モーション周り
+        aEnemyPhase = new EnemyPhase[ 12 ];
+        fCntFrame = new float[ 12 ];
+        aAnimator = new Animator[ 12 ];
+
+        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        {
+            aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
+            fCntFrame[ nCnt ] = 0.0f;
+            
+        }
 	}
 
     void Update( )
     {
-        if( bFlg == false )
+        /* if( bFlg == false )
+         {
+             for( int nCnt = 0; nCnt < 12; nCnt++ )
+             {
+                 if( aEnemyPrefabArray2[ nCnt ].gameObject.activeSelf == true )
+                 {
+                     if( aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f && bFlg == false )
+                     {
+                         bFlg = true;
+                     }
+                 }
+             }
+         }
+
+
+         if( bFlg == true )
+         {
+             fCntFrame += Time.deltaTime;
+
+             if( fCntFrame >= 0.5f )
+             {
+                 bFlg = false;
+                 fCntFrame = 0.0f;
+
+                 for( int nCnt = 0; nCnt < 12; nCnt++ )
+                 {
+                     if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
+                     {
+                         aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).ForceStateNormalizedTime( 0.0f );
+                     }
+                 }
+             }
+         }*/
+
+        for( int nCnt = 0; nCnt < 12; nCnt++)
         {
-            for( int nCnt = 0; nCnt < 12; nCnt++ )
+            //敵が生成されていたら
+            if( aEnemyPrefabArray2[ nCnt ].gameObject.activeSelf == true )
             {
-                if( aEnemyPrefabArray2[ nCnt ].gameObject.activeSelf == true )
+                //矢印モーションでなければ
+                if( aAnimator[ nCnt ].GetCurrentAnimatorStateInfo( 0 ).nameHash != Animator.StringToHash("Base Layer.VictoryIdle") &&
+                    aAnimator[ nCnt ].GetCurrentAnimatorStateInfo( 0 ).nameHash != Animator.StringToHash("Base Layer.Angry"))
                 {
-                    if( aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f && bFlg == false )
+                    //矢印モーションが終了していたらフレームのカウント
+                    if( aAnimator[ nCnt ].GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
                     {
-                        bFlg = true;
+                        aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_STOP;
                     }
-                }
-            }
-        }
-       
 
-        if( bFlg == true )
-        {
-            fCntFrame += Time.deltaTime;
-
-            if( fCntFrame >= 0.5f )
-            {
-                bFlg = false;
-                fCntFrame = 0.0f;
-
-                for( int nCnt = 0; nCnt < 12; nCnt++ )
-                {
-                    if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
+                    //一定間隔で矢印モーションの再開
+                    if( aEnemyPhase[ nCnt ] == EnemyPhase.ENEMY_STOP )
                     {
-                        aEnemyPrefabArray2[ nCnt ].gameObject.GetComponent< Animator >( ).ForceStateNormalizedTime( 0.0f );
+                        fCntFrame[ nCnt ] += Time.deltaTime;
+
+                        if( fCntFrame[ nCnt ] >= 0.5f )
+                        {
+                            fCntFrame[ nCnt ] = 0.0f;
+                            aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
+                            aAnimator[ nCnt ].ForceStateNormalizedTime( 0.0f );
+                        }
                     }
-                }
+                } 
             }
         }
     }
@@ -315,6 +366,14 @@ public class EnemyManager : MonoBehaviour
         for( int nCnt = 0; nCnt < 8; nCnt++ )
         {
             aEnemyPrefabArray3[ nCnt ] = null;
+        }
+
+        //モーション周り
+        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        {
+            aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
+            fCntFrame[ nCnt ] = 0.0f;
+            aAnimator[ nCnt ].applyRootMotion = false;
         }
     }
 

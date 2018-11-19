@@ -105,6 +105,13 @@ public class ScoreManager : MonoBehaviour
             case EVALUATION.EVALUATION_FINE :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_FINE ,  Pos );
                 nCntFine++;
+
+                if( nBeatBad == 0 && nBeatExcellent == 0 && EnemyManagerClass.GetBeatTarget( ) != null )
+                {
+                    EnemyManagerClass.GetBeatTarget( ).GetComponent< Animator >( ).applyRootMotion = true;
+                    EnemyManagerClass.GetBeatTarget( ).GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.VictoryIdle );
+                }
+
             break;
 
             case EVALUATION.EVALUATION_EXCELLENT :
