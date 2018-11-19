@@ -53,10 +53,10 @@ public class PlayerCenter : MonoBehaviour
 
     void Update( )
     {
-         if( ( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+         if( ( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                 Input.GetKeyDown( KeyCode.UpArrow ) ||
                 Input.GetKeyDown( KeyCode.DownArrow ) ||
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
@@ -77,7 +77,7 @@ public class PlayerCenter : MonoBehaviour
         if( bPoseFlg == false )
         {
             //上
-            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
                 Input.GetKeyDown( KeyCode.A ) )
             { 
                 MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.Player_Up );
@@ -120,7 +120,7 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //下
-            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
                      Input.GetKeyDown( KeyCode.DownArrow ) )
             {   
                 MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.Player_Down );
@@ -163,7 +163,7 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //左
-            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.LeftArrow ) )
             {
                 MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.Player_Left );
@@ -206,7 +206,7 @@ public class PlayerCenter : MonoBehaviour
                 bPoseFlg = true;
             }
             //右
-            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+            else if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                      Input.GetKeyDown( KeyCode.RightArrow ) )
             {  
                 MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.Player_Right );
@@ -259,10 +259,10 @@ public class PlayerCenter : MonoBehaviour
         //まだ振られていなかったら
         if( bBonusFlg == false )
         {
-            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
-                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
+            if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_DOWN_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_LEFT_TRIGGER ||
+                ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_L1 ) == Example_gyro.JOYCON_STATE.STATE_RIGHT_TRIGGER ||
                 Input.GetKeyDown( KeyCode.UpArrow ) ||
                 Input.GetKeyDown( KeyCode.DownArrow ) ||
                 Input.GetKeyDown( KeyCode.LeftArrow ) ||
