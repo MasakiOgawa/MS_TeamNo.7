@@ -232,16 +232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baa21b6fc205e546a7baaae090bfef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posY: 0
+  posY: 8.6
   posX:
-  - 3
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - -51.4
+  - -36.8
+  - -22.4
+  - -6.6
+  - 8.3
+  - 24.7
+  - 40.3
+  - 55.5
   thisObj: {fileID: 1492843152348366}
 --- !u!114 &114696695071842084
 MonoBehaviour:

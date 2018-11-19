@@ -15,9 +15,11 @@ public class shakeUICanvas : MonoBehaviour {
     [SerializeField] private float[] posX;
     [SerializeField] private GameObject thisObj;
 
+    private GameObject[] a_shakeUI;
+
 	// Use this for initialization
 	void Start () {
-		
+        a_shakeUI = new GameObject[8];
 	}
 	
 	// Update is called once per frame
@@ -51,9 +53,24 @@ public class shakeUICanvas : MonoBehaviour {
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab ,thisObj.transform );
 
+        a_shakeUI[posIdx] = obj;
+
         // 座標設定
         //obj.transform.position = new Vector3(posX[posIdx], posY, 0);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX[posIdx], posY, 100);
+
+    }
+
+    public void ResetShakeUI ()
+    {
+        for (int n = 0; n < 8; n++)
+        {
+            Destroy(a_shakeUI[n]);
+        }
+
+        a_shakeUI = new GameObject[8];
+
+
 
     }
 }
