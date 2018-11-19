@@ -24,21 +24,24 @@ public class InputTest : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-          //  WomanController womanScript = Woman.GetComponent<WomanController>();
-          //  womanScript.SetThunder(ThunderTaerget);
+            //  WomanController womanScript = Woman.GetComponent<WomanController>();
+            //  womanScript.SetThunder(ThunderTaerget);
+            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.RIGHT, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.U))
         {
+            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.LEFT, 2);
             // ビーム発射
             //ExplodeController.Create(Woman, 0, ThunderTaerget, 2 , MirrorBall , 2 ,
             //    ExplodeController.EXPLODE_TYPE.TYPE_FINE , 0.5f , 1.25f);
-            
+
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
+            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.DOWN, 5);
             // ビーム発射
             ExplodeController.Create(Woman.transform.position, ThunderTaerget.transform.position, MirrorBall.transform.position,
                 ExplodeController.EXPLODE_TYPE.TYPE_BAD, 0.5f, 1.25f);
@@ -46,7 +49,7 @@ public class InputTest : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.RIGHT, 0);
+            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.UP, 6);
             //shakeUICanvas.CreateShakeUI(shakeUICanvas.SHAKE_TYPE.UP, 0);
             // ビーム発射
             //ExplodeController.Create(Woman, 0, ThunderTaerget, 2, MirrorBall, 2,

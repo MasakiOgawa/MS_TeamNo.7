@@ -30,30 +30,30 @@ public class shakeUICanvas : MonoBehaviour {
         GameObject prefab;
         if ( type == SHAKE_TYPE.UP)
         {
-            prefab = (GameObject)Resources.Load("Prefabs/ShakeUpUI");
+            prefab = (GameObject)Resources.Load("Prefabs/GameShakeUpUI");
         }
         else if ( type == SHAKE_TYPE.DOWN)
         {
-            prefab = (GameObject)Resources.Load("Prefabs/ShakeDownUI");
+            prefab = (GameObject)Resources.Load("Prefabs/GameShakeDownUI");
         }
         else if ( type == SHAKE_TYPE.RIGHT)
         {
-            prefab = (GameObject)Resources.Load("Prefabs/ShakeRightUI");
+            prefab = (GameObject)Resources.Load("Prefabs/GameShakeRightUI");
         }
         else if ( type == SHAKE_TYPE.LEFT)
         {
-            prefab = (GameObject)Resources.Load("Prefabs/ShakeLeftUI");
+            prefab = (GameObject)Resources.Load("Prefabs/GameShakeLeftUI");
         }
         else
         {
-            prefab = (GameObject)Resources.Load("Prefabs/ShakeLeftUI");
+            prefab = (GameObject)Resources.Load("Prefabs/GameShakeLeftUI");
         }
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab ,thisObj.transform );
 
         // 座標設定
         //obj.transform.position = new Vector3(posX[posIdx], posY, 0);
-        obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX[posIdx], posY, 0);
+        obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX[posIdx], posY, 100);
 
     }
 }
