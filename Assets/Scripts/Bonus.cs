@@ -47,92 +47,93 @@ public class Bonus : MonoBehaviour
 
 	void Update( )
     {
-        switch (BonusState)
+        if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS )
         {
-            case BONUS_STATE.MOVE :
+            switch (BonusState)
+            {
+                case BONUS_STATE.MOVE :
 
-                this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
+                    this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
 
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.LEFT )
-                { 
-                    BonusManagerClass.SetBonusLeft( this.gameObject );
-                    BonusManagerClass.LeftAreaChange( false );
-                    BonusState = BONUS_STATE.TARGET;
-                }
-
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.CENTER )
-                { 
-                    BonusManagerClass.SetBonusCenter( this.gameObject );
-                    BonusManagerClass.CenterAreaChange( false );
-                    BonusState = BONUS_STATE.TARGET;
-                } 
-
-                if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.RIGHT )
-                { 
-                    BonusManagerClass.SetBonusRight( this.gameObject );  
-                    BonusManagerClass.RightAreaChange( false );
-                    BonusState = BONUS_STATE.TARGET;
-                }
-             
-            break;
-
-            case BONUS_STATE.TARGET :
-
-                this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
-
-                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.LEFT )
-                { 
-                    BonusManagerClass.LeftAreaChange( true );
-                    BonusState = BONUS_STATE.OUT;
-                }
-                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.CENTER )
-                { 
-                    BonusManagerClass.CenterAreaChange( true );
-                    BonusState = BONUS_STATE.OUT;
-                }
-                if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.RIGHT )
-                { 
-                    BonusManagerClass.RightAreaChange( true );
-                    BonusState = BONUS_STATE.OUT;
-                }
-
-            break;
-
-            case BONUS_STATE.BIRIBIRI:
-
-                if( bFlg == false )
-                {
-                    bFlg = true;
-                    this.gameObject.GetComponent< Animator >( ).applyRootMotion = true;
-                    this.gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.VictoryIdle );
-                }
-
-                fCntFrame += Time.deltaTime;
-
-                if( fCntFrame >= fFalseFrame )
-                {
-                    BonusState = BONUS_STATE.OUT;
-
-                    if( BonusType == BONUS_TYPE.LEFT )
-                    {
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.LEFT )
+                    { 
+                        BonusManagerClass.SetBonusLeft( this.gameObject );
                         BonusManagerClass.LeftAreaChange( false );
+                        BonusState = BONUS_STATE.TARGET;
                     }
-                    else if( BonusType == BONUS_TYPE.CENTER )
-                    {
+
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.CENTER )
+                    { 
+                        BonusManagerClass.SetBonusCenter( this.gameObject );
                         BonusManagerClass.CenterAreaChange( false );
-                    }
-                    else
-                    {
+                        BonusState = BONUS_STATE.TARGET;
+                    } 
+
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) <= 1.5f && BonusType == BONUS_TYPE.RIGHT )
+                    { 
+                        BonusManagerClass.SetBonusRight( this.gameObject );  
                         BonusManagerClass.RightAreaChange( false );
+                        BonusState = BONUS_STATE.TARGET;
                     }
-                }
-            break;
+             
+                break;
 
-            case BONUS_STATE.OUT:
-                this.gameObject.SetActive( false );
-            break;
+                case BONUS_STATE.TARGET :
 
-          
+                    this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
+
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.LEFT )
+                    { 
+                        BonusManagerClass.LeftAreaChange( true );
+                        BonusState = BONUS_STATE.OUT;
+                    }
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.CENTER )
+                    { 
+                        BonusManagerClass.CenterAreaChange( true );
+                        BonusState = BONUS_STATE.OUT;
+                    }
+                    if( Mathf.Abs( this.transform.position.z - fGoal ) > 1.5f && BonusType == BONUS_TYPE.RIGHT )
+                    { 
+                        BonusManagerClass.RightAreaChange( true );
+                        BonusState = BONUS_STATE.OUT;
+                    }
+
+                break;
+
+                case BONUS_STATE.BIRIBIRI:
+
+                    if( bFlg == false )
+                    {
+                        bFlg = true;
+                        this.gameObject.GetComponent< Animator >( ).applyRootMotion = true;
+                        this.gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.VictoryIdle );
+                    }
+
+                    fCntFrame += Time.deltaTime;
+
+                    if( fCntFrame >= fFalseFrame )
+                    {
+                        BonusState = BONUS_STATE.OUT;
+
+                        if( BonusType == BONUS_TYPE.LEFT )
+                        {
+                            BonusManagerClass.LeftAreaChange( false );
+                        }
+                        else if( BonusType == BONUS_TYPE.CENTER )
+                        {
+                            BonusManagerClass.CenterAreaChange( false );
+                        }
+                        else
+                        {
+                            BonusManagerClass.RightAreaChange( false );
+                        }
+                    }
+                break;
+
+                case BONUS_STATE.OUT:
+                    this.gameObject.SetActive( false );
+                break;
+            }
         }
 	}
 
