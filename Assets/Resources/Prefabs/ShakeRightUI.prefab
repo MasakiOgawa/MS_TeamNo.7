@@ -94,10 +94,10 @@ MonoBehaviour:
   rectTran: {fileID: 224871599010404132}
   startY: 0
   startX: 0
-  TargetDelta: 30
-  firstSpeed: 4
-  moveAccel: 1.25
-  ResetSpeed: 4
+  TargetDelta: 0.1
+  firstSpeed: 1.000001
+  moveAccel: 1.000001
+  ResetSpeed: 0.005
   isAcceling: 0
 --- !u!114 &114226756347570992
 MonoBehaviour:
@@ -268,7 +268,7 @@ RectTransform:
   m_GameObject: {fileID: 1378855166888302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 224791254561939486}
   - {fileID: 224100757512947970}

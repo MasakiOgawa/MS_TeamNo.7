@@ -9,6 +9,7 @@ public class InputTest : MonoBehaviour {
     [SerializeField] private GameObject ThunderTaerget;
     [SerializeField] private GameObject MirrorBall;
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject ShakeUICanvasOBJ;
 	// Use this for initialization
 	void Start () {
 		
@@ -45,6 +46,8 @@ public class InputTest : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
+            ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().CreateShakeUI(shakeUICanvas.SHAKE_TYPE.RIGHT, 0);
+            //shakeUICanvas.CreateShakeUI(shakeUICanvas.SHAKE_TYPE.UP, 0);
             // ビーム発射
             //ExplodeController.Create(Woman, 0, ThunderTaerget, 2, MirrorBall, 2,
             //    ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, 0.5f, 1.25f);
