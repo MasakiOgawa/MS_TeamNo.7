@@ -34,6 +34,11 @@ public class ScoreManager : MonoBehaviour
     int nBeatExcellent;
     int nBeatBad;
 
+    public AudioClip   AudioExcellent;
+    public AudioClip   AudioFine;
+    public AudioClip   AudioBad;
+           AudioSource AudioSource;
+
 	void Start( )
     {
         //各クラスの情報を取得
@@ -57,6 +62,8 @@ public class ScoreManager : MonoBehaviour
     /*    FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2( -240.0f , -180.0f ) );
         FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2(  0.0f , -180.0f ) );
         FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , new Vector2( 240.0f , -180.0f ) );*/
+
+        AudioSource      = gameObject.GetComponent< AudioSource >( );
 	}
 
 
@@ -92,6 +99,9 @@ public class ScoreManager : MonoBehaviour
                 nCntBad++;
                 nBeatBad++;
 
+                AudioSource.clip = AudioExcellent;
+                AudioSource.PlayOneShot( AudioExcellent );
+
                 if( nBeatBad >= 3 )
                 {
                     if( EnemyManagerClass.GetBeatTarget( ) != null )
@@ -106,6 +116,9 @@ public class ScoreManager : MonoBehaviour
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_FINE ,  Pos );
                 nCntFine++;
 
+                AudioSource.clip = AudioFine;
+                AudioSource.PlayOneShot( AudioFine );
+
                 if( nBeatBad == 0 && nBeatExcellent == 0 && EnemyManagerClass.GetBeatTarget( ) != null )
                 {
                     EnemyManagerClass.GetBeatTarget( ).GetComponent< Animator >( ).applyRootMotion = true;
@@ -118,6 +131,9 @@ public class ScoreManager : MonoBehaviour
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , Pos );
                 nCntExcellent++;
                 nBeatExcellent++;
+
+                AudioSource.clip = AudioBad;
+                AudioSource.PlayOneShot( AudioBad );
 
                 if( EnemyManagerClass.GetBeatTarget( ) != null )
                 {

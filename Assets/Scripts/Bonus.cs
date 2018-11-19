@@ -113,7 +113,7 @@ public class Bonus : MonoBehaviour
 
                     if( fCntFrame >= fFalseFrame )
                     {
-                        BonusState = BONUS_STATE.OUT;
+                       // BonusState = BONUS_STATE.OUT;
 
                         if( BonusType == BONUS_TYPE.LEFT )
                         {
@@ -127,11 +127,13 @@ public class Bonus : MonoBehaviour
                         {
                             BonusManagerClass.RightAreaChange( false );
                         }
+
+                        this.gameObject.SetActive( false );
                     }
                 break;
 
                 case BONUS_STATE.OUT:
-                    this.gameObject.SetActive( false );
+                    this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
                 break;
             }
         }
