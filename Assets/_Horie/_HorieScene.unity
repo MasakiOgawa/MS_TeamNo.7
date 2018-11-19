@@ -2317,6 +2317,66 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: b7bc677e613f9fc42a7d194c57cd1c18,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 540cc4d1375b60e468df1fa783e44176,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 44c841f77d5e38c439d86c6eebf8cf44,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a7ae19ae545f5142b58c749e0e9dd89,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 74a89dbfc99757b41a50e417833b6b8a,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 85c4dfe687c0f524e83d3082b17d6a2f,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bd5d8ddc284faf4195dbe4b720ed2cb,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 794387f26e0052946b6adcc34beb4b7e,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 123360aff00a09946b53f355243905b6,
+        type: 3}
+    - target: {fileID: 114675829917624910, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: spriteObj.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 324f81c105d82fe42874f08bb924dee1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 632442437619b324b8e254886fa396d0, type: 2}
   m_IsPrefabAsset: 0
