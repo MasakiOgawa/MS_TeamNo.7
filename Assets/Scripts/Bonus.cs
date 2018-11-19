@@ -112,6 +112,19 @@ public class Bonus : MonoBehaviour
                 if( fCntFrame >= fFalseFrame )
                 {
                     BonusState = BONUS_STATE.OUT;
+
+                    if( BonusType == BONUS_TYPE.LEFT )
+                    {
+                        BonusManagerClass.LeftAreaChange( false );
+                    }
+                    else if( BonusType == BONUS_TYPE.CENTER )
+                    {
+                        BonusManagerClass.CenterAreaChange( false );
+                    }
+                    else
+                    {
+                        BonusManagerClass.RightAreaChange( false );
+                    }
                 }
             break;
 

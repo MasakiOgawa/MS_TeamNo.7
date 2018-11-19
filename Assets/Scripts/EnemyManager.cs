@@ -86,10 +86,10 @@ public class EnemyManager : MonoBehaviour
             aEnemyPrefabArray[ nCnt , 2 ] = Instantiate( EnemyLeftPrefab , new Vector3( 0.0f , 0.0f, 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
             aEnemyPrefabArray[ nCnt , 3 ] = Instantiate( EnemyRightPrefab , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 0.0f , 0.0f ) );
 
-            aEnemyPrefabArray[ nCnt , 0 ].transform.parent = CanvasObj.transform;//this.transform;
-            aEnemyPrefabArray[ nCnt , 1 ].transform.parent = CanvasObj.transform;//this.transform;
-            aEnemyPrefabArray[ nCnt , 2 ].transform.parent = CanvasObj.transform;//this.transform;
-            aEnemyPrefabArray[ nCnt , 3 ].transform.parent = CanvasObj.transform;//this.transform;
+            aEnemyPrefabArray[ nCnt , 0 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 1 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 2 ].transform.parent = this.transform;
+            aEnemyPrefabArray[ nCnt , 3 ].transform.parent = this.transform;
 
             aEnemyPrefabArray[ nCnt , 0 ].gameObject.SetActive( false );
             aEnemyPrefabArray[ nCnt , 1 ].gameObject.SetActive( false );
@@ -157,7 +157,6 @@ public class EnemyManager : MonoBehaviour
         {
             aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
             fCntFrame[ nCnt ] = 0.0f;
-            
         }
 	}
 
@@ -386,21 +385,41 @@ public class EnemyManager : MonoBehaviour
     public void SetTarget( int nTargetNo )
     {
         nTargetNoTmp = nTargetNo;
+        int nCnt2 = 0;
 
         for( int nCnt = 0; nCnt < 4; nCnt++ )
         {
             if( aEnemyPrefabArray[ nTargetNo , nCnt ].activeSelf == true )
             {
                 TargetEnemy = aEnemyPrefabArray[ nTargetNo , nCnt ];
-                  AuraSpotObj.SetActive( true );
+                
                 AuraSpotObj.transform.position = new Vector3( TargetEnemy.transform.position.x , TargetEnemy.transform.position.y + 5.0f , TargetEnemy.transform.position.z );
+                AuraSpotObj.SetActive( true );
                 break;
             }
             else
-            {
-                AuraSpotObj.SetActive( false );
+            { 
+                nCnt2++;
                 TargetEnemy = null;   
             }
+        }
+
+        //一つもついていなければ
+        if( nCnt2 == 4 )
+        {
+             
+
+            //場所を指定
+            if( nTargetNo == 0 )
+            {
+                AuraSpotObj.transform.position = new Vector3( -5.43f , 5.0f , PlayersObj.transform.position.z + fPlayerToEnemyDist );
+            }
+            else
+            {
+                AuraSpotObj.transform.position += new Vector3( 1.6f , 0.0f , 0.0f );
+            }
+
+            AuraSpotObj.SetActive( true );
         }
     }
 
