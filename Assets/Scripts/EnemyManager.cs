@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour
 
     EnemyPhase[ ] aEnemyPhase;
     float[ ] fCntFrame;
-    Animator[ ] aAnimator;
+     Animator[ ] aAnimator;
 
    
 	void Start( )
@@ -71,6 +71,7 @@ public class EnemyManager : MonoBehaviour
          fRotY = 0.0f;
 
         nTargetNoTmp = 0;
+         aAnimator = new Animator[ 12 ];
 
         //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
@@ -151,7 +152,6 @@ public class EnemyManager : MonoBehaviour
         //モーション周り
         aEnemyPhase = new EnemyPhase[ 12 ];
         fCntFrame = new float[ 12 ];
-        aAnimator = new Animator[ 12 ];
 
         for( int nCnt = 0; nCnt < 12; nCnt++ )
         {
@@ -254,11 +254,12 @@ public class EnemyManager : MonoBehaviour
                 nArray[ nRand ] = 999;
 
                 aEnemyPrefabArray[ nCnt2 , 0 ].gameObject.SetActive( true );   
-                aEnemyPrefabArray[ nCnt2 , 0 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+                aEnemyPrefabArray[ nCnt2 , 0 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Up );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
@@ -272,10 +273,11 @@ public class EnemyManager : MonoBehaviour
                 nArray[ nRand ] = 999;
 
                 aEnemyPrefabArray[ nCnt2 , 1 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 1 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+                aEnemyPrefabArray[ nCnt2 , 1 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Down );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
@@ -289,10 +291,11 @@ public class EnemyManager : MonoBehaviour
                 nArray[ nRand ] = 999;
 
                 aEnemyPrefabArray[ nCnt2 , 2 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 2 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+                aEnemyPrefabArray[ nCnt2 , 2 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Right );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
@@ -306,10 +309,11 @@ public class EnemyManager : MonoBehaviour
                 nArray[ nRand ] = 999;
 
                 aEnemyPrefabArray[ nCnt2 , 3 ].gameObject.SetActive( true );
-                aEnemyPrefabArray[ nCnt2 , 3 ].GetComponent< RectTransform >( ).position = new Vector3( LeftEndPosCanvas.x + ( fWidthCanvas * nCnt2 ) , LeftEndPosCanvas.y , 0.0f );
+                aEnemyPrefabArray[ nCnt2 , 3 ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
 
                 aEnemyPrefabArray2[ nRand ].gameObject.SetActive( true );
                 aEnemyPrefabArray2[ nRand ].transform.position = new Vector3( LeftEndPos.x + ( fWidth * nCnt2 ) , LeftEndPos.y , fPosZ + fPlayerToEnemyDist );
+                aEnemyPrefabArray2[ nRand ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Left );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
