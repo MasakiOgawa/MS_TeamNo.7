@@ -96,25 +96,26 @@ public class PlayerRight : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                   //              ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                        //         ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else
+                  
+                }
+                  else
                     {
                           ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                         ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                             ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                         //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                        //     ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }
 
                 bPoseFlg = true;
             }
@@ -138,25 +139,26 @@ public class PlayerRight : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                       //          ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                          //      ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else
+                  
+                }
+                  else
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                    ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                        //            ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }
                 
                 bPoseFlg = true;
             }
@@ -180,25 +182,26 @@ public class PlayerRight : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                          //       ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                            //     ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else
+                   
+                }  
+                 else
                     {
                         ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                          ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                          //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                             //   ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }  
 
                 bPoseFlg = true;
             }
@@ -222,25 +225,26 @@ public class PlayerRight : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame =0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 ); 
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 0.3f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
+                        //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                      //       ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.35f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                       ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                 ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
+                       //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                          //       ExplodeController.EXPLODE_TYPE.TYPE_FINE, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else
+                   
+                }
+                 else
                     {
                        ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                       ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
-                                                     ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
+                       //ExplodeController.Create(Tmp, 0, EnemyObj, 0, MirrorBall, 2,
+                                     //                ExplodeController.EXPLODE_TYPE.TYPE_BAD, PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                }
                
                 //コントローラを触れない様にする
                 bPoseFlg = true;
