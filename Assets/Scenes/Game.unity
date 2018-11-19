@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 2
+  GamePhase: 0
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -494,9 +494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 606e498ac7ea07745992242f41a21875, type: 2}
 --- !u!114 &33496784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,9 +809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 90e0d94aead8efb428983fac07536efa, type: 2}
 --- !u!114 &50102786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,9 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 52d36b34a62425a4592f175c64c5be10, type: 2}
 --- !u!114 &57915801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2249,9 +2240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 9c6c8be34e33faf4f98eddf155157d76, type: 2}
 --- !u!114 &155952080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,9 +3379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: f151a856a3863454193c4dfc1caa415c, type: 2}
 --- !u!114 &237564996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4335,9 +4320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 2d8ed41bb868dfc4f9706bbe6870345f, type: 2}
 --- !u!114 &309292480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6131,9 +6113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: e564ab47f33243a4e8d113d32df8b60c, type: 2}
 --- !u!114 &430671622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6521,9 +6500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: e898ea2f4233d98448c0ac93df614189, type: 2}
 --- !u!114 &453768218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7021,9 +6997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 79448666e904fba45ada7f5bdd5afe99, type: 2}
 --- !u!114 &470097724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7219,9 +7192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: f1f4e838f3834444f8f7f89cc5aa2e46, type: 2}
 --- !u!114 &473702989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7960,9 +7930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: b9dc40a34505229408af2849ccc75286, type: 2}
 --- !u!114 &574344436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8315,9 +8282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 16d54d55eef023341983c6cb914edab2, type: 2}
 --- !u!114 &596597787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8537,9 +8501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 1bbe1b69a7f1b5941a838e1a3bbb1a25, type: 2}
 --- !u!114 &604223013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9303,9 +9264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 4ac5464c2d7d43643b2b4974f164ea69, type: 2}
 --- !u!114 &667375582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9377,9 +9335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 012de7b0a45d8914ba632194a1ddf9cc, type: 2}
 --- !u!114 &669369649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11109,9 +11064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: a6cd4cda96674404f88fd3635a6be9d5, type: 2}
 --- !u!114 &795603148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11560,9 +11512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 70fe898c070049c4f8c737be759b2015, type: 2}
 --- !u!114 &839028501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13246,9 +13195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 7b07083255cef8c4b8b80191fa5abfb6, type: 2}
 --- !u!114 &976417785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14044,9 +13990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 91cb334925e06c74d83c2affdb9080e4, type: 2}
 --- !u!114 &1049606700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14758,9 +14701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 41e27e7ab31ce8e40ac03ab844370f52, type: 2}
 --- !u!114 &1133115255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14832,9 +14772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 9024879c6bdec86499c00ada7dc44ab9, type: 2}
 --- !u!114 &1141008882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15134,9 +15071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: bc2e90613a2ca174c938ccdc392ad987, type: 2}
 --- !u!114 &1181210482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15321,9 +15255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 3fd65e4d673092b4bb0271554a243af2, type: 2}
 --- !u!114 &1220642315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18858,9 +18789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 09ac3eddee6c07e46864c0cdb2c620ed, type: 2}
 --- !u!114 &1465235937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19044,9 +18972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 4a98c834457999d45a0d2c8f2e3b6ecc, type: 2}
 --- !u!114 &1475015942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19557,9 +19482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 8331e402dbd2da24f8ba26a371bce9e3, type: 2}
 --- !u!114 &1503487391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19631,9 +19553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 8ddeb00f5ff77964eabda94ed5e7e581, type: 2}
 --- !u!114 &1505947815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19705,9 +19624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: ebcf3b37c4db2774083c48f90265d13b, type: 2}
 --- !u!114 &1509723539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20367,9 +20283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 6da8367d5ca2a0c42a88e6c4be96d635, type: 2}
 --- !u!114 &1581805698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20441,9 +20354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: e19c69d783eb1444ea1b4cb099da0854, type: 2}
 --- !u!114 &1582002639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21104,9 +21014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: a44d4524589bd524b8eea1e3591a6b88, type: 2}
 --- !u!114 &1611193349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21831,9 +21738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: bd130a6338705934bb11fa9a3833d663, type: 2}
 --- !u!114 &1688915107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22608,9 +22512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: aa4f2c31b7877c04fb0e4dfb1d044108, type: 2}
 --- !u!114 &1748153931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22854,9 +22755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: ccfea642896cd484cbd6b671c1361051, type: 2}
 --- !u!114 &1757445482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23010,9 +22908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: e8bccd4fc474ffe4286312eebaa4ae60, type: 2}
 --- !u!114 &1765538884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23115,9 +23010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 4ac69e61620c5c441b99f005afdc0180, type: 2}
 --- !u!114 &1797300355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23222,9 +23114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 8a6c421b3ab7dcf4bbc4c2177bafb9a0, type: 2}
 --- !u!114 &1804009993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23613,9 +23502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 7638844e7b093fe428a7edd8154b4b2d, type: 2}
 --- !u!114 &1826378992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24102,6 +23988,7 @@ MonoBehaviour:
   CanvasObj: {fileID: 1605832860}
   LeftEndPosCanvas: {x: 133, y: 200.5}
   fWidthCanvas: 43
+  ShakeUIPrefab: {fileID: 462524809}
 --- !u!84 &1873337184
 RenderTexture:
   m_ObjectHideFlags: 0
@@ -24178,9 +24065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 3b9ac58c2f35e8b4fa92b2d1eda9d4a2, type: 2}
 --- !u!114 &1877364768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24848,9 +24732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: c7d163772b9d09d45bb98dcbc089d03c, type: 2}
 --- !u!114 &1957185203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25948,9 +25829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: fdce1850010cc1947848f073aba3d30f, type: 2}
 --- !u!114 &2038464738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26515,9 +26393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 2419d6f227b848144a6fe74c0ce231df, type: 2}
 --- !u!114 &2080399132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26620,9 +26495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 12a0abcd09173424cb33e469b38f93e1, type: 2}
 --- !u!114 &2092961253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27008,9 +26880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 91befffef2c3e1740a5e575073ec1911, type: 2}
 --- !u!114 &2122291382
 MonoBehaviour:
   m_ObjectHideFlags: 0

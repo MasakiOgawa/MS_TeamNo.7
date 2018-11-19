@@ -58,6 +58,9 @@ public class EnemyManager : MonoBehaviour
     float[ ] fCntFrame;
      Animator[ ] aAnimator;
 
+    public GameObject ShakeUIPrefab;
+    shakeUICanvas shakeUICanvasClass;
+
    
 	void Start( )
     {
@@ -158,6 +161,8 @@ public class EnemyManager : MonoBehaviour
             aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
             fCntFrame[ nCnt ] = 0.0f;
         }
+
+        shakeUICanvasClass = ShakeUIPrefab.GetComponent< shakeUICanvas >( );
 	}
 
     void Update( )
@@ -246,6 +251,8 @@ public class EnemyManager : MonoBehaviour
         {
             if( EnemyText.text[ nCnt ] == '1' )
             {
+                shakeUICanvasClass.CreateShakeUI( shakeUICanvas.SHAKE_TYPE.UP , nCnt2 );
+
                 do
                 {
                     nRand = Random.Range( 0 , 12 );
@@ -265,6 +272,8 @@ public class EnemyManager : MonoBehaviour
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
+                shakeUICanvasClass.CreateShakeUI( shakeUICanvas.SHAKE_TYPE.DOWN , nCnt2 );
+
                 do
                 {
                     nRand = Random.Range( 0 , 12 );
@@ -283,6 +292,8 @@ public class EnemyManager : MonoBehaviour
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
+                shakeUICanvasClass.CreateShakeUI( shakeUICanvas.SHAKE_TYPE.LEFT , nCnt2 );
+
                 do
                 {
                     nRand = Random.Range( 0 , 12 );
@@ -301,6 +312,8 @@ public class EnemyManager : MonoBehaviour
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
+                shakeUICanvasClass.CreateShakeUI( shakeUICanvas.SHAKE_TYPE.RIGHT , nCnt2 );
+
                  do
                 {
                     nRand = Random.Range( 0 , 12 );
@@ -356,6 +369,7 @@ public class EnemyManager : MonoBehaviour
             } 
         }
 
+        shakeUICanvasClass.ResetShakeUI( );
          AuraSpotObj.SetActive( false );
 
         for( int nCnt = 0; nCnt < 12; nCnt++ )

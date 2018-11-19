@@ -182,7 +182,7 @@ public class BonusManager : MonoBehaviour
             {
                 aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
                 aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
+                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.LEFT );
                
                 //ジョイコンを振れる様にする
                 
@@ -192,7 +192,7 @@ public class BonusManager : MonoBehaviour
             {
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
                 aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.CENTER );
+                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.CENTER );
                  
                 nCreateNo2++;
             }
@@ -200,7 +200,7 @@ public class BonusManager : MonoBehaviour
             {
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
                 aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
+                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.RIGHT );
                
                 nCreateNo3++;
             }
