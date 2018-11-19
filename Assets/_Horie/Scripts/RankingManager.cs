@@ -43,6 +43,8 @@ public class RankingManager : MonoBehaviour {
     AudioSource RankingPrevew;
     AudioSource RankingIn;
 
+    bool bFlg;
+
     // Use this for initialization
     void Start () {
         // 初期化
@@ -51,7 +53,6 @@ public class RankingManager : MonoBehaviour {
         ArdiunoClass = Arduino.global;
         if ( ArdiunoClass != null)
             ArdiunoClass.Setup( ConfigurePins );
-
     }
 
     void ConfigurePins( )
@@ -133,8 +134,10 @@ public class RankingManager : MonoBehaviour {
 
         fTime += Time.deltaTime;
 
-        if( bEnable3rdScore == true && fTime > fEndFrame )
+        if( bEnable3rdScore == true && fTime > fEndFrame && bFlg == false )
         {
+            bFlg = true;
+
             // BGM STOP
             m_ResultManager.GetComponent<ResultManager>().StopBGM();
 
@@ -169,6 +172,8 @@ public class RankingManager : MonoBehaviour {
         bEnable1stScore = false;
         bEnable3rdScore = false;
         bEnable2ndScore = false;
+
+         bFlg = false;
     }
 
     // セーブデータ呼び出し、今回のスコアを適用させてソート

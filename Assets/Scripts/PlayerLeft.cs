@@ -79,7 +79,7 @@ public class PlayerLeft : MonoBehaviour
         {
             //上
             if( ControllerClass.GetJoyconState( Example_gyro.JOYCON_TYPE.JOYCON_R1 ) == Example_gyro.JOYCON_STATE.STATE_UP_TRIGGER ||
-                Input.GetKeyDown( KeyCode.A ) )
+                Input.GetKeyDown( KeyCode.UpArrow ) )
             { 
                 MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Player_Up );
 
