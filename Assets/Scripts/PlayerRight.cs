@@ -31,6 +31,8 @@ public class PlayerRight : MonoBehaviour
      public AudioClip   AudioClip;
            AudioSource AudioSource;
 
+    Vector3 MirrorTmp;
+
         
 	void Start( )
     {
@@ -114,19 +116,22 @@ public class PlayerRight : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
                           ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
@@ -158,19 +163,22 @@ public class PlayerRight : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                       MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                      else
                     {
                           ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
@@ -202,19 +210,22 @@ public class PlayerRight : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                       MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
                           ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
@@ -246,19 +257,22 @@ public class PlayerRight : MonoBehaviour
                     if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( 290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
-                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else
                     {
                           ScoreManagerClass.ActiveTrue(new Vector2( 310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
-                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorBall.transform.position ,
+                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
+                        ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
