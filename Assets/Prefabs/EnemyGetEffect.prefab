@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1995816105838634}
+  m_IsPrefabAsset: 1
+--- !u!1 &1995816105838634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4511309602268908}
+  - component: {fileID: 114401589518014948}
+  m_Layer: 0
+  m_Name: EnemyGetEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4511309602268908
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995816105838634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114401589518014948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995816105838634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67f19967d04ddf4c872275da97d41a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy_Prefabs:
+  - {fileID: 1226201687410870, guid: 2f16aeaf06ef48e4d988b52bbaaac2cc, type: 2}
+  - {fileID: 1241469756727922, guid: 25347a1335dbb5248843664e0a70b396, type: 2}
+  - {fileID: 1024328223800314, guid: 7a3e349f419359c4ab8e5a0d1881733b, type: 2}
+  - {fileID: 1001171641865016, guid: 6da1b14916991ac498989972e34ef6dd, type: 2}
+  - {fileID: 1525828022586422, guid: f17beca522b361948bd4573ca6838224, type: 2}
+  - {fileID: 1614098677949966, guid: 9b4b7dc80f8234b4abe1e299cf2c6472, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveSpeed: -1
+  distMove: -20
