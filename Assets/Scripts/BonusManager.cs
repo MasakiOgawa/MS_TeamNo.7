@@ -1,54 +1,39 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Uniduino;
+using System.Collections.Generic;
 
 
 public class BonusManager : MonoBehaviour
 {
-           Manager    ManagerClass;   //マネージャのクラス
-    public GameObject ManagerObj;     //マネージャのオブジェクト
-           bool       bFlg;
+           Manager       ManagerClass;   //マネージャのクラス
+    public GameObject    ManagerObj;     //マネージャのオブジェクト
+           PlayerLeft    PlayerLeftClass;           //左プレイヤーのクラス
+           PlayerCenter  PlayerCenterClass;         //中央プレイヤーのクラス
+           PlayerRight   PlayerRightClass;          //右プレイヤーのクラス
+    public GameObject    PlayerLeftPrefab;          //左プレイヤーのプレハブ
+    public GameObject    PlayerCenterPrefab;        //中央プレイヤーのプレハブ
+    public GameObject    PlayerRightPrefab;         //右プレイヤーのプレハブ 
     public GameObject [ ]Enemy_Prefab;
-     int           nCntBeat;            //一拍のカウンタ
+    List<GameObject>     LeftEnemyList;
+    List<GameObject>     CenterEnemyList;
+    List<GameObject>     RightEnemyList;
+    GameObject           LeftTarget;
+    GameObject           CenterTarget;
+    GameObject           RightTarget;
+    bool                 bFlg;
+    TextAsset            BonusText;           //ボーナス情報が格納されたファイルの情報
+    int                  nCreateNo;
+    float                fCntFrame;  
+    int                  nLeftNo;
+    int                  nCenterNo;
+    int                  nRightNo;
 
-
-           GameObject[ ] aBonusPrefabArray;   //生成したボーナスのオブジェクト配列
-           TextAsset     BonusText;           //ボーナス情報が格納されたファイルの情報
-           string[ ]     aString;
-           int[ ]        nTimingArray;        //タイミングフレームを格納した配列
-           GameObject    BonusTmp;
-            int nCreateNo;
-          
-
-           GameObject[ ] aBonusPrefabArray2;   //生成したボーナスのオブジェクト配列
-           TextAsset     BonusText2;           //ボーナス情報が格納されたファイルの情報
-           string[ ]     aString2;
-           int[ ]        nTimingArray2;        //タイミングフレームを格納した配列  
-      GameObject    BonusTmp2;
-    int nCreateNo2;
-
-           GameObject[ ] aBonusPrefabArray3;   //生成したボーナスのオブジェクト配列
-           TextAsset     BonusText3;           //ボーナス情報が格納されたファイルの情報
-           string[ ]     aString3;
-           int[ ]        nTimingArray3;        //タイミングフレームを格納した配列
-      GameObject    BonusTmp3;
-     int nCreateNo3;
            
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
-
-
-     PlayerLeft         PlayerLeftClass;           //左プレイヤーのクラス
-           PlayerCenter       PlayerCenterClass;         //中央プレイヤーのクラス
-           PlayerRight        PlayerRightClass;          //右プレイヤーのクラス
-     public GameObject         PlayerLeftPrefab;          //左プレイヤーのプレハブ
-    public GameObject         PlayerCenterPrefab;        //中央プレイヤーのプレハブ
-    public GameObject         PlayerRightPrefab;         //右プレイヤーのプレハブ 
-
-
-     ScoreManager ScoreClass;
+    ScoreManager ScoreClass;
     PerformanceManager PerformanceClass;
-
     public GameObject MirrorBallMateriaObj;
     MirrorBallMaterial MirrorBallMateriaClass;
 
@@ -57,65 +42,21 @@ public class BonusManager : MonoBehaviour
     { 
         //変数の初期化
         bFlg      = false;
-        nCntBeat = 0;
-        BonusTmp = null;
-        BonusTmp2 = null;
-        BonusTmp3 = null;
+        LeftTarget = null;
+        CenterTarget = null;
+        RightTarget = null;
         nCreateNo = 0;
-        nCreateNo2 = 0;
-        nCreateNo3 = 0;
+        fCntFrame = 0.0f;
+        nLeftNo = 0;
+        nCenterNo = 0;
+        nRightNo = 0;
+      
 
         //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
 
         //ボーナス情報をファイルから読み込み
-        BonusText = Resources.Load( "bonus_left" ) as TextAsset;
-        aString = BonusText.text.Split('\n'); //
-        BonusText2 = Resources.Load( "bonus_center" ) as TextAsset;
-        aString2 = BonusText2.text.Split('\n'); //
-        BonusText3 = Resources.Load( "bonus_right" ) as TextAsset;
-        aString3 = BonusText3.text.Split('\n'); //
-
-        //ボーナスオブジェクトを生成し、非表示にしておく
-        aBonusPrefabArray = new GameObject[ 15 ];
-        nTimingArray      = new int[ 16 ];
-
-        for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
-        {
-            nTimingArray[ nCnt ] = int.Parse( aString[ nCnt ] );   
-            aBonusPrefabArray[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( -4.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray[ nCnt ] )*/ ) , Quaternion.identity );
-            aBonusPrefabArray[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
-            aBonusPrefabArray[ nCnt ].transform.parent = this.transform;
-            aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
-            
-        }
-        nTimingArray[ 15 ] = 999;
-
-        aBonusPrefabArray2 = new GameObject[ 16 ];
-        nTimingArray2      = new int[ 17 ];
-
-        for( int nCnt = 0 , nCnt2 = 0; nCnt < 16; nCnt++ , nCnt2 += 2 )
-        {
-            nTimingArray2[ nCnt ] = int.Parse( aString2[ nCnt ] );   
-            aBonusPrefabArray2[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 0.0f , 0.0f , 130.0f/*92.0f + ( 5 * nTimingArray2[ nCnt ] )*/ ) , Quaternion.identity );
-            aBonusPrefabArray2[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
-            aBonusPrefabArray2[ nCnt ].transform.parent = this.transform;
-            aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
-        }
-        nTimingArray2[ 16 ] = 999;
-
-        aBonusPrefabArray3 = new GameObject[ 15 ];
-        nTimingArray3      = new int[ 16 ];
-
-        for( int nCnt = 0 , nCnt2 = 0; nCnt < 15; nCnt++ , nCnt2 += 2 )
-        {
-            nTimingArray3[ nCnt ] = int.Parse( aString3[ nCnt ] ); 
-            aBonusPrefabArray3[ nCnt ] = Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 4.0f , 0.0f , 130.0f /*92.0f + ( 5 * nTimingArray3[ nCnt ] )*/ ) , Quaternion.identity );
-            aBonusPrefabArray3[ nCnt ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
-            aBonusPrefabArray3[ nCnt ].transform.parent = this.transform;
-            aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );   
-        }
-        nTimingArray3[ 15 ] = 999;
+        BonusText = Resources.Load( "bonus" ) as TextAsset;
 
         //アルディーノの設定
         ArdiunoClass = Arduino.global;
@@ -124,11 +65,13 @@ public class BonusManager : MonoBehaviour
         PlayerLeftClass         = PlayerLeftPrefab.GetComponent< PlayerLeft >( );
         PlayerCenterClass       = PlayerCenterPrefab.GetComponent< PlayerCenter >( );
         PlayerRightClass        = PlayerRightPrefab.GetComponent< PlayerRight >( );
-
-          ScoreClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
+        ScoreClass = ManagerClass.GetScoreManager( ).GetComponent< ScoreManager >( );
         PerformanceClass = ManagerClass.GetPerformanceManager( ).GetComponent< PerformanceManager >( );
-
         MirrorBallMateriaClass = MirrorBallMateriaObj.GetComponent< MirrorBallMaterial >( );
+
+        LeftEnemyList = new List<GameObject>(); 
+        CenterEnemyList = new List<GameObject>(); 
+        RightEnemyList = new List<GameObject>(); 
 	}
 
 
@@ -148,73 +91,70 @@ public class BonusManager : MonoBehaviour
             SerialHandlerClass.Write( "5" );
             MirrorBallMateriaClass.BonusAllEnabule( );
             BounusArea.Create( new Vector3( -4.0f , 0.0f , 75.0f ) , new Vector3( 0.0f , 0.0f , 75.0f ) , new Vector3( 4.0f , 0.0f , 75.0f ) );
-
-        /*    for( int nCnt = 0; nCnt < 15; nCnt++ )
-            {
-                 aBonusPrefabArray[ nCnt ].gameObject.SetActive( true );
-                 aBonusPrefabArray[ nCnt ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCnt ] , aBonusPrefabArray[ nCnt ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.LEFT );
-            }
-
-            for( int nCnt = 0; nCnt < 16; nCnt++ )
-            {
-                 aBonusPrefabArray2[ nCnt ].gameObject.SetActive( true );
-                 aBonusPrefabArray2[ nCnt ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCnt ] , aBonusPrefabArray2[ nCnt ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.CENTER );
-            }
-
-            for( int nCnt = 0; nCnt < 15; nCnt++ )
-            {
-                 aBonusPrefabArray3[ nCnt ].gameObject.SetActive( true );
-                 aBonusPrefabArray3[ nCnt ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCnt ] , aBonusPrefabArray3[ nCnt ].gameObject.transform.position.z - 92.0f , 92.0f , Bonus.BONUS_TYPE.RIGHT );
-            }*/
         }
 
-        //一拍毎に生成するかをチェックする
-        if( ManagerClass.GetdBonusFrame( ) >= 0.4475f )
+        //一定フレーム毎に生成する
+        fCntFrame += Time.deltaTime;
+
+        if( fCntFrame >= 1.0f )
         {
-            nCntBeat++;
+            fCntFrame = 0.0f;
+
+            //リモコンを振れる様にする
             PlayerLeftClass.ReleasebBonusFlg( );
-             PlayerCenterClass.ReleasebBonusFlg( );  
-              PlayerRightClass.ReleasebBonusFlg( );    
+            PlayerCenterClass.ReleasebBonusFlg( );  
+            PlayerRightClass.ReleasebBonusFlg( );    
 
-            //生成タイミングになったらボーナスを飛ばす
-            //if( nCntBeat == nTimingArray[ nCreateNo ] - 1 && nTimingArray[ nCreateNo ] != 999 )
-            if( nCntBeat == nTimingArray[ nCreateNo ] - 3 && nTimingArray[ nCreateNo ] != 999 )
+            for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 3; nCnt++ , nCnt2++ )
             {
-                aBonusPrefabArray[ nCreateNo ].gameObject.SetActive( true );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray[ nCreateNo ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray[ nCreateNo ] , aBonusPrefabArray[ nCreateNo ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.LEFT );
-               
-                //ジョイコンを振れる様にする
-                
-                nCreateNo++;
-            }
-            if( nCntBeat == nTimingArray2[ nCreateNo2 ] - 3 && nTimingArray2[ nCreateNo2 ] != 999 )
-            {
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.SetActive( true );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray2[ nCreateNo2 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray2[ nCreateNo2 ] , aBonusPrefabArray2[ nCreateNo2 ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.CENTER );
-                 
-                nCreateNo2++;
-            }
-            if( nCntBeat == nTimingArray3[ nCreateNo3 ] - 3 && nTimingArray3[ nCreateNo3 ] != 999 )
-            {
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.SetActive( true );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                aBonusPrefabArray3[ nCreateNo3 ].gameObject.GetComponent< Bonus >( ).SetState( nTimingArray3[ nCreateNo3 ] , aBonusPrefabArray3[ nCreateNo3 ].gameObject.transform.position.z - 75.0f , 75.0f , Bonus.BONUS_TYPE.RIGHT );
-               
-                nCreateNo3++;
+                switch( nCnt2 )
+                { 
+                    case 0:
+                        if( BonusText.text[ nCreateNo + nCnt2 ] == '1' )
+                        {
+                            LeftEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( -4.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
+                            LeftEnemyList[ nLeftNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
+                            LeftEnemyList[ nLeftNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
+                            LeftEnemyList[ nLeftNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.LEFT );
+                            nLeftNo++;
+                        }
+                    break;
+
+                    case 1:
+                        if( BonusText.text[ nCreateNo + nCnt2 ] == '1' )
+                        {
+                            CenterEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 0.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
+                            CenterEnemyList[ nCenterNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
+                            CenterEnemyList[ nCenterNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
+                            CenterEnemyList[ nCenterNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.CENTER );
+                            nCenterNo++;
+                        }
+                    break;
+
+                    case 2:
+                        if( BonusText.text[ nCreateNo + nCnt2 ] == '1' )
+                        {
+                            RightEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 4.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
+                            RightEnemyList[ nRightNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
+                            RightEnemyList[ nRightNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
+                            RightEnemyList[ nRightNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.RIGHT );
+                            nRightNo++;
+                        }
+                    break;
+                }  
             }
 
-            ManagerClass.SetFlg2( );
+             //文字列の添え字を進める(敵3体+改行コード2文字分)
+             nCreateNo += 5;
         }
-
+          //  ManagerClass.SetFlg2( );
+     
          //33拍でボーナスの終了
         if( ManagerClass.GetdCntFrame( ) >= 0.895f * 33.0f )
         {
-           // ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_CHECK );  
-           ScoreClass.AggregateScore( );
+            ScoreClass.AggregateScore( );
             PerformanceClass.PhaseCheck( );
-            BonusFalse( );
+            ReleaseEnemy( );
             ManagerClass.SetFlg( );
             SerialHandlerClass.Write( "3" );
             MirrorBallMateriaClass.BonusAlDisable( );
@@ -222,58 +162,40 @@ public class BonusManager : MonoBehaviour
         }
     }
 
+
     public void SetBonusLeft( GameObject BonusLeft )
     {
-        BonusTmp = BonusLeft;
+        LeftTarget = BonusLeft;
     }
 
 
     public GameObject GetBonusLeft( )
     {
-        return BonusTmp;
+        return LeftTarget;
     }
 
 
     public void SetBonusCenter( GameObject BonusCenter )
     {
-        BonusTmp2 = BonusCenter;
+        CenterTarget = BonusCenter;
     }
 
 
     public GameObject GetBonusCenter( )
     {
-        return BonusTmp2;
+        return CenterTarget;
     }
 
 
     public void SetBonusRight( GameObject BonusRight )
     {
-        BonusTmp3 = BonusRight;
+        RightTarget = BonusRight;
     }
 
 
     public GameObject GetBonusRight( )
     {
-        return BonusTmp3;
-    }
-
-
-    public void BonusFalse( )
-    {
-        for( int nCnt = 0; nCnt < 15; nCnt++ )
-        {
-            aBonusPrefabArray[ nCnt ].gameObject.SetActive( false );
-        }
-   
-        for( int nCnt = 0; nCnt < 16; nCnt++ )
-        {
-            aBonusPrefabArray2[ nCnt ].gameObject.SetActive( false );
-        }
-     
-        for( int nCnt = 0; nCnt < 15; nCnt++ )
-        {
-            aBonusPrefabArray3[ nCnt ].gameObject.SetActive( false );
-        }
+        return RightTarget;
     }
 
 
@@ -292,5 +214,28 @@ public class BonusManager : MonoBehaviour
     public void RightAreaChange( bool bColor )
     {
         BounusArea.ChangeColor( 2 , bColor );
+    }
+
+
+    void ReleaseEnemy( )
+    {
+        for( int nCnt = 0; nCnt < LeftEnemyList.Count; nCnt++ )
+        {
+            LeftEnemyList[ nCnt ].SetActive( false );
+        }
+
+        for( int nCnt = 0; nCnt < CenterEnemyList.Count; nCnt++ )
+        {
+            CenterEnemyList[ nCnt ].SetActive( false );
+        }
+
+        for( int nCnt = 0; nCnt < RightEnemyList.Count; nCnt++ )
+        {
+            RightEnemyList[ nCnt ].SetActive( false );
+        }
+
+        LeftEnemyList.Clear( );
+        CenterEnemyList.Clear( );
+        RightEnemyList.Clear( );
     }
 }

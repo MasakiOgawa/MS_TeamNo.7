@@ -340,7 +340,7 @@ public class PlayerCenter : MonoBehaviour
 
                 GameObject Tmp = BonusManagerClass.GetBonusCenter( );
                       
-                if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
+                 if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET && Tmp.GetComponent< Bonus >( ).BonusState != Bonus.BONUS_STATE.OUT )
                 { 
                    AudioSource.PlayOneShot( AudioClip );
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );

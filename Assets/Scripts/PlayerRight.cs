@@ -341,7 +341,7 @@ public class PlayerRight : MonoBehaviour
                 GameObject Tmp = BonusManagerClass.GetBonusRight( );
               
                
-               if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
+               if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET && Tmp.GetComponent< Bonus >( ).BonusState != Bonus.BONUS_STATE.OUT )
                 { 
                   
                      AudioSource.PlayOneShot( AudioClip );
