@@ -31,6 +31,7 @@ public class EnemyGetEffect : MonoBehaviour {
         GameObject obj = Instantiate(prefab);
 
         // エネミー生成初期設定関数 向きとか変えたい
+        obj.transform.position = pos;
 
         // モーション再生
         obj.GetComponent<PlayerAnim>().MotionChange(PlayerAnimDefine.Idx.HappyWalk);
