@@ -64,5 +64,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  moveSpeed: -1
-  distMove: -20
+  ComeMoveSpeed: -1
+  ComeDist: -20
+  EscapeMoveSpeed: 2
+  EscapeDist: 100
