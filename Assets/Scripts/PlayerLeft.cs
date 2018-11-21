@@ -34,6 +34,8 @@ public class PlayerLeft : MonoBehaviour
 
     Vector3 MirrorTmp;
 
+    int Rand;
+    float fCntFrame;
         
 	void Start( )
     {
@@ -57,6 +59,8 @@ public class PlayerLeft : MonoBehaviour
 
         AudioSource      = gameObject.GetComponent< AudioSource >( );
         AudioSource.clip = AudioClip;
+
+         fCntFrame = 0.0f;
 	}
 
 
@@ -72,7 +76,7 @@ public class PlayerLeft : MonoBehaviour
              Input.GetKeyDown( KeyCode.RightArrow ) )  &&
              EnemyManagerClass.GetTarget( ) == null )
         {
-            int Rand = Random.RandomRange(0, 10);
+            Rand  = Random.RandomRange(0, 10);
 
             OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
@@ -80,8 +84,16 @@ public class PlayerLeft : MonoBehaviour
       if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE &&
             Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
         {  
-                MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Idle );
-            Child.ForceStateNormalizedTime( 0.0f );
+            fCntFrame += Time.deltaTime;
+
+            if( fCntFrame >= 0.3f )
+            {
+                fCntFrame = 0.0f;
+
+                   MotionManagerClass.ChangeLeftMotion( PlayerAnimDefine.Idx.Idle );
+                  Child.ForceStateNormalizedTime( 0.0f );
+            }
+             
         }
     }
 	
@@ -135,6 +147,12 @@ public class PlayerLeft : MonoBehaviour
                     }
                     
                 }
+                else
+                {
+                    Rand  = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+                }
                
 
                 bPoseFlg = true;
@@ -181,6 +199,12 @@ public class PlayerLeft : MonoBehaviour
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
+                }
+                else
+                {
+                    Rand  = Random.RandomRange(0, 10);
+
+                     OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
                 }
               
                 
@@ -229,6 +253,12 @@ public class PlayerLeft : MonoBehaviour
                     }
                     
                 }
+                else
+                {
+                    Rand  = Random.RandomRange(0, 10);
+
+                     OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+                }
                
 
                 bPoseFlg = true;
@@ -275,6 +305,12 @@ public class PlayerLeft : MonoBehaviour
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
+                }
+                else
+                {
+                    Rand  = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
                 }
                
                

@@ -9694,8 +9694,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1429902232}
   Tmp: {fileID: 747699715}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &632992500
@@ -10572,8 +10572,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1569318108}
   Tmp: {fileID: 440771586}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &684074295
@@ -23595,8 +23595,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1301448919}
   Tmp: {fileID: 329263325}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &1648557948
