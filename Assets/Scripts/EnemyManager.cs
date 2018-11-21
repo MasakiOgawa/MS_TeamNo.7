@@ -61,6 +61,9 @@ public class EnemyManager : MonoBehaviour
     public GameObject ShakeUIPrefab;
     shakeUICanvas shakeUICanvasClass;
 
+    public GameObject GetEnemyPrefab;
+    EnemyGetEffect GetEnemyClass;
+
    
 	void Start( )
     {
@@ -163,6 +166,8 @@ public class EnemyManager : MonoBehaviour
         }
 
         shakeUICanvasClass = ShakeUIPrefab.GetComponent< shakeUICanvas >( );
+
+        GetEnemyClass = GetEnemyPrefab.GetComponent< EnemyGetEffect >( );
 	}
 
     void Update( )
@@ -269,6 +274,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Up );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
+
+                SwapEffect.Create( SwapEffect.SWAP_TYPE.TYPE_UP , aEnemyPrefabArray2[ nRand ].transform.position );
             }
             else if( EnemyText.text[ nCnt ] == '2' )
             {
@@ -289,6 +296,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Down );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
+
+                SwapEffect.Create( SwapEffect.SWAP_TYPE.TYPE_DOWN , aEnemyPrefabArray2[ nRand ].transform.position );
             }
             else if( EnemyText.text[ nCnt ] == '3' )
             {
@@ -309,6 +318,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Right );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
+
+                SwapEffect.Create( SwapEffect.SWAP_TYPE.TYPE_LEFT , aEnemyPrefabArray2[ nRand ].transform.position );
             }
             else if( EnemyText.text[ nCnt ] == '4' )
             {
@@ -329,6 +340,8 @@ public class EnemyManager : MonoBehaviour
                 aEnemyPrefabArray2[ nRand ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.Left );
 
                 aEnemyPrefabArray3[ nCnt2 ] = aEnemyPrefabArray2[ nRand ];
+
+                SwapEffect.Create( SwapEffect.SWAP_TYPE.TYPE_RIGHT , aEnemyPrefabArray2[ nRand ].transform.position );
             }
             else
             {
@@ -376,6 +389,15 @@ public class EnemyManager : MonoBehaviour
         {
              if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
             {
+                if (aAnimator[nCnt].GetCurrentAnimatorStateInfo(0).nameHash == Animator.StringToHash("Base Layer.VictoryIdle"))
+                {
+                   GetEnemyClass.SetEnemyEffect( nCnt , aEnemyPrefabArray2[ nCnt ].transform.position , true );
+                }
+                else
+                {
+                    GetEnemyClass.SetEnemyEffect( nCnt , aEnemyPrefabArray2[ nCnt ].transform.position , false );
+                }
+
                 aEnemyPrefabArray2[ nCnt ].SetActive( false );
             }
         }
