@@ -7,8 +7,11 @@ public class EnemyGetEffect : MonoBehaviour {
     // 演出生成するプレハブを登録
     [SerializeField] private GameObject[] Enemy_Prefabs;
 
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float distMove;
+    [SerializeField] private float ComeMoveSpeed;
+    [SerializeField] private float ComeDist;
+    [SerializeField] private float EscapeMoveSpeed;
+    [SerializeField] private float EscapeDist;
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +23,7 @@ public class EnemyGetEffect : MonoBehaviour {
 		
 	}
 
-    public void SetEnemyEffect ( int nType , Vector3 pos)
+    public void SetEnemyEffect ( int nType , Vector3 pos , bool isComing)
     {
         // プレハブを取得
         GameObject prefab = Enemy_Prefabs[nType];
@@ -34,6 +37,14 @@ public class EnemyGetEffect : MonoBehaviour {
         
         // 移動処理用スクリプトをアタッチ
         obj.AddComponent<EnemyEffect>();
-        obj.GetComponent<EnemyEffect>().SetSpeedAndDist(moveSpeed, distMove);
+
+        if (isComing == true)
+        {
+            obj.GetComponent<EnemyEffect>().SetSpeedAndDist(ComeMoveSpeed, ComeDist, isComing);
+        }
+        else
+        {
+            obj.GetComponent<EnemyEffect>().SetSpeedAndDist(EscapeMoveSpeed, EscapeDist, isComing);
+        }
     }
 }

@@ -53,9 +53,9 @@ public class InputTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SwapEffect.Create(SwapEffect.SWAP_TYPE.TYPE_DOWN, new Vector3(0, 0, 0));
+            //SwapEffect.Create(SwapEffect.SWAP_TYPE.TYPE_DOWN, new Vector3(0, 0, 0));
 
-            //EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0));
+            EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0) , false);
 
         
 
