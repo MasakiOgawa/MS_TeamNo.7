@@ -1396,6 +1396,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManagerObj: {fileID: 1040674}
+  PlayerLeftPrefab: {fileID: 632992498}
+  PlayerCenterPrefab: {fileID: 684074293}
+  PlayerRightPrefab: {fileID: 1648557946}
   Enemy_Prefab:
   - {fileID: 1226201687410870, guid: 2f16aeaf06ef48e4d988b52bbaaac2cc, type: 2}
   - {fileID: 1241469756727922, guid: 25347a1335dbb5248843664e0a70b396, type: 2}
@@ -1411,9 +1414,6 @@ MonoBehaviour:
   - {fileID: 1459433025413536, guid: 7291ae3e4cb6e2740a515e0c2b02d192, type: 2}
   SerialHandlerClass: {fileID: 761611140}
   ArdiunoClass: {fileID: 0}
-  PlayerLeftPrefab: {fileID: 632992498}
-  PlayerCenterPrefab: {fileID: 684074293}
-  PlayerRightPrefab: {fileID: 1648557946}
   MirrorBallMateriaObj: {fileID: 1964382000}
 --- !u!114 &86348947
 MonoBehaviour:
@@ -9694,8 +9694,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1429902232}
   Tmp: {fileID: 747699715}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &632992500
@@ -10572,8 +10572,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1569318108}
   Tmp: {fileID: 440771586}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &684074295
@@ -23595,8 +23595,8 @@ MonoBehaviour:
   bBonusFlg: 0
   MirrorBall: {fileID: 1301448919}
   Tmp: {fileID: 329263325}
-  PlayerToBallSpeed: 0.5
-  BallToEnemySpeed: 0.5
+  PlayerToBallSpeed: 2
+  BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
 --- !u!114 &1648557948
@@ -26169,7 +26169,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1831284502}
   m_LocalRotation: {x: 0.11589068, y: 0, z: 0, w: 0.993262}
-  m_LocalPosition: {x: 0, y: 5.17, z: 11.8}
+  m_LocalPosition: {x: 0, y: 5.17, z: 60.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1534998901}

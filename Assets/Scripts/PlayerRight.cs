@@ -33,6 +33,9 @@ public class PlayerRight : MonoBehaviour
 
     Vector3 MirrorTmp;
 
+    int Rand;
+    float fCntFrame;
+
         
 	void Start( )
     {
@@ -56,6 +59,8 @@ public class PlayerRight : MonoBehaviour
 
          AudioSource      = gameObject.GetComponent< AudioSource >( );
         AudioSource.clip = AudioClip;   
+
+        fCntFrame = 0.0f;
 	}
 
 
@@ -71,7 +76,7 @@ public class PlayerRight : MonoBehaviour
                 Input.GetKeyDown( KeyCode.RightArrow ) )  &&
              EnemyManagerClass.GetTarget( ) == null )
         {
-            int Rand = Random.RandomRange(0, 10);
+             Rand = Random.RandomRange(0, 10);
 
             OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
@@ -79,9 +84,15 @@ public class PlayerRight : MonoBehaviour
        if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE &&
             Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
         {
-          
-                  MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Idle );
-            Child.ForceStateNormalizedTime( 0.0f );
+            fCntFrame += Time.deltaTime;
+
+            if( fCntFrame >= 0.3f )
+            {
+                fCntFrame = 0.0f;
+
+                   MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Idle );
+                  Child.ForceStateNormalizedTime( 0.0f );
+            }
         }
     }
 	
@@ -136,6 +147,12 @@ public class PlayerRight : MonoBehaviour
                     }
                     
                 }
+                else
+                {
+                     Rand = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+                }
                 
 
                 bPoseFlg = true;
@@ -182,6 +199,12 @@ public class PlayerRight : MonoBehaviour
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     
+                }
+                 else
+                {
+                     Rand = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
                 }
                
                 
@@ -230,6 +253,12 @@ public class PlayerRight : MonoBehaviour
                     }
                     
                 }
+                 else
+                {
+                     Rand = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+                }
                 
 
                 bPoseFlg = true;
@@ -277,6 +306,12 @@ public class PlayerRight : MonoBehaviour
                     }
                     
                 }
+                 else
+                {
+                     Rand = Random.RandomRange(0, 10);
+
+                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+                }
                 
                
                 //コントローラを触れない様にする
@@ -306,7 +341,7 @@ public class PlayerRight : MonoBehaviour
                 GameObject Tmp = BonusManagerClass.GetBonusRight( );
               
                
-               if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET )
+               if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET && Tmp.GetComponent< Bonus >( ).BonusState != Bonus.BONUS_STATE.OUT )
                 { 
                   
                      AudioSource.PlayOneShot( AudioClip );
