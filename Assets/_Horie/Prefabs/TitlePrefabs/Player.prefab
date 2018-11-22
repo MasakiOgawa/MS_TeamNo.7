@@ -1055,6 +1055,7 @@ GameObject:
   - component: {fileID: 95405165233927990}
   - component: {fileID: 114262427582053042}
   - component: {fileID: 114406925468938860}
+  - component: {fileID: 114155294961302904}
   m_Layer: 0
   m_Name: CutSceneCamera5
   m_TagString: Untagged
@@ -3659,6 +3660,7 @@ GameObject:
   - component: {fileID: 95730649492565668}
   - component: {fileID: 114568860965662082}
   - component: {fileID: 114363167899378954}
+  - component: {fileID: 114368206600116408}
   m_Layer: 0
   m_Name: CutSceneCamera1
   m_TagString: Untagged
@@ -4664,6 +4666,7 @@ GameObject:
   - component: {fileID: 95599289672920076}
   - component: {fileID: 114317895274158558}
   - component: {fileID: 114770323181842394}
+  - component: {fileID: 114335956983595714}
   m_Layer: 0
   m_Name: CutSceneCamera2
   m_TagString: Untagged
@@ -5915,6 +5918,7 @@ GameObject:
   - component: {fileID: 95569554434148304}
   - component: {fileID: 114669446569031088}
   - component: {fileID: 114363409826357880}
+  - component: {fileID: 114319525882482466}
   m_Layer: 0
   m_Name: CutSceneCamera3
   m_TagString: Untagged
@@ -7191,6 +7195,7 @@ GameObject:
   - component: {fileID: 95084812654636686}
   - component: {fileID: 114267615205688612}
   - component: {fileID: 114406781680340206}
+  - component: {fileID: 114773425754455228}
   m_Layer: 0
   m_Name: CutSceneCamera4
   m_TagString: Untagged
@@ -10916,7 +10921,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131100506370026}
   m_LocalRotation: {x: 0.0635439, y: -0.45298934, z: 0.0323912, w: 0.88865834}
-  m_LocalPosition: {x: 13.04, y: 6.41, z: -9.85}
+  m_LocalPosition: {x: 13.25, y: 6.41, z: -9.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283044374604356}
@@ -15880,6 +15885,22 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
+--- !u!114 &114155294961302904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129311643053162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e2ed4a3d0c991294c9c8298c989b66bf, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114161299036293262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16724,6 +16745,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114319525882482466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787915796801594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e2ed4a3d0c991294c9c8298c989b66bf, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114320620877364784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16773,6 +16810,22 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
+--- !u!114 &114335956983595714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619705074741926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e2ed4a3d0c991294c9c8298c989b66bf, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114339885619336852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17055,6 +17108,7 @@ MonoBehaviour:
   - {fileID: 1787915796801594}
   - {fileID: 1947631744613142}
   - {fileID: 1129311643053162}
+  RandomCutScenePlayTime: 10
 --- !u!114 &114362442692487680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17201,6 +17255,22 @@ MonoBehaviour:
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
+--- !u!114 &114368206600116408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1491445652281140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e2ed4a3d0c991294c9c8298c989b66bf, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114370913961090100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19390,6 +19460,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114773425754455228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947631744613142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e2ed4a3d0c991294c9c8298c989b66bf, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114775331744981908
 MonoBehaviour:
   m_ObjectHideFlags: 1
