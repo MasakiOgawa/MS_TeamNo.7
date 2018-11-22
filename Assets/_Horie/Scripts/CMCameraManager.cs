@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CMCameraManager : MonoBehaviour {
 
@@ -10,6 +11,9 @@ public class CMCameraManager : MonoBehaviour {
     [SerializeField] private GameObject[] CutScene;
     [SerializeField] private GameObject[] CutSceneCamera;
     private bool[] isPlayingCutScene;
+
+    [SerializeField] private float RandomCutScenePlayTime;
+    private float CutScenePlayTimeDelta;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +33,7 @@ public class CMCameraManager : MonoBehaviour {
         {
             isPlayingCutScene[n] = false;
         }
+        CutScenePlayTimeDelta =0;
     }
 	
 	// Update is called once per frame
@@ -61,6 +66,32 @@ public class CMCameraManager : MonoBehaviour {
             }
         }
 
+        // カットシーンの数だけ繰り返す
+        for (int n = 0; n < CutScene.Length; n++)
+        {
+            // どれかのカットシーンを再生している場合
+            if (isPlayingCutScene[n] == true)
+                return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Title_2.0")
+        {
+            // 以降どのカットシーンも再生していない場合
+            // 時間加算
+            CutScenePlayTimeDelta += Time.deltaTime;
+
+            if (CutScenePlayTimeDelta > RandomCutScenePlayTime)
+            {
+                int rand = Random.RandomRange(0, 5);
+
+                SetCutScene(rand);
+
+                CutScenePlayTimeDelta = 0;
+
+            }
+        }
+
+
         // 作業用BGM再生
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -70,6 +101,7 @@ public class CMCameraManager : MonoBehaviour {
         // 0を押してシーン0を再生
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(0);
 
         }
@@ -77,6 +109,7 @@ public class CMCameraManager : MonoBehaviour {
         // 1を押してシーン1を再生
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(1);
 
  
@@ -86,18 +119,21 @@ public class CMCameraManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha2))
             
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(2);
 
         }
         // 3を押してシーン3を再生
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(3);
 
         }
         // 4を押してシーン4を再生
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(4);
 
         }
@@ -105,6 +141,7 @@ public class CMCameraManager : MonoBehaviour {
         // 5を押してシーン5を再生
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
+            CutScenePlayTimeDelta = 0;
             SetCutScene(5);
             // BGMを再生する
             //GetComponent<AudioSource>().Play();
