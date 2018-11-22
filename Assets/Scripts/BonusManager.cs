@@ -28,8 +28,7 @@ public class BonusManager : MonoBehaviour
     int                  nLeftNo;
     int                  nCenterNo;
     int                  nRightNo;
-
-           
+     
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
     ScoreManager ScoreClass;
@@ -50,7 +49,6 @@ public class BonusManager : MonoBehaviour
         nLeftNo = 0;
         nCenterNo = 0;
         nRightNo = 0;
-      
 
         //各クラスの情報を取得
         ManagerClass = ManagerObj.GetComponent< Manager >( );
@@ -96,9 +94,9 @@ public class BonusManager : MonoBehaviour
         //一定フレーム毎に生成する
         fCntFrame += Time.deltaTime;
 
-        if( fCntFrame >= 1.0f )
+        if( fCntFrame >= 0.7f )
         {
-            fCntFrame = 0.0f;
+            fCntFrame = 0.0f;       
 
             //リモコンを振れる様にする
             PlayerLeftClass.ReleasebBonusFlg( );
