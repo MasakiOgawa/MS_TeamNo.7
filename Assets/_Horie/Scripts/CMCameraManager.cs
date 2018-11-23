@@ -15,6 +15,8 @@ public class CMCameraManager : MonoBehaviour {
     [SerializeField] private float RandomCutScenePlayTime;
     private float CutScenePlayTimeDelta;
 
+    [SerializeField] private GameObject LastCutCamera;
+
 	// Use this for initialization
 	void Start () {
         
@@ -50,6 +52,14 @@ public class CMCameraManager : MonoBehaviour {
                 PlayableDirector pDirector = CutSceneCamera[n].GetComponent<PlayableDirector>();
                 if (pDirector.state != PlayState.Playing)
                 {
+                    // CutScene5を再生終了時に<メインカメラの位置>を<CutSceneの最後のカメラの位置>にする
+                    if (n == 5)
+                    {
+                        MainCamera.transform.position = LastCutCamera.transform.position;
+                        MainCamera.transform.rotation = LastCutCamera.transform.rotation;
+                        MainCamera.transform.localScale = LastCutCamera.transform.localScale;
+
+                    }
 
                     // Mainカメラを復活させる
                     MainCamera.GetComponent<Camera>().enabled = true;
@@ -62,6 +72,9 @@ public class CMCameraManager : MonoBehaviour {
                     //Debug.Log("再生終了2");
                     // 終了フラグにする
                     isPlayingCutScene[n] = false;
+
+                    
+
                 }
             }
         }
@@ -82,7 +95,8 @@ public class CMCameraManager : MonoBehaviour {
 
             if (CutScenePlayTimeDelta > RandomCutScenePlayTime)
             {
-                int rand = Random.RandomRange(0, 5);
+                // 最後のカットを再生するとメインカメラ吹っ飛ばすから最後以外をランダムで再生
+                int rand = Random.RandomRange(0, 4);
 
                 SetCutScene(rand);
 
@@ -149,6 +163,41 @@ public class CMCameraManager : MonoBehaviour {
 
 
 
+    }
+
+    // 現在のカットシーンを強制終了させる
+    public void StopCutScene()
+    {
+        CutScenePlayTimeDelta = 0;
+        // カットシーンの数だけ繰り返す
+        for (int n = 0; n < CutScene.Length; n++)
+        {
+            // どれかのカットシーンを再生している場合
+            if (isPlayingCutScene[n] == true)
+            {
+
+                // CutScene5を再生終了時に<メインカメラの位置>を<CutSceneの最後のカメラの位置>にする
+                if (n == 5)
+                {
+                    MainCamera.transform.position = LastCutCamera.transform.position;
+                    MainCamera.transform.rotation = LastCutCamera.transform.rotation;
+                    MainCamera.transform.localScale = LastCutCamera.transform.localScale;
+                }
+
+                // Mainカメラを復活させる
+                MainCamera.GetComponent<Camera>().enabled = true;
+                MainCamera.GetComponent<AudioListener>().enabled = true;
+
+                // CutScene , CutSceneCameraを終了させる
+                CutScene[n].SetActive(false);
+                CutSceneCamera[n].SetActive(false);
+
+                //Debug.Log("再生終了2");
+                // 終了フラグにする
+                isPlayingCutScene[n] = false;
+
+            }
+        }
     }
 
     // 外部からカットシーンの呼び出し

@@ -13,6 +13,7 @@ public class InputTest : MonoBehaviour
     [SerializeField] private GameObject ShakeUICanvasOBJ;
 
     [SerializeField] private GameObject EnemyGetEffectOBJ;
+    
     // Use this for initialization
     void Start()
     {
@@ -55,8 +56,9 @@ public class InputTest : MonoBehaviour
         {
             //SwapEffect.Create(SwapEffect.SWAP_TYPE.TYPE_DOWN, new Vector3(0, 0, 0));
 
-            EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0) , false);
+            //EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0) , false);
 
+            BonusTutorial.Create();
         
 
             //ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().ResetShakeUI();
@@ -69,7 +71,7 @@ public class InputTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             // 電撃
-            LightningManager.Create(MirrorBall, 0, ThunderTaerget, 0);
+            //LightningManager.Create(MirrorBall, 0, ThunderTaerget, 0);
 
         }
 
