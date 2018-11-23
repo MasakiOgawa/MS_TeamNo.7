@@ -885,6 +885,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &41808976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,6 +1444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &77167820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,14 +2257,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 144706245}
-  m_LocalRotation: {x: -0.014845311, y: -0.9735162, z: 0.06619702, w: -0.21832027}
-  m_LocalPosition: {x: -10.6, y: 9.22, z: 15.44}
+  m_LocalRotation: {x: 0.02223611, y: -0.96950233, z: 0.096085615, w: 0.224362}
+  m_LocalPosition: {x: 2.5, y: 6.94, z: 14.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2078255862}
   m_Father: {fileID: 904700160}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 7.78, y: -205.28, z: 0}
+  m_LocalEulerAnglesHint: {x: 11.32, y: -153.94, z: 0}
 --- !u!114 &144706247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,6 +2277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &144706248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,6 +3891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &258225637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3953,6 +3965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &269438875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4024,6 +4039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &275172259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4752,6 +4770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &316336822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4949,6 +4970,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &329898319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6003,6 +6027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &400550784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6074,6 +6101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &404738955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6145,6 +6175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &407270853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6890,6 +6923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &449550407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8121,7 +8157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!1 &569138781
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 1773243738342900, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8140,7 +8176,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &569138782
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 4019127858316712, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8154,7 +8190,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &569138783
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114892986947347962, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8174,7 +8210,7 @@ MonoBehaviour:
   m_RollDamping: 0
 --- !u!114 &569138784
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114801956390337694, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8199,7 +8235,7 @@ MonoBehaviour:
   m_BiasY: 0
 --- !u!114 &569138785
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114807750324259416, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8904,7 +8940,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632926470
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 1623595635929078, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8923,7 +8959,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &632926471
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 4811149964729908, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8937,7 +8973,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &632926472
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114882066953420054, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8957,7 +8993,7 @@ MonoBehaviour:
   m_RollDamping: 0
 --- !u!114 &632926473
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114024891720997898, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -8982,7 +9018,7 @@ MonoBehaviour:
   m_BiasY: 0
 --- !u!114 &632926474
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114565717037456696, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -10542,6 +10578,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &732373013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12199,6 +12238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &896228577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12807,6 +12849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &957185552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14234,7 +14279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!1 &1103837986
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 1609306289008778, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -14253,7 +14298,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1103837987
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 4155174815962912, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -14267,7 +14312,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1103837988
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114729213629374674, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -14287,7 +14332,7 @@ MonoBehaviour:
   m_RollDamping: 0
 --- !u!114 &1103837989
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114284278813843536, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -14312,7 +14357,7 @@ MonoBehaviour:
   m_BiasY: 0
 --- !u!114 &1103837990
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114320620877364784, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -14458,6 +14503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1112372697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14868,6 +14916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1155176887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14939,6 +14990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1175439233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15010,6 +15064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1176294429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15113,6 +15170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1187242440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15194,14 +15254,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195751741}
-  m_LocalRotation: {x: -0.02186586, y: -0.97046614, z: -0.096437685, w: 0.22003926}
-  m_LocalPosition: {x: 3.93, y: 1.12, z: 8.75}
+  m_LocalRotation: {x: 0.029743668, y: -0.9490166, z: -0.09430618, w: -0.29931477}
+  m_LocalPosition: {x: -4.9, y: 0.92, z: 6.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 632926471}
   m_Father: {fileID: 904700160}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -11.35, y: -154.45, z: 0}
+  m_LocalEulerAnglesHint: {x: -11.35, y: -215.01, z: 0}
 --- !u!114 &1195751743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15214,6 +15274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1195751744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15348,14 +15411,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1228269564}
-  m_LocalRotation: {x: -0.025730709, y: -0.8984825, z: -0.053143658, w: 0.43502071}
-  m_LocalPosition: {x: 8.05, y: 0.97, z: 6.25}
+  m_LocalRotation: {x: -0.01686849, y: -0.9566506, z: -0.05658421, w: 0.28519002}
+  m_LocalPosition: {x: 4.69, y: 1.22, z: 7.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1103837987}
   m_Father: {fileID: 904700160}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -6.77, y: -128.33, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.77, y: -146.8, z: 0}
 --- !u!114 &1228269566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15368,6 +15431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1228269567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15861,6 +15927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1258985231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16204,6 +16273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1290256954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17579,6 +17651,7 @@ MonoBehaviour:
   - {fileID: 1670819609}
   - {fileID: 1392555876}
   RandomCutScenePlayTime: 10
+  LastCutCamera: {fileID: 144706245}
 --- !u!1 &1342005984
 GameObject:
   m_ObjectHideFlags: 0
@@ -17624,6 +17697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1342005987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17849,6 +17925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1381852778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18999,6 +19078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1445197563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19151,6 +19233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1454945588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19482,6 +19567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1464291735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19553,6 +19641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1464405452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20175,6 +20266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1508451183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21219,6 +21313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1617031596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21326,6 +21423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1620566655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21525,6 +21625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1646403547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22888,6 +22991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1745445554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23405,6 +23511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1763464599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23476,6 +23585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1763589645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23547,6 +23659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1775486934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23999,6 +24114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1823019676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24911,6 +25029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1875562512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25013,6 +25134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1893164848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25615,6 +25739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &1961296184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26787,6 +26914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &2046964029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27093,7 +27223,7 @@ SkinnedMeshRenderer:
   m_DirtyAABB: 0
 --- !u!1 &2078255861
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 1408513395705796, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -27112,7 +27242,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &2078255862
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 4707209936961090, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -27126,7 +27256,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2078255863
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114134369562505762, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -27146,7 +27276,7 @@ MonoBehaviour:
   m_RollDamping: 0
 --- !u!114 &2078255864
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114424495348830268, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -27171,7 +27301,7 @@ MonoBehaviour:
   m_BiasY: 0
 --- !u!114 &2078255865
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 114864151354662048, guid: 67cbf46132c3cd845bd27bcddd989c00,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -27257,6 +27387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusOffset: 0
+  m_Profile: {fileID: 0}
 --- !u!114 &2086299055
 MonoBehaviour:
   m_ObjectHideFlags: 0
