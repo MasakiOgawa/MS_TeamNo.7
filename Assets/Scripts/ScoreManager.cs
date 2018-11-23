@@ -190,4 +190,10 @@ public class ScoreManager : MonoBehaviour
         nBeatBad = 0;
         nBeatExcellent = 0;
     }
+
+
+    public void ExcellentCount( )
+    {
+        nCntExcellent++;
+    }
 }

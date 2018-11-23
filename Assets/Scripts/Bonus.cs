@@ -6,7 +6,7 @@ public class Bonus : MonoBehaviour
 {
     float fDist;
     float fGoal;
-    public float fMove;
+    float fMove;
     Manager      ManagerClass;         //マネージャのクラス
     BonusManager BonusManagerClass;
 
@@ -21,14 +21,15 @@ public class Bonus : MonoBehaviour
 
     public enum BONUS_STATE
     { 
-        MOVE = 0 ,
+        NONE  ,
+        MOVE ,
         TARGET ,
         OUT ,
         BIRIBIRI
     }
 
     BONUS_TYPE BonusType;
-    public BONUS_STATE BonusState;
+    BONUS_STATE BonusState;
     float fCntFrame;
     public float fFalseFrame;
 
@@ -53,6 +54,7 @@ public class Bonus : MonoBehaviour
         {
             switch( BonusState )
             {
+             
                 case BONUS_STATE.MOVE :
 
                     this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
@@ -142,9 +144,10 @@ public class Bonus : MonoBehaviour
 	}
 
 
-    public void SetState( BONUS_TYPE Bonus )
+    public void SetState( BONUS_TYPE Bonus , float Move )
     {
-        BonusType = Bonus;
+        BonusType = Bonus;  
+        fMove = Move;
     }
 
 
@@ -152,4 +155,10 @@ public class Bonus : MonoBehaviour
     {
         BonusState = BONUS_STATE.BIRIBIRI;
     } 
+
+
+    public BONUS_STATE GetState( )
+    {
+        return BonusState;
+    }
 }
