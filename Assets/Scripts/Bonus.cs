@@ -50,7 +50,7 @@ public class Bonus : MonoBehaviour
 
 	void Update( )
     {
-        if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS )
+        if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS && BonusManagerClass.GetFlg( ) == true )
         {
             switch( BonusState )
             {

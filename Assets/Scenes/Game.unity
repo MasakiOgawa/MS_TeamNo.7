@@ -1482,7 +1482,6 @@ GameObject:
   m_Component:
   - component: {fileID: 86348945}
   - component: {fileID: 86348946}
-  - component: {fileID: 86348947}
   - component: {fileID: 86348948}
   m_Layer: 0
   m_Name: BonusManager
@@ -1535,22 +1534,6 @@ MonoBehaviour:
   SerialHandlerClass: {fileID: 761611140}
   ArdiunoClass: {fileID: 0}
   MirrorBallMateriaObj: {fileID: 1964382000}
---- !u!114 &86348947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 86348944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020b9665ee7c48c44bd820e0c1e6a0b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Area_Green: {fileID: 1743536906164668, guid: 4432b2b5fce7c0d449bbfab8ec70ab9b, type: 2}
-  Area_Green1: {fileID: 1743536906164668, guid: 4432b2b5fce7c0d449bbfab8ec70ab9b,
-    type: 2}
-  Area_Green2: {fileID: 1743536906164668, guid: 4432b2b5fce7c0d449bbfab8ec70ab9b,
-    type: 2}
 --- !u!114 &86348948
 MonoBehaviour:
   m_ObjectHideFlags: 0

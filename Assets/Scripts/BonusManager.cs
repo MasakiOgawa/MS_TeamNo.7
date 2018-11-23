@@ -236,4 +236,10 @@ public class BonusManager : MonoBehaviour
         CenterEnemyList.Clear( );
         RightEnemyList.Clear( );
     }
+
+
+    public bool GetFlg( )
+    {
+        return bFlg;
+    }
 }

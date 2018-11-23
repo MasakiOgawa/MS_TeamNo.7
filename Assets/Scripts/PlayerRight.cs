@@ -84,8 +84,8 @@ public class PlayerRight : MonoBehaviour
             OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
 
-       if( ( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE || ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS ) &&
-            Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
+
+       if( Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
         {
             fCntFrame += Time.deltaTime;
 
@@ -93,8 +93,16 @@ public class PlayerRight : MonoBehaviour
             {
                 fCntFrame = 0.0f;
 
-                   MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Idle );
-                  Child.ForceStateNormalizedTime( 0.0f );
+                if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE )
+                {
+                    MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.Idle );   
+                }
+                else if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS )
+                {
+                    MotionManagerClass.ChangeRightMotion( PlayerAnimDefine.Idx.HipHopDancing2 );
+                }
+
+                Child.ForceStateNormalizedTime( 0.0f );
             }
         }
     }
