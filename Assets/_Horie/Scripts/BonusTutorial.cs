@@ -58,7 +58,7 @@ public class BonusTutorial : MonoBehaviour {
     }
 
     // 初期化
-    private void Run ()
+    private void Run ( float WorkTime)
     {
         // すべて無効化
         BGObj.SetActive(false);
@@ -74,6 +74,9 @@ public class BonusTutorial : MonoBehaviour {
         bCompleteFrame = false;
         PhaseAnim = 0;
         EGTime = 0;
+
+        WorkingTime = WorkTime;
+
         // BGとFrameを起動
         ActiveBG();
 
@@ -162,13 +165,13 @@ public class BonusTutorial : MonoBehaviour {
 
 
     // 生成
-    static public void Create()
+    static public void Create( float WorkTime)
     {
         GameObject prefab = (GameObject)Resources.Load("Prefabs/BonusTutorial");
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(prefab);
 
-        obj.GetComponent<BonusTutorial>().Run();
+        obj.GetComponent<BonusTutorial>().Run( WorkTime);
     }
 
     

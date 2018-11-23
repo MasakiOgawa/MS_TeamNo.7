@@ -58,7 +58,7 @@ public class InputTest : MonoBehaviour
 
             //EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0) , false);
 
-            BonusTutorial.Create();
+            BonusTutorial.Create(5);
         
 
             //ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().ResetShakeUI();

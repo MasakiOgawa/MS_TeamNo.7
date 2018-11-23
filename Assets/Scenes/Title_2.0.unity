@@ -158,6 +158,11 @@ Prefab:
       propertyPath: shadowDataRenderTexture
       value: 
       objectReference: {fileID: 1338326328}
+    - target: {fileID: 23468457350794288, guid: 67cbf46132c3cd845bd27bcddd989c00,
+        type: 2}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67cbf46132c3cd845bd27bcddd989c00, type: 2}
   m_IsPrefabAsset: 0
