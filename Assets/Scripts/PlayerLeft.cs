@@ -36,6 +36,9 @@ public class PlayerLeft : MonoBehaviour
 
     int Rand;
     float fCntFrame;
+
+    public float fExcellentTming;
+    public float fFineTiming;
         
 	void Start( )
     {
@@ -60,7 +63,7 @@ public class PlayerLeft : MonoBehaviour
         AudioSource      = gameObject.GetComponent< AudioSource >( );
         AudioSource.clip = AudioClip;
 
-         fCntFrame = 0.0f;
+        fCntFrame = 0.0f;
 	}
 
 
@@ -124,14 +127,14 @@ public class PlayerLeft : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
@@ -152,6 +155,8 @@ public class PlayerLeft : MonoBehaviour
                     Rand  = Random.RandomRange(0, 10);
 
                     OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+
+                    ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                
 
@@ -177,14 +182,14 @@ public class PlayerLeft : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
@@ -205,6 +210,8 @@ public class PlayerLeft : MonoBehaviour
                     Rand  = Random.RandomRange(0, 10);
 
                      OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+
+                    ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
               
                 
@@ -230,14 +237,14 @@ public class PlayerLeft : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 );
 
-                    if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
+                    if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
@@ -258,6 +265,8 @@ public class PlayerLeft : MonoBehaviour
                     Rand  = Random.RandomRange(0, 10);
 
                      OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+
+                    ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                
 
@@ -283,14 +292,14 @@ public class PlayerLeft : MonoBehaviour
                     //現在の敵の該当フレームを求める
                     float fTargetFrame = 0.455f * ( PlayerManagerClass.GetnTargetNo( ) - 1 ); 
 
-                     if( Mathf.Abs( fTmp - fTargetFrame ) < 1.0f )
+                     if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
-                    else if( Mathf.Abs( fTmp - fTargetFrame ) < 0.5f )
+                    else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
                         ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
@@ -311,6 +320,8 @@ public class PlayerLeft : MonoBehaviour
                     Rand  = Random.RandomRange(0, 10);
 
                     OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
+
+                    ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                
                

@@ -71,6 +71,7 @@ MonoBehaviour:
   rect: {fileID: 224491692904057826}
   AlphaMaterial: {fileID: 2100000, guid: e43fe51a57444ff46a4c9f0dfaf6d44b, type: 2}
   DeltaAlpha: 0.25
+  alpha: 1
 --- !u!114 &114551047496244566
 MonoBehaviour:
   m_ObjectHideFlags: 1

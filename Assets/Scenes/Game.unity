@@ -7451,7 +7451,7 @@ Prefab:
     - target: {fileID: 114203985196828234, guid: e8ff9761ecad8f34fb6340c2fff9d1fd,
         type: 2}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ff9761ecad8f34fb6340c2fff9d1fd, type: 2}
@@ -9031,6 +9031,8 @@ MonoBehaviour:
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  fExcellentTming: 0.15
+  fFineTiming: 0.5
 --- !u!114 &632992500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9745,6 +9747,8 @@ MonoBehaviour:
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  fExcellentTming: 0.15
+  fFineTiming: 0.5
 --- !u!114 &684074295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21586,6 +21590,8 @@ MonoBehaviour:
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
   AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  fExcellentTming: 0.15
+  fFineTiming: 0.5
 --- !u!114 &1648557948
 MonoBehaviour:
   m_ObjectHideFlags: 0

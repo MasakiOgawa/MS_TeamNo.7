@@ -96,11 +96,12 @@ public class ScoreManager : MonoBehaviour
         {
             case EVALUATION.EVALUATION_BAD :   
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_BAD , Pos );
+              
                 nCntBad++;
                 nBeatBad++;
 
-                AudioSource.clip = AudioExcellent;
-                AudioSource.PlayOneShot( AudioExcellent );
+                AudioSource.clip = AudioBad;
+                AudioSource.PlayOneShot( AudioBad );
 
                 if( nBeatBad >= 3 )
                 {
@@ -114,6 +115,7 @@ public class ScoreManager : MonoBehaviour
 
             case EVALUATION.EVALUATION_FINE :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_FINE ,  Pos );
+               
                 nCntFine++;
 
                 AudioSource.clip = AudioFine;
@@ -129,11 +131,12 @@ public class ScoreManager : MonoBehaviour
 
             case EVALUATION.EVALUATION_EXCELLENT :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , Pos );
+                
                 nCntExcellent++;
                 nBeatExcellent++;
 
-                AudioSource.clip = AudioBad;
-                AudioSource.PlayOneShot( AudioBad );
+                AudioSource.clip = AudioExcellent;
+                AudioSource.PlayOneShot( AudioExcellent );
 
                 if( EnemyManagerClass.GetBeatTarget( ) != null )
                 {
@@ -149,6 +152,10 @@ public class ScoreManager : MonoBehaviour
 
             break;
         }
+
+   
+
+       // Debug.Log( nCntHyo);
     }
 
 
