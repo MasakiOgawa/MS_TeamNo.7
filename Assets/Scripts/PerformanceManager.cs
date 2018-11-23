@@ -160,6 +160,7 @@ public class PerformanceManager : MonoBehaviour
             }
             else if( nCntPerformance == 2 )
             {
+                BonusTutorial.Create( 6.0f );
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
