@@ -13,7 +13,7 @@ public class FontController : MonoBehaviour {
 
     bool bRunComplete;
     bool bComplete;
-    float alpha;
+    public float alpha;
 
     public enum FONT_TYPE
     {
@@ -24,9 +24,9 @@ public class FontController : MonoBehaviour {
   
 	// Use this for initialization
 	void Start () {
-        bRunComplete = false;
+       // bRunComplete = false;
         bComplete = false;
-        alpha = 1.0f;
+        alpha = 1.0f;   
     }
 	
 	// Update is called once per frame
@@ -35,7 +35,6 @@ public class FontController : MonoBehaviour {
         // 1回のみ通貨
         if ( bRunComplete == true)
         {
-
             bRunComplete = false;
             bComplete = true;
         }
@@ -45,22 +44,23 @@ public class FontController : MonoBehaviour {
             alpha -= DeltaAlpha;
             if ( alpha < 0.0f )
             {
+               
                 Destroy(this.gameObject);
             }
         }
     }
 
-    private void Set ( Vector2 pos , FONT_TYPE type )
+    public void Set ( Vector2 pos , FONT_TYPE type )
     {
+
         rect.anchoredPosition = new Vector3(pos.x, pos.y, 0);
 
         // エクセレントのとき
         if ( type == FONT_TYPE.FONT_EXCELLENT)
-            tweener = rect.DOScale(0.14f, 0.2f).OnComplete(() => bRunComplete=true);
+          tweener = rect.DOScale(0.14f, 0.2f).OnComplete(() => bRunComplete=true);
         // それ以外
         else
             tweener = rect.DOScale(0.2f, 0.2f).OnComplete(() => bRunComplete=true);
-
     }
 
 
@@ -95,8 +95,8 @@ public class FontController : MonoBehaviour {
 
         }
         // プレハブからインスタンスを生成
-        GameObject obj = Instantiate(prefab );
-        obj.transform.SetParent(canvas.transform, false);
+        GameObject obj = Instantiate( prefab );
+        obj.transform.SetParent( canvas.transform, false );
         obj.GetComponent<FontController>().Set(pos , type);
  
     }
