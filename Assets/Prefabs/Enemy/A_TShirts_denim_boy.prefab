@@ -2333,8 +2333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fMove: 0.5
-  BonusState: 0
   fFalseFrame: 0.8
 --- !u!137 &137047092386198682
 SkinnedMeshRenderer:

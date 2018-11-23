@@ -16,7 +16,7 @@ public class EnemyEffect : MonoBehaviour {
     // Use this for initialization
     void Start () {
         firstPos = transform.position;
-        transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+       // transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
     }
 	
 	// Update is called once per frame
@@ -52,6 +52,10 @@ public class EnemyEffect : MonoBehaviour {
         m_isComing = isSuccess;
 
         if ( m_isComing == false)
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
+        else
         {
             transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         }
