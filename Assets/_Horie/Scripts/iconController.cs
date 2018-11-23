@@ -6,6 +6,7 @@ using Uniduino;
 
 public class iconController : MonoBehaviour
 {
+    [SerializeField] GameObject CutSceneManager;
 
     [SerializeField]
     private float FadeTime;     // フェードの時間
@@ -129,6 +130,8 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
                 ShakeAloneSE.Play();
+
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
         }
         // readyのとき
@@ -142,6 +145,7 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj0.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos0);
                 ShakeAloneSE.Play();
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
 
 
@@ -172,6 +176,7 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
                 ShakeAloneSE.Play();
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
         }
         // readyのとき
@@ -185,6 +190,7 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj1.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos1);
                 ShakeAloneSE.Play();
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
 
             if (seconds > reverseTime)
@@ -213,6 +219,7 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
                 ShakeAloneSE.Play();
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
         }
         // readyのとき
@@ -230,6 +237,7 @@ public class iconController : MonoBehaviour
                 // particle再生
                 ShakeParticleObj2.GetComponent<ShakeParticle>().PlayParticle(ShakeParticlePos2);
                 ShakeAloneSE.Play();
+                CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
             }
 
             if (seconds > reverseTime)
@@ -248,6 +256,7 @@ public class iconController : MonoBehaviour
         if (isReady1 == true || isReady2 == true || isReady3 == true)
         {         // カウンタ回す
             seconds += Time.deltaTime;
+            CutSceneManager.GetComponent<CMCameraManager>().StopCutScene();
         }
 
         //3つがtrueのとき

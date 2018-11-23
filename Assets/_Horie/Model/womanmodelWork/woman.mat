@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: f869a96d460565b478cc273d83a89e45, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0b28b1d482bfdc4aa5e0b72d29e8a7e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: f869a96d460565b478cc273d83a89e45, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0b28b1d482bfdc4aa5e0b72d29e8a7e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BakedNormal:
@@ -132,18 +132,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _1st2nd_Shades_Feather: 0.08
+    - _1st2nd_Shades_Feather: 0.009
     - _Add_Antipodean_RimLight: 0
     - _Ap_RimLight_FeatherOff: 0
     - _Ap_RimLight_Power: 0.1
-    - _BaseColor_Step: 0.13
+    - _BaseColor_Step: 0.198
     - _BaseShade_Feather: 0.074
     - _BumpScale: 1
     - _CullMode: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Farthest_Distance: 50
+    - _Farthest_Distance: 5.51
     - _GI_Intensity: 0
     - _GlossMapScale: 0.168
     - _Glossiness: 0.89
@@ -186,7 +186,7 @@ Material:
     - _Rotate_MatCapUV: 0
     - _Rotate_NormalMapForMatCapUV: 0
     - _Set_SystemShadowsToBase: 1
-    - _ShadeColor_Step: 0
+    - _ShadeColor_Step: 0.051
     - _Shininess: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -204,7 +204,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _1st_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
-    - _2nd_ShadeColor: {r: 0.85294116, g: 0.82158303, b: 0.82158303, a: 1}
+    - _2nd_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -213,6 +213,6 @@ Material:
     - _HighColor: {r: 0.2205882, g: 0.2205882, b: 0.2205882, a: 1}
     - _MatCapColor: {r: 0.44747052, g: 0.3406142, b: 0.5147059, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Outline_Color: {r: 0.19117647, g: 0.19117647, b: 0.19117647, a: 1}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 1}
     - _RimLightColor: {r: 0.6870773, g: 0.72083586, b: 0.754717, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
