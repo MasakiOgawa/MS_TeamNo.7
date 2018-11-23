@@ -885,9 +885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &41808976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,9 +1441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &77167820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2260,9 +2254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &144706248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3874,9 +3865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &258225637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,9 +3936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &269438875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4022,9 +4007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &275172259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4753,9 +4735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &316336822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,9 +4932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &329898319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6010,9 +5986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &400550784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6084,9 +6057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &404738955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6158,9 +6128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &407270853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,9 +6873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &449550407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9049,7 +9013,7 @@ MonoBehaviour:
   PlayerToBallSpeed: 2
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
-  AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  AudioClip: {fileID: 8300000, guid: 80428e59736d54c4c886dba33f2c9e37, type: 3}
   fExcellentTming: 0.15
   fFineTiming: 0.5
 --- !u!114 &632992500
@@ -9765,7 +9729,7 @@ MonoBehaviour:
   PlayerToBallSpeed: 2
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
-  AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  AudioClip: {fileID: 8300000, guid: 80428e59736d54c4c886dba33f2c9e37, type: 3}
   fExcellentTming: 0.15
   fFineTiming: 0.5
 --- !u!114 &684074295
@@ -10561,9 +10525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &732373013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12221,9 +12182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &896228577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12832,9 +12790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &957185552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14486,9 +14441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1112372697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14899,9 +14851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1155176887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14973,9 +14922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1175439233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15047,9 +14993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1176294429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15153,9 +15096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1187242440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15257,9 +15197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1195751744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15414,9 +15351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1228269567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15910,9 +15844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1258985231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16256,9 +16187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1290256954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16539,6 +16467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1300189113}
   - component: {fileID: 1300189112}
+  - component: {fileID: 1300189114}
   m_Layer: 0
   m_Name: PerformanceManager
   m_TagString: Untagged
@@ -16566,6 +16495,7 @@ MonoBehaviour:
   MotionManagerObj: {fileID: 1099571937}
   EnemyManagerObj: {fileID: 1858523154}
   AuraObj: {fileID: 1957351713}
+  Audiotutorial: {fileID: 8300000, guid: b074caaee2b6b8c409a06b2a71deef48, type: 3}
 --- !u!4 &1300189113
 Transform:
   m_ObjectHideFlags: 0
@@ -16579,6 +16509,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1300189114
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1300189111}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1300983584
 GameObject:
   m_ObjectHideFlags: 0
@@ -17680,9 +17705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1342005987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17908,9 +17930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1381852778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19061,9 +19080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1445197563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19216,9 +19232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1454945588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19550,9 +19563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1464291735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19624,9 +19634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1464405452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20249,9 +20256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1508451183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21296,9 +21300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1617031596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21406,9 +21407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1620566655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21608,9 +21606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1646403547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21675,7 +21670,7 @@ MonoBehaviour:
   PlayerToBallSpeed: 2
   BallToEnemySpeed: 2
   MotionManagerObj: {fileID: 1099571937}
-  AudioClip: {fileID: 8300000, guid: eabe9760581e56f40b33b971f0702b32, type: 3}
+  AudioClip: {fileID: 8300000, guid: 80428e59736d54c4c886dba33f2c9e37, type: 3}
   fExcellentTming: 0.15
   fFineTiming: 0.5
 --- !u!114 &1648557948
@@ -22974,9 +22969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1745445554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23494,9 +23486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1763464599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23568,9 +23557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1763589645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23642,9 +23628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1775486934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24097,9 +24080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1823019676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25012,9 +24992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1875562512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25117,9 +25094,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1893164848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25722,9 +25696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &1961296184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26576,9 +26547,9 @@ MonoBehaviour:
   SerialHandlerClass: {fileID: 761611140}
   ArdiunoClass: {fileID: 0}
   CanvasObj: {fileID: 1605832857}
-  AudioExcellent: {fileID: 8300000, guid: a04b3ee3a61be2f49a62937253a0c872, type: 3}
-  AudioFine: {fileID: 8300000, guid: b5e9fd2a56b58934180a9da456804430, type: 3}
-  AudioBad: {fileID: 8300000, guid: c74725b7d79684d459c56d8ca16c5860, type: 3}
+  AudioExcellent: {fileID: 8300000, guid: 80428e59736d54c4c886dba33f2c9e37, type: 3}
+  AudioFine: {fileID: 8300000, guid: 16b74b69f5e642e4391120bdbb2eb070, type: 3}
+  AudioBad: {fileID: 8300000, guid: 3cdb4bef77935ca40a3185a275ae2ea3, type: 3}
 --- !u!82 &2000776140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26897,9 +26868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &2046964029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27370,9 +27338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusTracksTarget: 0
-  m_FocusOffset: 0
-  m_Profile: {fileID: 0}
 --- !u!114 &2086299055
 MonoBehaviour:
   m_ObjectHideFlags: 0

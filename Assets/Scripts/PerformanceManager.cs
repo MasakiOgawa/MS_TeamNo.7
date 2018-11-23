@@ -39,6 +39,9 @@ public class PerformanceManager : MonoBehaviour
     EnemyManager EnemyManagerClass;
 
     public GameObject AuraObj;
+
+     public AudioClip   Audiotutorial;
+            AudioSource AudioSource;
    
 
     void Start( )
@@ -78,6 +81,9 @@ public class PerformanceManager : MonoBehaviour
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
 
         EnemyManagerClass = EnemyManagerObj.GetComponent< EnemyManager >( );
+
+        AudioSource      = gameObject.GetComponent< AudioSource >( );
+        AudioSource.clip = Audiotutorial;
     }
 
 
@@ -161,6 +167,7 @@ public class PerformanceManager : MonoBehaviour
             else if( nCntPerformance == 2 )
             {
                 BonusTutorial.Create( 6.0f );
+                AudioSource.PlayOneShot( Audiotutorial );
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.BboyHipHopMove );
