@@ -84,24 +84,31 @@ public class PlayerCenter : MonoBehaviour
             OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 0.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
 
-        if( Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
+        if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE && Child.GetCurrentAnimatorStateInfo( 0 ).nameHash != Animator.StringToHash("Base Layer.idle") )
         {
-            fCntFrame += Time.deltaTime;
-
-            if( fCntFrame >= 0.3f )
+            if( Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
             {
-                fCntFrame = 0.0f;
+                 fCntFrame += Time.deltaTime;
 
-                if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE )
+                if( fCntFrame >= 0.3f )
                 {
+                    fCntFrame = 0.0f;
                     MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.Idle );   
                 }
-                else if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS )
-                {
-                    MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.HipHopDancing2 );
-                }
+            }
+           
+        }
+        else if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS && Child.GetCurrentAnimatorStateInfo( 0 ).nameHash != Animator.StringToHash("Base Layer.HipHopDancing2") )
+        {
+            if( Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
+            {
+                fCntFrame += Time.deltaTime;
 
-                Child.ForceStateNormalizedTime( 0.0f );
+                if( fCntFrame >= 0.3f )
+                {
+                    fCntFrame = 0.0f;
+                    MotionManagerClass.ChangeCenterMotion( PlayerAnimDefine.Idx.HipHopDancing2 );   
+                }
             }
         }
     }
@@ -158,10 +165,6 @@ public class PlayerCenter : MonoBehaviour
                 }
                 else
                 {
-                    Rand = Random.RandomRange(0, 10);
-
-                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 0.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
-
                     ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                
@@ -213,10 +216,6 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    Rand = Random.RandomRange(0, 10);
-
-                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 0.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
-
                     ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                
@@ -268,10 +267,6 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    Rand = Random.RandomRange(0, 10);
-
-                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 0.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
-
                     ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                 
@@ -324,10 +319,6 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    Rand = Random.RandomRange(0, 10);
-
-                    OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( 0.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
-
                     ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
                 }
                 
