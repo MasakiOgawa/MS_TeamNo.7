@@ -1374,6 +1374,15 @@ Prefab:
       propertyPath: fEndFrame
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 224832196121586726, guid: 632442437619b324b8e254886fa396d0,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265378335762908, guid: 632442437619b324b8e254886fa396d0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 632442437619b324b8e254886fa396d0, type: 2}
   m_IsPrefabAsset: 0
@@ -7716,6 +7725,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1459433025413536, guid: 7291ae3e4cb6e2740a515e0c2b02d192,
         type: 2}
+    - target: {fileID: 114401589518014948, guid: 26a718b371fcf7e4183b1a3d9dc5aaed,
+        type: 2}
+      propertyPath: EscapeMoveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26a718b371fcf7e4183b1a3d9dc5aaed, type: 2}
   m_IsPrefabAsset: 0

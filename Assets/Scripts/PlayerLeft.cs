@@ -81,7 +81,7 @@ public class PlayerLeft : MonoBehaviour
             OneShot.Create( ( OneShot.ONESHOT_TYPE ) Rand, new Vector3 ( -3.0f , 2.0f , PlayerManagerClass.GetfDist( ) + 17.0f ) );
         }
 
-      if( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE &&
+      if( ( ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_PLAYER_DANCE || ManagerClass.GetPhase( ) == Manager.GAME_PHASE.PHASE_BONUS ) &&
             Child.GetCurrentAnimatorStateInfo( 0 ).normalizedTime >= 1.0f )
         {  
             fCntFrame += Time.deltaTime;
@@ -340,12 +340,13 @@ public class PlayerLeft : MonoBehaviour
 
                 GameObject Tmp = BonusManagerClass.GetBonusLeft( );
                 
-                if( Tmp != null && Tmp.GetComponent< Bonus >( ).BonusState == Bonus.BONUS_STATE.TARGET && Tmp.GetComponent< Bonus >( ).BonusState != Bonus.BONUS_STATE.OUT )
+                if( Tmp != null && Tmp.GetComponent< Bonus >( ).GetState( ) == Bonus.BONUS_STATE.TARGET && Tmp.GetComponent< Bonus >( ).GetState( ) != Bonus.BONUS_STATE.OUT )
                 { 
                     AudioSource.PlayOneShot( AudioClip );
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
                   //  LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
                   BounusEffect.Create( Tmp );
+                    ScoreManagerClass.ExcellentCount( );
                 }
 
                 bBonusFlg = true;

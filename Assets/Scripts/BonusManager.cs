@@ -113,7 +113,7 @@ public class BonusManager : MonoBehaviour
                             LeftEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( -4.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
                             LeftEnemyList[ nLeftNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                             LeftEnemyList[ nLeftNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                            LeftEnemyList[ nLeftNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.LEFT );
+                            LeftEnemyList[ nLeftNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.LEFT , 0.5f );
                             nLeftNo++;
                         }
                     break;
@@ -124,7 +124,7 @@ public class BonusManager : MonoBehaviour
                             CenterEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 0.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
                             CenterEnemyList[ nCenterNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                             CenterEnemyList[ nCenterNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                            CenterEnemyList[ nCenterNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.CENTER );
+                            CenterEnemyList[ nCenterNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.CENTER , 0.5f );
                             nCenterNo++;
                         }
                     break;
@@ -135,7 +135,7 @@ public class BonusManager : MonoBehaviour
                             RightEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( 4.0f , 0.0f , 100.0f ) , Quaternion.identity ) );
                             RightEnemyList[ nRightNo ].transform.rotation = Quaternion.Euler( 0.0f , 180.0f , 0.0f );
                             RightEnemyList[ nRightNo ].GetComponent< PlayerAnim >( ).MotionChange( PlayerAnimDefine.Idx.HipHopDancing3 );
-                            RightEnemyList[ nRightNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.RIGHT );
+                            RightEnemyList[ nRightNo ].GetComponent< Bonus >( ).SetState( Bonus.BONUS_TYPE.RIGHT , 0.5f );
                             nRightNo++;
                         }
                     break;
@@ -217,7 +217,7 @@ public class BonusManager : MonoBehaviour
 
     void ReleaseEnemy( )
     {
-        for( int nCnt = 0; nCnt < LeftEnemyList.Count; nCnt++ )
+       for( int nCnt = 0; nCnt < LeftEnemyList.Count; nCnt++ )
         {
             LeftEnemyList[ nCnt ].SetActive( false );
         }
