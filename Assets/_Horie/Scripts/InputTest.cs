@@ -27,6 +27,28 @@ public class InputTest : MonoBehaviour
         {
             // EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_EXCELLENT, new Vector2(0, 10));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            // EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_FINE, new Vector2(0, 10));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            // EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_BAD, new Vector2(0, 10));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            // EffectManager.CreateSphereEffect(new Vector3(1, 2, 3), new Vector3(10, 20, 100), 100);
+            FontController.Create(canvas, FontController.FONT_TYPE.FONT_MISS, new Vector2(0, 10));
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Y))
@@ -58,7 +80,7 @@ public class InputTest : MonoBehaviour
 
             //EnemyGetEffectOBJ.GetComponent<EnemyGetEffect>().SetEnemyEffect(0, new Vector3(0, 0, 0) , false);
 
-            BonusTutorial.Create(5);
+            //BonusTutorial.Create(5);
         
 
             //ShakeUICanvasOBJ.GetComponent<shakeUICanvas>().ResetShakeUI();
@@ -130,7 +152,8 @@ public class InputTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            BounusEffect.Create(ThunderTaerget);
+            BounusArea.CheckColorGreen(1);
+            //BounusEffect.Create(ThunderTaerget);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))

@@ -154,43 +154,36 @@ public class AuraSpotController : MonoBehaviour {
         {
             // 加速しつつ上下移動 -14 ~ 24
             moveSpeed *= TYPE_2_AccelSpeed;
-
-            Debug.Log("1");
-
             // 上昇中
             if ( TYPE_2_isUp == true )
             {
-                transform.position = new Vector3(transform.position.x,
-                    transform.position.y + moveSpeed,
-                    transform.position.z);
-                Debug.Log("2");
+                transform.localPosition = new Vector3(transform.localPosition.x,
+                    transform.localPosition.y + moveSpeed,
+                    transform.localPosition.z);
                 // 上昇上限超えた場合
-                if ( transform.position.y >= 24 )
+                if ( transform.localPosition.y >= 24 )
                 {
-                    transform.position = new Vector3(transform.position.x,
+                    transform.localPosition = new Vector3(transform.localPosition.x,
                     24.0f,
-                    transform.position.z);
+                    transform.localPosition.z);
                     moveSpeed = 1;
                     TYPE_2_isUp = false;
-                    Debug.Log("3");
                 }
             }
             // 下降中
             else
             {
-                transform.position = new Vector3(transform.position.x,
-                transform.position.y - moveSpeed,
-                transform.position.z);
-                Debug.Log("4");
+                transform.localPosition = new Vector3(transform.localPosition.x,
+                transform.localPosition.y - moveSpeed,
+                transform.localPosition.z);
                 // 下降上限を超えた場合
-                if ( transform.position.y <= -14)
+                if ( transform.localPosition.y <= -14)
                 {
-                    transform.position = new Vector3(transform.position.x,
+                    transform.localPosition = new Vector3(transform.localPosition.x,
                     -14.0f,
-                    transform.position.z);
+                    transform.localPosition.z);
                     moveSpeed = 1;
                     TYPE_2_isUp = true;
-                    Debug.Log("5");
                 }
             }
             
@@ -204,7 +197,8 @@ public class AuraSpotController : MonoBehaviour {
 
 
         //if ( auraType != AURA_TYPE.TYPE_3)
-            transform.Rotate(new Vector3(0, RotateSpeedY, 0));
+        // 常時回転処理
+        transform.Rotate(new Vector3(0, RotateSpeedY, 0));
 
 	}
 
@@ -212,8 +206,8 @@ public class AuraSpotController : MonoBehaviour {
     public void IncreaseType ( AURA_TYPE Aura_Type)
     {
         // 位置初期化
-        transform.position = new Vector3(0, 7, 20);
-        transform.rotation = Quaternion.identity; 
+        transform.rotation = Quaternion.identity;
+        transform.localPosition = new Vector3(0, 7, 20);
         auraType = Aura_Type;
 
         // 各タイプに応じて初期設定を行う
@@ -246,7 +240,6 @@ public class AuraSpotController : MonoBehaviour {
                     AuraPointLight[0].SetActive(true);
                     AuraPointLight[0].GetComponent<AuraAPI.AuraLight>().enabled = true;
 
-
                     break;
                 }
             //―――――――――――――――――――――――――――――――――――――――
@@ -273,9 +266,9 @@ public class AuraSpotController : MonoBehaviour {
                     AuraPointLight[1].GetComponent<AuraAPI.AuraLight>().enabled = true;
 
                     AuraPointLight[2].SetActive(true);
-                    transform.position = new Vector3(7.0f,
-                        transform.position.y,
-                        transform.position.z);
+                    transform.localPosition = new Vector3(7.0f,
+                        transform.localPosition.y,
+                        transform.localPosition.z);
                     AuraPointLight[2].GetComponent<AuraAPI.AuraLight>().enabled = true;
                     break;
                 }
