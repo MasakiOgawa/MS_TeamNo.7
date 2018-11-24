@@ -152,7 +152,8 @@ public class InputTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            BounusEffect.Create(ThunderTaerget);
+            BounusArea.CheckColorGreen(1);
+            //BounusEffect.Create(ThunderTaerget);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))

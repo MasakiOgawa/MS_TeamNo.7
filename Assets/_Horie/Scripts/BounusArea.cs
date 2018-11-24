@@ -45,6 +45,30 @@ public class BounusArea : MonoBehaviour
         Destroy(BounusAreaObj);
     }
 
+    // 色取得
+    static public bool CheckColorGreen ( int nIdx  )
+    {
+        BounusArea Ba = BounusAreaObj.GetComponent<BounusArea>();
+
+        if ( nIdx == 0 )
+        {
+            return Ba.Area_Green.GetComponent<BounusAreaController>().CheckGreen();
+        }
+        else if (nIdx == 1)
+        {
+            return Ba.Area_Green1.GetComponent<BounusAreaController>().CheckGreen();
+        }
+        else if (nIdx == 2)
+        {
+            return Ba.Area_Green2.GetComponent<BounusAreaController>().CheckGreen();
+        }
+        else
+        {
+            Debug.Log("error");
+            return false;
+        }
+    }
+
     // 色変更
     static public void ChangeColor ( int nIdx , bool isGreen )
     {
