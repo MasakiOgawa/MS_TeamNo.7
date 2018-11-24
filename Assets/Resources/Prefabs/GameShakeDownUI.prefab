@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlashColor: 0.6
-  AddColor: 0.05
+  AddColor: 0.005
   MaxColor: 0.6
   MinColor: 0.5
 --- !u!114 &114220498624543142
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlashColor: 0.6
-  AddColor: 0.05
+  AddColor: 0.005
   MaxColor: 0.6
   MinColor: 0.5
 --- !u!114 &114526142818084858
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShakeUI1: {fileID: 1254899768226798}
   ShakeUI2: {fileID: 1046199780992802}
-  ChangeFrame: 15
+  ChangeFrame: 20
 --- !u!114 &114934163713304694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 224670015412526126}
-  DeltaScale: 0.5
+  DeltaScale: 1
 --- !u!222 &222098097388726968
 CanvasRenderer:
   m_ObjectHideFlags: 1
