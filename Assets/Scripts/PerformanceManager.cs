@@ -188,6 +188,7 @@ public class PerformanceManager : MonoBehaviour
             //最後のパフォーマンスに遷移
             if( nCntPerformance == 6 )
             {
+                 AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_0 );
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
                  MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
                  ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );

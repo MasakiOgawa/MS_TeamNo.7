@@ -162,6 +162,11 @@ public class PlayerManager : MonoBehaviour
                 bFlg2 = true;
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HeadSpinning );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HeadSpinning );
+
+                //Y座標の調整
+                PlayerLeftPrefab.transform.position += new Vector3( 0.0f , -0.59f , 0.0f );
+                PlayerCenterPrefab.transform.position += new Vector3( 0.0f , -0.64f , 0.0f );
+                PlayerRightPrefab.transform.position += new Vector3( 0.0f , -0.59f , 0.0f );
             }
         }
 
@@ -175,6 +180,13 @@ public class PlayerManager : MonoBehaviour
         //パフォーマンスが終了したら
         if( ManagerClass.GetdCntFrame( ) >= ( float )nPerformanceBar * /*OneBeat*/0.92f )
         {
+            if( PerformanceManagerClass.GetnCntPerformance( ) == 5 )
+            {
+                PlayerLeftPrefab.transform.position += new Vector3( 0.0f , 0.59f , 0.0f );
+                PlayerCenterPrefab.transform.position += new Vector3( 0.0f , 0.64f , 0.0f );
+                PlayerRightPrefab.transform.position += new Vector3( 0.0f , 0.59f , 0.0f );
+            }
+
             bFlg = false;
             MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.Idle );
