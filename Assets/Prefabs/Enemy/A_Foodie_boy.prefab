@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 95567140714368300}
   - component: {fileID: 114838874411245884}
   - component: {fileID: 114687846452617344}
+  - component: {fileID: 114653229425552118}
   m_Layer: 0
   m_Name: A_Foodie_boy
   m_TagString: Untagged
@@ -2455,6 +2456,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114653229425552118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241469756727922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySexType: 0
 --- !u!114 &114687846452617344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2466,7 +2479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fFalseFrame: 0.8
+  fFalseFrame: 0.5
 --- !u!114 &114838874411245884
 MonoBehaviour:
   m_ObjectHideFlags: 1

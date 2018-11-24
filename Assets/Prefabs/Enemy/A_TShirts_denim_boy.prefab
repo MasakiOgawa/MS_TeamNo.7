@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 95866978136561510}
   - component: {fileID: 114382251307301104}
   - component: {fileID: 114975383423147382}
+  - component: {fileID: 114841497429108496}
   m_Layer: 0
   m_Name: A_TShirts_denim_boy
   m_TagString: Untagged
@@ -2322,6 +2323,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114841497429108496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614098677949966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySexType: 0
 --- !u!114 &114975383423147382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2333,7 +2346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fFalseFrame: 0.8
+  fFalseFrame: 0.5
 --- !u!137 &137047092386198682
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

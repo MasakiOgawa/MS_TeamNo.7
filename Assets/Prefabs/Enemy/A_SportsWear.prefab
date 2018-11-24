@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 95714451529028640}
   - component: {fileID: 114673354215796582}
   - component: {fileID: 114338712800380946}
+  - component: {fileID: 114269371481833890}
   m_Layer: 0
   m_Name: A_SportsWear
   m_TagString: Untagged
@@ -2547,6 +2548,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114269371481833890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525828022586422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySexType: 1
 --- !u!114 &114338712800380946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2558,7 +2571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fFalseFrame: 0.8
+  fFalseFrame: 0.5
 --- !u!114 &114673354215796582
 MonoBehaviour:
   m_ObjectHideFlags: 1

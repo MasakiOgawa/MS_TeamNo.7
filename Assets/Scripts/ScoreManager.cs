@@ -10,7 +10,8 @@ public class ScoreManager : MonoBehaviour
     { 
        EVALUATION_BAD = 0   ,   //悪い
        EVALUATION_FINE      ,   //惜しい
-       EVALUATION_EXCELLENT     //良い
+       EVALUATION_EXCELLENT ,   //良い
+       EVALUATION_MISS          //論外
     };
 
     //各評価のカウンタ
@@ -37,6 +38,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip   AudioExcellent;
     public AudioClip   AudioFine;
     public AudioClip   AudioBad;
+    public AudioClip   AudioMiss;
            AudioSource AudioSource;
 
 	void Start( )
@@ -150,6 +152,13 @@ public class ScoreManager : MonoBehaviour
                     SerialHandlerClass.Write( "4" );
                 }
 
+            break;
+
+            case EVALUATION.EVALUATION_MISS :
+                FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_MISS , Pos );
+
+                AudioSource.clip = AudioMiss;
+                AudioSource.PlayOneShot( AudioMiss );
             break;
         }
 
