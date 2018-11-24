@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 95933702607528910}
   - component: {fileID: 114825539715458994}
   - component: {fileID: 114312444205687902}
+  - component: {fileID: 114434968885453524}
   m_Layer: 0
   m_Name: B_SportsWear
   m_TagString: Untagged
@@ -2558,7 +2559,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fFalseFrame: 0.8
+  fFalseFrame: 0.5
+--- !u!114 &114434968885453524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362986089866070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySexType: 0
 --- !u!114 &114825539715458994
 MonoBehaviour:
   m_ObjectHideFlags: 1

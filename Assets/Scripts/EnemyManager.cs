@@ -251,7 +251,6 @@ public class EnemyManager : MonoBehaviour
             nArray[ nCnt ] = 0;
         }
 
-
         for( int nCnt = nCreateNo , nCnt2 = 0; nCnt < nCreateNo + 8; nCnt++ , nCnt2++ )
         {
             if( EnemyText.text[ nCnt ] == '1' )
@@ -383,7 +382,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         shakeUICanvasClass.ResetShakeUI( );
-         AuraSpotObj.SetActive( false );
+        AuraSpotObj.SetActive( false );
 
         for( int nCnt = 0; nCnt < 12; nCnt++ )
         {
@@ -443,8 +442,6 @@ public class EnemyManager : MonoBehaviour
         //一つもついていなければ
         if( nCnt2 == 4 )
         {
-             
-
             //場所を指定
             if( nTargetNo == 0 )
             {

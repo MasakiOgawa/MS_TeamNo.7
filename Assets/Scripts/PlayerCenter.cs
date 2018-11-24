@@ -165,7 +165,7 @@ public class PlayerCenter : MonoBehaviour
                 }
                 else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                    ScoreManagerClass.ActiveTrue( new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
                 }
                
 
@@ -216,7 +216,7 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                    ScoreManagerClass.ActiveTrue( new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
                 }
                
                 
@@ -267,7 +267,7 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                    ScoreManagerClass.ActiveTrue( new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
                 }
                 
 
@@ -319,7 +319,7 @@ public class PlayerCenter : MonoBehaviour
                 }
                  else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                    ScoreManagerClass.ActiveTrue( new Vector2( 0.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
                 }
                 
                
