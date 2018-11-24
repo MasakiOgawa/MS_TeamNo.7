@@ -37,6 +37,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject MotionManagerObj;
     MotionManager MotionManagerClass;
 
+    public GameObject CameraObj;
+
+
 	void Start( )
     {
         //変数の初期化
@@ -162,6 +165,7 @@ public class PlayerManager : MonoBehaviour
                 bFlg2 = true;
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HeadSpinning );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HeadSpinning );
+
 
                 //Y座標の調整
                 PlayerLeftPrefab.transform.position += new Vector3( 0.0f , -0.59f , 0.0f );

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4fe07b86816464e835eb2ef2d6a2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePhase: 8
+  GamePhase: 0
   CameraObj: {fileID: 1831284502}
   BGMObj: {fileID: 217715829}
   RhythmObj: {fileID: 1388002714}
@@ -15510,6 +15510,7 @@ MonoBehaviour:
   fHalfBar: 0.455
   OneBeat: 0.89
   MotionManagerObj: {fileID: 1099571937}
+  CameraObj: {fileID: 0}
 --- !u!4 &1232893691
 Transform:
   m_ObjectHideFlags: 0
