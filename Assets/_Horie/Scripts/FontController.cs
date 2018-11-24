@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class FontController : MonoBehaviour {
 
+    // Excellent -> 星も出す
+    // Miss -> 出現後ガクって右回転
+    // Bad -> 
+
+
     [SerializeField] RectTransform rect;
     [SerializeField] Material AlphaMaterial;
     [SerializeField] private float DeltaAlpha;
@@ -20,6 +25,7 @@ public class FontController : MonoBehaviour {
         FONT_BAD,
         FONT_FINE,
         FONT_EXCELLENT,
+        FONT_MISS,
     };
   
 	// Use this for initialization
@@ -56,11 +62,20 @@ public class FontController : MonoBehaviour {
         rect.anchoredPosition = new Vector3(pos.x, pos.y, 0);
 
         // エクセレントのとき
-        if ( type == FONT_TYPE.FONT_EXCELLENT)
-          tweener = rect.DOScale(0.14f, 0.2f).OnComplete(() => bRunComplete=true);
-        // それ以外
-        else
-            tweener = rect.DOScale(0.2f, 0.2f).OnComplete(() => bRunComplete=true);
+        if (type == FONT_TYPE.FONT_EXCELLENT)
+            tweener = rect.DOScale(0.25f, 0.2f).OnComplete(() => bRunComplete = true);
+        // 
+        else if (type == FONT_TYPE.FONT_FINE)
+        {
+            tweener = rect.DOScale(0.3f, 0.2f).OnComplete(() => bRunComplete = true);
+            tweener = rect.DORotate(new Vector3(0, 0, -90), 0.2f);
+        }
+        else if (type == FONT_TYPE.FONT_BAD)
+            tweener = rect.DOScale(0.3f, 0.2f).OnComplete(() => bRunComplete = true);
+        else if (type == FONT_TYPE.FONT_MISS)
+            tweener = rect.DOScale(0.3f, 0.1f).OnComplete(() =>
+            tweener = rect.DORotate(new Vector3(0, 0, -10), 0.1f).OnComplete(() =>
+         tweener = rect.DOScale(0.3f, 0.1f).OnComplete(() => bRunComplete = true)));
     }
 
 
@@ -84,6 +99,11 @@ public class FontController : MonoBehaviour {
             case FONT_TYPE.FONT_EXCELLENT:
                 {
                     prefab = (GameObject)Resources.Load("Prefabs/Font/Font_Excellent");
+                    break;
+                }
+            case FONT_TYPE.FONT_MISS:
+                {
+                    prefab = (GameObject)Resources.Load("Prefabs/Font/Font_Miss");
                     break;
                 }
             default:
