@@ -84,6 +84,19 @@ public class Bonus : MonoBehaviour
 
                 case BONUS_STATE.TARGET :
 
+                     if( BonusType == BONUS_TYPE.LEFT )
+                        {
+                            BonusManagerClass.LeftAreaChange( false );
+                        }
+                        else if( BonusType == BONUS_TYPE.CENTER )
+                        {
+                            BonusManagerClass.CenterAreaChange( false );
+                        }
+                        else
+                        {
+                            BonusManagerClass.RightAreaChange( false );
+                        }
+
                     this.transform.position -= new Vector3( 0.0f , 0.0f , fMove );
 
                     if( 75.0f - this.transform.position.z > 3.0f && BonusType == BONUS_TYPE.LEFT )
@@ -105,6 +118,19 @@ public class Bonus : MonoBehaviour
                 break;
 
                 case BONUS_STATE.BIRIBIRI:
+
+                      if( BonusType == BONUS_TYPE.LEFT )
+                        {
+                            BonusManagerClass.LeftAreaChange( false );
+                        }
+                        else if( BonusType == BONUS_TYPE.CENTER )
+                        {
+                            BonusManagerClass.CenterAreaChange( false );
+                        }
+                        else
+                        {
+                            BonusManagerClass.RightAreaChange( false );
+                        }
 
                     if( bFlg == false )
                     {
