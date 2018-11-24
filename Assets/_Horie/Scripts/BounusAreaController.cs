@@ -8,19 +8,21 @@ public class BounusAreaController : MonoBehaviour {
     [SerializeField] private GameObject GlowBits;
     [SerializeField] private GameObject BigGlow;
 
+    private bool isGreen;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        isGreen = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        
+    }
 
     public void ChangeColor ( bool bGreen )
     {
+        isGreen = bGreen;
         ChangeColorThis(bGreen);
         ChangeColorVertical(bGreen);
         ChangeColorGlowBits(bGreen);
@@ -28,9 +30,17 @@ public class BounusAreaController : MonoBehaviour {
 
     }
 
+    // 色取得
+    public bool CheckGreen ()
+    {
+        return isGreen;
+    }
+
     // 自身の色変更
     private void ChangeColorThis(bool bGreen)
     {
+        
+
         Color col;
         if (bGreen == true)
             col = Color.green;
