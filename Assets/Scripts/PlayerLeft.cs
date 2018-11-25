@@ -144,21 +144,21 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                         ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                      else
                     {
-                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
@@ -167,7 +167,7 @@ public class PlayerLeft : MonoBehaviour
                 }
                 else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
+                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS , 0 );
                 }
                
 
@@ -195,21 +195,21 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                       else
                     {
-                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD , 0 );
                          MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
@@ -218,7 +218,7 @@ public class PlayerLeft : MonoBehaviour
                 }
                 else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
+                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS , 0 );
                 }
               
                 
@@ -246,21 +246,21 @@ public class PlayerLeft : MonoBehaviour
 
                     if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                      else
                     {
-                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD , 0 );
                          MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
@@ -269,7 +269,7 @@ public class PlayerLeft : MonoBehaviour
                 }
                 else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
+                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS , 0 );
                 }
                
 
@@ -297,21 +297,21 @@ public class PlayerLeft : MonoBehaviour
 
                      if( Mathf.Abs( fTmp - fTargetFrame ) < fExcellentTming)
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -240.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_EXCELLENT , 0 );
                        MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_EXCELLENT , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                     else if( Mathf.Abs( fTmp - fTargetFrame ) < fFineTiming )
                     {
-                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE );
+                        ScoreManagerClass.ActiveTrue( new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_FINE , 0 );
                         MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_FINE , PlayerToBallSpeed, BallToEnemySpeed);
                     }
                       else
                     {
-                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD );
+                          ScoreManagerClass.ActiveTrue(new Vector2( -310.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_BAD , 0 );
                          MirrorTmp = new Vector3( MirrorBall.transform.position.x , MirrorBall.transform.position.y + 1.0f , MirrorBall.transform.position.z );
                          ExplodeController.Create( Tmp.transform.position , EnemyObj.transform.position , MirrorTmp ,
                                                   ExplodeController.EXPLODE_TYPE.TYPE_BAD , PlayerToBallSpeed, BallToEnemySpeed);
@@ -320,7 +320,7 @@ public class PlayerLeft : MonoBehaviour
                 }
                 else
                 {
-                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS );
+                    ScoreManagerClass.ActiveTrue(new Vector2( -290.0f , -180.0f ) , ScoreManager.EVALUATION.EVALUATION_MISS , 0 );
                 }
                
                
@@ -356,7 +356,7 @@ public class PlayerLeft : MonoBehaviour
                     Tmp.GetComponent< Bonus >( ).SetBiriBiri( );
                   //  LightningManager.Create( MirrorBall, 2.67f, Tmp, 0);
                   BounusEffect.Create( Tmp );
-                    ScoreManagerClass.ExcellentCount( );
+                    ScoreManagerClass.ExcellentCount( 0 );
                 }
 
                 bBonusFlg = true;

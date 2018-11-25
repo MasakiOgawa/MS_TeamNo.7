@@ -15,15 +15,23 @@ public class ScoreManager : MonoBehaviour
     };
 
     //各評価のカウンタ
-    int nCntBad;
-    int nCntFine;
-    int nCntExcellent;
+    int nCntBad;   //共通
+    int nCntLeftFine;
+    int nCntCenterFine;
+    int nCntRightFine;
+    int nCntLeftExcellent;
+    int nCntCenterExcellent;
+    int nCntRightExcellent;
+
 
            Manager            ManagerClass;              //マネージャのクラス
     public GameObject         ManagerObj;                //マネージャのオブジェクト
            EnemyManager       EnemyManagerClass;         //エネミーマネージャのクラス
            PerformanceManager PerformanceManagerClass;   //パフォーマンスマネージャのクラス
     public int                nScore;                    //スコア
+     public int                nLeftScore;                    //スコア
+     public int                nCenterScore;                    //スコア
+     public int                nRightScore;                    //スコア
 
     public SerialHandler SerialHandlerClass;
     public Arduino ArdiunoClass;
@@ -50,9 +58,16 @@ public class ScoreManager : MonoBehaviour
 
         //変数の初期化
 		nCntBad       = 0;
-        nCntFine      = 0;
-        nCntExcellent = 0;
+        nCntLeftFine = 0;
+        nCntCenterFine = 0;
+        nCntRightFine = 0;
+        nCntLeftExcellent = 0;
+        nCntCenterExcellent = 0;
+        nCntRightExcellent = 0;
         nScore        = 0;
+        nLeftScore = 0;
+        nCenterScore = 0;
+        nRightScore = 0;
 
         ArdiunoClass = Arduino.global;
         ArdiunoClass.Setup( ConfigurePins );
@@ -92,7 +107,7 @@ public class ScoreManager : MonoBehaviour
 	
 
     //評価のアクティブ化
-    public void ActiveTrue( Vector2 Pos , EVALUATION Evaluation )
+    public void ActiveTrue( Vector2 Pos , EVALUATION Evaluation , int nPlayerNo )
     {
         switch( Evaluation )
         {
@@ -118,7 +133,18 @@ public class ScoreManager : MonoBehaviour
             case EVALUATION.EVALUATION_FINE :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_FINE ,  Pos );
                
-                nCntFine++;
+               if( nPlayerNo == 0 )
+                {
+                    nCntLeftFine++;
+                }
+               else if ( nPlayerNo == 1 )
+                {
+                    nCntCenterFine++;
+                }
+                else
+                {
+                     nCntRightFine++;
+                }
 
                 AudioSource.clip = AudioFine;
                 AudioSource.PlayOneShot( AudioFine );
@@ -134,7 +160,19 @@ public class ScoreManager : MonoBehaviour
             case EVALUATION.EVALUATION_EXCELLENT :
                 FontController.Create( CanvasObj , FontController.FONT_TYPE.FONT_EXCELLENT , Pos );
                 
-                nCntExcellent++;
+                if( nPlayerNo == 0 )
+                {
+                    nCntLeftExcellent++;
+                }
+               else if ( nPlayerNo == 1 )
+                {
+                    nCntCenterExcellent++;
+                }
+                else
+                {
+                     nCntRightExcellent++;
+                }
+
                 nBeatExcellent++;
 
                 AudioSource.clip = AudioExcellent;
@@ -171,16 +209,23 @@ public class ScoreManager : MonoBehaviour
     //スコアの集計
     public void AggregateScore( )
     {
-        nScore += ( nCntExcellent * 2 ) + ( nCntFine * 1 );
+        nLeftScore += nCntLeftExcellent * 2 + nCntLeftFine;
+        nCenterScore += nCntCenterExcellent * 2 + nCntCenterFine;
+        nRightScore += nCntRightExcellent * 2 + nCntRightFine;
+        nScore += nLeftScore + nCenterScore + nRightScore;
 
         //敵を追従させる
-        EnemyManagerClass.TakeIn( ( nCntExcellent * 2 ) + ( nCntFine * 1 ) );
+        EnemyManagerClass.TakeIn( nLeftScore + nCenterScore + nRightScore );
 
         //各評価のリセット
         nCntBad       = 0;
-        nCntFine      = 0;
-        nCntExcellent = 0;
-
+        nCntLeftExcellent = 0;
+        nCntCenterExcellent = 0;
+        nCntRightExcellent = 0;
+        nCntLeftFine = 0;
+        nCntCenterFine = 0;
+        nCntRightFine = 0;
+       
         //現在の敵を非アクティブ化
         EnemyManagerClass.ActiveFalse( );
 
@@ -195,9 +240,30 @@ public class ScoreManager : MonoBehaviour
         return nScore;
     }
 
-    public int ResetnScore( )
+
+    public int GetnLeftScore( )
     {
-        return nScore = 0;
+        return nLeftScore;
+    }
+
+
+    public int GetnCenterScore( )
+    {
+        return nCenterScore;
+    }
+
+
+    public int GetnRightScore( )
+    {
+        return nRightScore;
+    }
+
+    public void ResetnScore( )
+    {
+         nScore = 0;
+         nLeftScore = 0;
+        nCenterScore = 0;
+        nRightScore = 0;
     }
 
 
@@ -208,8 +274,19 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    public void ExcellentCount( )
+    public void ExcellentCount( int nPlayerNo )
     {
-        nCntExcellent++;
+        if( nPlayerNo == 0 )
+        {
+            nCntLeftExcellent++;
+        }
+        else if ( nPlayerNo == 1 )
+        {
+            nCntCenterExcellent++;
+        }
+        else
+        {
+                nCntRightExcellent++;
+        }
     }
 }
