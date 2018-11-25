@@ -36,6 +36,9 @@ public class EnemyManager : MonoBehaviour
     GameObject[ ] aEnemyPrefabArray3;
 
     List<GameObject> TakeInEnemyList;  //追従する敵の作業用変数
+    List<PlayerAnim> PlayerAnimList; 
+    List<Animator>   AnimatorList;
+    List<float>      PosXList;
 
     public float fAddRotateY;
     float fRotY;
@@ -72,6 +75,9 @@ public class EnemyManager : MonoBehaviour
         aEnemyPrefabArray2 = new GameObject[ 12 ];
         aEnemyPrefabArray3 = new GameObject[ 8 ];
         TakeInEnemyList = new List<GameObject>();  
+        PlayerAnimList  = new List<PlayerAnim>();
+        AnimatorList = new List<Animator>();
+        PosXList = new List<float>();
         nCreateNo         = 0;
         nCntLength        = 0;
          fRotY = 0.0f;
@@ -512,6 +518,9 @@ public class EnemyManager : MonoBehaviour
                 nTmp   = ( int )Random.Range( 2 , nTakeInEnemyRange );
                 nTmp  -= ( nTakeInEnemyRange - 1 ) / 2;
                 TakeInEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
+                PlayerAnimList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].GetComponent< PlayerAnim >());
+                AnimatorList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].GetComponent<Animator>());
+                PosXList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].transform.position.x );
 
                 //プレイヤー達の子要素にする
                 TakeInEnemyList[ TakeInEnemyList.Count - 1 ].transform.parent = PlayersObj.GetComponent< Transform >( ).transform;
@@ -533,8 +542,27 @@ public class EnemyManager : MonoBehaviour
     {
         for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
         {
+            TakeInEnemyList[ nCnt ].gameObject.transform.position = new Vector3( PosXList[ nCnt ] , 0.0f , TakeInEnemyList[ nCnt ].gameObject.transform.position.z);
             TakeInEnemyList[ nCnt ].gameObject.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
-            TakeInEnemyList[ nCnt ].gameObject.GetComponent< PlayerAnim >( ).MotionChange( idx );
+            PlayerAnimList[ nCnt ].MotionChange( idx );
+        }
+    }
+
+
+    public void  ApplyFalse( )
+    {
+        for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
+        {
+            AnimatorList[ nCnt ].applyRootMotion = false;
+        }
+    }
+
+
+    public void  ApplyTrue( )
+    {
+        for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
+        {
+            AnimatorList[ nCnt ].applyRootMotion = true;
         }
     }
 

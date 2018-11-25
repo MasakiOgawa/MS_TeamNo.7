@@ -152,20 +152,27 @@ public class PerformanceManager : MonoBehaviour
         {
             if( nCntPerformance == 0 )
             {
+                MotionManagerClass.ApplyTrue( );
+                EnemyManagerClass.ApplyTrue( );
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 1 );
-                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
-                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.JazzDancing1 );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.JazzDancing1 );
                 AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_2 );
             }
             else if( nCntPerformance == 1 )
             {
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 2 );
-                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Walk );
-                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.Walk );
+              
+                MotionManagerClass.ApplyTrue( );
+                EnemyManagerClass.ApplyTrue( );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
                 AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_3 );
             }
             else if( nCntPerformance == 2 )
             {
+                MotionManagerClass.ApplyTrue( );
+                EnemyManagerClass.ApplyTrue( );
                 BonusTutorial.Create( 6.0f );
                 AudioSource.PlayOneShot( Audiotutorial );
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 3 );
@@ -175,6 +182,8 @@ public class PerformanceManager : MonoBehaviour
             }
             else if( nCntPerformance == 4 )
             {
+                MotionManagerClass.ApplyTrue( );
+                EnemyManagerClass.ApplyTrue( );
                 CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 4 );
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.GangnamStyle );
                 EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.GangnamStyle );
@@ -188,6 +197,8 @@ public class PerformanceManager : MonoBehaviour
             //最後のパフォーマンスに遷移
             if( nCntPerformance == 6 )
             {
+                   MotionManagerClass.ApplyTrue( );
+                 EnemyManagerClass.ApplyTrue( );
                  AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_0 );
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
                  MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
