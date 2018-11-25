@@ -51,6 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200020993291050}
   - component: {fileID: 137357193650815894}
+  - component: {fileID: 114067986937725732}
   m_Layer: 0
   m_Name: Eyes4
   m_TagString: Untagged
@@ -292,6 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4622621170442392}
   - component: {fileID: 137307494856867802}
+  - component: {fileID: 114342865949395648}
   m_Layer: 0
   m_Name: tank1
   m_TagString: Untagged
@@ -458,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4368730098586196}
   - component: {fileID: 137057123909700816}
+  - component: {fileID: 114073613320279380}
   m_Layer: 0
   m_Name: B1
   m_TagString: Untagged
@@ -715,6 +718,8 @@ GameObject:
   - component: {fileID: 4973407567751846}
   - component: {fileID: 95920976113875704}
   - component: {fileID: 114073887502153114}
+  - component: {fileID: 114240135965397772}
+  - component: {fileID: 114139745922922122}
   m_Layer: 0
   m_Name: TShirts_M_Face_B
   m_TagString: Untagged
@@ -2122,7 +2127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587283348653810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.0998095, y: -4.5502157e-17, z: 2.0492349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723006579790578}
@@ -2161,6 +2166,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114067986937725732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1057736235388240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 279e5cdead1c9cd47a2831dd7c7892ab, type: 2}
+  - {fileID: 2100000, guid: 3ba78759e14cfdf41aae25425aa77e85, type: 2}
+  - {fileID: 2100000, guid: 2d8b6fd1c8f031841b1d94d3f93d5ed0, type: 2}
+  - {fileID: 2100000, guid: b6e91ab82e7c6f94fb2bf09cbdc6438c, type: 2}
+--- !u!114 &114073613320279380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396832341282516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: a9d6dbcda4489fa4486d1c895d38928b, type: 2}
+  - {fileID: 2100000, guid: f82d56c24291f2b49b771043cabf4ee6, type: 2}
+  - {fileID: 2100000, guid: a2ae30feba91f0a4b85b66527fb2b4d3, type: 2}
+  - {fileID: 2100000, guid: f3130cb29ad5e494db7d8f7f90d1f277, type: 2}
 --- !u!114 &114073887502153114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2173,6 +2210,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114139745922922122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587283348653810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 0
+--- !u!114 &114240135965397772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587283348653810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fFalseFrame: 0.5
+--- !u!114 &114342865949395648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226630828660474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: c621752f126d2264fabac7fa1e1e050b, type: 2}
+  - {fileID: 2100000, guid: 5f1a7b97dbd4166409181906658b8305, type: 2}
+  - {fileID: 2100000, guid: 4ca307fbc0c3bd6439e6321aa40a8053, type: 2}
+  - {fileID: 2100000, guid: 0fa721987ad34b144be7483e47923ed4, type: 2}
+  - {fileID: 2100000, guid: b13707c3d05d53248a0b01d5e66d2c3e, type: 2}
+  - {fileID: 2100000, guid: 0429826282785c44ea3c7cc6b0d29ed3, type: 2}
 --- !u!137 &137057123909700816
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
