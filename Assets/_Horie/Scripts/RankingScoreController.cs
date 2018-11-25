@@ -46,7 +46,7 @@ public class RankingScoreController : MonoBehaviour {
     {
         _score = nScore;
         bRankedIn = bRanked;
-
+        Debug.Log(_score);
         // 100で割って0以上の場合->3桁
         if (_score / 100 > 0)
         {
@@ -57,16 +57,16 @@ public class RankingScoreController : MonoBehaviour {
             // 100
             int score100 = _score / 100;
             NumberAsset.GetComponent<NumberController>().SetSprite(score100, NumberObj100);
-
+            Debug.Log("100:"+score100);
             // 10
             int score10 = _score % 100;
             score10 = score10 / 10;
             NumberAsset.GetComponent<NumberController>().SetSprite(score10, NumberObj10);
-
+            Debug.Log("10:" + score10);
             // 1
             int score1 = _score % 10;
             NumberAsset.GetComponent<NumberController>().SetSprite(score1, NumberObj1);
-
+            Debug.Log("1:" + score1);
         }
         // 10で割って0
         else if (_score / 10 > 0)
@@ -97,7 +97,7 @@ public class RankingScoreController : MonoBehaviour {
 
         if (bRankedIn == true)
         {
-            Debug.Log("true");
+            //Debug.Log("true");
 
             // 3秒かけて2倍の大きさに
             // スケールシェイク
