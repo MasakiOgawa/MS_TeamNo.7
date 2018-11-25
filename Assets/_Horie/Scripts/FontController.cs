@@ -25,6 +25,12 @@ public class FontController : MonoBehaviour {
     [SerializeField] private GameObject Bad_a;
     [SerializeField] private GameObject Bad_d;
 
+
+    [SerializeField] private GameObject Star_Font;
+    [SerializeField] private GameObject Star_Left;
+    [SerializeField] private GameObject Star_R_UP;
+    [SerializeField] private GameObject Star_R_DOWN;
+
     bool bRunComplete;
     bool bComplete;
     public float alpha;
@@ -72,7 +78,15 @@ public class FontController : MonoBehaviour {
 
         // エクセレントのとき
         if (type == FONT_TYPE.FONT_EXCELLENT)
-            tweener = rect.DOScale(0.25f, 0.2f).OnComplete(() => bRunComplete = true);
+        {
+            //tweener = rect.DOScale(0.25f, 0.2f).OnComplete(() => bRunComplete = true);
+
+            Star_Font.GetComponent<Font_Fine>().StarMove();
+            Star_R_DOWN.GetComponent<Font_Fine>().StarMove();
+            Star_Left.GetComponent<Font_Fine>().StarMove();
+            Star_R_UP.GetComponent<Font_Fine>().StarMove();
+
+        }
         // FINE
         else if (type == FONT_TYPE.FONT_FINE)
         {
