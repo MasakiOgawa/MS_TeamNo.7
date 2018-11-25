@@ -192,7 +192,8 @@ public class InputTest : MonoBehaviour
         // エンターを押してシーン遷移
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            _ResultManager.GetComponent<ResultManager>().StartResult(183);
+            _ResultManager.GetComponent<ResultManager>().StartResult(183 , 110 , 122 , 139);
+            //_ResultManager.GetComponent<ResultManager>().StartResult(183);
         }
 
         // セーブデータ削除

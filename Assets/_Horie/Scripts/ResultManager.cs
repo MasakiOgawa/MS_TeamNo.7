@@ -8,6 +8,9 @@ public class ResultManager : MonoBehaviour {
     // scoreCounter
     [SerializeField] private GameObject _ResultLogo;
     [SerializeField] private GameObject _ScoreCounter;
+    [SerializeField] private GameObject _ScoreCounter1;
+    [SerializeField] private GameObject _ScoreCounter2;
+    [SerializeField] private GameObject _ScoreCounter3;
     [SerializeField] private GameObject _RankingManager;
     [SerializeField] private GameObject _ResultBGOBJ;
     [SerializeField] private float _scoreCounterStartTime;      // ResultLogo出てからスコア回転開始までの時間
@@ -18,6 +21,9 @@ public class ResultManager : MonoBehaviour {
 
     // 獲得スコア
     private int getScore;
+    private int m_nScore1;
+    private int m_nScore2;
+    private int m_nScore3;
 
     // 時間カウンタ
     private float fTime;
@@ -33,6 +39,9 @@ public class ResultManager : MonoBehaviour {
         // 起動のときに起こす
         _ResultLogo.SetActive(false);
         _ScoreCounter.SetActive(false);
+        _ScoreCounter1.SetActive(false);
+        _ScoreCounter2.SetActive(false);
+        _ScoreCounter3.SetActive(false);
         _RankingManager.GetComponent<RankingManager>().InitRankingManager();
         _RankingManager.SetActive(false);
         _ResultBGOBJ.SetActive(false);
@@ -53,6 +62,12 @@ public class ResultManager : MonoBehaviour {
             // スコアカウンタの起動
             _ScoreCounter.SetActive(true);
             _ScoreCounter.GetComponent<ScoreCounter>().SetScore(getScore);
+            _ScoreCounter1.SetActive(true);
+            _ScoreCounter2.SetActive(true);
+            _ScoreCounter3.SetActive(true);
+            _ScoreCounter1.GetComponent<ScoreCounter>().SetScore(m_nScore1);
+            _ScoreCounter2.GetComponent<ScoreCounter>().SetScore(m_nScore2);
+            _ScoreCounter3.GetComponent<ScoreCounter>().SetScore(m_nScore3);
         }
 
         // スコア回転終了してマクロ時間経過した場合
@@ -61,6 +76,9 @@ public class ResultManager : MonoBehaviour {
             // ResultLogoとScoreの表示終了
             _ResultLogo.SetActive(false);
             _ScoreCounter.SetActive(false);
+            _ScoreCounter1.SetActive(false);
+            _ScoreCounter2.SetActive(false);
+            _ScoreCounter3.SetActive(false);
 
             // RankingManagerの起動
             _RankingManager.SetActive(true);
@@ -79,15 +97,24 @@ public class ResultManager : MonoBehaviour {
         //BG起動
         _ResultBGOBJ.SetActive(true);
         _ResultBGOBJ.GetComponent<ResultBGController>().StartBG();
-
-
-
         // スコア受け取り
         getScore = score;
 
+        // BGM
+        GetComponent<AudioSource>().Play();
+    }
+    // Resultモード起動関数
+    public void StartResult(int score , int nScore1 , int nScore2 , int nScore3)
+    {
+        //BG起動
+        _ResultBGOBJ.SetActive(true);
+        _ResultBGOBJ.GetComponent<ResultBGController>().StartBG();
+        // スコア受け取り
+        getScore = score;
 
-
-        
+        m_nScore1 = nScore1;
+        m_nScore2 = nScore2;
+        m_nScore3 = nScore3;
 
         // BGM
         GetComponent<AudioSource>().Play();
