@@ -25,9 +25,17 @@ public class Font_Fine : MonoBehaviour {
         B,a,d,
     };
 
+    public enum STAR_TYPE
+    {
+        FONT,
+        L,
+        R_UP,
+        R_DOWN,
+    }
+
     [SerializeField] private FINE_TYPE type;
     [SerializeField] private BAD_TYPE badType;
-
+    [SerializeField] private STAR_TYPE starType;
     // Use this for initialization
     void Start () {
 		
@@ -129,6 +137,62 @@ public class Font_Fine : MonoBehaviour {
                 {
                     tweener = rect.DOScale(0.3f, sclSpeed).OnComplete(() =>
                     tweener = rect.DORotate(new Vector3(0, 0, -30), rotateTime));
+                    break;
+                }
+
+            default:
+                break;
+
+
+        }
+
+
+    }
+
+    public void StarMove()
+    {
+        float sclSpeed = 0.1f;
+        float upY = 7.5f;
+
+        float rotateTime = 1.0f;
+        float rotateZ = 720.0f;
+
+        Vector3 work = transform.position;
+        switch (starType)
+        {
+            case STAR_TYPE.FONT:
+                {
+                    end = false;
+                    //tweener = rect.DOScale(0.3f, sclSpeed);
+
+                    tweener = rect.DOScale(0.3f, sclSpeed).OnComplete(() =>
+                    tweener = rect.DOScale(0.3f, 0.5f).OnComplete(() => end = true));
+                    break;
+                }
+            case STAR_TYPE.L:
+                {
+                    // move
+                    //tweener = rect.DOMove(work + new Vector3(-200, 10, 0), 0.1f);
+
+                    tweener = rect.DOScale(0.15f, sclSpeed).OnComplete(() =>
+                    tweener = rect.DORotate(new Vector3(0, 0, -rotateZ), rotateTime));
+
+                    break;
+                }
+            case STAR_TYPE.R_UP:
+                {
+                    //tweener = rect.DOScale(0.3f, sclSpeed).OnComplete(() =>
+                    //tweener = rect.DORotate(new Vector3(0, 0, rotateZ), rotateTime
+                    //).OnComplete(() => end = true));
+
+                    tweener = rect.DOScale(0.15f, sclSpeed).OnComplete(() =>
+                    tweener = rect.DORotate(new Vector3(0, 0, -rotateZ ), rotateTime));
+                    break;
+                }
+            case STAR_TYPE.R_DOWN:
+                {
+                    tweener = rect.DOScale(0.15f, sclSpeed).OnComplete(() =>
+                    tweener = rect.DORotate(new Vector3(0, 0, -rotateZ), rotateTime));
                     break;
                 }
 
