@@ -16,6 +16,15 @@ public class FontController : MonoBehaviour {
     [SerializeField] private float DeltaAlpha;
     Tweener tweener;            // トゥイーンの情報
 
+    [SerializeField] private GameObject fine_G;
+    [SerializeField] private GameObject fine_o_L;
+    [SerializeField] private GameObject fine_o_R;
+    [SerializeField] private GameObject fine_d;
+
+    [SerializeField] private GameObject Bad_B;
+    [SerializeField] private GameObject Bad_a;
+    [SerializeField] private GameObject Bad_d;
+
     bool bRunComplete;
     bool bComplete;
     public float alpha;
@@ -56,7 +65,7 @@ public class FontController : MonoBehaviour {
         }
     }
 
-    public void Set ( Vector2 pos , FONT_TYPE type )
+    public void Set(Vector2 pos, FONT_TYPE type)
     {
 
         rect.anchoredPosition = new Vector3(pos.x, pos.y, 0);
@@ -64,18 +73,35 @@ public class FontController : MonoBehaviour {
         // エクセレントのとき
         if (type == FONT_TYPE.FONT_EXCELLENT)
             tweener = rect.DOScale(0.25f, 0.2f).OnComplete(() => bRunComplete = true);
-        // 
+        // FINE
         else if (type == FONT_TYPE.FONT_FINE)
         {
-            tweener = rect.DOScale(0.3f, 0.2f).OnComplete(() => bRunComplete = true);
-            tweener = rect.DORotate(new Vector3(0, 0, -90), 0.2f);
+            //tweener = rect.DOScale(0.3f, 0.2f);
+            fine_G.GetComponent<Font_Fine>().Move();
+            fine_o_L.GetComponent<Font_Fine>().Move();
+            fine_o_R.GetComponent<Font_Fine>().Move();
+            fine_d.GetComponent<Font_Fine>().Move();
+            //tweener = rect.DORotate(new Vector3(0, 0, -90), 0.2f);
         }
+        // BAD
         else if (type == FONT_TYPE.FONT_BAD)
-            tweener = rect.DOScale(0.3f, 0.2f).OnComplete(() => bRunComplete = true);
+        {
+            //tweener = rect.DOScale(0.3f, 0.2f).OnComplete(() => bRunComplete = true);
+            Bad_B.GetComponent<Font_Fine>().BadMove();
+            Bad_a.GetComponent<Font_Fine>().BadMove();
+            Bad_d.GetComponent<Font_Fine>().BadMove();
+        }
+        // MISS
         else if (type == FONT_TYPE.FONT_MISS)
+        {
             tweener = rect.DOScale(0.3f, 0.1f).OnComplete(() =>
             tweener = rect.DORotate(new Vector3(0, 0, -10), 0.1f).OnComplete(() =>
-         tweener = rect.DOScale(0.3f, 0.1f).OnComplete(() => bRunComplete = true)));
+            tweener = rect.DOScale(0.3f, 0.1f).OnComplete(() => bRunComplete = true)));
+        }
+    }
+    public void returnFontFine ( int nIdx )
+    {
+        bRunComplete = true;
     }
 
 
