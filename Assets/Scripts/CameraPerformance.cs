@@ -27,4 +27,10 @@ public class CameraPerformance : MonoBehaviour
     {
         bMoveFlg = true;
     }
+
+
+    public bool GetbMoveFlg( )
+    {
+        return bMoveFlg;
+    }
 }

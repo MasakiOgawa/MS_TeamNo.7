@@ -490,7 +490,7 @@ public class EnemyManager : MonoBehaviour
         int        nTmp;          //作業用変数
         int        nCreateSide;   //横の生成数
         float      fPosX;         //敵のX座標
-
+        nEvaluation /= 2;   //適当
         //プレイヤーの移動距離を取得
         float fMoveZ = ManagerClass.GetPlayerManager( ).GetComponent< PlayerManager >( ).fDist;
 
@@ -546,6 +546,23 @@ public class EnemyManager : MonoBehaviour
         for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
         {
             TakeInEnemyList[ nCnt ].gameObject.transform.rotation = Quaternion.Euler( 0.0f , fRotY , 0.0f );
+        }
+    }
+
+
+    public void TakeInEnemySetPosY( float fManY , float fWomanY )
+    {
+        for( int nCnt = 0; nCnt < TakeInEnemyList.Count; nCnt++ )
+        {
+            if( TakeInEnemyList[ nCnt ].gameObject.GetComponent< EnemySex >( ).GetSexType( ) == EnemySex.EnemySexType.TYPE_MAN )
+            {
+                 TakeInEnemyList[ nCnt ].gameObject.transform.position += new Vector3( 0.0f , fManY , 0.0f );
+            }
+            else
+            {
+                TakeInEnemyList[ nCnt ].gameObject.transform.position += new Vector3( 0.0f , fWomanY , 0.0f );
+            }
+           
         }
     }
 }

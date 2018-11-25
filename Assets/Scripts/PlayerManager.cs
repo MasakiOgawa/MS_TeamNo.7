@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
     MotionManager MotionManagerClass;
 
     public GameObject CameraObj;
+    CameraPerformance CameraPerformanceClass;
 
 
 	void Start( )
@@ -68,6 +69,8 @@ public class PlayerManager : MonoBehaviour
         BGMClass = ManagerClass.GetBGM( ).GetComponent< BGM >( );
 
         MotionManagerClass = MotionManagerObj.GetComponent< MotionManager >( );
+
+        CameraPerformanceClass = CameraObj.GetComponent< CameraPerformance >( );
 	}
 	
 
@@ -148,9 +151,12 @@ public class PlayerManager : MonoBehaviour
     //プレイヤー達の移動
     public void PlayersMove( )
     {
-        PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
-        fDist                         += fMove;
-
+        if( CameraPerformanceClass.GetbMoveFlg( ) == false )
+        {
+            PlayersObj.transform.position += new Vector3( 0.0f , 0.0f , fMove );
+            fDist                         += fMove;
+        }
+        
         if( bFlg == false )
         {
             if( PerformanceManagerClass.GetnCntPerformance( ) == 1 && ManagerClass.GetdCntFrame( ) >= 8.28f )
@@ -161,6 +167,8 @@ public class PlayerManager : MonoBehaviour
             }
             else if( PerformanceManagerClass.GetnCntPerformance( ) == 5 && ManagerClass.GetdCntFrame( ) >= 7.36 )
             {
+                CameraPerformanceClass.TruebMoveFlg( );
+
                 bFlg = true;
                 bFlg2 = true;
                 MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HeadSpinning );
@@ -171,6 +179,7 @@ public class PlayerManager : MonoBehaviour
                 PlayerLeftPrefab.transform.position += new Vector3( 0.0f , -0.59f , 0.0f );
                 PlayerCenterPrefab.transform.position += new Vector3( 0.0f , -0.64f , 0.0f );
                 PlayerRightPrefab.transform.position += new Vector3( 0.0f , -0.59f , 0.0f );
+                EnemyManagerClass.TakeInEnemySetPosY( -0.64f , -0.59f );
             }
         }
 
@@ -189,6 +198,7 @@ public class PlayerManager : MonoBehaviour
                 PlayerLeftPrefab.transform.position += new Vector3( 0.0f , 0.59f , 0.0f );
                 PlayerCenterPrefab.transform.position += new Vector3( 0.0f , 0.64f , 0.0f );
                 PlayerRightPrefab.transform.position += new Vector3( 0.0f , 0.59f , 0.0f );
+                EnemyManagerClass.TakeInEnemySetPosY( 0.64f , 0.59f );
             }
 
             bFlg = false;

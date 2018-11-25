@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: 95113397672052706}
   - component: {fileID: 114419577097914610}
   - component: {fileID: 114613900392486046}
-  - component: {fileID: 114341600802922758}
+  - component: {fileID: 114567702889617908}
   m_Layer: 0
   m_Name: B_Denim_tank
   m_TagString: Untagged
@@ -2578,18 +2578,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114341600802922758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1998062623844738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySexType: 0
 --- !u!114 &114419577097914610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2602,6 +2590,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114567702889617908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998062623844738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 1
 --- !u!114 &114613900392486046
 MonoBehaviour:
   m_ObjectHideFlags: 1
