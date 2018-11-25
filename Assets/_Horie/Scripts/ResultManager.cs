@@ -52,6 +52,12 @@ public class ResultManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // セーブデータ削除
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         // 起動中でない場合は返す
         if (!isEnableResultManager)
             return;

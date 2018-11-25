@@ -20,6 +20,8 @@ public class NumberController : MonoBehaviour {
 
     public void SetSprite ( int nNumber , GameObject TargetSpriteObj )
     {
+        //Debug.Log(nNumber);
+
         TargetSpriteObj.GetComponent<Image>().sprite = spriteObj[nNumber];
 
     }
