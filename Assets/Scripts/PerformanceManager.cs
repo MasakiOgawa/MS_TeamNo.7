@@ -129,7 +129,7 @@ public class PerformanceManager : MonoBehaviour
             //パフォーマンスを終えたらランキングの生成
            // ResultManagerPrefab = Instantiate( ResultManagerPrefab , new Vector3( 0.0f , 0.0f , 0.0f ) , Quaternion.identity );
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
-            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
+           // MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             SerialHandlerClass.Write( "6" );
             ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) , ScoreManagerClass.GetnLeftScore( ) , ScoreManagerClass.GetnCenterScore( ) , ScoreManagerClass.GetnRightScore( ) );
             ScoreManagerClass.ResetnScore( );
