@@ -131,7 +131,7 @@ public class PerformanceManager : MonoBehaviour
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
             MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             SerialHandlerClass.Write( "6" );
-            ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) );
+            ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) , ScoreManagerClass.GetnLeftScore( ) , ScoreManagerClass.GetnCenterScore( ) , ScoreManagerClass.GetnRightScore( ) );
             ScoreManagerClass.ResetnScore( );
         }
     }
