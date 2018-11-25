@@ -159,13 +159,13 @@ public class PlayerManager : MonoBehaviour
         
         if( bFlg == false )
         {
-            if( PerformanceManagerClass.GetnCntPerformance( ) == 1 && ManagerClass.GetdCntFrame( ) >= 8.28f )
+          /*  if( PerformanceManagerClass.GetnCntPerformance( ) == 1 && ManagerClass.GetdCntFrame( ) >= 8.28f )
             {
                 bFlg = true;
-                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.JazzDancing1 );
-                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.JazzDancing1 );
+                MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
+                EnemyManagerClass.TakeInEnemyMotion( PlayerAnimDefine.Idx.HipHopDancing1 );
             }
-            else if( PerformanceManagerClass.GetnCntPerformance( ) == 5 && ManagerClass.GetdCntFrame( ) >= 7.36 )
+            else */if( PerformanceManagerClass.GetnCntPerformance( ) == 5 && ManagerClass.GetdCntFrame( ) >= 7.36 )
             {
                 CameraPerformanceClass.TruebMoveFlg( );
 
@@ -183,16 +183,19 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if( bFlg2 ==true )
+    /*    if( bFlg2 ==true )
         {
             MotionManagerClass.HeadDanceRotate( );
             EnemyManagerClass.TakeInEnemyRotate( );
-        }
+        }*/
 
 
         //パフォーマンスが終了したら
         if( ManagerClass.GetdCntFrame( ) >= ( float )nPerformanceBar * /*OneBeat*/0.92f )
         {
+           MotionManagerClass.ApplyFalse( );
+            EnemyManagerClass.ApplyFalse( );
+
             if( PerformanceManagerClass.GetnCntPerformance( ) == 5 )
             {
                 PlayerLeftPrefab.transform.position += new Vector3( 0.0f , 0.59f , 0.0f );

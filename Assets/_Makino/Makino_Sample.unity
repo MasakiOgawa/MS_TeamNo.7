@@ -254,11 +254,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
       propertyPath: m_LocalRotation.x
@@ -364,6 +364,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1419501600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1477886516136458, guid: 26512ecb7318bc94e9fa80b48fab4745,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419501603}
+  - component: {fileID: 1419501602}
+  - component: {fileID: 1419501601}
+  m_Layer: 0
+  m_Name: Road_3K (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1419501601
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 23420263105468646, guid: 26512ecb7318bc94e9fa80b48fab4745,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419501600}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: d9a03c533a8c14139a68851d19d40b0b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1419501602
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33812967002904402, guid: 26512ecb7318bc94e9fa80b48fab4745,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419501600}
+  m_Mesh: {fileID: 4300000, guid: 9488dbdeb69e34459ac195f64a3f4bdc, type: 3}
+--- !u!4 &1419501603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4337158416029852, guid: 26512ecb7318bc94e9fa80b48fab4745,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419501600}
+  m_LocalRotation: {x: -0, y: -1.0000001, z: -0, w: 0.0000046789646}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: -269.999, z: 0}
 --- !u!1 &1459995488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1387742711996390, guid: defec5ff9c9b5ad438286e9786ae0450,
@@ -426,7 +502,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4083292400573076, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
       propertyPath: m_LocalPosition.z
@@ -455,12 +531,12 @@ Prefab:
     - target: {fileID: 114711894611144002, guid: defec5ff9c9b5ad438286e9786ae0450,
         type: 2}
       propertyPath: AnimIdx
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 95070115401235660, guid: defec5ff9c9b5ad438286e9786ae0450,
         type: 2}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defec5ff9c9b5ad438286e9786ae0450, type: 2}
