@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95258713005058202}
   - component: {fileID: 114763249562991832}
   - component: {fileID: 114436855983644740}
-  - component: {fileID: 114254542614878058}
+  - component: {fileID: 114063917830640056}
   m_Layer: 0
   m_Name: A_Half_tank
   m_TagString: Untagged
@@ -2549,7 +2549,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114254542614878058
+--- !u!114 &114063917830640056
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2557,10 +2557,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1001171641865016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySexType: 1
+  SexType: 1
 --- !u!114 &114436855983644740
 MonoBehaviour:
   m_ObjectHideFlags: 1

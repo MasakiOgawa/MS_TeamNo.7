@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 95639083361707638}
   - component: {fileID: 114513446437724442}
   - component: {fileID: 114151849260164778}
-  - component: {fileID: 114449122750767154}
+  - component: {fileID: 114939324094548634}
   m_Layer: 0
   m_Name: A_Denim_tank
   m_TagString: Untagged
@@ -2593,18 +2593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fFalseFrame: 0.5
---- !u!114 &114449122750767154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1226201687410870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySexType: 1
 --- !u!114 &114513446437724442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2617,6 +2605,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114939324094548634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226201687410870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 1
 --- !u!137 &137037490334164550
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

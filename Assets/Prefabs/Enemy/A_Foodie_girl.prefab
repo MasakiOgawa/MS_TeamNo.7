@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 95656695662083000}
   - component: {fileID: 114124822875676516}
   - component: {fileID: 114515408095320698}
-  - component: {fileID: 114158177226608430}
+  - component: {fileID: 114634028074370318}
   m_Layer: 0
   m_Name: A_Foodie_girl
   m_TagString: Untagged
@@ -2735,18 +2735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
---- !u!114 &114158177226608430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1024328223800314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySexType: 1
 --- !u!114 &114515408095320698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2759,6 +2747,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fFalseFrame: 0.5
+--- !u!114 &114634028074370318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024328223800314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 1
 --- !u!137 &137009887608489454
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

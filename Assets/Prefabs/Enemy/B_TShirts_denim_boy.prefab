@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 95352062980100470}
   - component: {fileID: 114088922026785766}
   - component: {fileID: 114626196920437102}
-  - component: {fileID: 114443561050963192}
+  - component: {fileID: 114306424155217900}
   m_Layer: 0
   m_Name: B_TShirts_denim_boy
   m_TagString: Untagged
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
---- !u!114 &114443561050963192
+--- !u!114 &114306424155217900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2688,10 +2688,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459433025413536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySexType: 0
+  SexType: 0
 --- !u!114 &114626196920437102
 MonoBehaviour:
   m_ObjectHideFlags: 1

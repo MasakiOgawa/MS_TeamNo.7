@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 95460695843388286}
   - component: {fileID: 114047922753604342}
   - component: {fileID: 114605532825362580}
-  - component: {fileID: 114366276536576622}
+  - component: {fileID: 114028425046016884}
   m_Layer: 0
   m_Name: B_Half_tank
   m_TagString: Untagged
@@ -2549,6 +2549,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114028425046016884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183144048907258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 1
 --- !u!114 &114047922753604342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2561,18 +2573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
---- !u!114 &114366276536576622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183144048907258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430fa1257c90e5f439b825ad8d9cb410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySexType: 0
 --- !u!114 &114605532825362580
 MonoBehaviour:
   m_ObjectHideFlags: 1
