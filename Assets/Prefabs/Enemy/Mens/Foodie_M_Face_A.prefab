@@ -351,6 +351,8 @@ GameObject:
   - component: {fileID: 4899392719824494}
   - component: {fileID: 95504592039647412}
   - component: {fileID: 114231913910300080}
+  - component: {fileID: 114282966876603006}
+  - component: {fileID: 114392389155655416}
   m_Layer: 0
   m_Name: Foodie_M_Face_A
   m_TagString: Untagged
@@ -622,6 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038253863025104}
   - component: {fileID: 137874038622154678}
+  - component: {fileID: 114752786928562494}
   m_Layer: 0
   m_Name: A1
   m_TagString: Untagged
@@ -653,6 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238201123872366}
   - component: {fileID: 137552131542982338}
+  - component: {fileID: 114922549118844610}
   m_Layer: 0
   m_Name: Eyes5
   m_TagString: Untagged
@@ -1059,6 +1063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4961412290091418}
   - component: {fileID: 137453017627668236}
+  - component: {fileID: 114431409055241896}
   m_Layer: 0
   m_Name: Foodie
   m_TagString: Untagged
@@ -2046,8 +2051,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281301619271536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.4371505, y: -4.3605977e-17, z: 1.9638386}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4325514848544272}
   - {fileID: 4399230799130000}
@@ -2140,6 +2145,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimIdx: 0
+--- !u!114 &114282966876603006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281301619271536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5c40f8f38bcbf49b4d2560bb782a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fFalseFrame: 0.5
+--- !u!114 &114392389155655416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281301619271536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91222bd49512e4f44b658e10b7df5218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SexType: 0
+--- !u!114 &114431409055241896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972116333691428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 3fa66ef0f8fb6074ba71ee459665a527, type: 2}
+  - {fileID: 2100000, guid: ed3a7a94906f98c46ba511066439dfca, type: 2}
+  - {fileID: 2100000, guid: efec45d3a31f1004eb89a22ee82b4f3d, type: 2}
+  - {fileID: 2100000, guid: 3bde36dd6c72fde4ca12c01a1cba35c0, type: 2}
+  - {fileID: 2100000, guid: bccd652d884ddb0439570f30e523bdcc, type: 2}
+  - {fileID: 2100000, guid: 2a3ff29a142a48541aafcb1107547fe7, type: 2}
+  - {fileID: 2100000, guid: ed2b7443c64543742a08952083b36c22, type: 2}
+  - {fileID: 2100000, guid: 498d986c2b8fa24439712b4bfd7b2589, type: 2}
+--- !u!114 &114752786928562494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524402035632492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 3b71e60f0d67c3c45b8dd46e6b61f85c, type: 2}
+  - {fileID: 2100000, guid: 4f75d40ffae43fe42a948de69b73f80e, type: 2}
+  - {fileID: 2100000, guid: b3347f1fbfcbe9f4d8f6f5b5e97b11f4, type: 2}
+  - {fileID: 2100000, guid: f91d4b3a50c058b47954bd0f7e4603d9, type: 2}
+--- !u!114 &114922549118844610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542990640777694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5e3afc2155e774ba170d272029f57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 279e5cdead1c9cd47a2831dd7c7892ab, type: 2}
+  - {fileID: 2100000, guid: 3ba78759e14cfdf41aae25425aa77e85, type: 2}
+  - {fileID: 2100000, guid: 2d8b6fd1c8f031841b1d94d3f93d5ed0, type: 2}
+  - {fileID: 2100000, guid: b6e91ab82e7c6f94fb2bf09cbdc6438c, type: 2}
 --- !u!137 &137453017627668236
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
