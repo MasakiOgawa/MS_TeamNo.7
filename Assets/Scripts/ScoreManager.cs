@@ -212,10 +212,10 @@ public class ScoreManager : MonoBehaviour
         nLeftScore += nCntLeftExcellent * 2 + nCntLeftFine;
         nCenterScore += nCntCenterExcellent * 2 + nCntCenterFine;
         nRightScore += nCntRightExcellent * 2 + nCntRightFine;
-        nScore += nLeftScore + nCenterScore + nRightScore;
+        nScore = nLeftScore + nCenterScore + nRightScore;
 
         //敵を追従させる
-        EnemyManagerClass.TakeIn( nLeftScore + nCenterScore + nRightScore );
+        EnemyManagerClass.TakeIn( ( nCntLeftExcellent * 2 + nCntLeftFine ) + ( nCntCenterExcellent * 2 + nCntCenterFine ) + ( nCntRightExcellent * 2 + nCntRightFine ) );
 
         //各評価のリセット
         nCntBad       = 0;
