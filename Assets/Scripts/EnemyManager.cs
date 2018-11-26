@@ -544,6 +544,7 @@ public class EnemyManager : MonoBehaviour
         {
             TakeInEnemyList[ nCnt ].gameObject.transform.position = new Vector3( PosXList[ nCnt ] , 0.0f , TakeInEnemyList[ nCnt ].gameObject.transform.position.z);
             TakeInEnemyList[ nCnt ].gameObject.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
+            AnimatorList[ nCnt ].ForceStateNormalizedTime(0.0f);
             PlayerAnimList[ nCnt ].MotionChange( idx );
         }
     }
