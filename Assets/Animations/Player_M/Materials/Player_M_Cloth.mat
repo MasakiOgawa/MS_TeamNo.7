@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player_M_Face
+  m_Name: Player_M_Cloth
   m_Shader: {fileID: 4800000, guid: 9baf30ce95c751649b14d96da3a4b4d5, type: 3}
   m_ShaderKeywords: _ISOUTLINE_ON _IS_BLENDADDTOHICOLOR_ON _IS_BLENDADDTOMATCAP_ON
     _IS_BLENDBASECOLOR_ON _IS_LIGHTCOLOR_1ST_SHADE_ON _IS_LIGHTCOLOR_2NDSHADE_ON _IS_LIGHTCOLOR_2ND_SHADE_ON
@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: 95fc921278dff6c46802f7d7c762964e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d771ddf930193a4aa672df61b069094, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: 95fc921278dff6c46802f7d7c762964e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d771ddf930193a4aa672df61b069094, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BakedNormal:
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 95fc921278dff6c46802f7d7c762964e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d771ddf930193a4aa672df61b069094, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 95fc921278dff6c46802f7d7c762964e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d771ddf930193a4aa672df61b069094, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCap_Sampler:
