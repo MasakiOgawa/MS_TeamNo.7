@@ -131,7 +131,7 @@ public class PerformanceManager : MonoBehaviour
             ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_RESULT );
            // MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
             SerialHandlerClass.Write( "6" );
-            ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) , ScoreManagerClass.GetnLeftScore( ) , ScoreManagerClass.GetnCenterScore( ) , ScoreManagerClass.GetnRightScore( ) );
+            ResultManagerPrefab.GetComponent< ResultManager >( ).StartResult( ScoreManagerClass.GetnScore( ) , ScoreManagerClass.GetnCenterScore( ) , ScoreManagerClass.GetnLeftScore( ) , ScoreManagerClass.GetnRightScore( ) );
             ScoreManagerClass.ResetnScore( );
         }
     }
@@ -197,12 +197,13 @@ public class PerformanceManager : MonoBehaviour
             //最後のパフォーマンスに遷移
             if( nCntPerformance == 6 )
             {
-                   MotionManagerClass.ApplyTrue( );
+                ManagerClass.SetPhase(Manager.GAME_PHASE.PHASE_END_PERFORMANCE);
+                MotionManagerClass.ApplyTrue( );
                  EnemyManagerClass.ApplyTrue( );
                  AuraObj.GetComponent< AuraSpotController >( ).IncreaseType( AuraSpotController.AURA_TYPE.TYPE_0 );
                  CMCameraManagerObj.GetComponent< CMCameraManager >( ).SetCutScene( 5 );
                  MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
-                 ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                 EnemyManagerClass.TakeInEnemyMotion(PlayerAnimDefine.Idx.Idle);
             }
 
              MirrorBallMaterialClass.SetColor( 4 );

@@ -140,7 +140,11 @@ public class PlayerManager : MonoBehaviour
             //スコアの集計
             //ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_AGGREGATE_SCORE );
 
-            MotionManagerClass.ChangeAllMotion( PlayerAnimDefine.Idx.Idle );
+            if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
+            {
+                MotionManagerClass.ChangeAllMotion(PlayerAnimDefine.Idx.Idle);
+            }
+          
             ScoreClass.AggregateScore( );
             PerformanceClass.PhaseCheck( );
          
@@ -218,7 +222,8 @@ public class PlayerManager : MonoBehaviour
             else if( PerformanceManagerClass.GetnCntPerformance( ) == 6 )
             {
                 //最後のパフォーマンス
-                ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                // ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_END_PERFORMANCE );
+                Debug.Log("PlayerManager通過");
             }
             else
             {

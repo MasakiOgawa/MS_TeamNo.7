@@ -36,6 +36,9 @@ public class MotionManager : MonoBehaviour
         PlayerLeftObj.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
         PlayerCenterObj.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
         PlayerRightObj.transform.rotation = Quaternion.Euler( 0.0f , 0.0f , 0.0f );
+        PlayerLeftObj.GetComponent<Animator>().ForceStateNormalizedTime(0.0f);
+        PlayerCenterObj.GetComponent<Animator>().ForceStateNormalizedTime(0.0f);
+        PlayerRightObj.GetComponent<Animator>().ForceStateNormalizedTime(0.0f);
         LeftAnimClass.MotionChange( idxAll );
         CenterAnimClass.MotionChange( idxAll );
         RightAnimClass.MotionChange( idxAll );
