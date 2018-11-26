@@ -72,7 +72,7 @@ public class EnemyManager : MonoBehaviour
     {
         //変数の初期化
         aEnemyPrefabArray = new GameObject[ 8 , 4 ];
-        aEnemyPrefabArray2 = new GameObject[ 12 ];
+        aEnemyPrefabArray2 = new GameObject[ 16 ];
         aEnemyPrefabArray3 = new GameObject[ 8 ];
         TakeInEnemyList = new List<GameObject>();  
         PlayerAnimList  = new List<PlayerAnim>();
@@ -83,7 +83,7 @@ public class EnemyManager : MonoBehaviour
          fRotY = 0.0f;
 
         nTargetNoTmp = 0;
-         aAnimator = new Animator[ 12 ];
+         aAnimator = new Animator[ 16 ];
 
         //敵オブジェクトを生成し、非表示にしておく
         for( int nCnt = 0; nCnt < 8; nCnt++ )
@@ -109,7 +109,7 @@ public class EnemyManager : MonoBehaviour
             aEnemyPrefabArray[ nCnt , 3 ].gameObject.SetActive( false );
         }
 
-        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
         {
             aEnemyPrefabArray2[ nCnt ] = Instantiate( Enemy_Prefab[ nCnt ] , new Vector3( 0.0f, 0.0f , 0.0f ) , Quaternion.Euler( 0.0f , 180.0f , 0.0f ) );
             aEnemyPrefabArray2[ nCnt ].transform.parent = this.transform;
@@ -162,10 +162,10 @@ public class EnemyManager : MonoBehaviour
         BGMClass =  ManagerClass.GetBGM( ).GetComponent< BGM >( );
 
         //モーション周り
-        aEnemyPhase = new EnemyPhase[ 12 ];
-        fCntFrame = new float[ 12 ];
+        aEnemyPhase = new EnemyPhase[ 16 ];
+        fCntFrame = new float[ 16 ];
 
-        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
         {
             aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
             fCntFrame[ nCnt ] = 0.0f;
@@ -212,7 +212,7 @@ public class EnemyManager : MonoBehaviour
              }
          }*/
 
-        for( int nCnt = 0; nCnt < 12; nCnt++)
+        for( int nCnt = 0; nCnt < 16; nCnt++)
         {
             //敵が生成されていたら
             if( aEnemyPrefabArray2[ nCnt ].gameObject.activeSelf == true )
@@ -249,10 +249,10 @@ public class EnemyManager : MonoBehaviour
     public void ActiveTrue( )
     {  
         float fPosZ = PlayersObj.transform.position.z;
-        int [ ] nArray =  new int[ 12 ];
+        int [ ] nArray =  new int[ 16 ];
         int nRand = 0;
 
-        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
         {
             nArray[ nCnt ] = 0;
         }
@@ -265,7 +265,7 @@ public class EnemyManager : MonoBehaviour
 
                 do
                 {
-                    nRand = Random.Range( 0 , 12 );
+                    nRand = Random.Range( 0 , 16 );
                 }while( nArray[ nRand ] != 0 );
                 nArray[ nRand ] = 999;
 
@@ -288,7 +288,7 @@ public class EnemyManager : MonoBehaviour
 
                 do
                 {
-                    nRand = Random.Range( 0 , 12 );
+                    nRand = Random.Range( 0 , 16 );
                 }while( nArray[ nRand ] != 0 );
                 nArray[ nRand ] = 999;
 
@@ -310,7 +310,7 @@ public class EnemyManager : MonoBehaviour
 
                 do
                 {
-                    nRand = Random.Range( 0 , 12 );
+                    nRand = Random.Range( 0 , 16 );
                 }while( nArray[ nRand ] != 0 );
                 nArray[ nRand ] = 999;
 
@@ -332,7 +332,7 @@ public class EnemyManager : MonoBehaviour
 
                  do
                 {
-                    nRand = Random.Range( 0 , 12 );
+                    nRand = Random.Range( 0 , 16 );
                 }while( nArray[ nRand ] != 0 );
                 nArray[ nRand ] = 999;
 
@@ -390,7 +390,7 @@ public class EnemyManager : MonoBehaviour
         shakeUICanvasClass.ResetShakeUI( );
         AuraSpotObj.SetActive( false );
 
-        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
         {
              if( aEnemyPrefabArray2[ nCnt ].activeSelf == true )
             {
@@ -413,7 +413,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         //モーション周り
-        for( int nCnt = 0; nCnt < 12; nCnt++ )
+        for( int nCnt = 0; nCnt < 16; nCnt++ )
         {
             aEnemyPhase[ nCnt ] = EnemyPhase.ENEMY_DIST;
             fCntFrame[ nCnt ] = 0.0f;
@@ -517,7 +517,7 @@ public class EnemyManager : MonoBehaviour
             {
                 nTmp   = ( int )Random.Range( 2 , nTakeInEnemyRange );
                 nTmp  -= ( nTakeInEnemyRange - 1 ) / 2;
-                TakeInEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 12 ) ] , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
+                TakeInEnemyList.Add( Instantiate( Enemy_Prefab[ Random.Range( 0 , 16 ) ] , new Vector3( fPosX + nTmp , 0.0f , -fTakeInEnemyDist * nCntLength + fMoveZ + fLength ) , Quaternion.identity ) );
                 PlayerAnimList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].GetComponent< PlayerAnim >());
                 AnimatorList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].GetComponent<Animator>());
                 PosXList.Add( TakeInEnemyList[ TakeInEnemyList.Count - 1 ].transform.position.x );
