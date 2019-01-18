@@ -94,7 +94,7 @@ public class BonusManager : MonoBehaviour
         //一定フレーム毎に生成する
         fCntFrame += Time.deltaTime;
 
-        if( fCntFrame >= 0.7f )
+        if (fCntFrame >= /*0.7f*/0.89f )
         {
             fCntFrame = 0.0f;       
 

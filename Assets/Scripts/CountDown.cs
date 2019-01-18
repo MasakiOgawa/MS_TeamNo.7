@@ -17,8 +17,16 @@ public class CountDown : MonoBehaviour
     public GameObject MirrorBallColorObj;
     MirrorBallMaterial MirrorBallMaterialClass;
 
+    public GameObject AuraLeftObj;
+    AuraLeft AuraLeftClass;
 
-	void Start( )
+    public GameObject ThreeObj;
+    public GameObject TwoObj;
+    public GameObject OneObj;
+    public GameObject GoObj;
+
+
+    void Start( )
     {
         //変数の初期化
         nCountDown = 3;
@@ -29,7 +37,9 @@ public class CountDown : MonoBehaviour
         RhythmClass  = ManagerClass.GetRhythm( ).GetComponent< Rhythm >( );
 
         MirrorBallMaterialClass = MirrorBallColorObj.GetComponent< MirrorBallMaterial >( );
-	}
+
+        AuraLeftClass = AuraLeftObj.GetComponent<AuraLeft>();
+    }
 	
 
     //カウントダウン
@@ -42,18 +52,24 @@ public class CountDown : MonoBehaviour
             
             if( nCountDown == 3 )
             {
+                ThreeObj.SetActive(false);
+                TwoObj.SetActive(true);
                 nCountDown = 2;
                 MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
             }
             else if( nCountDown == 2 )
             {
+                TwoObj.SetActive(false);
+                OneObj.SetActive(true);
                 nCountDown = 1;
                 MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
             }
             else if( nCountDown == 1 )
             {
+                OneObj.SetActive(false);
+                GoObj.SetActive(true);
                 nCountDown = 0;
                 MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
@@ -61,13 +77,15 @@ public class CountDown : MonoBehaviour
             //カウントダウンの終了
             else if( nCountDown == 0 )
             {
+                GoObj.SetActive(false);
                 nCountDown = 0;
                 MirrorBallMaterialClass.SetColor( nCountDown );
                 RhythmClass.Emit( );
          
                 //プレイヤーのダンス
                 ManagerClass.SetPhase( Manager.GAME_PHASE.PHASE_PLAYER_DANCE );
-            }
+
+                AuraLeftClass.ResetPoint();            }
         }
     }
 
@@ -77,6 +95,7 @@ public class CountDown : MonoBehaviour
     {
         if( ManagerClass.GetPhase( ) != Manager.GAME_PHASE.PHASE_END_PERFORMANCE )
         {
+            ThreeObj.SetActive(true);
             nCountDown = 3;
             MirrorBallMaterialClass.SetColor( nCountDown );
             RhythmClass.Emit( );
