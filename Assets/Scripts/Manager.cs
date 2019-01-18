@@ -54,6 +54,9 @@ public class Manager : MonoBehaviour
     MirrorBallMaterial MirrorBallClass;
 
 
+    public float fCntAuraLeftFrame;
+
+
     void Start( )
     {
         PerformanceManagerClass = PerformanceManagerObj.GetComponent< PerformanceManager >( );
@@ -61,6 +64,8 @@ public class Manager : MonoBehaviour
         CountDownClass = CountDownObj.GetComponent< CountDown >( );
         PlayerManagerClass = PlayerManagerObj.GetComponent< PlayerManager >( );
         BonusClass = BonusObj.GetComponent< BonusManager >( );
+
+        
 
         //フレームカウンタの初期化
         dCntFrame     = 0;
@@ -74,6 +79,8 @@ public class Manager : MonoBehaviour
         StartFilterClass = StartFilterObj.GetComponent< StartFilter >( );
 
         MirrorBallClass = MirrorBallObj.GetComponent< MirrorBallMaterial >( );
+
+        fCntAuraLeftFrame = 0.0f;
     }
 
 
@@ -105,10 +112,12 @@ public class Manager : MonoBehaviour
             //カウントダウン
             case GAME_PHASE.PHASE_COUNT_DOWN :
                 CountDownClass.ChangeCount( );
-            break;
+                fCntAuraLeftFrame += 0.01666667f;
+                break;
 
             //プレイヤーのダンス
             case GAME_PHASE.PHASE_PLAYER_DANCE :
+                fCntAuraLeftFrame = 0.0f;
                 dCntHalfFrame += 0.01666667f; ///???
                 dPoseFrame    += 0.01666667f; ///??
                 PlayerManagerClass.Dance( );
@@ -149,7 +158,7 @@ public class Manager : MonoBehaviour
 
         dCntFrame += 0.01666667f;
 
-        if( bFlg == true )
+        if ( bFlg == true )
         {
             bFlg = false;
             dCntFrame = 0.0f;
@@ -290,5 +299,17 @@ public class Manager : MonoBehaviour
     public void SetFlg2( )
     {
         bFlg2 = true;
+    }
+
+
+    public void ResetfAuraLeftFrame()
+    {
+        fCntAuraLeftFrame = 0.0f;
+    }
+
+
+    public float GetfAuraLeftFrame()
+    {
+        return fCntAuraLeftFrame;
     }
 }
